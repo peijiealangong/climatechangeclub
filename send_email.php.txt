@@ -1,0 +1,29 @@
+<?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/Exception.php';
+require 'PHPMailer/PHPMailer.php';
+require 'PHPMailer/SMTP.php';
+require 'config.php';
+
+$mail = new PHPMailer(true);
+$mail->isSMTP();
+$mail->Host = SMTP_HOST;
+$mail->SMTPAuth = true;
+$mail->Username = SMTP_USERNAME;
+$mail->Password = SMTP_PASSWORD;
+$mail->SMTPSecure = 'tls';
+$mail->Port = SMTP_PORT;
+
+$mail->setFrom(SMTP_USERNAME, 'Climate Change Club');
+$mail->addAddress($_POST["email"]);
+$mail->Subject = "Thank You for Contacting Us!";
+$mail->Body = "Hello " . $_POST["name"] . ",\n\nThanks for reaching out. We'll get back to you soon!";
+
+if ($mail->send()) {
+    echo "Message sent successfully!";
+} else {
+    echo "Error: " . $mail->ErrorInfo;
+}
+?>
