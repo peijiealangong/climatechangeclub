@@ -1,0 +1,6 @@
+<?php
+define('SMTP_HOST', 'smtp.office365.com'); // Outlook SMTP Server
+define('SMTP_USERNAME', 'gongpeijie620@outlook.com'); // Your Outlook email
+define('SMTP_PASSWORD', 'your-outlook-password'); // Your Outlook password
+define('SMTP_PORT', 587); // Outlook uses port 587
+?>
