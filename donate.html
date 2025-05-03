@@ -30,7 +30,7 @@
             <li><a href="projects.html">Our Projects</a></li>
             <li><a href="meetings.html">Meetings</a></li>
             <li><a href="contact.html">Contact</a></li>
-            <li><a href="donate.html">Donate</a></li> <!-- New donation page -->
+            <li><a href="donate.html">Donate</a></li>
         </ul>
     </nav>
 
@@ -55,8 +55,11 @@
     </footer>
 
     <script>
+        // Check if Apple Pay is supported
         if (window.ApplePaySession && ApplePaySession.canMakePayments()) {
             document.getElementById('apple-pay-button').style.display = 'block';
+        } else {
+            alert("Apple Pay is not supported on this device. Please try a different payment method.");
         }
 
         document.getElementById('donation-form').addEventListener('submit', (event) => {
@@ -100,10 +103,10 @@
                 .then(result => {
                     if(result.success){
                         session.completePayment(ApplePaySession.STATUS_SUCCESS);
-                        alert(`Thank you for donating $${amount}!`);
+                        alert(`✅ Thank you for donating $${amount}! Your support makes a difference. 🌍💚`);
                     } else {
                         session.completePayment(ApplePaySession.STATUS_FAILURE);
-                        alert("Payment failed. Please try again.");
+                        alert("❌ Payment failed. Please try again.");
                     }
                 })
                 .catch(error => {
