@@ -21,7 +21,6 @@
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DKK3SNG"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
 
     <!-- Navigation Bar -->
     <nav>
@@ -31,27 +30,23 @@
             <li><a href="projects.html">Our Projects</a></li>
             <li><a href="meetings.html">Meetings</a></li>
             <li><a href="contact.html">Contact</a></li>
-            <li><a href="donate.html">Donate</a></li> <!-- New donation link added -->
+            <li><a href="donate.html">Donate</a></li> <!-- New donation page -->
         </ul>
     </nav>
 
     <!-- Donation Section -->
     <header>
         <h1>Support the Climate Change Club</h1>
-        <p>Your donation helps fund projects that drive real environmental change! 🌍💚</p>
+        <p>Your donation helps us fund environmental initiatives! 🌍💚</p>
     </header>
 
     <section id="donate">
-        <h2>💚 Choose Your Donation Amount</h2>
-
-        <div id="donation-buttons">
-            <button class="donate-btn" data-amount="1">$1</button>
-	    <button class="donate-btn" data-amount="5">$5</button>
-            <button class="donate-btn" data-amount="10">$10</button>
-            <button class="donate-btn" data-amount="20">$20</button>
-            <button class="donate-btn" data-amount="50">$50</button>
-            <button class="donate-btn" data-amount="100">$100</button>
-        </div>
+        <h2>💚 Enter Your Donation Amount</h2>
+        <form id="donation-form">
+            <label for="amount">Donation Amount ($):</label>
+            <input type="number" id="amount" min="1" step="1" required>
+            <button type="submit" id="apple-pay-button" style="display:none;">Donate with Apple Pay</button>
+        </form>
     </section>
 
     <!-- Footer -->
@@ -60,61 +55,64 @@
     </footer>
 
     <script>
-        document.querySelectorAll('.donate-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                const amount = button.getAttribute('data-amount');
+        if (window.ApplePaySession && ApplePaySession.canMakePayments()) {
+            document.getElementById('apple-pay-button').style.display = 'block';
+        }
 
-                if (!window.ApplePaySession || !ApplePaySession.canMakePayments()) {
-                    alert("Apple Pay is not supported on this device.");
-                    return;
-                }
+        document.getElementById('donation-form').addEventListener('submit', (event) => {
+            event.preventDefault();
+            const amount = document.getElementById('amount').value;
 
-                const paymentRequest = {
-                    countryCode: 'US',
-                    currencyCode: 'USD',
-                    total: {
-                        label: 'Climate Change Club Donation',
-                        amount: amount
-                    },
-                    supportedNetworks: ['visa', 'masterCard', 'amex'],
-                    merchantCapabilities: ['supports3DS']
-                };
+            if (!amount || amount < 1) {
+                alert("Please enter a valid donation amount.");
+                return;
+            }
 
-                const session = new ApplePaySession(3, paymentRequest);
+            const paymentRequest = {
+                countryCode: 'US',
+                currencyCode: 'USD',
+                total: {
+                    label: 'Climate Change Club Donation',
+                    amount: amount
+                },
+                supportedNetworks: ['visa', 'masterCard', 'amex'],
+                merchantCapabilities: ['supports3DS']
+            };
 
-                session.onvalidatemerchant = (event) => {
-                    fetch('/validate-merchant', {
-                        method: 'POST',
-                        body: JSON.stringify({ validationURL: event.validationURL })
-                    })
-                    .then(response => response.json())
-                    .then(merchantSession => session.completeMerchantValidation(merchantSession))
-                    .catch(error => console.error('Merchant validation failed', error));
-                };
+            const session = new ApplePaySession(3, paymentRequest);
 
-                session.onpaymentauthorized = (event) => {
-                    fetch('/process-payment', {
-                        method: 'POST',
-                        body: JSON.stringify(event.payment)
-                    })
-                    .then(response => response.json())
-                    .then(result => {
-                        if(result.success){
-                            session.completePayment(ApplePaySession.STATUS_SUCCESS);
-                            alert(`Thank you for donating $${amount}!`);
-                        } else {
-                            session.completePayment(ApplePaySession.STATUS_FAILURE);
-                            alert("Payment failed. Please try again.");
-                        }
-                    })
-                    .catch(error => {
+            session.onvalidatemerchant = (event) => {
+                fetch('/validate-merchant', {
+                    method: 'POST',
+                    body: JSON.stringify({ validationURL: event.validationURL })
+                })
+                .then(response => response.json())
+                .then(merchantSession => session.completeMerchantValidation(merchantSession))
+                .catch(error => console.error('Merchant validation failed', error));
+            };
+
+            session.onpaymentauthorized = (event) => {
+                fetch('/process-payment', {
+                    method: 'POST',
+                    body: JSON.stringify(event.payment)
+                })
+                .then(response => response.json())
+                .then(result => {
+                    if(result.success){
+                        session.completePayment(ApplePaySession.STATUS_SUCCESS);
+                        alert(`Thank you for donating $${amount}!`);
+                    } else {
                         session.completePayment(ApplePaySession.STATUS_FAILURE);
-                        console.error("Payment processing failed", error);
-                    });
-                };
+                        alert("Payment failed. Please try again.");
+                    }
+                })
+                .catch(error => {
+                    session.completePayment(ApplePaySession.STATUS_FAILURE);
+                    console.error("Payment processing failed", error);
+                });
+            };
 
-                session.begin();
-            });
+            session.begin();
         });
     </script>
 
