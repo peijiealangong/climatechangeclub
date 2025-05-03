@@ -59,7 +59,7 @@
         if (window.ApplePaySession && ApplePaySession.canMakePayments()) {
             document.getElementById('apple-pay-button').style.display = 'block';
         } else {
-            alert("Apple Pay is not supported on this device. Please try a different payment method.");
+            alert("Apple Pay is not supported on this device. You can still view this page when you hit OK, but you cannot submit donations using Apple Pay.");
         }
 
         document.getElementById('donation-form').addEventListener('submit', (event) => {
