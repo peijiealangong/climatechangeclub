@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-68D6N5XQ6D"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-68D6N5XQ6D');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Change Club | Donate</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="javascript.js"></script>
+</head>
+<body>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DKK3SNG"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="projects.html">Our Projects</a></li>
+            <li><a href="meetings.html">Meetings</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="donate.html">Donate</a></li> <!-- New navigation link -->
+        </ul>
+    </nav>
+
+    <!-- Donation Section -->
+    <header>
+        <h1>Support the Climate Change Club</h1>
+        <p>Your donation helps us fund projects that drive real environmental change! 🌍💚</p>
+    </header>
+
+    <section id="donate">
+        <h2>💚 How You Can Help</h2>
+        <p>Donate securely using **Apple Pay** and support our mission.</p>
+        <button id="apple-pay-button" style="display:none;">Donate with Apple Pay</button>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Climate Change Club | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        if (window.ApplePaySession && ApplePaySession.canMakePayments()) {
+            document.getElementById('apple-pay-button').style.display = 'block';
+        }
+
+        document.getElementById('apple-pay-button').addEventListener('click', () => {
+            const paymentRequest = {
+                countryCode: 'US',
+                currencyCode: 'USD',
+                total: {
+                    label: 'Climate Change Club Donation',
+                    amount: '10.00'
+                },
+                supportedNetworks: ['visa', 'masterCard', 'amex'],
+                merchantCapabilities: ['supports3DS']
+            };
+
+            const session = new ApplePaySession(3, paymentRequest);
+
+            session.onvalidatemerchant = (event) => {
+                fetch('/validate-merchant', {
+                    method: 'POST',
+                    body: JSON.stringify({ validationURL: event.validationURL })
+                })
+                .then(response => response.json())
+                .then(merchantSession => session.completeMerchantValidation(merchantSession))
+                .catch(error => console.error('Merchant validation failed', error));
+            };
+
+            session.onpaymentauthorized = (event) => {
+                fetch('/process-payment', {
+                    method: 'POST',
+                    body: JSON.stringify(event.payment)
+                })
+                .then(response => response.json())
+                .then(result => {
+                    if(result.success){
+                        session.completePayment(ApplePaySession.STATUS_SUCCESS);
+                        alert('Thank you for your donation!');
+                    } else {
+                        session.completePayment(ApplePaySession.STATUS_FAILURE);
+                        alert('Payment failed. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    session.completePayment(ApplePaySession.STATUS_FAILURE);
+                    console.error('Payment processing failed', error);
+                });
+            };
+
+            session.begin();
+        });
+    </script>
+
+</body>
+</html>
