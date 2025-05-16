@@ -11,7 +11,7 @@ $mail = new PHPMailer(true);
 
 try {
     // Enable debugging for troubleshooting (Set to 0 for production)
-    $mail->SMTPDebug = 2; 
+    $mail->SMTPDebug = 0; 
     $mail->Debugoutput = 'html';
 
     // SMTP Configuration
