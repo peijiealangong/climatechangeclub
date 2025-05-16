@@ -2,53 +2,48 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Include PHPMailer and config file
 require 'PHPMailer/Exception.php';
 require 'PHPMailer/PHPMailer.php';
 require 'PHPMailer/SMTP.php';
 require 'config.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = htmlspecialchars($_POST["name"]);
-    $email = htmlspecialchars($_POST["email"]);
-    $message = htmlspecialchars($_POST["message"]);
+$mail = new PHPMailer(true);
 
-    try {
-        // Initialize PHPMailer
-        $mail = new PHPMailer(true);
-        $mail->isSMTP();
-        $mail->Host = SMTP_HOST; // Using Outlook SMTP
-        $mail->SMTPAuth = true;
-        $mail->Username = SMTP_USERNAME;
-        $mail->Password = SMTP_PASSWORD;
-        $mail->SMTPSecure = 'tls';
-        $mail->Port = SMTP_PORT;
+try {
+    // Enable debugging for troubleshooting (Set to 0 for production)
+    $mail->SMTPDebug = 2; 
+    $mail->Debugoutput = 'html';
 
-        // Set sender & recipient details
-        $mail->setFrom(SMTP_USERNAME, 'Climate Change Club');
-        $mail->addAddress('gongpeijie620@outlook.com'); // Your Outlook email
+    // SMTP Configuration
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com'; // Gmail SMTP
+    $mail->SMTPAuth = true;
+    $mail->Username = 'gongpeijie620@gmail.com'; // Your email
+    $mail->Password = 'esee uhci wiuq sdxz'; // Use App Password, NOT your Gmail password
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // TLS encryption
+    $mail->Port = 587; // TLS uses 587, SSL uses 465
 
-        // Format email with HTML styling
-        $mail->Subject = "New Contact Form Submission from $name";
-        $mail->isHTML(true);
-        $mail->Body = "
-            <h2>New Contact Request</h2>
-            <p><strong>Name:</strong> $name</p>
-            <p><strong>Email:</strong> $email</p>
-            <p><strong>Message:</strong><br>$message</p>
-        ";
+    // Sender Information
+    $mail->setFrom('gongpeijie620@gmail.com', 'Climate Change Club');
 
-        // Send email
-        if ($mail->send()) {
-            echo "<p>Message sent successfully! We'll get back to you soon.</p>";
-        } else {
-            echo "<p>Error sending message: " . $mail->ErrorInfo . "</p>";
-        }
+    // Capture recipient info from POST, with fallbacks for debugging
+    $recipientEmail = isset($_POST["email"]) ? $_POST["email"] : "test@example.com";
+    $recipientName = isset($_POST["name"]) ? $_POST["name"] : "Supporter";
 
-    } catch (Exception $e) {
-        echo "<p>Mail error: {$e->getMessage()}</p>";
+    $mail->addAddress($recipientEmail);
+
+    // Email Content
+    $mail->Subject = "Thank You for Contacting Us!";
+    $mail->Body = "Hello " . htmlspecialchars($recipientName) . ",\n\nThanks for reaching out. We'll get back to you soon!";
+
+    // Send Email & Handle Errors
+    if ($mail->send()) {
+        echo "✅ Message sent successfully to $recipientEmail!";
+    } else {
+        echo "❌ Error sending email: " . $mail->ErrorInfo;
     }
-} else {
-    echo "<p>Invalid request.</p>";
+
+} catch (Exception $e) {
+    echo "❌ PHPMailer Exception: " . $e->getMessage();
 }
 ?>
