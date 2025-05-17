@@ -12,3 +12,5 @@ function sendEmail() {
         console.log("Failed to send email", error);
     });
 }
+
+console.log("sendEmail.js is loaded!");
