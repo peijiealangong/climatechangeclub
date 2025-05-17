@@ -33,15 +33,8 @@ document.getElementById("contact-form").addEventListener("submit", function(even
 });
 
 
- <!-- Floating Earth Animation -->
-    <div id="earth"></div>
+ 
 
-document.addEventListener("mousemove", function(event) {
-    let earth = document.getElementById("earth");
-    earth.style.left = event.pageX + "px";
-    earth.style.top = event.pageY + "px";
-    earth.style.opacity = 1; // Make the Earth visible
-});
 
 document.getElementById("emailForm").addEventListener("submit", function(event) {
     event.preventDefault(); // Prevent page reload

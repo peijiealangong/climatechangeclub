@@ -2,52 +2,54 @@
 <html lang="en">
 <head>
 
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-68D6N5XQ6D"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-68D6N5XQ6D');
-</script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-68D6N5XQ6D"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-68D6N5XQ6D');
+    </script>
 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is the Home page for the Climate Change Club. You can learn about the Climate Change Club briefly here.">
+    <title>Climate Change Club | Home</title>
+    <link rel="stylesheet" href="style.css">
 
+    <!-- ✅ Updated EmailJS SDK v4 -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="This is the Home page for the Climate Change Club. You can learn about the Climate Change Club briefly here.">
-<title>Climate Change Club | Home</title>
-<link rel="stylesheet" href="style.css">
-<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-
-<script src="javascript.js" defer></script>
+    <script src="sendEmail.js" defer></script>
 
 </head>
 <body>
 
-<!-- Google Tag Manager -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DKK3SNG"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- Google Tag Manager -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DKK3SNG"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<!-- Navigation Bar -->
-<nav>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="projects.html">Our Projects</a></li>
-        <li><a href="meetings.html">Upcoming Events</a></li>
-        <li><a href="contact.html">Contact</a></li>
-    </ul>
-</nav>
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="projects.html">Our Projects</a></li>
+            <li><a href="meetings.html">Upcoming Events</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
-<form>
-    <input type="text" id="name" placeholder="Your Name">
-    <input type="email" id="email" placeholder="Your Email">
-    <textarea id="message" placeholder="Your Message"></textarea>
-    <button type="button" onclick="sendEmail()">Send Email</button>
-</form>
-<script src="sendEmail.js"></script>
+    <!-- ✅ Email Form -->
+    <form>
+        <input type="text" id="name" placeholder="Your Name">
+        <input type="email" id="email" placeholder="Your Email">
+        <textarea id="message" placeholder="Your Message"></textarea>
+        <button type="button" onclick="sendEmail()">Send Email</button>
+    </form>
 
+    <!-- ✅ Load EmailJS script AFTER everything else -->
+    <script src="sendEmail.js"></script>
 
 </body>
 </html>
