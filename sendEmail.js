@@ -9,7 +9,7 @@ if (!process.argv[2] || !process.argv[2].includes("@")) {
 const recipientEmail = process.argv[2]; // Get user-inputted email from command line
 
 // Create a transporter (Configuring Gmail for sending emails)
-const transporter = nodemailer.createTransport({
+const transporter = nodemailer.createTransport({ 
     service: "gmail",
     auth: {
         user: "gongpeijie620@gmail.com",
