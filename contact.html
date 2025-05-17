@@ -18,8 +18,9 @@
 <meta name="description" content="This is the Home page for the Climate Change Club. You can learn about the Climate Change Club briefly here.">
 <title>Climate Change Club | Home</title>
 <link rel="stylesheet" href="style.css">
-<script src="javascript.js" defer></script>
 <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+<script src="javascript.js" defer></script>
 
 </head>
 <body>
@@ -39,6 +40,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </ul>
 </nav>
 
+<form>
+    <input type="text" id="name" placeholder="Your Name">
+    <input type="email" id="email" placeholder="Your Email">
+    <textarea id="message" placeholder="Your Message"></textarea>
+    <button type="button" onclick="sendEmail()">Send Email</button>
+</form>
 <script src="sendEmail.js"></script>
 
 
