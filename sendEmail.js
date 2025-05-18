@@ -16,8 +16,16 @@ function sendEmail() {
     })
     .then(function(response) {
         console.log("Email sent successfully!", response);
+        
+        // ✅ Display a success message on the page
+        document.getElementById("confirmation").innerHTML = 
+            "<p style='color: green;'>Your email has been sent successfully!</p>";
     }, function(error) {
         console.log("Failed to send email", error);
+        
+        // ❌ Display an error message on the page
+        document.getElementById("confirmation").innerHTML = 
+            "<p style='color: red;'>Oops! Something went wrong. Try again.</p>";
     });
 }
 
