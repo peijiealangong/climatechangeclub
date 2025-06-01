@@ -19,7 +19,7 @@ function sendEmail() {
     }
 
     // ✅ Send email through EmailJS
-    emailjs.send("service_irt14bl", "template_48kvt7e", {
+    emailjs.send("service_irt14bl", "template_wnlfnbh", {
         from_name: name,
         from_email: email,
         message: message
