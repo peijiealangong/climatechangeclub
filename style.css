@@ -1,148 +1,26 @@
-/* General Styling */
-body {
-    padding-top: 60px; /* Prevents fixed nav from hiding content */
-    font-family: Arial, sans-serif;
-}
-
-/* Welcome Heading */
-#Welcome {
-    font-size: 50px;
-    font-weight: bold;
-    padding-left: 100px;
-    color: blue;
-    text-align: center;
-    animation: fadeIn 2s ease-in-out;
-}
-
-/* Fade-In Animation */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* Section Styling */
-#Dedication {
-    font-size: 25px;
-    text-align: center;
-}
-
-/* Navigation Bar */
+/* ✅ Ensure Navbar Stays Visible */
 nav {
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background */
     position: fixed;
     top: 0;
-    left: 0;
     width: 100%;
-    background-color: #2c3e50;
-    padding: 10px 0;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 2000; /* ✅ Ensure navbar is above all elements */
 }
 
-ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    padding: 0;
-}
-
-li {
-    margin: 0 15px;
-}
-
-a {
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-    padding: 8px 12px;
-    border-radius: 5px;
+/* ✅ Navbar Background Change on Scroll */
+nav.scrolled {
+    background-color: rgba(0, 0, 0, 1); /* Fully opaque */
     transition: background-color 0.3s ease-in-out;
 }
 
-a:hover {
-    background-color: #34495e;
-}
-
-/* Forms */
-form {
-    max-width: 500px;
-    margin: 20px auto;
-    display: flex;
-    flex-direction: column;
-}
-
-label {
-    font-size: 18px;
-    margin-bottom: 5px;
-}
-
-input, textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-button {
-    background-color: #2c3e50;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-}
-
-button:hover {
-    background-color: #34495e;
-}
-
-/* Hide & Show Animations */
-.hidden {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
-}
-
-.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-
-
-#earth {
+/* ✅ Pop-Up Box Styling */
+.popup-box {
     position: absolute;
-    width: 150px; /* Adjust size */
-    height: 150px;
-    background-image: url('pexels-pixabay-87651.jpg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.2s ease-in-out;
-    animation: rotateEarth 5s linear infinite; /* Smooth rotation */
-    z-index: 1000; /* Ensure visibility above other elements */
-}
-
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-h1 {
-    animation: fadeIn 2s ease-in-out;
-}
-
-@keyframes fadeBounceColor {
-    0% { opacity: 0; transform: translateY(-50px); color: red; } /* Starts hidden & red */
-    40% { opacity: 1; transform: translateY(10px); color: yellow; } /* Begins fading in & moves down */
-    60% { transform: translateY(-5px); color: lightgreen; } /* Bounces up */
-    80% { transform: translateY(5px); color: grey; } /* Bounces down */
-    100% { transform: translateY(0); color: black; } /* Settles & changes to final color */
-}
-
-h1 {
-    animation: fadeBounceColor 2s ease-in-out;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+    z-index: 1500; /* ✅ Ensure it's below the navbar */
 }
