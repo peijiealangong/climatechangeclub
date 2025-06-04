@@ -41,3 +41,19 @@ nav.scrolled {
     z-index: 1500;
     animation: none; /* ✅ Animation Removed */
 }
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center; /* ✅ Ensures items are centered */
+    align-items: center;
+    gap: 40px; /* ✅ Adds spacing between items */
+    padding: 0;
+}
+
+nav {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
