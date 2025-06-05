@@ -80,3 +80,12 @@ nav a:hover {
     background-color: #34495e; /* ✅ Hover effect */
 }
 
+body {
+    padding-top: 80px; /* ✅ Adds space below navbar */
+}
+
+h1 {
+    position: relative;
+    z-index: 1000; /* ✅ Keeps text above other elements */
+}
+
