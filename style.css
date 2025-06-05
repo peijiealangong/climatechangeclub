@@ -89,3 +89,59 @@ h1 {
     z-index: 1000; /* ✅ Keeps text above other elements */
 }
 
+nav {
+    display: flex;
+    justify-content: center; /* ✅ Centers menu items */
+    align-items: center;
+    background-color: #2c3e50; /* ✅ Restored Blue Background */
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 2000;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 50px; /* ✅ Ensures even spacing */
+    list-style: none;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none; /* ✅ Removes underline */
+    color: white; /* ✅ Keeps text visible */
+    font-size: 18px;
+    font-weight: bold; /* ✅ Makes text stand out */
+}
+
+form {
+    display: flex;
+    flex-direction: column; /* ✅ Stacks inputs vertically */
+    align-items: center; /* ✅ Centers inputs */
+    max-width: 400px; /* ✅ Limits width for consistency */
+    margin: auto; /* ✅ Ensures centering */
+}
+
+input, textarea {
+    width: 100%; /* ✅ Makes all boxes same width */
+    max-width: 350px; /* ✅ Prevents overly wide inputs */
+    padding: 12px; /* ✅ Adds spacing inside inputs */
+    margin-bottom: 15px; /* ✅ Spaces inputs evenly */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px; /* ✅ Ensures uniform text size */
+}
+button {
+    width: 100%; /* ✅ Makes button match input width */
+    max-width: 350px;
+    padding: 12px;
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
