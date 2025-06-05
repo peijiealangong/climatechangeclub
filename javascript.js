@@ -44,3 +44,16 @@ document.getElementById("emailForm").addEventListener("submit", function(event) 
     .then(data => document.getElementById("emailMessage").innerText = data.message)
     .catch(error => console.error("Error:", error));
 }); 
+
+document.addEventListener("DOMContentLoaded", function() {
+    const navLinks = document.querySelectorAll("nav a");
+
+    navLinks.forEach(link => {
+        link.addEventListener("click", function(event) {
+            if (!this.href.includes("#")) {
+                event.preventDefault();
+                window.location.href = this.href;
+            }
+        });
+    });
+});
