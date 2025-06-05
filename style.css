@@ -145,3 +145,30 @@ button {
     font-size: 16px;
 }
 
+
+
+
+
+/* Image Section */
+
+
+
+
+
+
+
+img {
+    float: right; /* ✅ Moves image to the right */
+    margin-left: 20px; /* ✅ Adds spacing from text */
+}
+img {
+    border: 2px solid #ccc; /* ✅ Adds a border */
+    border-radius: 8px; /* ✅ Softens corners */
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2); /* ✅ Optional shadow */
+}
+img {
+    width: 300px; /* ✅ Adjust size */
+    height: auto; /* ✅ Maintains aspect ratio */
+}
+
+
