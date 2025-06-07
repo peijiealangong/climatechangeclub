@@ -162,33 +162,20 @@ img {
 
 
 
-/* Keyframes for color bounce fade animation */
+/* Keyframes for bouncing and fading color animation */
 @keyframes colorBounceFade {
-  0% {
-    transform: scale(1);
-    background-color: #ff6f61;
-    opacity: 1;
-  }
-
-  50% {
-    transform: scale(1.2);
-    background-color: #6fa8dc;
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(1);
-    background-color: #ff6f61;
-    opacity: 1;
-  }
+  0% { transform: scale(1); color: red; opacity: 0; }
+  25% { transform: scale(1.2); color: yellow; opacity: 0.25; }
+  50% { transform: scale(1); color: green; opacity: 0.5; }
+  75% { transform: scale(1.2); color: blue; opacity: 0.75; }
+  100% { transform: scale(1); color: black; opacity: 1; }
 }
 
-/* Applying the animation to an element */
-.bounce-fade {
-  width: 100px;
-  height: 100px;
-  background-color: white;
-  border-radius: 50%;
+/* Applying animation to the h1 element */
+h1 {
   animation: colorBounceFade 2s infinite ease-in-out;
+  text-align: center;
+  background-color: white;
 }
 
 
