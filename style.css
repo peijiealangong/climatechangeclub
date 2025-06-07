@@ -164,16 +164,17 @@ img {
 
 /* Keyframes for bouncing and fading color animation */
 @keyframes colorBounceFade {
-  0% { transform: scale(1); color: red; opacity: 0; }
-  25% { transform: scale(1.2); color: yellow; opacity: 0.25; }
-  50% { transform: scale(1); color: green; opacity: 0.5; }
-  75% { transform: scale(1.2); color: blue; opacity: 0.75; }
-  100% { transform: scale(1); color: black; opacity: 1; }
+  0% { transform: translateY(0); color: red; opacity: 0; }
+  20% { transform: translateY(-20px); color: yellow; opacity: 0.25; }
+  40% { transform: translateY(0); color: green; opacity: 0.5; }
+  60% { transform: translateY(-20px); color: blue; opacity: 0.75; }
+  80% { transform: translateY(0); color: black; opacity: 1; }
+  100% { transform: translateY(0); color: black; opacity: 1; }
 }
 
 /* Applying animation to the h1 element */
 h1 {
-  animation: colorBounceFade 2s infinite ease-in-out;
+  animation: colorBounceFade 4s ease-in-out forwards;
   text-align: center;
   background-color: white;
 }
