@@ -161,3 +161,34 @@ img {
 }
 
 
+
+/* Keyframes for color bounce fade animation */
+@keyframes colorBounceFade {
+  0% {
+    transform: scale(1);
+    background-color: #ff6f61;
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.2);
+    background-color: #6fa8dc;
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    background-color: #ff6f61;
+    opacity: 1;
+  }
+}
+
+/* Applying the animation to an element */
+.bounce-fade {
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border-radius: 50%;
+  animation: colorBounceFade 2s infinite ease-in-out;
+}
+
+
