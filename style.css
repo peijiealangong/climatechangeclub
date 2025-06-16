@@ -47,7 +47,7 @@ nav ul {
     display: flex;
     justify-content: center; /* ✅ Ensures items are centered */
     align-items: center;
-    gap: 30px; /* ✅ Adds spacing between items */
+    gap: 20px; /* ✅ Adds spacing between items */
     padding: 0;
 }
 
