@@ -57,4 +57,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
-alert("Many bug fixes were fixed and require a refresh. Please refresh the website now.");
+if (confirm("Many bug fixes were fixed and require a refresh. Please refresh the website now to see the latest updates.")) {
+  location.reload(); // Refresh the page if the user clicks "OK"
+}
