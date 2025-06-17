@@ -57,6 +57,3 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
-window.onload = function() {
-  alert("Many bug fixes were fixed and require a refresh. Please refresh the website now.");
-};
