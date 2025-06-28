@@ -261,3 +261,8 @@ nav ul {
   padding: 0;
   list-style: none;
 }
+.globe-icon {
+  height: 24px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
