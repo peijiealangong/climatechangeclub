@@ -180,7 +180,7 @@ nav {
   z-index: 2000;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .logo {
@@ -245,4 +245,19 @@ nav {
   .dropdown > a:active + .submenu {
     display: block;
   }
+}
+
+.nav-right {
+  margin-left: auto; /* Pushes nav menu to the right */
+  display: flex;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
