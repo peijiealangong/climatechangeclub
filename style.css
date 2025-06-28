@@ -266,3 +266,81 @@ nav ul {
   vertical-align: middle;
   margin-right: 8px;
 }
+
+/* ——— NAVIGATION ADJUSTMENTS ——— */
+nav {
+  display: flex;
+  align-items: center;
+  padding: 15px 30px;
+  flex-wrap: wrap;
+}
+.nav-right {
+  margin-left: auto;    /* pushes the menu to the right */
+  display: flex;
+  gap: 20px;            /* tighten spacing so it all fits */
+  flex-wrap: wrap;      /* wrap if it absolutely can't shrink more */
+}
+
+/* ——— HERO SECTION ——— */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;                    /* caps width */
+  margin: 80px auto 0;                  /* centers below your fixed nav */
+  padding: 20px;
+  min-height: calc(100vh - 80px);       /* forces hero into one viewport */
+  box-sizing: border-box;
+}
+
+.hero-text {
+  flex: 0 0 55%;                        /* text takes up ~half */
+  min-width: 250px;                     /* won’t collapse beneath 250px */
+}
+
+.hero-text h1 {
+  font-size: clamp(28px, 6vw, 48px);    /* scales between 28px–48px */
+  margin-bottom: 10px;
+}
+
+.hero-text p {
+  font-size: clamp(16px, 3.5vw, 24px);
+}
+
+/* your existing global img rules can go away—override here */
+.hero-img {
+  flex: 0 0 40%;                        /* image takes up ~40% */
+  max-width: 40%;
+  height: auto;
+  border: 2px solid #ccc;               /* optional styling */
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px blue;
+}
+
+/* ——— RESPONSIVE BREAKPOINT ——— */
+@media screen and (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .nav-right {
+    width: 100%;
+    gap: 15px;
+    margin-left: 0;
+    margin-top: 10px;
+  }
+  .hero {
+    flex-direction: column-reverse;
+    align-items: center;
+    min-height: auto;   /* let it grow if needed */
+  }
+  .hero-text {
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+  }
+  .hero-img {
+    width: 60%;
+    max-width: 300px;
+  }
+}
