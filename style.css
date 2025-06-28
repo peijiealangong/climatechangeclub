@@ -53,8 +53,43 @@ nav a {
     transition: background-color 0.3s ease-in-out;
 }
 
+
 nav a:hover {
     background-color: #34495e; /* Hover effect */
+
+}
+/* Dropdown Menu */
+.dropdown {
+  position: relative;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #34495e;
+  padding: 10px 0;
+  list-style: none;
+  min-width: 200px;
+  border-radius: 5px;
+  z-index: 3000;
+}
+
+.submenu li a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.submenu li a:hover {
+  background-color: #3b5870;
+}
+
+.dropdown:hover .submenu {
+  display: block;
 }
 
 /* --- Hide & Show Animations --- */
