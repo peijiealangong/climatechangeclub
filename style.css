@@ -208,3 +208,10 @@ img {
     display: block;
   }
 }
+
+Ordered lists and unordered lists (ol, ul)
+
+ol {
+  list-style: decimal;   /* This makes it a numbered list: 1. 2. 3. */
+  margin-left: 40px;     /* This indents it so the numbers don't overlap with other content */
+}
