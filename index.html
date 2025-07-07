@@ -131,9 +131,11 @@
         }, 3000);
       }
 
-      // If already submitted in this session, hide CAPTCHA
+      // Delay hiding CAPTCHA if already submitted
       if (sessionStorage.getItem("captchaSubmitted") === "true") {
-        if (captcha) captcha.style.display = "none";
+        setTimeout(() => {
+          if (captcha) captcha.style.display = "none";
+        }, 1000);
       }
     };
   </script>
