@@ -11,19 +11,21 @@ body {
   line-height: 1.6;
   background: #f9f9f9;
   color: #333;
+  transition: background-color 0.5s ease;
 }
 
 /* 📋 Lists */
-ol {
-  list-style: decimal;
+ol, ul {
   margin-left: 40px;
   padding-left: 0;
+}
+
+ol {
+  list-style: decimal;
 }
 
 ul {
   list-style: disc;
-  margin-left: 40px;
-  padding-left: 0;
 }
 
 /* 🧭 Navigation Bar */
@@ -96,17 +98,6 @@ nav a:hover {
   display: block;
 }
 
-/* 🖼️ Logo */
-.logo {
-  display: none; /* Optional: enable if you want to use it */
-}
-
-.globe-icon {
-  height: 24px;
-  vertical-align: middle;
-  margin-right: 8px;
-}
-
 /* 📄 Headings & Text */
 h1, h2 {
   text-align: center;
@@ -144,8 +135,8 @@ textarea {
   font-size: 16px;
 }
 
-button,
-input[type="submit"] {
+input[type="submit"],
+button {
   width: 100%;
   max-width: 350px;
   padding: 12px;
@@ -155,6 +146,14 @@ input[type="submit"] {
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  transform: scale(1.05);
+  background-color: #34495e;
 }
 
 /* 🖼️ Images */
@@ -240,38 +239,31 @@ img {
     display: block;
   }
 }
-button {
-  margin: 5px;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: transform 0.2s ease, background-color 0.3s ease;
-}
 
-button:hover {
-  transform: scale(1.05);
-  background-color: #e0e0e0;
-}
+/* 🎨 Climate Color Panel */
 .color-panel {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin: 20px 0;
+  margin: 30px auto;
+  justify-content: center;
 }
 
 .color-panel button {
-  padding: 10px 15px;
+  padding: 12px 18px;
   border: none;
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 15px;
+  font-weight: bold;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  background-color: #f0f0f0;
+  background-color: #2c3e50;
+  color: white;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 .color-panel button:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  background-color: #34495e;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
