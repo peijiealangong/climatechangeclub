@@ -1,3 +1,18 @@
+.download-button {
+  display: inline-block;
+  padding: 12px 20px;
+  background-color: #2a9d8f;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.download-button:hover {
+  background-color: #21867a;
+}
+
 /* 🌱 Reset & Global Styles */
 * {
   box-sizing: border-box;
