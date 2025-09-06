@@ -1,104 +1,106 @@
-<!DOCTYPE Html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68D6N5XQ6D"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-68D6N5XQ6D');
+  </script>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-68D6N5XQ6D"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-68D6N5XQ6D');
-</script>
-
-	<meta charset = "UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Learn more about the Climate Change Club—our mission, goals, and efforts to combat climate change through awareness and action.">
-	<title>About Us|Climate Change Club </title>
-	<link rel="stylesheet" href="style.css">
-    <script src="javascript.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn more about the Climate Change Club—our mission, goals, and efforts to combat climate change through awareness and action.">
+  <title>About Us | Climate Change Club</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="javascript.js" defer></script>
 </head>
 <body>
-<!-- Navigation Bar -->
-<nav>
+
+  <!-- Navigation Bar -->
+  <nav>
     <div class="nav-right">
-    <ul>
-      <li class="dropdown">
-        <a href="index.html">Home</a>
-        <ul class="submenu">
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="projects.html">Our Projects</a></li>
-          <li><a href="meetings.html">Upcoming Events</a></li>
-        </ul>
-      </li>
-      <li class="dropdown">
-        <a href="#">Resources</a>
-        <ul class="submenu">
-          <li><a href="notices.html">Notices</a></li>
-          <li><a href="articles.html">Articles</a></li>
-          <li><a href="climatechronicle.html">The Climate Chronicle</a></li>
-<li><a href="download.html">Download App</a></li>
+      <ul>
+        <li class="dropdown">
+          <a href="index.html">Home</a>
+          <ul class="submenu">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="projects.html">Our Projects</a></li>
+            <li><a href="meetings.html">Upcoming Events</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">Resources</a>
+          <ul class="submenu">
+            <li><a href="notices.html">Notices</a></li>
+            <li><a href="articles.html">Articles</a></li>
+            <li><a href="climatechronicle.html">The Climate Chronicle</a></li>
+            <li><a href="download.html">Download App</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
-        </ul>
-      </li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </div>
-</nav>
+  <!-- Header -->
+  <header>
+    <h1>About Us</h1>
+    <p>Want to learn more about us? Let's get started!</p>
+    <a href="https://sway.cloud.microsoft/DTWEHBtdOijVUepH?ref=Link" target="_blank" rel="noopener">
+      <button aria-label="View About Us Sway Document">📄 View Our Microsoft Sway</button>
+    </a>
+  </header>
 
+  <!-- Sections -->
+  <main>
+    <section>
+      <h2>Our Goal 🏆</h2>
+      <p>Our goal is to prevent climate change and its effects through awareness, action, and innovation.</p>
+    </section>
 
-	
-	<!-- Header -->
+    <section>
+      <h2>Our Stage</h2>
+      <p>We are in our early stage of development. 
+        <a href="stages.html">
+          <button aria-label="Learn more about our development stages">Click here to learn more</button>
+        </a>
+      </p>
+    </section>
 
-<header>
-	<h1> About Us </h1>
-	<p> Want to learn more about us? Let's get started! </p>
-</header>
+    <!-- Color Panel -->
+    <section class="color-panel">
+      <h2>🌈 Customize Your Experience</h2>
+      <div>
+        <button onclick="changeColor('blue')">Blue</button>
+        <button onclick="changeColor('white')">White</button>
+        <button onclick="changeColor('#a8dadc')">Ocean Blue</button>
+        <button onclick="changeColor('#2a9d8f')">Rainforest Green</button>
+        <button onclick="changeColor('#f4a261')">Sunset Orange</button>
+        <button onclick="changeColor('red')">Red</button>
+        <button onclick="changeColor('lightblue')">Light Blue</button>
+        <button onclick="changeColor('green')">Green</button>
+        <button onclick="changeColor('')">Reset</button>
+        <button onclick="changeColor('#264653')">🌊 Ocean Depth</button>
+        <button onclick="changeColor('#2a9d8f')">🌿 Forest Floor</button>
+        <button style="background-color: #f4d35e; color: #222;" onclick="changeColor('#f4d35e')">☀️ Solar Glow</button>
+        <button onclick="changeColor('#e63946')">🔥 Wildfire</button>
+        <button onclick="changeColor('#a8dadc')">❄️ Polar Ice</button>
+        <button onclick="changeColor('#e9c46a')">🌾 Desert Sand</button>
+        <button onclick="changeColor('#6c757d')">🌪️ Storm Sky</button>
+        <button onclick="changeColor('#ffcad4')">🌸 Spring Bloom</button>
+        <button onclick="changeColor('#5e548e')">🌌 Midnight</button>
+        <button onclick="changeColor('#d8f3dc')">🌬️ Wind Whisper</button>
+      </div>
+    </section>
+  </main>
 
-	<!-- Sections -->
-
-<section>
-	<h1> Our Goal 🏆 </h1>
-	<p> Our goal is to prevent Climate Change and their effects. </p>
-</section>
-
-<section>
-	<h1> Our Stage </h1>
-	<p>We are in our early stage of development. <a href="stages.html"><button>Click here to learn more</button></a></p>
-</section>
-<p>
-<div class="color-panel">
-<button onclick="changeColor('blue')">Change Background: Blue</button>
-<button onclick="changeColor('white')">Change Background: White</button>
-<button onclick="changeColor('#a8dadc')">Ocean Blue</button>
-<button onclick="changeColor('#2a9d8f')">Rainforest Green</button>
-<button onclick="changeColor('#f4a261')">Sunset Orange</button>
-<button onclick="changeColor('red')">Red</button>
-<button onclick="changeColor('lightblue')">Light Blue</button>
-<button onclick="changeColor('green')">Green</button>
-<button onclick="changeColor('')">Reset Background</button>
-
-  <button onclick="changeColor('#264653')">🌊 Ocean Depth</button>
-  <button onclick="changeColor('#2a9d8f')">🌿 Forest Floor</button>
-  <button style="background-color: #f4d35e; color: #222;" onclick="changeColor('#f4d35e')">☀️ Solar Glow</button>
-  <button onclick="changeColor('#e63946')">🔥 Wildfire</button>
-  <button onclick="changeColor('#a8dadc')">❄️ Polar Ice</button>
-  <button onclick="changeColor('#e9c46a')">🌾 Desert Sand</button>
-  <button onclick="changeColor('#6c757d')">🌪️ Storm Sky</button>
-  <button onclick="changeColor('#ffcad4')">🌸 Spring Bloom</button>
-  <button onclick="changeColor('#5e548e')">🌌 Midnight</button>
-  <button onclick="changeColor('#d8f3dc')">🌬️ Wind Whisper</button>
-</div>
-  </p>
-
-<!-- Footer -->
-<footer>
-  <p>🌍 Climate Change Club &nbsp; | &nbsp; © 2025 Peijie &nbsp; | &nbsp; Built with❤️ and HTML/CSS/JavaScript</p>
-</footer>
-
-
+  <!-- Footer -->
+  <footer>
+    <p>🌍 Climate Change Club &nbsp; | &nbsp; © 2025 Peijie &nbsp; | &nbsp; Built with ❤️ and HTML/CSS/JavaScript</p>
+  </footer>
 
 </body>
 </html>
-
