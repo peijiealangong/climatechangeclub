@@ -1,3 +1,19 @@
+.featured-article {
+  background-color: #e63946;
+  color: #fff;
+  padding: 10px;
+  border-left: 8px solid #f4d35e;
+  font-weight: bold;
+  font-size: 1.1em;
+  transition: transform 0.3s ease;
+}
+
+.featured-article:hover {
+  transform: scale(1.03);
+  background-color: #d62828;
+}
+
+
 /* 🌱 Reset */
 * {
   box-sizing: border-box;
