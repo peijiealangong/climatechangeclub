@@ -3,25 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="This is the Home page for the Climate Change Club." />
+  <meta name="description" content="Join the Climate Change Club and turn concern into action." />
   <title>Climate Change Club | Home</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="javascript.js"></script>
-
-  <!-- reCAPTCHA -->
+  <script src="javascript.js" defer></script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-68D6N5XQ6D"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-68D6N5XQ6D');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68D6N5XQ6D"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-68D6N5XQ6D');
+  </script>
 
   <style>
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .resources, .articles {
+      animation: spin 2s linear infinite;
+      display: inline-block;
+    }
+
     #submission-message {
       display: flex;
       visibility: hidden;
@@ -42,85 +47,68 @@
   </style>
 </head>
 <body>
-  <!-- Navigation Bar -->
+  <!-- Navigation -->
   <nav>
-    <div class="nav-right">
-      <ul>
-        <li class="dropdown"><a href="index.html">Home</a>
-          <ul class="submenu">
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="projects.html">Our Projects</a></li>
-            <li><a href="meetings.html">Upcoming Events</a></li>
-          </ul>
-        </li>
-        <li class="dropdown"><a href="#">Resources</a>
-          <ul class="submenu">
-            <li><a href="notices.html">Notices</a></li>
-            <li><a href="articles.html">Articles</a></li>
-            <li><a href="climatechronicle.html">The Climate Chronicle</a></li>
-            <li><a href="download.html">Download App</a></li>
-          </ul>
-        </li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </div>
+    <ul class="nav-bar">
+      <li><a href="index.html">Home</a></li>
+      <li class="resources"><a href="#">Resources</a>
+        <ul>
+          <li class="articles"><a href="articles.html">Articles</a></li>
+          <li><a href="notices.html">Notices</a></li>
+          <li><a href="climatechronicle.html">The Climate Chronicle</a></li>
+          <li><a href="download.html">Download App</a></li>
+        </ul>
+      </li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
   </nav>
 
   <!-- Header -->
   <header>
-    <h1>Welcome to the Climate Change Club!</h1>
-    <p>Join us in making a difference through activism and sustainability efforts.</p>
+    <h1>🌍 Welcome to the Climate Change Club</h1>
+    <p>Activism, sustainability, and student-powered change.</p>
   </header>
 
   <!-- Mission -->
   <section id="mission">
-    <h2>🌍 Our Mission</h2>
-    <p>We strive to combat climate change by organizing community projects, raising awareness, and taking action.</p>
+    <h2>🌱 Our Mission</h2>
+    <p>We combat climate change through community projects, education, and direct action.</p>
   </section>
 
   <!-- Approach -->
   <section>
-    <h2>Our Approach</h2>
-    <p>We tackle climate change directly first, then address its side effects. Prevention comes before cleanup.</p>
+    <h2>🛠️ Our Approach</h2>
+    <p>We prioritize prevention over cleanup—addressing root causes before symptoms.</p>
   </section>
-<section>
-<a href="https://climatechangeclub.pages.dev/download">
-  <button>🎮 Go to Download Page and check out our games and apps!</button>
-</a>
 
-	<p><i><b>
-		🌍 Climate Change: Our Challenge, Our Opportunity
-Climate change isn’t a distant threat—it’s happening now. From rising sea levels and extreme weather to disappearing ecosystems and shifting seasons, our planet is sounding the alarm. The science is clear: human activity, especially the burning of fossil fuels, is driving global warming and disrupting the delicate balance of Earth’s climate systems.
+  <!-- Download Button -->
+  <section>
+    <a href="https://climatechangeclub.pages.dev/download">
+      <button>🎮 Explore Our Games & Apps</button>
+    </a>
+  </section>
 
-But here’s the truth we hold onto: we are not powerless.
-
-🔥 Why It Matters
-Extreme Weather: Hurricanes, wildfires, floods, and droughts are intensifying, affecting communities worldwide.
-
-Rising Temperatures: Global temperatures have already increased by over 1°C since pre-industrial times, pushing ecosystems to the brink.
-
-Environmental Injustice: Vulnerable populations—especially in low-income and marginalized communities—bear the brunt of climate impacts.
-
-🌱 What We Stand For
-The Climate Change Club is a space for education, action, and hope. We believe that informed individuals can drive meaningful change. Whether you're passionate about policy, science, art, or activism, there's a place for you here.
-
-💡 What You Can Do
-Learn: Attend our workshops and speaker events to understand the science and solutions.
-
-Act: Join campus sustainability initiatives, advocate for green policies, and reduce your carbon footprint.
-
-Create: Use your voice—through writing, art, or media—to inspire others and shift the narrative.
-
-✊ Join the Movement
-Climate change is the defining issue of our generation. But together, we can be the solution. The Climate Change Club is more than a group—it’s a movement of students committed to protecting our future.
-
-Let’s turn concern into courage, and knowledge into action
-	</b></i></p>
-</section>
+  <!-- Climate Message -->
+  <section>
+    <h2>🔥 Climate Change: Our Challenge, Our Opportunity</h2>
+    <p><strong>It’s happening now.</strong> From rising seas to vanishing ecosystems, the planet is sounding the alarm. Human activity is driving global warming—but we are not powerless.</p>
+    <ul>
+      <li><strong>Extreme Weather:</strong> Hurricanes, wildfires, floods, and droughts are intensifying.</li>
+      <li><strong>Rising Temperatures:</strong> Over 1°C increase since pre-industrial times.</li>
+      <li><strong>Environmental Injustice:</strong> Marginalized communities bear the brunt.</li>
+    </ul>
+    <h3>💡 What You Can Do</h3>
+    <ul>
+      <li><strong>Learn:</strong> Attend workshops and speaker events.</li>
+      <li><strong>Act:</strong> Join sustainability initiatives and advocate for green policies.</li>
+      <li><strong>Create:</strong> Use writing, art, or media to inspire change.</li>
+    </ul>
+    <p><strong>✊ Join the Movement:</strong> The Climate Change Club is a student-powered force for the future.</p>
+  </section>
 
   <!-- reCAPTCHA Form -->
   <section>
-    <h2>Recatchpa</h2>
+    <h2>✅ Submit Your Support</h2>
     <form action="https://recaptcha-verify.gongpeijie620.workers.dev/" method="POST">
       <div id="captcha-container">
         <div class="g-recaptcha" data-sitekey="6Ld-UHsrAAAAAJ3FK2tIX9zmgPyBOXOeb53fv7pt"></div>
@@ -130,54 +118,40 @@ Let’s turn concern into courage, and knowledge into action
     </form>
   </section>
 
-  <!-- Thank-you Overlay -->
+  <!-- Submission Message -->
   <div id="submission-message">✅ Thanks for submitting!</div>
 
-  <p>
-    <div class="color-panel">
-      <button onclick="changeColor('blue')">Change Background: Blue</button>
-      <button onclick="changeColor('white')">Change Background: White</button>
-      <button onclick="changeColor('#a8dadc')">Ocean Blue</button>
-      <button onclick="changeColor('#2a9d8f')">Rainforest Green</button>
-      <button onclick="changeColor('#f4a261')">Sunset Orange</button>
-      <button onclick="changeColor('red')">Red</button>
-      <button onclick="changeColor('lightblue')">Light Blue</button>
-      <button onclick="changeColor('green')">Green</button>
-      <button onclick="changeColor('')">Reset Background</button>
-      <button onclick="changeColor('#264653')">🌊 Ocean Depth</button>
-      <button onclick="changeColor('#2a9d8f')">🌿 Forest Floor</button>
-      <button style="background-color: #f4d35e; color: #222;" onclick="changeColor('#f4d35e')">☀️ Solar Glow</button>
-      <button onclick="changeColor('#e63946')">🔥 Wildfire</button>
-      <button onclick="changeColor('#a8dadc')">❄️ Polar Ice</button>
-      <button onclick="changeColor('#e9c46a')">🌾 Desert Sand</button>
-      <button onclick="changeColor('#6c757d')">🌪️ Storm Sky</button>
-      <button onclick="changeColor('#ffcad4')">🌸 Spring Bloom</button>
-      <button onclick="changeColor('#5e548e')">🌌 Midnight</button>
-      <button onclick="changeColor('#d8f3dc')">🌬️ Wind Whisper</button>
-    </div>
-  </p>
+  <!-- Color Panel -->
+  <section class="color-panel">
+    <h2>🎨 Customize Your Background</h2>
+    <button onclick="changeColor('blue')">Blue</button>
+    <button onclick="changeColor('#a8dadc')">Ocean Blue</button>
+    <button onclick="changeColor('#2a9d8f')">Rainforest Green</button>
+    <button onclick="changeColor('#f4a261')">Sunset Orange</button>
+    <button onclick="changeColor('#e63946')">Wildfire</button>
+    <button onclick="changeColor('#ffcad4')">Spring Bloom</button>
+    <button onclick="changeColor('#5e548e')">Midnight</button>
+    <button onclick="changeColor('')">Reset</button>
+  </section>
 
   <!-- Footer -->
   <footer>
-    <p>🌍 Climate Change Club &nbsp; | &nbsp; © 2025 Peijie &nbsp; | &nbsp; Built with ❤️ and HTML/CSS/JavaScript</p>
+    <p>🌍 Climate Change Club | © 2025 Peijie | Built with ❤️ and HTML/CSS/JavaScript</p>
   </footer>
 
   <!-- Script -->
   <script>
     window.onload = () => {
-      alert("Welcome to the Climate Change Club website!\nWe’re currently in development.\nFeel free to explore and share your feedback.");
+      alert("🌱 Welcome to the Climate Change Club!\nExplore, engage, and help us shape a sustainable future.");
 
       const params = new URLSearchParams(window.location.search);
       const message = document.getElementById("submission-message");
       const captcha = document.getElementById("captcha-container");
 
       if (params.get("submitted") === "true") {
-        if (message) {
-          message.style.visibility = "visible";
-          message.style.opacity = "1";
-        }
-
-        if (captcha) captcha.style.display = "none";
+        message.style.visibility = "visible";
+        message.style.opacity = "1";
+        captcha.style.display = "none";
         sessionStorage.setItem("captchaSubmitted", "true");
 
         setTimeout(() => {
@@ -193,7 +167,7 @@ Let’s turn concern into courage, and knowledge into action
 
       if (sessionStorage.getItem("captchaSubmitted") === "true") {
         setTimeout(() => {
-          if (captcha) captcha.style.display = "none";
+          captcha.style.display = "none";
         }, 1000);
       }
     };
@@ -202,6 +176,5 @@ Let’s turn concern into courage, and knowledge into action
       document.body.style.backgroundColor = color;
     }
   </script>
-
 </body>
 </html>

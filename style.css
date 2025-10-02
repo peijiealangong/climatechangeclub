@@ -1,20 +1,4 @@
-.featured-article {
-  background-color: #e63946;
-  color: #fff;
-  padding: 10px;
-  border-left: 8px solid #f4d35e;
-  font-weight: bold;
-  font-size: 1.1em;
-  transition: transform 0.3s ease;
-}
-
-.featured-article:hover {
-  transform: scale(1.03);
-  background-color: #d62828;
-}
-
-
-/* 🌱 Reset */
+/* 🌪️ Global Reset */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -29,7 +13,35 @@ body {
   transition: background-color 0.5s ease;
 }
 
-/* 🧭 Navigation */
+/* 🌀 Spin Animation */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.resources,
+.articles {
+  animation: spin 2s linear infinite;
+  display: inline-block;
+}
+
+/* 🌈 Featured Article Highlight */
+.featured-article {
+  background-color: #e63946;
+  color: #fff;
+  padding: 10px;
+  border-left: 8px solid #f4d35e;
+  font-weight: bold;
+  font-size: 1.1em;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.featured-article:hover {
+  transform: scale(1.03);
+  background-color: #d62828;
+}
+
+/* 🧭 Navigation Bar */
 nav {
   position: fixed;
   top: 0;
@@ -61,7 +73,7 @@ nav a:hover {
   background-color: #34495e;
 }
 
-/* 🔽 Dropdown */
+/* 🔽 Dropdown Menu */
 .dropdown {
   position: relative;
 }
@@ -160,7 +172,7 @@ input[type="submit"]:hover {
   background-color: #34495e;
 }
 
-/* ✅ Submission Message */
+/* ✅ Submission Overlay */
 #submission-message {
   display: flex;
   visibility: hidden;
@@ -179,7 +191,7 @@ input[type="submit"]:hover {
   transition: opacity 0.5s ease;
 }
 
-/* 🚨 Modal */
+/* 🚨 Modal Popup */
 .modal {
   display: none;
   position: fixed;
@@ -202,14 +214,17 @@ input[type="submit"]:hover {
   animation: slideUp 0.5s ease forwards;
 }
 
+/* 🎭 Animations */
 @keyframes slideUp {
   from { transform: translateY(50px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
 
 @keyframes colorBounceFade {
-  0% { transform: translateY(0); color: red; opacity: 0; }
-  20% { transform: translateY(-20px); color: yellow; opacity: 0.25; }
-  40% { transform: translateY(0); color: green; opacity: 0.5; }
-  60% { transform: translateY(-20px); color: blue; opacity: 0.75; }
-  80% { transform: translateY(0); color: black; opacity:
+  0%   { transform: translateY(0); color: red; opacity: 0; }
+  20%  { transform: translateY(-20px); color: yellow; opacity: 0.25; }
+  40%  { transform: translateY(0); color: green; opacity: 0.5; }
+  60%  { transform: translateY(-20px); color: blue; opacity: 0.75; }
+  80%  { transform: translateY(0); color: black; opacity: 1; }
+  100% { transform: translateY(0); color: #2c3e50; opacity: 1; }
+}
