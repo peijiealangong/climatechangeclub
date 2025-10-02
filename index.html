@@ -1,58 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Join the Climate Change Club and turn concern into action." />
-  <title>Climate Change Club | Home</title>
-  <link rel="stylesheet" href="style.css" />
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-68D6N5XQ6D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-68D6N5XQ6D');
+</script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn more about the Climate Change Club—our mission, goals, and efforts to combat climate change through awareness and action.">
+  <title>About Us | Climate Change Club</title>
+  <link rel="stylesheet" href="style.css">
   <script src="javascript.js" defer></script>
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68D6N5XQ6D"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-68D6N5XQ6D');
-  </script>
-
-  <style>
-    
-
-    #submission-message {
-      display: flex;
-      visibility: hidden;
-      opacity: 0;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: white;
-      color: black;
-      font-size: 1.5rem;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      transition: opacity 0.5s ease;
-    }
-  </style>
 </head>
 <body>
-  <!-- Navigation -->
+  <!-- Navigation Bar -->
   <nav>
-    <ul class="nav-bar">
-      <li><a href="index.html">Home</a></li>
-      <li class="resources"><a href="#">Resources</a>
-        <ul>
-          <li class="articles"><a href="articles.html">Articles</a></li>
-          <li><a href="notices.html">Notices</a></li>
-          <li><a href="climatechronicle.html">The Climate Chronicle</a></li>
-          <li><a href="download.html">Download App</a></li>
-        </ul>
-      </li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
+    <div class="nav-right">
+      <ul>
+        <li class="dropdown">
+          <a href="index.html">Home</a>
+          <ul class="submenu">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="projects.html">Our Projects</a></li>
+            <li><a href="meetings.html">Upcoming Events</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">Resources</a>
+          <ul class="submenu">
+            <li><a href="notices.html">Notices</a></li>
+            <li><a href="articles.html">Articles</a></li>
+            <li><a href="climatechronicle.html">The Climate Chronicle</a></li>
+            <li><a href="download.html">Download App</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
   </nav>
 
   <!-- Header -->
