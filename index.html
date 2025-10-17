@@ -1,50 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-68D6N5XQ6D"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-68D6N5XQ6D');
-</script>
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Learn more about the Climate Change Club—our mission, goals, and efforts to combat climate change through awareness and action.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Discover the Climate Change Club—our mission, projects, and how you can help fight climate change." />
   <title>About Us | Climate Change Club</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="javascript.js" defer></script>
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68D6N5XQ6D"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-68D6N5XQ6D');
+  </script>
+
+  <!-- Styles and Scripts -->
+  <link rel="stylesheet" href="style.css" />
+  <script src="javascript.js" defer></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+  <style>
+    body.captcha-lock {
+      overflow: hidden;
+    }
+
+    #captcha-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #captcha-box {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+  </style>
 </head>
+
 <body>
-  <!-- Navigation Bar -->
-  <nav>
-    <div class="nav-right">
-      <ul>
-        <li class="dropdown">
-          <a href="index.html">Home</a>
-          <ul class="submenu">
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="projects.html">Our Projects</a></li>
-            <li><a href="meetings.html">Upcoming Events</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#">Resources</a>
-          <ul class="submenu">
-            <li><a href="notices.html">Notices</a></li>
-            <li><a href="articles.html">Articles</a></li>
-            <li><a href="climatechronicle.html">The Climate Chronicle</a></li>
-            <li><a href="download.html">Download App</a></li>
-          </ul>
-        </li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+  <!-- reCAPTCHA Overlay -->
+  <div id="captcha-overlay">
+    <div id="captcha-box">
+      <p>Please verify you're human to continue</p>
+      <div class="g-recaptcha" data-sitekey="6Ld-UHsrAAAAAJ3FK2tIX9zmgPyBOXOeb53fv7pt" data-callback="captchaVerified"></div>
     </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="meetings.html">Events</a></li>
+      <li><a href="notices.html">Notices</a></li>
+      <li><a href="articles.html">Articles</a></li>
+      <li><a href="climatechronicle.html">Chronicle</a></li>
+      <li><a href="download.html">Download App</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
   </nav>
 
   <!-- Header -->
@@ -54,7 +77,7 @@
   </header>
 
   <!-- Mission -->
-  <section id="mission">
+  <section>
     <h2>🌱 Our Mission</h2>
     <p>We combat climate change through community projects, education, and direct action.</p>
   </section>
@@ -65,18 +88,17 @@
     <p>We prioritize prevention over cleanup—addressing root causes before symptoms.</p>
   </section>
 
-  <!-- Download Button -->
+  <!-- Download -->
   <section>
     <a href="https://climatechangeclub.pages.dev/download">
       <button>🎮 Explore Our Games & Apps</button>
     </a>
   </section>
-<div class="g-recaptcha" data-sitekey="6Ld-UHsrAAAAAJ3FK2tIX9zmgPyBOXOeb53fv7pt"></div>
 
   <!-- Climate Message -->
   <section>
     <h2>🔥 Climate Change: Our Challenge, Our Opportunity</h2>
-    <p><strong>It’s happening now.</strong> From rising seas to vanishing ecosystems, the planet is sounding the alarm. Human activity is driving global warming—but we are not powerless.</p>
+    <p><strong>It’s happening now.</strong> From rising seas to vanishing ecosystems, the planet is sounding the alarm.</p>
     <ul>
       <li><strong>Extreme Weather:</strong> Hurricanes, wildfires, floods, and droughts are intensifying.</li>
       <li><strong>Rising Temperatures:</strong> Over 1°C increase since pre-industrial times.</li>
@@ -90,9 +112,6 @@
     </ul>
     <p><strong>✊ Join the Movement:</strong> The Climate Change Club is a student-powered force for the future.</p>
   </section>
-
-
-
 
   <!-- Color Panel -->
   <section class="color-panel">
@@ -112,38 +131,23 @@
     <p>🌍 Climate Change Club | © 2025 Peijie | Built with ❤️ and HTML/CSS/JavaScript</p>
   </footer>
 
-  <!-- Script -->
+  <!-- Scripts -->
   <script>
     window.onload = () => {
       alert("🌱 Welcome to the Climate Change Club!\nExplore, engage, and help us shape a sustainable future.");
-
-      const params = new URLSearchParams(window.location.search);
-      const message = document.getElementById("submission-message");
-      const captcha = document.getElementById("captcha-container");
-
-      if (params.get("submitted") === "true") {
-        message.style.visibility = "visible";
-        message.style.opacity = "1";
-        captcha.style.display = "none";
-        sessionStorage.setItem("captchaSubmitted", "true");
-
-        setTimeout(() => {
-          message.style.opacity = "0";
-          setTimeout(() => {
-            message.style.visibility = "hidden";
-            const url = new URL(window.location);
-            url.searchParams.delete("submitted");
-            window.history.replaceState({}, document.title, url);
-          }, 500);
-        }, 3000);
-      }
-
-      if (sessionStorage.getItem("captchaSubmitted") === "true") {
-        setTimeout(() => {
-          captcha.style.display = "none";
-        }, 1000);
-      }
+      document.body.classList.add('captcha-lock');
     };
+
+    function captchaVerified() {
+      document.getElementById('captcha-overlay').style.display = 'none';
+      document.body.classList.remove('captcha-lock');
+
+      const audio = new Audio('https://cdn.freesound.org/previews/341/341695_3248244-lq.mp3');
+      audio.volume = 0.8;
+      audio.play();
+
+      alert("✅ You're verified! Welcome to the Climate Change Club.\nLet’s make sustainability heroic!");
+    }
 
     function changeColor(color) {
       document.body.style.backgroundColor = color;

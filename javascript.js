@@ -1,3 +1,7 @@
+
+document.body.classList.add('captcha-lock');
+
+
 // ✅ Reusable Modal Logic
 function showModal(title, message, duration = 6000) {
   const modal = document.getElementById("customModal");
