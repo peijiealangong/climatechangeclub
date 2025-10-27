@@ -133,23 +133,155 @@
     <p>🌍 Climate Change Club | © 2025 Peijie | Built with ❤️ and HTML/CSS/JavaScript</p>
   </footer>
 
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Discover the Climate Change Club—our mission, projects, and how you can help fight climate change." />
+  <title>About Us | Climate Change Club</title>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68D6N5XQ6D"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-68D6N5XQ6D');
+  </script>
+
+  <!-- Styles and Scripts -->
+  <link rel="stylesheet" href="style.css" />
+  <script src="javascript.js" defer></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+  <style>
+    body.captcha-lock {
+      overflow: hidden;
+    }
+
+    #captcha-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #captcha-box {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- reCAPTCHA Overlay -->
+  <div id="captcha-overlay">
+    <div id="captcha-box">
+      <p>Please verify you're human to continue</p>
+      <div class="g-recaptcha" data-sitekey="6Ld-UHsrAAAAAJ3FK2tIX9zmgPyBOXOeb53fv7pt" data-callback="captchaVerified"></div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="meetings.html">Events</a></li>
+      <li><a href="notices.html">Notices</a></li>
+      <li><a href="articles.html">Articles</a></li>
+      <li><a href="climatechronicle.html">Chronicle</a></li>
+      <li><a href="download.html">Download App</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <header>
+    <h1>🌍 Welcome to the Climate Change Club</h1>
+    <p>Activism, sustainability, and student-powered change.</p>
+  </header>
+
+  <!-- Mission -->
+  <section>
+    <h2>🌱 Our Mission</h2>
+    <p>We combat climate change through community projects, education, and direct action.</p>
+  </section>
+
+  <!-- Approach -->
+  <section>
+    <h2>🛠️ Our Approach</h2>
+    <p>We prioritize prevention over cleanup—addressing root causes before symptoms.</p>
+  </section>
+
+  <!-- Download -->
+  <section>
+    <a href="https://climatechangeclub.pages.dev/download">
+      <button>🎮 Explore Our Games & Apps</button>
+    </a>
+  </section>
+
+  <!-- Climate Message -->
+  <section>
+    <h2>🔥 Climate Change: Our Challenge, Our Opportunity</h2>
+    <ul>
+      <li><strong>Extreme Weather:</strong> Hurricanes, wildfires, floods, and droughts are intensifying.</li>
+      <li><strong>Rising Temperatures:</strong> Over 1°C increase since pre-industrial times.</li>
+      <li><strong>Environmental Injustice:</strong> Marginalized communities bear the brunt.</li>
+    </ul>
+    <h3>💡 What You Can Do</h3>
+    <ul>
+      <li><strong>Learn:</strong> Attend workshops and speaker events.</li>
+      <li><strong>Act:</strong> Join sustainability initiatives and advocate for green policies.</li>
+      <li><strong>Create:</strong> Use writing, art, or media to inspire change.</li>
+    </ul>
+    <p><strong>✊ Join the Movement:</strong> The Climate Change Club is a student-powered force for the future.</p>
+  </section>
+
+  <!-- Color Panel -->
+  <section class="color-panel">
+    <h2>🎨 Customize Your Background</h2>
+    <button onclick="changeColor('blue')">Blue</button>
+    <button onclick="changeColor('#a8dadc')">Ocean Blue</button>
+    <button onclick="changeColor('#2a9d8f')">Rainforest Green</button>
+    <button onclick="changeColor('#f4a261')">Sunset Orange</button>
+    <button onclick="changeColor('#e63946')">Wildfire</button>
+    <button onclick="changeColor('#ffcad4')">Spring Bloom</button>
+    <button onclick="changeColor('#5e548e')">Midnight</button>
+    <button onclick="changeColor('')">Reset</button>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>🌍 Climate Change Club | © 2025 Peijie | Built with ❤️ and HTML/CSS/JavaScript</p>
+  </footer>
+
   <!-- Scripts -->
   <script>
-    
+    window.onload = () => {
+      document.body.classList.add('captcha-lock');
+    };
 
     function captchaVerified() {
       document.getElementById('captcha-overlay').style.display = 'none';
       document.body.classList.remove('captcha-lock');
-
-      const audio = new Audio('https://cdn.freesound.org/previews/341/341695_3248244-lq.mp3');
-      audio.volume = 0.8;
-      audio.play();
-
-      
+    }
 
     function changeColor(color) {
       document.body.style.backgroundColor = color;
     }
+  </script>
+</body>
+</html>
   </script>
 </body>
 </html>
