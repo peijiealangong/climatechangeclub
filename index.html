@@ -134,7 +134,18 @@
   </footer>
 
   <!-- Scripts -->
-  
+  <script>
+    
+
+    function captchaVerified() {
+      document.getElementById('captcha-overlay').style.display = 'none';
+      document.body.classList.remove('captcha-lock');
+
+      const audio = new Audio('https://cdn.freesound.org/previews/341/341695_3248244-lq.mp3');
+      audio.volume = 0.8;
+      audio.play();
+
+      
 
     function changeColor(color) {
       document.body.style.backgroundColor = color;
