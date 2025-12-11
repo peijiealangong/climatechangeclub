@@ -299,4 +299,19 @@ iframe {
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
+.survey-container {
+  max-width: 420px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #f1faee;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.survey-container iframe {
+  border-radius: 8px;
+  width: 100%;   /* responsive scaling */
+  height: 500px; /* fixed smaller height */
+}
 
