@@ -1,5 +1,3 @@
-<!-- Example Comment -->
-<!-- Demo -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,36 +15,13 @@
     gtag('config', 'G-68D6N5XQ6D');
   </script>
 
-  <!-- Styles and Scripts -->
+  <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- reCAPTCHA -->
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
-  <style>
-    body.captcha-lock {
-      overflow: hidden;
-    }
-
-    #captcha-overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: rgba(0, 0, 0, 0.85);
-      z-index: 9999;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #captcha-box {
-      background: #fff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
-      text-align: center;
-    }
-  </style>
 </head>
-<!-- Background image example style="background-image:url('https://th.bing.com/th/id/OIP.OxNpberFQhtFKW8gbeYPOAHaEK?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3');" Use this! -->
 <body>
   <!-- reCAPTCHA Overlay -->
   <div id="captcha-overlay">
@@ -62,9 +37,13 @@
   <nav>
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="meetings.html">Events</a></li>
+      <li class="dropdown">
+        <a href="about.html">About Us</a>
+        <ul class="submenu">
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="meetings.html">Events</a></li>
+        </ul>
+      </li>
       <li><a href="notices.html">Notices</a></li>
       <li><a href="articles.html">Articles</a></li>
       <li><a href="climatechronicle.html">Chronicle</a></li>
@@ -73,12 +52,14 @@
     </ul>
   </nav>
 
-  <!-- Header -->
-  <header>
-    <h1>🌍 Welcome to the Climate Change Club</h1>
-    <p>Activism, sustainability, and student-powered change.</p>
+  <!-- Hero Banner -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1>🌍 Climate Change Club</h1>
+      <p>Activism, sustainability, and student-powered change.</p>
+      <a href="about.html" class="btn-primary">Learn More</a>
+    </div>
   </header>
-
 
   <!-- Mission -->
   <section>
@@ -91,10 +72,13 @@
     <h2>🛠️ Our Approach</h2>
     <p>We prioritize prevention over cleanup—addressing root causes before symptoms.</p>
   </section>
-<p>
-<!-- Image -->
-<img src="images\stop_climate_change_jpeg.jpg" alt="Stop Climate Change Picture"
-style="float:right;width:400px;height:400px;">
+
+  <!-- Featured Image -->
+  <section>
+    <img src="images/stop_climate_change_jpeg.jpg" alt="Stop Climate Change Picture"
+         style="float:right;width:400px;height:400px;">
+  </section>
+
   <!-- Download -->
   <section>
     <a href="https://climatechangeclub.pages.dev/download">
@@ -118,9 +102,16 @@ style="float:right;width:400px;height:400px;">
     </ul>
     <p><strong>✊ Join the Movement:</strong> The Climate Change Club is a student-powered force for the future.</p>
   </section>
-<p>
-<div class="tenor-gif-embed" data-postid="21239161" data-share-method="host" data-aspect-ratio="0.709375" data-width="100%"><a href="https://tenor.com/view/environmentalism-climate-strike-climate-march-there-is-no-planet-b-climate-action-gif-21239161">Environmentalism Climate Strike GIF</a>from <a href="https://tenor.com/search/environmentalism-gifs">Environmentalism GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-</p>
+
+  <!-- GIF Embed -->
+  <section>
+    <div class="tenor-gif-embed" data-postid="21239161" data-share-method="host" data-aspect-ratio="0.709375" data-width="100%">
+      <a href="https://tenor.com/view/environmentalism-climate-strike-climate-march-there-is-no-planet-b-climate-action-gif-21239161">Environmentalism Climate Strike GIF</a>
+      from <a href="https://tenor.com/search/environmentalism-gifs">Environmentalism GIFs</a>
+    </div>
+    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+  </section>
+
   <!-- Color Panel -->
   <section class="color-panel">
     <h2>🎨 Customize Your Background</h2>
@@ -134,9 +125,31 @@ style="float:right;width:400px;height:400px;">
     <button onclick="changeColor('')">Reset</button>
   </section>
 
+  <!-- Email Form -->
+  <form id="emailForm">
+    <h2>📧 Stay Updated</h2>
+    <input type="email" id="email" placeholder="Enter your email" required />
+    <input type="submit" value="Subscribe" />
+    <p id="emailMessage"></p>
+  </form>
+
+  <!-- Modal -->
+  <div id="customModal" class="modal">
+    <div class="modal-content">
+      <h2 id="modalTitle"></h2>
+      <p id="modalMessage"></p>
+      <button onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer>
     <p>🌍 Climate Change Club | © 2025 Peijie | Built with ❤️ and HTML/CSS/JavaScript</p>
+    <div class="socials">
+      <a href="#"><img src="icons/twitter.svg" alt="Twitter"></a>
+      <a href="#"><img src="icons/instagram.svg" alt="Instagram"></a>
+      <a href="#"><img src="icons/github.svg" alt="GitHub"></a>
+    </div>
   </footer>
 
   <!-- Scripts -->
@@ -152,11 +165,7 @@ style="float:right;width:400px;height:400px;">
         document.body.classList.remove('captcha-lock');
       }
     }
-
-    function changeColor(color) {
-      document.body.style.backgroundColor = color;
-    }
   </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
