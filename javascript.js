@@ -93,3 +93,19 @@ document.getElementById("emailForm").addEventListener("submit", function(event) 
     document.getElementById("emailMessage").innerText = "Something went wrong. Please try again.";
   });
 });
+// Animate progress bars on load
+window.addEventListener("DOMContentLoaded", () => {
+  // Trees goal: 5%
+  const treesBar = document.getElementById("trees-bar");
+  const treesText = document.getElementById("trees-text");
+  let treesProgress = 5; // current percentage
+  treesBar.style.width = treesProgress + "%";
+  treesText.textContent = treesProgress + "% complete";
+
+  // Donations goal: 10%
+  const donationsBar = document.getElementById("donations-bar");
+  const donationsText = document.getElementById("donations-text");
+  let donationsProgress = 10; // current percentage
+  donationsBar.style.width = donationsProgress + "%";
+  donationsText.textContent = donationsProgress + "% complete";
+});
