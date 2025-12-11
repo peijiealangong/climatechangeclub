@@ -109,3 +109,25 @@ window.addEventListener("DOMContentLoaded", () => {
   donationsBar.style.width = donationsProgress + "%";
   donationsText.textContent = donationsProgress + "% complete";
 });
+// Animate a progress bar + numeric counter
+function animateProgress(barId, textId, targetPercent) {
+  const bar = document.getElementById(barId);
+  const text = document.getElementById(textId);
+  let current = 0;
+  const interval = setInterval(() => {
+    if (current >= targetPercent) {
+      clearInterval(interval);
+    } else {
+      current++;
+      bar.style.width = current + "%";
+      text.textContent = current + "% complete";
+    }
+  }, 30); // speed of counting (30ms per step)
+}
+
+// Run animations on load
+window.addEventListener("DOMContentLoaded", () => {
+  animateProgress("trees-bar", "trees-text", 5);       // Trees goal
+  animateProgress("donations-bar", "donations-text", 10); // Donations goal
+  animateProgress("members-bar", "members-text", 20);  // Example: Members goal
+});

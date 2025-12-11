@@ -297,3 +297,10 @@ input[type="submit"]:hover {
   font-size: 1rem;
   text-align: center;
 }
+/* Numeric Counters */
+.stats-grid p {
+  font-weight: bold;
+  margin-top: 8px;
+  color: #2c3e50;
+  transition: color 0.5s ease;
+}
