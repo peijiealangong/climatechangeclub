@@ -1,70 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-                            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
-  <url>
-    <loc>https://climatechangeclub.pages.dev/egg.html</loc>
-    <lastmod>2025-09-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
 
-  <url>
-    <loc>https://climatechangeclub.pages.dev/climatechange.html</loc>
-    <lastmod>2025-09-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
+<url>
+  <loc>https://climatechangeclub.pages.dev/</loc>
+  <lastmod>2025-12-12T03:03:32+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://climatechangeclub.pages.dev/about</loc>
+  <lastmod>2025-12-12T03:03:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://climatechangeclub.pages.dev/projects</loc>
+  <lastmod>2025-12-12T03:03:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://climatechangeclub.pages.dev/meetings</loc>
+  <lastmod>2025-12-12T03:03:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://climatechangeclub.pages.dev/notices</loc>
+  <lastmod>2025-12-12T03:03:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://climatechangeclub.pages.dev/articles</loc>
+  <lastmod>2025-12-12T03:03:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://climatechangeclub.pages.dev/climatechronicle</loc>
+  <lastmod>2025-12-12T03:03:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://climatechangeclub.pages.dev/download</loc>
+  <lastmod>2025-12-12T03:03:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://climatechangeclub.pages.dev/contact</loc>
+  <lastmod>2025-12-12T03:03:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://climatechangeclub.pages.dev/stages</loc>
+  <lastmod>2025-12-12T03:03:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://climatechangeclub.pages.dev/screaming</loc>
+  <lastmod>2025-12-12T03:03:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://climatechangeclub.pages.dev/egg</loc>
+  <lastmod>2025-12-12T03:03:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://climatechangeclub.pages.dev/suma</loc>
+  <lastmod>2025-12-12T03:03:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
 
-  <url>
-    <loc>https://climatechangeclub.pages.dev/</loc>
-    <lastmod>2025-09-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-
-  <url>
-    <loc>https://climatechangeclub.pages.dev/climatechronicle.html</loc>
-    <lastmod>2025-09-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://climatechangeclub.pages.dev/projects.html</loc>
-    <lastmod>2025-09-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://climatechangeclub.pages.dev/notices.html</loc>
-    <lastmod>2025-09-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://climatechangeclub.pages.dev/about.html</loc>
-    <lastmod>2025-09-18</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://climatechangeclub.pages.dev/suma.html</loc>
-    <lastmod>2025-09-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://climatechangeclub.pages.dev/climatechronicle</loc>
-    <lastmod>2025-09-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
 
 </urlset>
