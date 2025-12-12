@@ -1,4 +1,3 @@
 User-agent: *
 Disallow:
-
-Sitemap: https://climatechangeclub.vercel.app/sitemap.xml
+Sitemap: https://climatechangeclub.pages.dev/sitemap.xml
