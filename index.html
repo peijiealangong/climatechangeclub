@@ -51,7 +51,8 @@
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
-<h1> Welcome to the Climate Change Club! 🌎</h1>
+
+  <h1>Welcome to the Climate Change Club! 🌎</h1>
 
   <!-- Intro Grid -->
   <section class="intro-grid">
@@ -71,47 +72,44 @@
       <a href="meetings.html" class="btn-primary">Upcoming Events</a>
     </div>
   </section>
-<section>
-  <h2>📋 Climate Change Club Survey</h2>
-  <iframe src="https://forms.cloud.microsoft/r/3ch85QFxDB" 
-          width="800" height="350" frameborder="0" 
-          marginheight="0" marginwidth="0">
-    Loading…
-  </iframe>
-</section>
 
+  <!-- Survey -->
+  <section>
+    <h2>📋 Climate Change Club Survey</h2>
+    <iframe src="https://forms.cloud.microsoft/r/3ch85QFxDB" 
+            width="800" height="350" frameborder="0" 
+            marginheight="0" marginwidth="0">
+      Loading…
+    </iframe>
+  </section>
 
-<!-- Goals Section -->
-<section class="impact-stats">
-  <h2>🎯 Our Goals</h2>
-  <div class="stats-grid">
-    <div>
-      <strong>Trees to Plant</strong>
-      <div class="progress-container">
-        <div class="progress-bar" style="width:5%"></div>
+  <!-- Goals Section -->
+  <section class="impact-stats">
+    <h2>🎯 Our Goals</h2>
+    <div class="stats-grid">
+      <div>
+        <strong>Trees to Plant</strong>
+        <div class="progress-container">
+          <div class="progress-bar" style="width:5%"></div>
+        </div>
+        <p>5% complete</p>
       </div>
-      <p>5% complete</p>
-    </div>
-    <div>
-      <strong>Donations Goal ($100,000)</strong>
-      <div class="progress-container">
-        <div class="progress-bar" style="width:10%"></div>
+      <div>
+        <strong>Donations Goal ($100,000)</strong>
+        <div class="progress-container">
+          <div class="progress-bar" style="width:10%"></div>
+        </div>
+        <p>10% complete</p>
       </div>
-      <p>10% complete</p>
-    </div>
-    <div>
-      <strong>Members to Empower</strong>
-      <div class="progress-container">
-        <div class="progress-bar" style="width:20%"></div>
+      <div>
+        <strong>Members to Empower</strong>
+        <div class="progress-container">
+          <div class="progress-bar" style="width:20%"></div>
+        </div>
+        <p>20% complete</p>
       </div>
-      <p>20% complete</p>
     </div>
-  </div>
-</section>
-
-
-
-
+  </section>
 
   <!-- Featured Article -->
   <section class="featured-article">
@@ -185,20 +183,23 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script>
-    window.onload = () => {
-      document.body.classList.add('captcha-lock');
-    };
+<script>
+  window.onload = () => {
+    // Lock body until captcha is verified
+    document.body.classList.add('captcha-lock');
+    // Always force scroll to the very top
+    window.scrollTo(0, 0);
+  };
 
-    function captchaVerified() {
-      const overlay = document.getElementById('captcha-overlay');
-      if (overlay) {
-        overlay.style.display = 'none';
-        document.body.classList.remove('captcha-lock');
-      }
+  function captchaVerified() {
+    const overlay = document.getElementById('captcha-overlay');
+    if (overlay) {
+      overlay.style.display = 'none';   // hide the overlay
+      document.body.classList.remove('captcha-lock'); // unlock body
+      // Reset scroll again if needed
+      window.scrollTo(0, 0);
     }
-  </script>
-  <script src="script.js"></script>
+  }
+</script>
 </body>
 </html>
