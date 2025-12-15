@@ -188,9 +188,32 @@
       <a href="#"><img src="icons/github.svg" alt="GitHub"></a>
     </div>
   </footer>
+<!-- reCAPTCHA Overlay -->
+<div id="captcha-overlay">
+  <div id="captcha-box">
+    <p>Please verify you're human to continue to the website</p>
+    <div class="g-recaptcha"
+         data-sitekey="6Ld-UHsrAAAAAJ3FK2tIX9zmgPyBOXOeb53fv7pt"
+         data-callback="captchaVerified"></div>
+  </div>
+</div>
 
-  <script>
-    // Lock body until captcha is verified
-    window.onload = () => {
-      document.body.classList.add('captcha-lock');
-      window.scrollTo
+<script>
+  // Lock scrolling until captcha is verified
+  window.onload = () => {
+    document.body.classList.add('captcha-lock');
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
+
+  // Called automatically by reCAPTCHA when the user checks the box
+  function captchaVerified() {
+    const overlay = document.getElementById('captcha-overlay');
+    if (overlay) {
+      overlay.remove(); // completely remove overlay from DOM
+    }
+    document.body.classList.remove('captcha-lock'); // unlock scrolling
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // ensure top of page is visible
+  }
+</script>
+</body>
+</html>
