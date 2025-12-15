@@ -18,21 +18,8 @@
   <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
-  <!-- reCAPTCHA -->
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
-  <!-- reCAPTCHA Overlay -->
-  <div id="captcha-overlay">
-    <div id="captcha-box">
-      <p>Please verify you're human to continue</p>
-      <div class="g-recaptcha"
-           data-sitekey="6Ld-UHsrAAAAAJ3FK2tIX9zmgPyBOXOeb53fv7pt"
-           data-callback="captchaVerified"></div>
-    </div>
-  </div>
-
   <!-- Navigation -->
   <nav>
     <ul>
@@ -188,32 +175,30 @@
       <a href="#"><img src="icons/github.svg" alt="GitHub"></a>
     </div>
   </footer>
-<!-- reCAPTCHA Overlay -->
-<div id="captcha-overlay">
-  <div id="captcha-box">
-    <p>Please verify you're human to continue to the website</p>
-    <div class="g-recaptcha"
-         data-sitekey="6Ld-UHsrAAAAAJ3FK2tIX9zmgPyBOXOeb53fv7pt"
-         data-callback="captchaVerified"></div>
-  </div>
-</div>
 
-<script>
-  // Lock scrolling until captcha is verified
-  window.onload = () => {
-    document.body.classList.add('captcha-lock');
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  };
-
-  // Called automatically by reCAPTCHA when the user checks the box
-  function captchaVerified() {
-    const overlay = document.getElementById('captcha-overlay');
-    if (overlay) {
-      overlay.remove(); // completely remove overlay from DOM
+  <script>
+    // Background color utility
+    function changeColor(val) {
+      document.body.style.background = val || '';
     }
-    document.body.classList.remove('captcha-lock'); // unlock scrolling
-    window.scrollTo({ top: 0, behavior: 'smooth' }); // ensure top of page is visible
-  }
-</script>
+
+    // Email form feedback
+    document.getElementById('emailForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const msg = document.getElementById('emailMessage');
+      if (!email) {
+        msg.textContent = 'Please enter a valid email.';
+        return;
+      }
+      msg.textContent = 'Thanks — you are subscribed (demo).';
+      this.reset();
+    });
+
+    // Modal helper
+    function closeModal() {
+      document.getElementById('customModal').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
