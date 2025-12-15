@@ -5,24 +5,15 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Home | Climate Change Club</title>
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68D6N5XQ6D"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-68D6N5XQ6D');
-  </script>
-
-  <!-- Styles (kept inline for easy copy/paste) -->
+  <!-- Styles and fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#071018; --card:#0f1720; --muted:#cbd5e1; --accent:#50dcff; --white:#ffffff;
-      --panel-radius:10px;
+      --bg-default: linear-gradient(180deg,#071018 0%, #08121a 100%);
+      --card:#0f1720; --muted:#cbd5e1; --accent:#50dcff; --white:#ffffff;
     }
     html,body{height:100%;margin:0;font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;}
-    body{background:linear-gradient(180deg,#071018 0%, #08121a 100%);color:var(--muted);-webkit-font-smoothing:antialiased;}
+    body{background:var(--bg-default);color:var(--muted);-webkit-font-smoothing:antialiased;}
     nav{background:rgba(255,255,255,0.03);padding:12px 20px;border-bottom:1px solid rgba(255,255,255,0.03);}
     nav ul{list-style:none;margin:0;padding:0;display:flex;gap:18px;align-items:center}
     nav a{color:var(--muted);text-decoration:none;font-weight:600}
@@ -43,24 +34,16 @@
     #captcha-overlay{position:fixed;inset:0;background:rgba(2,6,23,0.85);display:flex;align-items:center;justify-content:center;z-index:9999}
     #captcha-box{background:#071018;padding:20px;border-radius:12px;color:var(--muted);text-align:center}
 
-    /* Game panel */
-    .game-panel{display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap;margin:18px 0}
-    #gd-canvas{border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,0.6);background:linear-gradient(180deg,#071018,#08121a);width:900px;height:220px;display:block}
-    .gd-controls{min-width:220px;color:var(--muted)}
-    .gd-controls h3{color:var(--white);margin:0 0 8px}
-    .gd-controls label{display:block;margin-top:10px;font-size:13px;color:var(--muted)}
-    .gd-controls select,.gd-controls button{width:100%;padding:8px;border-radius:8px;border:0;background:#0b1220;color:var(--muted);margin-top:6px}
-    .gd-note{font-size:13px;color:#9fb6c6;margin-top:10px}
+    /* Controls panel (background buttons) */
+    .controls-panel{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:18px 0}
+    .bg-buttons{display:flex;gap:8px;flex-wrap:wrap}
+    .bg-buttons button{padding:8px 10px;border-radius:8px;border:0;background:#0b1220;color:var(--muted);cursor:pointer}
 
     /* Responsive */
     @media (max-width:980px){
-      #gd-canvas{width:100%;height:200px}
-      .game-panel{flex-direction:column;align-items:center}
+      main{padding:0 12px}
     }
   </style>
-
-  <!-- reCAPTCHA -->
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
   <!-- reCAPTCHA Overlay -->
@@ -89,50 +72,19 @@
   <main>
     <h1>Welcome to the Climate Change Club! 🌎</h1>
 
-    <!-- NEW: Mouse-controlled spin trail demo -->
-    <section aria-labelledby="demo-title">
-      <h2 id="demo-title" style="color:var(--white)">Interactive: Spin Trail (Mouse / Touch)</h2>
-
-      <div class="game-panel" role="region" aria-label="Spin trail demo">
-        <canvas id="gd-canvas" width="900" height="220" role="img" aria-label="Spin trail demo canvas"></canvas>
-
-        <div class="gd-controls" aria-hidden="false">
-          <h3>Customize</h3>
-
-          <label for="shape-select">Shape</label>
-          <select id="shape-select" aria-label="Choose shape">
-            <option value="triangle">Triangle</option>
-            <option value="square">Square</option>
-            <option value="circle">Circle</option>
-          </select>
-
-          <label for="color-select">Color</label>
-          <select id="color-select" aria-label="Choose color">
-            <option value="#50dcff">Cyan</option>
-            <option value="#ff7878">Coral</option>
-            <option value="#ffd95a">Yellow</option>
-            <option value="#8cff9a">Green</option>
-            <option value="#b58cff">Purple</option>
-          </select>
-
-          <label for="trail-length">Trail length</label>
-          <select id="trail-length" aria-label="Trail length">
-            <option value="8">Short</option>
-            <option value="12" selected>Medium</option>
-            <option value="20">Long</option>
-          </select>
-
-          <label for="spin-strength">Spin strength</label>
-          <select id="spin-strength" aria-label="Spin strength">
-            <option value="-10">Gentle</option>
-            <option value="-18" selected>Default</option>
-            <option value="-28">Fast</option>
-          </select>
-
-          <button id="jump-btn" aria-label="Add spin impulse">Add Spin</button>
-          <button id="reset-btn" aria-label="Reset demo">Reset</button>
-
-          <p class="gd-note">Move your mouse or touch the canvas — the shape follows the pointer, spins with horizontal motion, and leaves a fading trail.</p>
+    <!-- Controls panel (background color buttons only) -->
+    <section aria-labelledby="controls-title">
+      <h2 id="controls-title" style="color:var(--white)">Customize Background</h2>
+      <div class="controls-panel" role="region" aria-label="Background controls">
+        <div class="bg-buttons" role="group" aria-label="Background color choices">
+          <button onclick="changeBackground('default')">Default</button>
+          <button onclick="changeBackground('#a8dadc')">Ocean Blue</button>
+          <button onclick="changeBackground('#2a9d8f')">Rainforest</button>
+          <button onclick="changeBackground('#f4a261')">Sunset</button>
+          <button onclick="changeBackground('#e63946')">Wildfire</button>
+          <button onclick="changeBackground('#ffcad4')">Spring</button>
+          <button onclick="changeBackground('#5e548e')">Midnight</button>
+          <button onclick="changeBackground('')">Reset</button>
         </div>
       </div>
     </section>
@@ -216,19 +168,6 @@
       <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
     </section>
 
-    <!-- Color Panel -->
-    <section class="color-panel" aria-label="Background color">
-      <h2>🎨 Customize Your Background</h2>
-      <button onclick="changeColor('linear-gradient(180deg,#071018,#08121a)')">Default</button>
-      <button onclick="changeColor('#a8dadc')">Ocean Blue</button>
-      <button onclick="changeColor('#2a9d8f')">Rainforest Green</button>
-      <button onclick="changeColor('#f4a261')">Sunset Orange</button>
-      <button onclick="changeColor('#e63946')">Wildfire</button>
-      <button onclick="changeColor('#ffcad4')">Spring Bloom</button>
-      <button onclick="changeColor('#5e548e')">Midnight</button>
-      <button onclick="changeColor('')">Reset</button>
-    </section>
-
     <!-- Email Form -->
     <form id="emailForm" aria-label="Subscribe form">
       <h2>📧 Stay Updated</h2>
@@ -236,15 +175,6 @@
       <input type="submit" value="Subscribe" style="padding:8px;border-radius:8px;border:0;background:var(--accent);color:#041018" />
       <p id="emailMessage" style="color:var(--muted)"></p>
     </form>
-
-    <!-- Modal (kept minimal) -->
-    <div id="customModal" class="modal" style="display:none">
-      <div class="modal-content" style="background:var(--card);padding:18px;border-radius:10px;color:var(--muted)">
-        <h2 id="modalTitle"></h2>
-        <p id="modalMessage"></p>
-        <button onclick="closeModal()" style="padding:8px;border-radius:8px;border:0;background:var(--accent);color:#041018">Close</button>
-      </div>
-    </div>
   </main>
 
   <footer>
@@ -257,6 +187,7 @@
   </footer>
 
   <!-- Scripts -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script>
     // Captcha handling
     window.onload = () => {
@@ -272,13 +203,17 @@
       }
     }
 
-    // Background color utility
-    function changeColor(val) {
-      if (!val) {
+    // Background change utility
+    function changeBackground(choice) {
+      if (!choice) {
         document.body.style.background = '';
         return;
       }
-      document.body.style.background = val;
+      if (choice === 'default') {
+        document.body.style.background = getComputedStyle(document.documentElement).getPropertyValue('--bg-default') || 'linear-gradient(180deg,#071018,#08121a)';
+      } else {
+        document.body.style.background = choice;
+      }
     }
 
     // Email form (simple client-side feedback)
@@ -291,192 +226,8 @@
       this.reset();
     });
 
-    // Modal helpers
-    function closeModal(){ document.getElementById('customModal').style.display='none'; }
-
-    /* ---------------------------
-       Mouse-controlled spin trail demo
-       - Follows mouse/touch
-       - Spin from horizontal movement and manual spin impulse
-       - Fading trail
-       --------------------------- */
-    (function () {
-      const canvas = document.getElementById('gd-canvas');
-      const ctx = canvas.getContext('2d');
-
-      // Resize canvas for high-DPI displays
-      function resizeCanvas() {
-        const ratio = window.devicePixelRatio || 1;
-        const w = canvas.clientWidth;
-        const h = canvas.clientHeight;
-        canvas.width = Math.floor(w * ratio);
-        canvas.height = Math.floor(h * ratio);
-        ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-      }
-      resizeCanvas();
-      window.addEventListener('resize', resizeCanvas);
-
-      // Demo constants
-      const SIZE = 40;
-      const TRAIL_LIFE = 18;
-      let TRAIL_MAX = 12;
-
-      // Player state
-      let player = { x: 120, y: 80, angle: 0, spinVel: 0, shape: 'triangle', color: '#50dcff' };
-
-      // Trail array
-      let trail = [];
-
-      // Controls
-      const shapeSelect = document.getElementById('shape-select');
-      const colorSelect = document.getElementById('color-select');
-      const trailLength = document.getElementById('trail-length');
-      const spinStrength = document.getElementById('spin-strength');
-      const jumpBtn = document.getElementById('jump-btn');
-      const resetBtn = document.getElementById('reset-btn');
-
-      function applyControls() {
-        player.shape = shapeSelect.value;
-        player.color = colorSelect.value;
-        TRAIL_MAX = parseInt(trailLength.value, 10) || 12;
-      }
-      applyControls();
-      shapeSelect.addEventListener('change', applyControls);
-      colorSelect.addEventListener('change', applyControls);
-      trailLength.addEventListener('change', applyControls);
-
-      // Pointer tracking
-      let pointer = { x: player.x, y: player.y, px: player.x, py: player.y };
-
-      // Pointer events
-      canvas.addEventListener('mousemove', (e) => {
-        const rect = canvas.getBoundingClientRect();
-        pointer.x = e.clientX - rect.left;
-        pointer.y = e.clientY - rect.top;
-      });
-      canvas.addEventListener('touchmove', (e) => {
-        const t = e.touches[0];
-        const rect = canvas.getBoundingClientRect();
-        pointer.x = t.clientX - rect.left;
-        pointer.y = t.clientY - rect.top;
-        e.preventDefault();
-      }, {passive:false});
-      canvas.addEventListener('mousedown', () => { player.spinVel += parseFloat(spinStrength.value || -18); });
-      jumpBtn.addEventListener('click', () => { player.spinVel += parseFloat(spinStrength.value || -18); });
-      resetBtn.addEventListener('click', () => { trail = []; player.angle = 0; player.spinVel = 0; pointer.x = canvas.width*0.15; pointer.y = canvas.height*0.5; });
-
-      window.addEventListener('keydown', (e) => {
-        if (e.code === 'Space') { e.preventDefault(); player.spinVel += parseFloat(spinStrength.value || -18); }
-      });
-
-      // Draw helpers
-      function drawShape(cx, cy, size, angle, color, alpha = 1, shapeOverride = null) {
-        const shape = shapeOverride || player.shape;
-        ctx.save();
-        ctx.translate(cx, cy);
-        ctx.rotate(angle * Math.PI / 180);
-        ctx.globalAlpha = alpha;
-        ctx.fillStyle = color;
-        ctx.strokeStyle = '#ffffff';
-        ctx.lineWidth = 2;
-
-        if (shape === 'square') {
-          ctx.fillRect(-size/2, -size/2, size, size);
-          ctx.strokeRect(-size/2, -size/2, size, size);
-        } else if (shape === 'circle') {
-          ctx.beginPath();
-          ctx.arc(0, 0, size/2, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.stroke();
-        } else {
-          ctx.beginPath();
-          ctx.moveTo(-size/2, size/2);
-          ctx.lineTo(size/2, size/2);
-          ctx.lineTo(0, -size/2);
-          ctx.closePath();
-          ctx.fill();
-          ctx.stroke();
-        }
-
-        ctx.restore();
-        ctx.globalAlpha = 1;
-      }
-
-      // Update: follow pointer and compute spin
-      function update() {
-        // smoothing toward pointer
-        const lerp = 0.22;
-        player.x += (pointer.x - player.x) * lerp;
-        player.y += (pointer.y - player.y) * lerp;
-
-        // horizontal delta
-        const dx = pointer.x - pointer.px;
-        const mouseSpinFactor = -0.9 * (parseFloat(spinStrength.value || -18) / -18);
-        player.spinVel += dx * 0.35 * mouseSpinFactor;
-
-        // apply spin and damping
-        player.angle += player.spinVel;
-        player.spinVel *= 0.92;
-
-        // add trail sample
-        trail.unshift({ x: player.x, y: player.y, angle: player.angle, life: TRAIL_LIFE });
-        if (trail.length > TRAIL_MAX) trail.pop();
-
-        // decay trail life
-        for (let i = 0; i < trail.length; i++) trail[i].life--;
-        while (trail.length && trail[trail.length - 1].life <= 0) trail.pop();
-
-        // store previous pointer
-        pointer.px = pointer.x;
-        pointer.py = pointer.y;
-      }
-
-      // Render
-      function render() {
-        // clear
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        // background gradient
-        const g = ctx.createLinearGradient(0, 0, 0, canvas.height);
-        g.addColorStop(0, '#071018');
-        g.addColorStop(1, '#08121a');
-        ctx.fillStyle = g;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        // subtle ground line
-        ctx.strokeStyle = '#ffffff11';
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.moveTo(0, canvas.height * 0.85);
-        ctx.lineTo(canvas.width, canvas.height * 0.85);
-        ctx.stroke();
-
-        // draw trail (older first)
-        for (let i = trail.length - 1; i >= 0; i--) {
-          const t = trail[i];
-          const alpha = Math.max(0.04, (t.life / TRAIL_LIFE) * 0.7);
-          drawShape(t.x, t.y, SIZE, t.angle, player.color, alpha);
-        }
-
-        // draw player
-        drawShape(player.x, player.y, SIZE, player.angle, player.color, 1);
-      }
-
-      // Loop
-      function loop() {
-        update();
-        render();
-        requestAnimationFrame(loop);
-      }
-
-      // initialize pointer center
-      pointer.x = canvas.clientWidth * 0.15;
-      pointer.y = canvas.clientHeight * 0.5;
-      pointer.px = pointer.x;
-      pointer.py = pointer.y;
-
-      loop();
-    })();
+    // Modal helper (kept for compatibility)
+    function closeModal(){ document.getElementById('customModal')?.style.display='none'; }
   </script>
 </body>
 </html>
