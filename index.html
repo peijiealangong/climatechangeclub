@@ -21,6 +21,44 @@
 
   <!-- reCAPTCHA -->
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+  <style>
+    /* Inline styles for the demo canvas and controls (keeps everything self-contained) */
+    .game-panel {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      margin: 28px 0;
+      flex-wrap: wrap;
+    }
+    #gd-canvas {
+      background: linear-gradient(#0f1720, #0b1220);
+      border-radius: 8px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+      width: 900px;
+      height: 220px;
+      display: block;
+    }
+    .gd-controls {
+      min-width: 220px;
+      color: #fff;
+      font-family: Poppins, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    .gd-controls h3 { margin: 0 0 8px 0; font-size: 16px; color: #fff; }
+    .gd-controls label { display:block; margin:8px 0 4px; font-size:14px; }
+    .gd-controls button, .gd-controls select {
+      display:block;
+      margin-top:6px;
+      padding:8px 10px;
+      border-radius:6px;
+      border: none;
+      background:#1f2937;
+      color:#fff;
+      cursor:pointer;
+    }
+    .gd-controls .small { padding:6px 8px; font-size:13px; }
+    .gd-note { color:#cbd5e1; font-size:13px; margin-top:10px; }
+  </style>
 </head>
 <body>
   <!-- reCAPTCHA Overlay -->
@@ -53,6 +91,49 @@
   </nav>
 
   <h1>Welcome to the Climate Change Club! 🌎</h1>
+
+  <!-- NEW: Geometry Dash style demo panel (canvas + controls) -->
+  <section class="game-panel" aria-label="Interactive demo">
+    <canvas id="gd-canvas" width="900" height="220" role="img" aria-label="Character spin and trail demo"></canvas>
+
+    <div class="gd-controls" aria-hidden="false">
+      <h3>Character</h3>
+      <label for="shape-select">Shape</label>
+      <select id="shape-select" aria-label="Choose shape">
+        <option value="triangle">Triangle</option>
+        <option value="square">Square</option>
+        <option value="circle">Circle</option>
+      </select>
+
+      <label for="color-select">Color</label>
+      <select id="color-select" aria-label="Choose color">
+        <option value="#50dcff">Cyan</option>
+        <option value="#ff7878">Coral</option>
+        <option value="#ffd95a">Yellow</option>
+        <option value="#8cff9a">Green</option>
+        <option value="#b58cff">Purple</option>
+      </select>
+
+      <label for="trail-length">Trail length</label>
+      <select id="trail-length" aria-label="Trail length">
+        <option value="8">Short</option>
+        <option value="12" selected>Medium</option>
+        <option value="20">Long</option>
+      </select>
+
+      <label for="spin-strength">Spin strength</label>
+      <select id="spin-strength" aria-label="Spin strength">
+        <option value="-10">Gentle</option>
+        <option value="-18" selected>Default</option>
+        <option value="-28">Fast</option>
+      </select>
+
+      <button id="jump-btn" class="small" aria-label="Jump (space)">Jump (Space)</button>
+      <button id="reset-btn" class="small" aria-label="Reset demo">Reset</button>
+
+      <p class="gd-note">Tip: Press Space to jump and see the spinning trail. Use controls to customize shape, color and trail.</p>
+    </div>
+  </section>
 
   <!-- Intro Grid -->
   <section class="intro-grid">
@@ -199,6 +280,214 @@
       // Reset scroll again if needed
       window.scrollTo(0, 0);
     }
+  }
+
+  /* ---------------------------
+     Geometry Dash style demo
+     - Rotating character on jump
+     - Fading trail behind the character
+     - Shape and color controls
+     --------------------------- */
+  (function () {
+    const canvas = document.getElementById('gd-canvas');
+    const ctx = canvas.getContext('2d');
+
+    // Demo world constants
+    const GROUND_Y = 180; // canvas y coordinate for ground line
+    const SIZE = 40;
+
+    // Player state
+    let player = {
+      x: 120,
+      y: GROUND_Y - SIZE,
+      vy: 0,
+      onGround: true,
+      angle: 0,
+      spinVel: 0,
+      shape: 'triangle',
+      color: '#50dcff'
+    };
+
+    // Trail: array of {x,y,angle,life}
+    let trail = [];
+    let TRAIL_MAX = 12;
+    let TRAIL_LIFE = 18;
+
+    // Physics tuning
+    const GRAVITY = 0.75;
+    const JUMP_V = -20.5;
+
+    // Controls
+    const shapeSelect = document.getElementById('shape-select');
+    const colorSelect = document.getElementById('color-select');
+    const trailLength = document.getElementById('trail-length');
+    const spinStrength = document.getElementById('spin-strength');
+    const jumpBtn = document.getElementById('jump-btn');
+    const resetBtn = document.getElementById('reset-btn');
+
+    // Initialize from controls
+    function applyControls() {
+      player.shape = shapeSelect.value;
+      player.color = colorSelect.value;
+      TRAIL_MAX = parseInt(trailLength.value, 10) || 12;
+    }
+    applyControls();
+
+    // Input handlers
+    window.addEventListener('keydown', (e) => {
+      if (e.code === 'Space') {
+        e.preventDefault();
+        doJump();
+      }
+    });
+    jumpBtn.addEventListener('click', doJump);
+    resetBtn.addEventListener('click', resetDemo);
+    shapeSelect.addEventListener('change', applyControls);
+    colorSelect.addEventListener('change', applyControls);
+    trailLength.addEventListener('change', applyControls);
+    spinStrength.addEventListener('change', () => {
+      // no immediate action; used on jump
+    });
+
+    function doJump() {
+      if (player.onGround) {
+        player.vy = JUMP_V;
+        player.onGround = false;
+        player.spinVel = parseFloat(spinStrength.value) || -18;
+      }
+    }
+
+    function resetDemo() {
+      player.x = 120;
+      player.y = GROUND_Y - SIZE;
+      player.vy = 0;
+      player.onGround = true;
+      player.angle = 0;
+      player.spinVel = 0;
+      trail = [];
+    }
+
+    // Draw helpers
+    function drawGround() {
+      ctx.fillStyle = '#0b1220';
+      ctx.fillRect(0, GROUND_Y + SIZE/2, canvas.width, canvas.height - (GROUND_Y + SIZE/2));
+      ctx.strokeStyle = '#ffffff22';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(0, GROUND_Y + SIZE/2);
+      ctx.lineTo(canvas.width, GROUND_Y + SIZE/2);
+      ctx.stroke();
+    }
+
+    function drawShape(cx, cy, size, angle, color, alpha = 1) {
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.rotate(angle * Math.PI / 180);
+      ctx.globalAlpha = alpha;
+      ctx.fillStyle = color;
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 2;
+
+      if (player.shape === 'square') {
+        ctx.fillRect(-size/2, -size/2, size, size);
+        ctx.strokeRect(-size/2, -size/2, size, size);
+      } else if (player.shape === 'circle') {
+        ctx.beginPath();
+        ctx.arc(0, 0, size/2, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+      } else { // triangle
+        ctx.beginPath();
+        ctx.moveTo(-size/2, size/2);
+        ctx.lineTo(size/2, size/2);
+        ctx.lineTo(0, -size/2);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+      }
+
+      ctx.restore();
+      ctx.globalAlpha = 1;
+    }
+
+    function update() {
+      // physics
+      player.vy += GRAVITY;
+      player.y += player.vy;
+
+      // ground collision
+      if (player.y + SIZE >= GROUND_Y) {
+        player.y = GROUND_Y - SIZE;
+        player.vy = 0;
+        player.onGround = true;
+        // settle rotation when grounded
+        player.angle *= 0.6;
+        player.spinVel = 0;
+      } else {
+        // in air: rotate and decay spin
+        player.angle += player.spinVel;
+        player.spinVel *= 0.98;
+      }
+
+      // push trail sample
+      trail.unshift({
+        x: player.x + SIZE/2,
+        y: player.y + SIZE/2,
+        angle: player.angle,
+        life: TRAIL_LIFE
+      });
+      if (trail.length > TRAIL_MAX) trail.pop();
+
+      // decay trail life
+      for (let i = 0; i < trail.length; i++) {
+        trail[i].life--;
+      }
+      while (trail.length && trail[trail.length - 1].life <= 0) trail.pop();
+    }
+
+    function render() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // background subtle gradient
+      const g = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      g.addColorStop(0, '#071018');
+      g.addColorStop(1, '#08121a');
+      ctx.fillStyle = g;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      drawGround();
+
+      // draw trail back-to-front (older first)
+      for (let i = trail.length - 1; i >= 0; i--) {
+        const t = trail[i];
+        const alpha = Math.max(0.05, (t.life / TRAIL_LIFE) * 0.7);
+        // draw faded shape using current selected color
+        const savedShape = player.shape;
+        // temporarily draw the shape type that was active when sample was taken
+        drawShape(t.x, t.y, SIZE, t.angle, player.color, alpha);
+      }
+
+      // draw player on top
+      drawShape(player.x + SIZE/2, player.y + SIZE/2, SIZE, player.angle, player.color, 1);
+    }
+
+    function loop() {
+      update();
+      render();
+      requestAnimationFrame(loop);
+    }
+
+    // Start the demo loop
+    loop();
+  })();
+
+  /* Utility: change page background color (used by existing buttons) */
+  function changeColor(val) {
+    if (!val) {
+      document.body.style.background = '';
+      return;
+    }
+    document.body.style.background = val;
   }
 </script>
 </body>
