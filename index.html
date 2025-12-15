@@ -1,55 +1,32 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Discover the Climate Change Club—our mission, projects, and how you can help fight climate change." />
   <title>Home | Climate Change Club</title>
 
-  <!-- Styles and fonts -->
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68D6N5XQ6D"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-68D6N5XQ6D');
+  </script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg-default: linear-gradient(180deg,#071018 0%, #08121a 100%);
-      --card:#0f1720; --muted:#cbd5e1; --accent:#50dcff; --white:#ffffff;
-    }
-    html,body{height:100%;margin:0;font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;}
-    body{background:var(--bg-default);color:var(--muted);-webkit-font-smoothing:antialiased;}
-    nav{background:rgba(255,255,255,0.03);padding:12px 20px;border-bottom:1px solid rgba(255,255,255,0.03);}
-    nav ul{list-style:none;margin:0;padding:0;display:flex;gap:18px;align-items:center}
-    nav a{color:var(--muted);text-decoration:none;font-weight:600}
-    h1{color:var(--white);text-align:center;margin:18px 0 8px}
-    main{max-width:1100px;margin:18px auto;padding:0 18px}
-    .intro-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:18px 0}
-    .intro-card{background:var(--card);padding:18px;border-radius:12px;color:var(--muted)}
-    .btn-primary{display:inline-block;margin-top:10px;padding:8px 12px;background:var(--accent);color:#041018;border-radius:8px;text-decoration:none;font-weight:600}
-    section{margin:18px 0}
-    .impact-stats .stats-grid{display:flex;gap:12px;flex-wrap:wrap}
-    .progress-container{background:#0b1220;border-radius:8px;height:12px;overflow:hidden}
-    .progress-bar{height:100%;background:linear-gradient(90deg,#50dcff,#8cff9a)}
-    .featured-article{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;color:var(--white)}
-    footer{margin:28px 0;padding:18px;text-align:center;color:var(--muted);font-size:14px}
-    .socials img{height:20px;margin:0 6px;vertical-align:middle}
 
-    /* Captcha overlay */
-    #captcha-overlay{position:fixed;inset:0;background:rgba(2,6,23,0.85);display:flex;align-items:center;justify-content:center;z-index:9999}
-    #captcha-box{background:#071018;padding:20px;border-radius:12px;color:var(--muted);text-align:center}
-
-    /* Controls panel (background buttons) */
-    .controls-panel{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:18px 0}
-    .bg-buttons{display:flex;gap:8px;flex-wrap:wrap}
-    .bg-buttons button{padding:8px 10px;border-radius:8px;border:0;background:#0b1220;color:var(--muted);cursor:pointer}
-
-    /* Responsive */
-    @media (max-width:980px){
-      main{padding:0 12px}
-    }
-  </style>
+  <!-- reCAPTCHA -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
   <!-- reCAPTCHA Overlay -->
-  <div id="captcha-overlay" role="dialog" aria-modal="true">
+  <div id="captcha-overlay">
     <div id="captcha-box">
-      <p style="color:var(--white);margin:0 0 12px">Please verify you're human to continue</p>
+      <p>Please verify you're human to continue</p>
       <div class="g-recaptcha"
            data-sitekey="6Ld-UHsrAAAAAJ3FK2tIX9zmgPyBOXOeb53fv7pt"
            data-callback="captchaVerified"></div>
@@ -57,10 +34,16 @@
   </div>
 
   <!-- Navigation -->
-  <nav aria-label="Main navigation">
+  <nav>
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li class="dropdown"><a href="about.html">About Us</a></li>
+      <li class="dropdown">
+        <a href="about.html">About Us</a>
+        <ul class="submenu">
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="meetings.html">Events</a></li>
+        </ul>
+      </li>
       <li><a href="notices.html">Notices</a></li>
       <li><a href="articles.html">Articles</a></li>
       <li><a href="climatechronicle.html">Chronicle</a></li>
@@ -69,116 +52,136 @@
     </ul>
   </nav>
 
-  <main>
-    <h1>Welcome to the Climate Change Club! 🌎</h1>
+  <h1>Welcome to the Climate Change Club! 🌎</h1>
 
-    <!-- Controls panel (background color buttons only) -->
-    <section aria-labelledby="controls-title">
-      <h2 id="controls-title" style="color:var(--white)">Customize Background</h2>
-      <div class="controls-panel" role="region" aria-label="Background controls">
-        <div class="bg-buttons" role="group" aria-label="Background color choices">
-          <button onclick="changeBackground('default')">Default</button>
-          <button onclick="changeBackground('#a8dadc')">Ocean Blue</button>
-          <button onclick="changeBackground('#2a9d8f')">Rainforest</button>
-          <button onclick="changeBackground('#f4a261')">Sunset</button>
-          <button onclick="changeBackground('#e63946')">Wildfire</button>
-          <button onclick="changeBackground('#ffcad4')">Spring</button>
-          <button onclick="changeBackground('#5e548e')">Midnight</button>
-          <button onclick="changeBackground('')">Reset</button>
+  <!-- Intro Grid -->
+  <section class="intro-grid">
+    <div class="intro-card">
+      <h2>🌱 Mission</h2>
+      <p>Discover how we fight climate change through education and action.</p>
+      <a href="about.html" class="btn-primary">Read More</a>
+    </div>
+    <div class="intro-card">
+      <h2>🛠️ Projects</h2>
+      <p>See our latest sustainability initiatives and student-led campaigns.</p>
+      <a href="projects.html" class="btn-primary">Explore Projects</a>
+    </div>
+    <div class="intro-card">
+      <h2>📅 Events</h2>
+      <p>Join workshops, marches, and speaker sessions happening near you.</p>
+      <a href="meetings.html" class="btn-primary">Upcoming Events</a>
+    </div>
+  </section>
+
+  <!-- Survey -->
+  <section>
+    <h2>📋 Climate Change Club Survey</h2>
+    <iframe src="https://forms.cloud.microsoft/r/3ch85QFxDB"
+            width="800" height="350" frameborder="0"
+            marginheight="0" marginwidth="0">
+      Loading…
+    </iframe>
+  </section>
+
+  <!-- Goals Section -->
+  <section class="impact-stats">
+    <h2>🎯 Our Goals</h2>
+    <div class="stats-grid">
+      <div>
+        <strong>Trees to Plant</strong>
+        <div class="progress-container">
+          <div class="progress-bar" style="width:5%"></div>
         </div>
+        <p>5% complete</p>
       </div>
-    </section>
-
-    <!-- Intro Grid -->
-    <section class="intro-grid" aria-label="Intro">
-      <div class="intro-card">
-        <h2>🌱 Mission</h2>
-        <p>Discover how we fight climate change through education and action.</p>
-        <a href="about.html" class="btn-primary">Read More</a>
-      </div>
-      <div class="intro-card">
-        <h2>🛠️ Projects</h2>
-        <p>See our latest sustainability initiatives and student-led campaigns.</p>
-        <a href="projects.html" class="btn-primary">Explore Projects</a>
-      </div>
-      <div class="intro-card">
-        <h2>📅 Events</h2>
-        <p>Join workshops, marches, and speaker sessions happening near you.</p>
-        <a href="meetings.html" class="btn-primary">Upcoming Events</a>
-      </div>
-    </section>
-
-    <!-- Survey -->
-    <section aria-label="Survey">
-      <h2>📋 Climate Change Club Survey</h2>
-      <iframe src="https://forms.cloud.microsoft/r/3ch85QFxDB" width="800" height="350" frameborder="0" marginheight="0" marginwidth="0" title="Survey form">Loading…</iframe>
-    </section>
-
-    <!-- Goals Section -->
-    <section class="impact-stats" aria-label="Goals">
-      <h2>🎯 Our Goals</h2>
-      <div class="stats-grid" style="display:flex;gap:12px;flex-wrap:wrap">
-        <div style="min-width:200px">
-          <strong>Trees to Plant</strong>
-          <div class="progress-container"><div class="progress-bar" style="width:5%"></div></div>
-          <p>5% complete</p>
+      <div>
+        <strong>Donations Goal ($100,000)</strong>
+        <div class="progress-container">
+          <div class="progress-bar" style="width:10%"></div>
         </div>
-        <div style="min-width:200px">
-          <strong>Donations Goal ($100,000)</strong>
-          <div class="progress-container"><div class="progress-bar" style="width:10%"></div></div>
-          <p>10% complete</p>
-        </div>
-        <div style="min-width:200px">
-          <strong>Members to Empower</strong>
-          <div class="progress-container"><div class="progress-bar" style="width:20%"></div></div>
-          <p>20% complete</p>
-        </div>
+        <p>10% complete</p>
       </div>
-    </section>
-
-    <!-- Featured Article -->
-    <section class="featured-article" aria-label="Featured article">
-      🌟 Featured: "Climate Action Week Recap – Students Lead the Charge!"
-      <a href="articles.html" style="color:var(--accent);margin-left:8px">Read More →</a>
-    </section>
-
-    <!-- Climate Message -->
-    <section aria-label="Climate message">
-      <h2>🔥 Climate Change: Our Challenge, Our Opportunity</h2>
-      <ul>
-        <li><strong>Extreme Weather:</strong> Hurricanes, wildfires, floods, and droughts are intensifying.</li>
-        <li><strong>Rising Temperatures:</strong> Over 1°C increase since pre-industrial times.</li>
-        <li><strong>Environmental Injustice:</strong> Marginalized communities bear the brunt.</li>
-      </ul>
-      <h3>💡 What You Can Do</h3>
-      <ul>
-        <li><strong>Learn:</strong> Attend workshops and speaker events.</li>
-        <li><strong>Act:</strong> Join sustainability initiatives and advocate for green policies.</li>
-        <li><strong>Create:</strong> Use writing, art, or media to inspire change.</li>
-      </ul>
-      <p><strong>✊ Join the Movement:</strong> The Climate Change Club is a student-powered force for the future.</p>
-    </section>
-
-    <!-- GIF Embed -->
-    <section aria-label="GIF">
-      <div class="tenor-gif-embed" data-postid="21239161" data-share-method="host" data-aspect-ratio="0.709375" data-width="100%">
-        <a href="https://tenor.com/view/environmentalism-climate-strike-climate-march-there-is-no-planet-b-climate-action-gif-21239161">Environmentalism Climate Strike GIF</a>
-        from <a href="https://tenor.com/search/environmentalism-gifs">Environmentalism GIFs</a>
+      <div>
+        <strong>Members to Empower</strong>
+        <div class="progress-container">
+          <div class="progress-bar" style="width:20%"></div>
+        </div>
+        <p>20% complete</p>
       </div>
-      <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-    </section>
+    </div>
+  </section>
 
-    <!-- Email Form -->
-    <form id="emailForm" aria-label="Subscribe form">
-      <h2>📧 Stay Updated</h2>
-      <input type="email" id="email" placeholder="Enter your email" required style="padding:8px;border-radius:8px;border:0;margin-right:8px" />
-      <input type="submit" value="Subscribe" style="padding:8px;border-radius:8px;border:0;background:var(--accent);color:#041018" />
-      <p id="emailMessage" style="color:var(--muted)"></p>
-    </form>
-  </main>
+  <!-- Featured Article -->
+  <section class="featured-article">
+    🌟 Featured: "Climate Action Week Recap – Students Lead the Charge!"
+    <a href="articles.html">Read More →</a>
+  </section>
 
+  <!-- Climate Message -->
+  <section>
+    <h2>🔥 Climate Change: Our Challenge, Our Opportunity</h2>
+    <ul>
+      <li><strong>Extreme Weather:</strong> Hurricanes, wildfires, floods, and droughts are intensifying.</li>
+      <li><strong>Rising Temperatures:</strong> Over 1°C increase since pre-industrial times.</li>
+      <li><strong>Environmental Injustice:</strong> Marginalized communities bear the brunt.</li>
+    </ul>
+    <h3>💡 What You Can Do</h3>
+    <ul>
+      <li><strong>Learn:</strong> Attend workshops and speaker events.</li>
+      <li><strong>Act:</strong> Join sustainability initiatives and advocate for green policies.</li>
+      <li><strong>Create:</strong> Use writing, art, or media to inspire change.</li>
+    </ul>
+    <p><strong>✊ Join the Movement:</strong> The Climate Change Club is a student-powered force for the future.</p>
+  </section>
+
+  <!-- GIF Embed -->
+  <section>
+    <div class="tenor-gif-embed"
+         data-postid="21239161"
+         data-share-method="host"
+         data-aspect-ratio="0.709375"
+         data-width="100%">
+      <a href="https://tenor.com/view/environmentalism-climate-strike-climate-march-there-is-no-planet-b-climate-action-gif-21239161">
+        Environmentalism Climate Strike GIF
+      </a>
+      from <a href="https://tenor.com/search/environmentalism-gifs">Environmentalism GIFs</a>
+    </div>
+    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+  </section>
+
+  <!-- Color Panel -->
+  <section class="color-panel">
+    <h2>🎨 Customize Your Background</h2>
+    <button onclick="changeColor('blue')">Blue</button>
+    <button onclick="changeColor('#a8dadc')">Ocean Blue</button>
+    <button onclick="changeColor('#2a9d8f')">Rainforest Green</button>
+    <button onclick="changeColor('#f4a261')">Sunset Orange</button>
+    <button onclick="changeColor('#e63946')">Wildfire</button>
+    <button onclick="changeColor('#ffcad4')">Spring Bloom</button>
+    <button onclick="changeColor('#5e548e')">Midnight</button>
+    <button onclick="changeColor('')">Reset</button>
+  </section>
+
+  <!-- Email Form -->
+  <form id="emailForm">
+    <h2>📧 Stay Updated</h2>
+    <input type="email" id="email" placeholder="Enter your email" required />
+    <input type="submit" value="Subscribe" />
+    <p id="emailMessage"></p>
+  </form>
+
+  <!-- Modal -->
+  <div id="customModal" class="modal">
+    <div class="modal-content">
+      <h2 id="modalTitle"></h2>
+      <p id="modalMessage"></p>
+      <button onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
   <footer>
-    <p>🌍 Climate Change Club | © 2025 Peijie | Built with HTML/CSS/JavaScript</p>
+    <p>🌍 Climate Change Club | © 2025 Peijie | Built with ❤️ and HTML/CSS/JavaScript</p>
     <div class="socials">
       <a href="#"><img src="icons/twitter.svg" alt="Twitter"></a>
       <a href="#"><img src="icons/instagram.svg" alt="Instagram"></a>
@@ -186,48 +189,18 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script>
-    // Captcha handling
     window.onload = () => {
+      // Lock body until captcha is verified
       document.body.classList.add('captcha-lock');
-      window.scrollTo(0,0);
+      // Always force scroll to the very top
+      window.scrollTo(0, 0);
     };
+
     function captchaVerified() {
       const overlay = document.getElementById('captcha-overlay');
       if (overlay) {
-        overlay.style.display = 'none';
-        document.body.classList.remove('captcha-lock');
-        window.scrollTo(0,0);
-      }
-    }
-
-    // Background change utility
-    function changeBackground(choice) {
-      if (!choice) {
-        document.body.style.background = '';
-        return;
-      }
-      if (choice === 'default') {
-        document.body.style.background = getComputedStyle(document.documentElement).getPropertyValue('--bg-default') || 'linear-gradient(180deg,#071018,#08121a)';
-      } else {
-        document.body.style.background = choice;
-      }
-    }
-
-    // Email form (simple client-side feedback)
-    document.getElementById('emailForm').addEventListener('submit', function(e){
-      e.preventDefault();
-      const email = document.getElementById('email').value;
-      const msg = document.getElementById('emailMessage');
-      if (!email) { msg.textContent = 'Please enter a valid email.'; return; }
-      msg.textContent = 'Thanks — you are subscribed (demo).';
-      this.reset();
-    });
-
-    // Modal helper (kept for compatibility)
-    function closeModal(){ document.getElementById('customModal')?.style.display='none'; }
-  </script>
-</body>
-</html>
+        overlay.style.display = 'none';   // hide the overlay
+        document.body.classList.remove('captcha-lock'); // unlock body
+        // Reset scroll again if needed
+        window.scrollTo
