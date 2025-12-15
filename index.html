@@ -190,8 +190,7 @@
   </footer>
 
   <script>
+    // Lock body until captcha is verified
     window.onload = () => {
-      // Lock body until captcha is verified
       document.body.classList.add('captcha-lock');
-      // Ensure we start at the top
-      window.scrollTo({ top: 0, behavior: 'instant' });
+      window.scrollTo
