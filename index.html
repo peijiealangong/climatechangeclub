@@ -193,14 +193,5 @@
     window.onload = () => {
       // Lock body until captcha is verified
       document.body.classList.add('captcha-lock');
-      // Always force scroll to the very top
-      window.scrollTo(0, 0);
-    };
-
-    function captchaVerified() {
-      const overlay = document.getElementById('captcha-overlay');
-      if (overlay) {
-        overlay.style.display = 'none';   // hide the overlay
-        document.body.classList.remove('captcha-lock'); // unlock body
-        // Reset scroll again if needed
-        window.scrollTo
+      // Ensure we start at the top
+      window.scrollTo({ top: 0, behavior: 'instant' });
