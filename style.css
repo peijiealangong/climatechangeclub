@@ -275,6 +275,10 @@ iframe {
   height: 500px;
 }
 /* Text Colors 🌈 */
+.introduction {
+	color: green;
+}
 .survey {
 	color: blue;
 }
+
