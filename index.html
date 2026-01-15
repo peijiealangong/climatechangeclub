@@ -60,15 +60,37 @@
     </div>
   </section>
 
-  <!-- Survey -->
-  <section>
-    <h2 class = "survey">📋 Climate Change Club Survey</h2>
+  <!-- Survey + Donate -->
+<section class="survey-donate-wrapper">
+  <div class="survey-container">
+    <h2 class="survey">📋 Climate Change Club Survey</h2>
     <iframe src="https://forms.cloud.microsoft/r/3ch85QFxDB"
             width="800" height="350" frameborder="0"
             marginheight="0" marginwidth="0">
       Loading…
     </iframe>
-  </section>
+  </div>
+   
+  <button class="beta-toggle" data-target="beta-donate">
+  Show Beta Update: Warning — beta updates may be unstable or in demo mode
+</button>
+
+<div id="beta-donate" class="beta-section hidden">
+  <!-- PayPal Donate Button -->
+  <form action="https://www.paypal.com/donate" method="post" target="_blank">
+    <input type="hidden" name="hosted_button_id" value="YOUR_BUTTON_ID_HERE" />
+    <input type="image"
+           src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
+           border="0"
+           name="submit"
+           title="PayPal - The safer, easier way to pay online!"
+           alt="Donate with PayPal button" />
+    <img alt="" border="0"
+         src="https://www.paypal.com/en_US/i/scr/pixel.gif"
+         width="1" height="1" />
+  </form>
+</div>
+
 
   <!-- Goals Section -->
   <section class="impact-stats">
@@ -203,6 +225,23 @@
     function closeModal() {
       document.getElementById('customModal').style.display = 'none';
     }
+  </script>
+  <script>
+// Reusable Beta Reveal System
+document.addEventListener("DOMContentLoaded", () => {
+  const toggles = document.querySelectorAll(".beta-toggle");
+
+  toggles.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const targetId = btn.getAttribute("data-target");
+      const target = document.getElementById(targetId);
+
+      if (target) {
+        target.classList.toggle("hidden");
+      }
+    });
+  });
+});
   </script>
 </body>
 </html>
