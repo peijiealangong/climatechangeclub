@@ -84,7 +84,7 @@ The reusable JS will automatically toggle visibility.
 
 &nbsp;   <p>Just download our ad-free simple game!</p>
 
-&nbsp;   <a href="/downloads" class="popup-btn">Download Now</a>
+&nbsp;   <a href="/download" class="popup-btn">Download Now</a>
 
 &nbsp; </div>
 
