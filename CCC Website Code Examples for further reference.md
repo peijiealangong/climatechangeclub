@@ -204,17 +204,9 @@ The reusable JS will automatically toggle visibility.
 
 ---
 
-###### JavaScript
+###### JavaScript (Add at bottom of page)
 
-// Popup JS
-
-window.onload = function() {
-
-&nbsp; setTimeout(showPopup, 5000);
-
-};
-
-
+<script>
 
 function showPopup() {
 
@@ -231,4 +223,14 @@ function closePopup() {
 }
 
 
+
+// Show popup after 5 seconds
+
+window.addEventListener("load", () => {
+
+&nbsp; setTimeout(showPopup, 5000);
+
+});
+
+</script>
 

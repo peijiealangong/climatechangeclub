@@ -93,15 +93,4 @@ document.getElementById("emailForm").addEventListener("submit", function(event) 
     document.getElementById("emailMessage").innerText = "Something went wrong. Please try again.";
   });
 });
-window.onload = function() {
-  setTimeout(showPopup, 5000);
-};
-
-function showPopup() {
-  document.getElementById("promoPopup").style.display = "flex";
-}
-
-function closePopup() {
-  document.getElementById("promoPopup").style.display = "none";
-}
 
