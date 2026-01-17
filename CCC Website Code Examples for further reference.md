@@ -208,6 +208,14 @@ The reusable JS will automatically toggle visibility.
 
 // Popup JS
 
+window.onload = function() {
+
+&nbsp; setTimeout(showPopup, 5000);
+
+};
+
+
+
 function showPopup() {
 
 &nbsp; document.getElementById("promoPopup").style.display = "flex";
@@ -221,16 +229,6 @@ function closePopup() {
 &nbsp; document.getElementById("promoPopup").style.display = "none";
 
 }
-
-
-
-// Trigger popup after delay (e.g., 5 seconds)
-
-window.onload = function() {
-
-&nbsp; setTimeout(showPopup, 5000);
-
-};
 
 
 

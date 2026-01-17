@@ -93,7 +93,10 @@ document.getElementById("emailForm").addEventListener("submit", function(event) 
     document.getElementById("emailMessage").innerText = "Something went wrong. Please try again.";
   });
 });
-// Popup JS
+window.onload = function() {
+  setTimeout(showPopup, 5000);
+};
+
 function showPopup() {
   document.getElementById("promoPopup").style.display = "flex";
 }
@@ -101,9 +104,4 @@ function showPopup() {
 function closePopup() {
   document.getElementById("promoPopup").style.display = "none";
 }
-
-// Trigger popup after delay (e.g., 5 seconds)
-window.onload = function() {
-  setTimeout(showPopup, 5000);
-};
 
