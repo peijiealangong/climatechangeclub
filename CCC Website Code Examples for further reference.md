@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
----
+\---
 
 ###### How to use it:
 
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
    class="hidden"
 
----
+\---
 
 ###### Example:
 
@@ -76,21 +76,21 @@ The reusable JS will automatically toggle visibility.
 
 <div id="promoPopup" class="popup">
 
-&nbsp; <div class="popup-content">
+  <div class="popup-content">
 
-&nbsp;   <span class="close-btn" onclick="closePopup()">\&times;</span>
+    <span class="close-btn" onclick="closePopup()">\&times;</span>
 
-&nbsp;   <h2>🎮 Want games and extras for free?</h2>
+    <h2>🎮 Want games and extras for free?</h2>
 
-&nbsp;   <p>Just download our ad-free simple game!</p>
+    <p>Just download our ad-free simple game!</p>
 
-&nbsp;   <a href="/download" class="popup-btn">Download Now</a>
+    <a href="/download" class="popup-btn">Download Now</a>
 
-&nbsp; </div>
+  </div>
 
 </div>
 
----
+\---
 
 ###### CSS
 
@@ -98,21 +98,21 @@ The reusable JS will automatically toggle visibility.
 
 .popup {
 
-&nbsp; position: fixed;
+  position: fixed;
 
-&nbsp; top: 0; left: 0;
+  top: 0; left: 0;
 
-&nbsp; width: 100%; height: 100%;
+  width: 100%; height: 100%;
 
-&nbsp; background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.6);
 
-&nbsp; display: none;
+  display: none;
 
-&nbsp; justify-content: center;
+  justify-content: center;
 
-&nbsp; align-items: center;
+  align-items: center;
 
-&nbsp; z-index: 9999;
+  z-index: 9999;
 
 }
 
@@ -120,19 +120,19 @@ The reusable JS will automatically toggle visibility.
 
 .popup-content {
 
-&nbsp; background: linear-gradient(135deg, #ff5f6d, #ffc371);
+  background: linear-gradient(135deg, #ff5f6d, #ffc371);
 
-&nbsp; padding: 30px;
+  padding: 30px;
 
-&nbsp; border-radius: 12px;
+  border-radius: 12px;
 
-&nbsp; text-align: center;
+  text-align: center;
 
-&nbsp; color: white;
+  color: white;
 
-&nbsp; box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
 
-&nbsp; animation: fadeIn 0.5s ease-in-out;
+  animation: fadeIn 0.5s ease-in-out;
 
 }
 
@@ -140,9 +140,9 @@ The reusable JS will automatically toggle visibility.
 
 .popup-content h2 {
 
-&nbsp; margin-top: 0;
+  margin-top: 0;
 
-&nbsp; font-size: 1.8em;
+  font-size: 1.8em;
 
 }
 
@@ -150,23 +150,23 @@ The reusable JS will automatically toggle visibility.
 
 .popup-btn {
 
-&nbsp; display: inline-block;
+  display: inline-block;
 
-&nbsp; margin-top: 15px;
+  margin-top: 15px;
 
-&nbsp; padding: 12px 24px;
+  padding: 12px 24px;
 
-&nbsp; background: white;
+  background: white;
 
-&nbsp; color: #ff5f6d;
+  color: #ff5f6d;
 
-&nbsp; font-weight: bold;
+  font-weight: bold;
 
-&nbsp; border-radius: 8px;
+  border-radius: 8px;
 
-&nbsp; text-decoration: none;
+  text-decoration: none;
 
-&nbsp; transition: background 0.3s;
+  transition: background 0.3s;
 
 }
 
@@ -174,7 +174,7 @@ The reusable JS will automatically toggle visibility.
 
 .popup-btn:hover {
 
-&nbsp; background: #ffe0e0;
+  background: #ffe0e0;
 
 }
 
@@ -182,13 +182,13 @@ The reusable JS will automatically toggle visibility.
 
 .close-btn {
 
-&nbsp; position: absolute;
+  position: absolute;
 
-&nbsp; top: 15px; right: 20px;
+  top: 15px; right: 20px;
 
-&nbsp; font-size: 28px;
+  font-size: 28px;
 
-&nbsp; cursor: pointer;
+  cursor: pointer;
 
 }
 
@@ -196,13 +196,13 @@ The reusable JS will automatically toggle visibility.
 
 @keyframes fadeIn {
 
-&nbsp; from { opacity: 0; transform: scale(0.9); }
+  from { opacity: 0; transform: scale(0.9); }
 
-&nbsp; to { opacity: 1; transform: scale(1); }
+  to { opacity: 1; transform: scale(1); }
 
 }
 
----
+\---
 
 ###### JavaScript (Add at bottom of page)
 
@@ -210,7 +210,7 @@ The reusable JS will automatically toggle visibility.
 
 function showPopup() {
 
-&nbsp; document.getElementById("promoPopup").style.display = "flex";
+\&nbsp; document.getElementById("promoPopup").style.display = "flex";
 
 }
 
@@ -218,7 +218,7 @@ function showPopup() {
 
 function closePopup() {
 
-&nbsp; document.getElementById("promoPopup").style.display = "none";
+\&nbsp; document.getElementById("promoPopup").style.display = "none";
 
 }
 
@@ -228,9 +228,8 @@ function closePopup() {
 
 window.addEventListener("load", () => {
 
-&nbsp; setTimeout(showPopup, 5000);
+\&nbsp; setTimeout(showPopup, 5000);
 
 });
 
-</script>
 
