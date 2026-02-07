@@ -131,3 +131,6 @@ document.addEventListener("scroll", () => {
     }
   });
 });
+// Force-unlock scrolling on load
+document.body.style.overflowY = "auto";
+document.body.style.height = "auto";

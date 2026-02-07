@@ -1,3 +1,23 @@
+/* THE ANTI-STUCK LOGIC 
+   Ensures vertical scrolling is ALWAYS possible 
+*/
+
+html, body {
+    /* 1. Prevent horizontal shaking/scrolling */
+    overflow-x: hidden; 
+
+    /* 2. Force vertical scrolling to be handled by the browser */
+    overflow-y: auto !important; 
+
+    /* 3. Allow the page to grow as long as the content needs it to be */
+    height: auto !important; 
+
+    /* 4. Ensure the background still covers the full screen if content is short */
+    min-height: 100%; 
+    
+    /* 5. Smooth out the scrolling experience */
+    scroll-behavior: smooth;
+}
 /* ==================================================
    1. VARIABLES & THEME CONFIGURATION
    (Added this so you can easily change colors later)
