@@ -258,6 +258,9 @@ document.addEventListener("DOMContentLoaded", () => {
     <a href="/download" class="popup-btn">Download Now</a>
   </div>
 </div>
+<!-- Music + Audio -->
+<audio id="bgm" src="Sunny_Morning" loop></audio>
+
 // Javascript for message box
 <script>
 function showPopup() {
@@ -278,6 +281,19 @@ window.addEventListener("load", () => {
     window.scrollTo(0, 0);
   });
 </script>
+<script>
+  const bgm = document.getElementById("bgm");
+
+  function tryPlayMusic() {
+    bgm.play().catch(() => {});
+    document.removeEventListener("click", tryPlayMusic);
+    document.removeEventListener("scroll", tryPlayMusic);
+  }
+
+  document.addEventListener("click", tryPlayMusic);
+  document.addEventListener("scroll", tryPlayMusic);
+</script>
+
 </body>
 </html>
 
