@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-68D6N5XQ6D"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-68D6N5XQ6D');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Official notices, alerts, and deployment logs for the Climate Change Club website.">
@@ -11,6 +18,14 @@
     <script src="javascript.js" defer></script>
 
     <style>
+        /* ✅ SCROLL FIX: Force the page to be scrollable */
+        html, body {
+            overflow-x: hidden; /* Prevent sideways scrolling */
+            overflow-y: auto !important;   /* Force vertical scrolling */
+            height: auto !important;       /* Allow body to grow with content */
+            min-height: 100%;
+        }
+
         :root {
             --primary-green: #1b4332;
             --accent-teal: #2a9d8f;
@@ -25,7 +40,7 @@
             background: #f0f4f1;
             color: #1b4332;
             margin: 0;
-            padding-top: 80px;
+            padding-top: 100px; /* Increased space for fixed nav */
         }
 
         /* Hero Header */
@@ -41,12 +56,14 @@
         .notices-hero h1 { font-size: 3rem; font-weight: 800; }
 
         /* Container */
-        .container { padding: 0 10%; margin-bottom: 60px; }
-
-        /* Alert Section (High Priority) */
-        .alerts-wrapper {
-            margin-bottom: 50px;
+        .container { 
+            padding: 0 10%; 
+            margin-bottom: 60px;
+            overflow: visible; /* Ensures content isn't trapped */
         }
+
+        /* Alert Section */
+        .alerts-wrapper { margin-bottom: 50px; }
 
         .alert-card {
             background: #fff;
@@ -94,7 +111,28 @@
         .b-milestone { background: var(--milestone-gold); color: #000; }
         .b-critical { background: var(--alert-red); color: white; }
 
-        /* Swatch Panel (Consistency) */
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Nav & Footer */
+        nav { position: fixed; top: 0; width: 100%; background: rgba(27, 67, 50, 0.95); backdrop-filter: blur(10px); z-index: 1000; padding: 15px 0; }
+        nav ul { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 0; }
+        nav a { color: white; text-decoration: none; font-weight: 600; }
+        .submenu { display: none; position: absolute; background: #1b4332; padding: 10px; border-radius: 8px; list-style: none; }
+        .dropdown:hover .submenu { display: block; }
+        
+        footer { 
+            background: #1b4332; 
+            color: white; 
+            padding: 40px; 
+            text-align: center; 
+            position: relative; 
+            z-index: 1;
+        }
+
+        /* Swatch Panel */
         .color-panel {
             text-align: center;
             background: white;
@@ -103,28 +141,8 @@
             border-radius: 30px;
             box-shadow: var(--shadow);
         }
-
-        .swatch-container {
-            display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px;
-        }
-
-        .swatch {
-            width: 35px; height: 35px; border-radius: 50%; border: 2px solid #fff;
-            cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        /* Nav & Footer (Standardized) */
-        nav { position: fixed; top: 0; width: 100%; background: rgba(27, 67, 50, 0.95); backdrop-filter: blur(10px); z-index: 1000; padding: 15px 0; }
-        nav ul { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 0; }
-        nav a { color: white; text-decoration: none; font-weight: 600; }
-        .submenu { display: none; position: absolute; background: #1b4332; padding: 10px; border-radius: 8px; list-style: none; }
-        .dropdown:hover .submenu { display: block; }
-        footer { background: #1b4332; color: white; padding: 40px; text-align: center; }
+        .swatch-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px; }
+        .swatch { width: 35px; height: 35px; border-radius: 50%; border: 2px solid #fff; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -189,14 +207,11 @@
             <div class="log-item"><span class="badge b-new">UI/UX</span> <p>Added modern dropdown menu for Windows 11 optimized experience.</p></div>
             <div class="log-item"><span class="badge b-fix">System</span> <p>JavaScript pop-ups removed to maximize user-friendly experience.</p></div>
             <div class="log-item"><span class="badge b-new">Feature</span> <p>New color-changing theme engine added to all pages.</p></div>
-	    <div class="log-item"><span class="badge b-new">UI/UX</span> <p>New updated modern website! Even more improvements.</p></div>
+            <div class="log-item"><span class="badge b-new">UI/UX</span> <p>New updated modern website! Even more improvements.</p></div>
         </div>
     </section>
 
     
-
-[Image of a website development lifecycle]
-
 
     <section class="color-panel">
         <h3>🎨 Customize Interface</h3>
