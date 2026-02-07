@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Discover the Climate Change Club—our mission, projects, and how you can help fight climate change." />
-  <title>Climate Change Club Home Page</title>
+  <title>Climate Change Club | Take Action</title>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-68D6N5XQ6D"></script>
   <script>
@@ -14,43 +14,147 @@
     gtag('config', 'G-68D6N5XQ6D');
   </script>
 
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 
   <style>
-    /* Helper classes for functionality */
+    /* --- NEW EYE-CATCHING STYLES --- */
+    :root {
+      --primary-green: #2d6a4f;
+      --action-teal: #2a9d8f;
+      --glass: rgba(255, 255, 255, 0.8);
+      --glass-border: rgba(255, 255, 255, 0.3);
+      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f0f4f1;
+      color: #1b4332;
+      line-height: 1.6;
+      transition: background 0.5s ease;
+      overflow-x: hidden;
+    }
+
+    /* Navigation - Glassmorphism */
+    nav {
+      position: fixed;
+      top: 0; width: 100%;
+      background: rgba(45, 106, 79, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 15px 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    nav ul {
+      display: flex; justify-content: center; gap: 30px; list-style: none;
+    }
+
+    nav a {
+      color: white; text-decoration: none; font-weight: 600;
+      font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;
+      transition: var(--transition);
+    }
+
+    nav a:hover { color: #95d5b2; transform: translateY(-2px); }
+
+    /* Hero Section - Animated Gradient */
+    .hero {
+      height: 80vh;
+      background: linear-gradient(-45deg, #2d6a4f, #40916c, #1b4332, #2a9d8f);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center; color: white; padding: 20px;
+      clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .hero h1 { font-size: 4rem; font-weight: 800; margin-bottom: 10px; text-shadow: 2px 4px 10px rgba(0,0,0,0.3); }
+    .hero p { font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9; }
+
+    /* Buttons */
+    .btn {
+      padding: 15px 40px; background: white; color: var(--primary-green);
+      text-decoration: none; border-radius: 50px; font-weight: 800;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: var(--transition);
+      animation: pulse 2s infinite;
+    }
+
+    .btn:hover { transform: scale(1.1); box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    /* Cards Grid */
+    .intro-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px; padding: 50px 10%; margin-top: -50px;
+    }
+
+    .intro-card {
+      background: var(--glass);
+      backdrop-filter: blur(5px);
+      padding: 40px; border-radius: 20px;
+      border: 1px solid var(--glass-border);
+      text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+      transition: var(--transition);
+    }
+
+    .intro-card:hover { transform: translateY(-15px); background: white; }
+
+    .btn-primary {
+      display: inline-block; margin-top: 20px; color: var(--action-teal);
+      font-weight: 600; text-decoration: none; border: 2px solid var(--action-teal);
+      padding: 8px 20px; border-radius: 20px; transition: var(--transition);
+    }
+
+    .btn-primary:hover { background: var(--action-teal); color: white; }
+
+    /* Progress Tracker Styles */
+    .impact-stats { background: white; padding: 60px 10%; border-radius: 50px; margin: 40px 5%; }
+    .progress-container { 
+      background: #e9ecef; border-radius: 100px; height: 12px; 
+      margin: 15px 0; overflow: hidden; 
+    }
+    .progress-bar { 
+      height: 100%; background: linear-gradient(90deg, #52b788, #2a9d8f); 
+      border-radius: 100px; transition: width 2s ease-in-out;
+    }
+
+    /* Modal & Popup */
     .hidden { display: none; }
-    
-    /* Basic Modal/Popup Styling to ensure they appear centered */
     .modal, .popup {
-        display: none; /* Hidden by default */
-        position: fixed;
-        z-index: 1000;
-        left: 0; top: 0;
-        width: 100%; height: 100%;
-        overflow: auto;
-        background-color: rgba(0,0,0,0.5);
+      position: fixed; z-index: 2000; left: 0; top: 0;
+      width: 100%; height: 100%; background: rgba(0,0,0,0.7);
+      display: none; align-items: center; justify-content: center;
     }
     .modal-content, .popup-content {
-        background-color: #fefefe;
-        margin: 15% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-        max-width: 500px;
-        text-align: center;
-        border-radius: 8px;
+      background: white; padding: 40px; border-radius: 30px;
+      max-width: 500px; width: 90%; position: relative;
     }
-    .close-btn {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-        cursor: pointer;
+
+    /* Color Panel Styling */
+    .color-panel { text-align: center; padding: 40px; }
+    .color-panel button {
+      width: 40px; height: 40px; border-radius: 50%; border: 3px solid white;
+      cursor: pointer; margin: 5px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
     }
-    /* Progress Bar Basic Style */
-    .progress-container { background-color: #ddd; border-radius: 5px; margin: 5px 0; }
-    .progress-bar { height: 20px; background-color: #4CAF50; border-radius: 5px; }
+    .color-panel button:hover { transform: scale(1.2); }
+
+    footer { background: #1b4332; color: white; padding: 40px; text-align: center; }
   </style>
 </head>
 <body>
@@ -58,293 +162,125 @@
   <nav>
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li class="dropdown">
-        <a href="about.html">About Us</a>
-        <ul class="submenu">
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="meetings.html">Events</a></li>
-        </ul>
-      </li>
-      <li><a href="notices.html">Notices</a></li>
-      <li><a href="articles.html">Articles</a></li>
-      <li><a href="climatechronicle.html">Chronicle</a></li>
-      <li><a href="download.html">Download App</a></li>
+      <li><a href="about.html">Mission</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="meetings.html">Events</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 
   <section class="hero">
-    <h1>Welcome to Our Club</h1>
-    <p>Making a difference through climate action.</p>
-    <a class="btn" href="#">Join Us</a>
+    <h1>Change the Future</h1>
+    <p>We are a student-led force fighting for the only planet we have.</p>
+    <a class="btn" href="#join">Join the Movement</a>
   </section>
-
-  <div style="text-align: center; margin: 20px 0;">
-      <h1>Welcome to the Climate Change Club! 🌎</h1>
-  </div>
 
   <section class="intro-grid">
     <div class="intro-card">
-      <h2>🌱 Mission</h2>
-      <p>Discover how we fight climate change through education and action.</p>
+      <h2>🌱 Our Mission</h2>
+      <p>Education, advocacy, and direct action to halt the climate crisis.</p>
       <a href="about.html" class="btn-primary">Read More</a>
     </div>
     <div class="intro-card">
-      <h2>🛠️ Projects</h2>
-      <p>See our latest sustainability initiatives and student-led campaigns.</p>
-      <a href="projects.html" class="btn-primary">Explore Projects</a>
+      <h2>🛠️ Student Projects</h2>
+      <p>From campus composting to city-wide policy advocacy.</p>
+      <a href="projects.html" class="btn-primary">Explore</a>
     </div>
     <div class="intro-card">
-      <h2>📅 Events</h2>
-      <p>Join workshops, marches, and speaker sessions happening near you.</p>
-      <a href="meetings.html" class="btn-primary">Upcoming Events</a>
+      <h2>📅 Upcoming Events</h2>
+      <p>Join our next march or community workshop this weekend.</p>
+      <a href="meetings.html" class="btn-primary">View Calendar</a>
     </div>
   </section>
-
-  <section class="survey-donate-wrapper">
-    <div class="survey-container">
-      <h2 class="survey">📋 Climate Change Club Survey</h2>
-      <iframe src="https://forms.cloud.microsoft/r/3ch85QFxDB"
-              width="800" height="350" frameborder="0"
-              marginheight="0" marginwidth="0">
-        Loading…
-      </iframe>
-    </div>
-     
-    <div style="margin-top: 20px;">
-        <button class="beta-toggle" data-target="beta-donate">
-        Show Beta Update: Warning — beta updates may be unstable or in demo mode
-        </button>
-
-        <div id="beta-donate" class="beta-section hidden">
-        <form action="https://www.paypal.com/donate" method="post" target="_blank">
-            <input type="hidden" name="hosted_button_id" value="YOUR_BUTTON_ID_HERE" />
-            <input type="image"
-                src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
-                border="0"
-                name="submit"
-                title="PayPal - The safer, easier way to pay online!"
-                alt="Donate with PayPal button" />
-            <img alt="" border="0"
-                src="https://www.paypal.com/en_US/i/scr/pixel.gif"
-                width="1" height="1" />
-        </form>
-        </div>
-    </div>
-  </section>
-
 
   <section class="impact-stats">
-    <h2 class="goals">🎯 Our Goals</h2>
-    <div class="stats-grid">
+    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 40px;">🎯 Our Live Impact</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
       <div>
-        <strong>Trees to Plant</strong>
-        <div class="progress-container">
-          <div class="progress-bar" style="width:5%"></div>
-        </div>
-        <p>5% complete</p>
+        <strong>🌳 Trees Planted</strong>
+        <div class="progress-container"><div class="progress-bar" style="width:5%"></div></div>
+        <p>500 / 10,000</p>
       </div>
       <div>
-        <strong>Donations Goal <i>We got 5% more donations this month! Keep it up everyone.</i> ($100,000)</strong>
-        <div class="progress-container">
-          <div class="progress-bar" style="width:15%"></div>
-        </div>
-        <p>15% complete</p>
+        <strong>💰 Funding Raised</strong>
+        <div class="progress-container"><div class="progress-bar" style="width:15%"></div></div>
+        <p>$15,000 / $100,000</p>
       </div>
       <div>
-        <strong>Members to Empower</strong>
-        <div class="progress-container">
-          <div class="progress-bar" style="width:20%"></div>
-        </div>
-        <p>20% complete</p>
+        <strong>✊ Members Empowered</strong>
+        <div class="progress-container"><div class="progress-bar" style="width:20%"></div></div>
+        <p>200 / 1,000</p>
       </div>
     </div>
-  </section>
-
-  <section class="featured-article">
-    🌟 Featured: "Climate Action Week Recap – Students Lead the Charge!"
-    <a href="articles.html">Read More →</a>
-  </section>
-
-  <section>
-    <h2 class="ourOpportunity">🔥 Climate Change: Our Challenge, Our Opportunity</h2>
-    <ul>
-      <li><strong>Extreme Weather:</strong> Hurricanes, wildfires, floods, and droughts are intensifying.</li>
-      <li><strong>Rising Temperatures:</strong> Over 1°C increase since pre-industrial times.</li>
-      <li><strong>Environmental Injustice:</strong> Marginalized communities bear the brunt.</li>
-    </ul>
-    <h3>💡 What You Can Do</h3>
-    <ul>
-      <li><strong>Learn:</strong> Attend workshops and speaker events.</li>
-      <li><strong>Act:</strong> Join sustainability initiatives and advocate for green policies.</li>
-      <li><strong>Create:</strong> Use writing, art, or media to inspire change.</li>
-    </ul>
-    <p><strong>✊ Join the Movement:</strong> The Climate Change Club is a student-powered force for the future.</p>
-  </section>
-
-  <div style="margin: 20px 0;">
-    <a href="https://drive.google.com/file/d/1rmGnDCa2CLQI4ZROU6QUg3VpUSX2BLEL/view?usp=sharing" download>
-        <button>View or download our README file that lists our attributions and credits here! Everyone's support makes a difference on this website.</button>
-    </a>
-  </div>
-
-  <section>
-    <div class="tenor-gif-embed"
-         data-postid="21239161"
-         data-share-method="host"
-         data-aspect-ratio="0.709375"
-         data-width="50%">
-      <a href="https://tenor.com/view/environmentalism-climate-strike-climate-march-there-is-no-planet-b-climate-action-gif-21239161">
-        Environmentalism Climate Strike GIF
-      </a>
-      from <a href="https://tenor.com/search/environmentalism-gifs">Environmentalism GIFs</a>
-    </div>
-    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
   </section>
 
   <section class="color-panel">
-    <h2>🎨 Customize Your Background</h2>
-    <button onclick="changeColor('blue')">Blue</button>
-    <button onclick="changeColor('#a8dadc')">Ocean Blue</button>
-    <button onclick="changeColor('#2a9d8f')">Rainforest Green</button>
-    <button onclick="changeColor('#f4a261')">Sunset Orange</button>
-    <button onclick="changeColor('#e63946')">Wildfire</button>
-    <button onclick="changeColor('#ffcad4')">Spring Bloom</button>
-    <button onclick="changeColor('#5e548e')">Midnight</button>
-    <button onclick="changeColor('')">Reset</button>
+    <h3>🎨 Set the Mood</h3>
+    <button onclick="changeColor('#a8dadc')" style="background:#a8dadc"></button>
+    <button onclick="changeColor('#2a9d8f')" style="background:#2a9d8f"></button>
+    <button onclick="changeColor('#f4a261')" style="background:#f4a261"></button>
+    <button onclick="changeColor('#e63946')" style="background:#e63946"></button>
+    <button onclick="changeColor('#ffcad4')" style="background:#ffcad4"></button>
+    <button onclick="changeColor('')" style="background:#ddd" title="Reset"></button>
   </section>
 
-  <form id="emailForm">
-    <h2>📧 Stay Updated</h2>
-    <input type="email" id="email" placeholder="Enter your email" required />
-    <input type="submit" value="Subscribe" />
-    <p id="emailMessage"></p>
-  </form>
-
-  <div class="music-section" style="margin: 20px 0; padding: 10px; border-top: 1px solid #ccc;">
-      <h3>🎵 Music Player</h3>
-      <button id="musicBtn">Play Music</button>
-      
-      <audio id="bgMusic" controls style="display:block; margin-top:10px;">
-        <source src="/Sunny_Morning.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
-  </div>
-
-  <div id="customModal" class="modal">
-    <div class="modal-content">
-      <h2 id="modalTitle"></h2>
-      <p id="modalMessage"></p>
-      <button onclick="closeModal()">Close</button>
+  <section style="text-align: center; padding: 50px;">
+    <button class="beta-toggle btn-primary" data-target="beta-donate">Toggle Beta Features</button>
+    <div id="beta-donate" class="hidden" style="margin-top:20px;">
+        <p>⚠️ Beta Donation Portal</p>
+        <form action="https://www.paypal.com/donate" method="post" target="_blank">
+            <input type="hidden" name="hosted_button_id" value="YOUR_BUTTON_ID_HERE" />
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" name="submit" alt="Donate" />
+        </form>
     </div>
+  </section>
+
+  <div class="music-section" style="position: fixed; bottom: 20px; left: 20px; z-index: 1000;">
+      <button id="musicBtn" style="padding: 10px 20px; border-radius: 50px; border: none; background: var(--primary-green); color: white; cursor: pointer;">🎵 Play Ambient Music</button>
+      <audio id="bgMusic" loop>
+        <source src="/Sunny_Morning.mp3" type="audio/mpeg">
+      </audio>
   </div>
 
   <div id="promoPopup" class="popup">
     <div class="popup-content">
-      <span class="close-btn" onclick="closePopup()">&times;</span>
-      <h2>🎮 Want games and extras for free?</h2>
-      <p>Just download our ad-free simple game!</p>
-      <a href="/download" class="popup-btn">Download Now</a>
+      <span class="close-btn" onclick="closePopup()" style="position:absolute; right:20px; top:10px; cursor:pointer; font-size:2rem;">&times;</span>
+      <h2>🎮 Eco-Game Available!</h2>
+      <p>Learn while you play. Download our ad-free game now.</p>
+      <a href="/download" class="btn-primary">Download</a>
     </div>
   </div>
 
   <footer>
-    <p>🌍 Climate Change Club | © 2025 Peijie | Built with ❤️ and HTML/CSS/JavaScript</p>
-    <div class="socials">
-      <a href="#"><img src="icons/twitter.svg" alt="Twitter"></a>
-      <a href="#"><img src="icons/instagram.svg" alt="Instagram"></a>
-      <a href="#"><img src="icons/github.svg" alt="GitHub"></a>
-    </div>
+    <p>🌍 Climate Change Club | Built with ❤️ by Peijie</p>
   </footer>
 
   <script>
-    // 1. Scroll to top on load
-    window.addEventListener("load", () => {
-        window.scrollTo(0, 0);
-    });
+    // Essential Functionality
+    function changeColor(val) { document.body.style.background = val || '#f0f4f1'; }
+    
+    function closePopup() { document.getElementById("promoPopup").style.display = "none"; }
 
-    // 2. Background color utility
-    function changeColor(val) {
-      document.body.style.background = val || '';
-    }
-
-    // 3. Email form feedback
-    document.getElementById('emailForm').addEventListener('submit', function(e){
-      e.preventDefault();
-      const email = document.getElementById('email').value;
-      const msg = document.getElementById('emailMessage');
-      if (!email) {
-        msg.textContent = 'Please enter a valid email.';
-        return;
-      }
-      msg.textContent = 'Thanks — you are subscribed (demo).';
-      this.reset();
-    });
-
-    // 4. Modal helper
-    function closeModal() {
-      document.getElementById('customModal').style.display = 'none';
-    }
-
-    // 5. Reusable Beta Reveal System
-    document.addEventListener("DOMContentLoaded", () => {
-      const toggles = document.querySelectorAll(".beta-toggle");
-      toggles.forEach(btn => {
-        btn.addEventListener("click", () => {
-          const targetId = btn.getAttribute("data-target");
-          const target = document.getElementById(targetId);
-          if (target) {
-            target.classList.toggle("hidden");
-          }
-        });
+    // Beta Toggle
+    document.querySelectorAll(".beta-toggle").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const target = document.getElementById(btn.getAttribute("data-target"));
+        target.classList.toggle("hidden");
       });
     });
 
-    // 6. Promo Popup Logic
-    function showPopup() {
-      document.getElementById("promoPopup").style.display = "block"; // Changed from flex to block/match css
-    }
-    function closePopup() {
-      document.getElementById("promoPopup").style.display = "none";
-    }
-    // Show popup after 5 seconds
+    // Auto-show Popup
     window.addEventListener("load", () => {
-      setTimeout(showPopup, 5000);
+      setTimeout(() => { document.getElementById("promoPopup").style.display = "flex"; }, 5000);
     });
 
-    // 7. Music Player Logic (Consolidated)
+    // Music Player
     const music = document.getElementById("bgMusic");
     const btn = document.getElementById("musicBtn");
-
-    // Button toggle logic
-    if(btn && music) {
-        btn.addEventListener("click", () => {
-            if (music.paused) {
-            music.play();
-            btn.textContent = "Pause Music";
-            } else {
-            music.pause();
-            btn.textContent = "Play Music";
-            }
-        });
-    }
-
-    // Auto-play attempt (Browser may block this without interaction)
-    function tryPlayMusic() {
-        if(music) {
-            music.play().then(() => {
-                btn.textContent = "Pause Music";
-            }).catch(() => {
-                // Auto-play failed (expected in many browsers), waiting for user interaction
-            });
-            // Remove listeners once tried
-            document.removeEventListener("click", tryPlayMusic);
-            document.removeEventListener("scroll", tryPlayMusic);
-        }
-    }
-    document.addEventListener("click", tryPlayMusic);
-    document.addEventListener("scroll", tryPlayMusic);
-
+    btn.addEventListener("click", () => {
+      if (music.paused) { music.play(); btn.textContent = "⏸ Pause Music"; }
+      else { music.pause(); btn.textContent = "🎵 Play Ambient Music"; }
+    });
   </script>
 </body>
 </html>
