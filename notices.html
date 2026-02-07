@@ -1,32 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-68D6N5XQ6D"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-68D6N5XQ6D');
-</script>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="This is the Notices page. You can learn about new releases here.">
-    <title>Climate Change Club | Notices</title>
+    <meta name="description" content="Official notices, alerts, and deployment logs for the Climate Change Club website.">
+    <title>Notices | Climate Change Club</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="javascript.js"></script>
+    <script src="javascript.js" defer></script>
 
+    <style>
+        :root {
+            --primary-green: #1b4332;
+            --accent-teal: #2a9d8f;
+            --alert-red: #e63946;
+            --milestone-gold: #f4d35e;
+            --glass: rgba(255, 255, 255, 0.85);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f0f4f1;
+            color: #1b4332;
+            margin: 0;
+            padding-top: 80px;
+        }
+
+        /* Hero Header */
+        .notices-hero {
+            background: linear-gradient(135deg, #1b4332, #081c15);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+            margin-bottom: 40px;
+        }
+
+        .notices-hero h1 { font-size: 3rem; font-weight: 800; }
+
+        /* Container */
+        .container { padding: 0 10%; margin-bottom: 60px; }
+
+        /* Alert Section (High Priority) */
+        .alerts-wrapper {
+            margin-bottom: 50px;
+        }
+
+        .alert-card {
+            background: #fff;
+            border-left: 8px solid var(--alert-red);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            animation: slideIn 0.5s ease;
+        }
+
+        /* Timeline Log Layout */
+        .log-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .log-item {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.3);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .log-item:hover { transform: scale(1.02); background: white; }
+
+        /* Status Badges */
+        .badge {
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            min-width: 80px;
+            text-align: center;
+        }
+        .b-fix { background: #d8f3dc; color: #1b4332; }
+        .b-new { background: #caf0f8; color: #0077b6; }
+        .b-milestone { background: var(--milestone-gold); color: #000; }
+        .b-critical { background: var(--alert-red); color: white; }
+
+        /* Swatch Panel (Consistency) */
+        .color-panel {
+            text-align: center;
+            background: white;
+            padding: 40px 20px;
+            margin: 40px 10%;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .swatch-container {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px;
+        }
+
+        .swatch {
+            width: 35px; height: 35px; border-radius: 50%; border: 2px solid #fff;
+            cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Nav & Footer (Standardized) */
+        nav { position: fixed; top: 0; width: 100%; background: rgba(27, 67, 50, 0.95); backdrop-filter: blur(10px); z-index: 1000; padding: 15px 0; }
+        nav ul { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 0; }
+        nav a { color: white; text-decoration: none; font-weight: 600; }
+        .submenu { display: none; position: absolute; background: #1b4332; padding: 10px; border-radius: 8px; list-style: none; }
+        .dropdown:hover .submenu { display: block; }
+        footer { background: #1b4332; color: white; padding: 40px; text-align: center; }
+    </style>
 </head>
 <body>
 
-
-
- <!-- Navigation Bar -->
 <nav>
-
-  <div class="nav-right">
     <ul>
       <li class="dropdown">
         <a href="index.html">Home</a>
@@ -42,85 +145,75 @@
           <li><a href="notices.html">Notices</a></li>
           <li><a href="articles.html">Articles</a></li>
           <li><a href="climatechronicle.html">The Climate Chronicle</a></li>
-<li><a href="download.html">Download App</a></li>
-
+          <li><a href="download.html">Download App</a></li>
         </ul>
       </li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-  </div>
 </nav>
 
+<header class="notices-hero">
+    <h1>Command Center</h1>
+    <p>Live updates, status alerts, and website logs.</p>
+</header>
 
-   
-    <!-- Header Section -->
-    <header>
-        <h1>Notices for the website and the Climate Change Club</h1>
-        <p>We continue to update our notices for this website and the Climate Change Club.</p>
-    </header>
+<main class="container">
+    
+    <section class="alerts-wrapper">
+        <h2 style="border-bottom: 2px solid var(--alert-red); display: inline-block;">⚠️ Active Alerts</h2>
+        
+        <div class="alert-card">
+            <span class="badge b-critical">Critical Alert</span>
+            <p><b>Outage Report (6/5/25):</b> 5 pages temporarily went down due to an unsuccessful commit during a WiFi outage. Recovery in progress.</p>
+        </div>
+
+        <div class="alert-card" style="border-left-color: var(--milestone-gold);">
+            <span class="badge b-milestone">Milestone</span>
+            <p><b>60th Deployment Anniversary:</b> From "update to email sending" to a full redesign. Thank you for your support!</p>
+        </div>
+
+        <div class="alert-card" style="border-left-color: var(--accent-teal);">
+            <span class="badge b-new">Update</span>
+            <p><b>Traffic Report:</b> Website traffic dropped to 96 visits in 30 days. We are investigating engagement strategies.</p>
+        </div>
+    </section>
 
     <section>
-		<h1>Climate Change Club Website Notices</h1>
+        <h2 style="border-bottom: 2px solid var(--accent-teal); display: inline-block;">📝 Activity Log (EDT)</h2>
+        <div class="log-section">
+            <div class="log-item"><span class="badge b-fix">Bug Fix</span> <p>Major bug fixes found and fixed; recovery for corrupted contact page.</p></div>
+            <div class="log-item"><span class="badge b-new">UI/UX</span> <p>Font changed to <b>Climate Crisis</b>; animations temporarily adjusted.</p></div>
+            <div class="log-item"><span class="badge b-new">Pages</span> <p>New "Notice" page deployed at 9:40 PM (6/4/25).</p></div>
+            <div class="log-item"><span class="badge b-fix">Navbar</span> <p>Updated Navigation Bar to prevent blocking text on various screen sizes.</p></div>
+            <div class="log-item"><span class="badge b-new">Articles</span> <p>New article added at 7:34 PM (6/5/25) with updated imagery.</p></div>
+            <div class="log-item"><span class="badge b-new">UI/UX</span> <p>Added modern dropdown menu for Windows 11 optimized experience.</p></div>
+            <div class="log-item"><span class="badge b-fix">System</span> <p>JavaScript pop-ups removed to maximize user-friendly experience.</p></div>
+            <div class="log-item"><span class="badge b-new">Feature</span> <p>New color-changing theme engine added to all pages.</p></div>
+	    <div class="log-item"><span class="badge b-new">UI/UX</span> <p>New updated modern website! Even more improvements.</p></div>
+        </div>
+    </section>
 
-<ol>  <!-- ✅ Proper ordered list -->
-<li>New update on 6/4/25: major bug fixes found and fixed, contact page corrupted</li>
-<li><b>Major update: font changed to Climate Crisis, animations disabled tempoarly</b></li>
-<li><b><i>Crtical Alert: 5 pages tempoarly went down at around 6:50 on 6/5/25 of an unsucessful commit to the website durning a wifi outage. Pages will be expected to be put up the following 2 hours.</i></b></li>
-<li>5 pages were deployed on the Climate Change Club that were courpted due to an outage</li>
-<li>1 new page was but up at 9:40 on 6/4/25 called Notice at https://climatechangeclub.pages.dev/notices.html</li>
-<li>Updated Navagation Bar (navbar) was updated to specifically match the website and not block important text</li>
-<li>1 new page was put up at 7:30 PM 6/5/25 and 1 new article was added at 7:34 PM, 6/5/25.</li>
-<li><b><u><i>Note: all times are in EDT</i></u></b></li>
-<li>A new picture was added to the article</li>
-<li>Many bug fixes were fixed and require a refresh. Please refresh the website now.</li>
-<li>A new drop-down menu was added to the nav bar</li>
-<li>New bug fixes enhanced a user-friendly expiernce and a modern navagation bar</li>
-<li>JavaScript removed for pop-up boxes to minimize disturbance and to maximize user-friendly expiernce</li>
-<li><b>Alert: Climate Change Club Website dropped down to just 96 visits in 30 days; see details below</b></li>
-<li>A new footer was added to all pages</li>
-<li><b>Alert: New color changing buttons added to website</b></li>
- 
-</ol>
+    
+
+[Image of a website development lifecycle]
 
 
-      </section>
-<hr>
-<section>
-<h1>Climate Change Cub Website Alerts</h1>
-<ol>
-<li><b>Alert: Climate Change Club Website dropped down to just 96 visits in 30 days</b></li>
-<li><b>Alert: Dropdown menu updated for a modern look versus Windows 10 look. This feature works best on Windows 11 devices, though it doesn't stop compatibility from viewing on any device other than Linux Distro Mint</b></li>
-<li><b><i>Climate Change Club Website has hit it's 60th deployment aniversery. First deployment name deployed on Cloudflare Pages: "update to email sending" </i></b></li>
-<li><b><i>We have completely redesigned this website on December! Thanks to everyone for your continous support! Merry Christmas everyone.</i></b></li>
-</ol>
-</section>
-<p>
-<div class="color-panel">
-<button onclick="changeColor('blue')">Change Background: Blue</button>
-<button onclick="changeColor('white')">Change Background: White</button>
-<button onclick="changeColor('#a8dadc')">Ocean Blue</button>
-<button onclick="changeColor('#2a9d8f')">Rainforest Green</button>
-<button onclick="changeColor('#f4a261')">Sunset Orange</button>
-<button onclick="changeColor('red')">Red</button>
-<button onclick="changeColor('lightblue')">Light Blue</button>
-<button onclick="changeColor('green')">Green</button>
-<button onclick="changeColor('')">Reset Background</button>
+    <section class="color-panel">
+        <h3>🎨 Customize Interface</h3>
+        <div class="swatch-container">
+            <button class="swatch" style="background: white;" onclick="changeColor('white')"></button>
+            <button class="swatch" style="background: #a8dadc;" onclick="changeColor('#a8dadc')"></button>
+            <button class="swatch" style="background: #2a9d8f;" onclick="changeColor('#2a9d8f')"></button>
+            <button class="swatch" style="background: #f4d35e;" onclick="changeColor('#f4d35e')"></button>
+            <button class="swatch" style="background: #e63946;" onclick="changeColor('#e63946')"></button>
+            <button class="swatch" style="background: #5e548e;" onclick="changeColor('#5e548e')"></button>
+            <button class="swatch" style="background: #ddd;" onclick="changeColor('')" title="Reset"></button>
+        </div>
+    </section>
+</main>
 
-  <button onclick="changeColor('#264653')">🌊 Ocean Depth</button>
-  <button onclick="changeColor('#2a9d8f')">🌿 Forest Floor</button><button style="background-color: #f4d35e; color: #222;" onclick="changeColor('#f4d35e')">☀️ Solar Glow</button>
-  <button onclick="changeColor('#e63946')">🔥 Wildfire</button>
-  <button onclick="changeColor('#a8dadc')">❄️ Polar Ice</button>
-  <button onclick="changeColor('#e9c46a')">🌾 Desert Sand</button>
-  <button onclick="changeColor('#6c757d')">🌪️ Storm Sky</button>
-  <button onclick="changeColor('#ffcad4')">🌸 Spring Bloom</button>
-  <button onclick="changeColor('#5e548e')">🌌 Midnight</button>
-  <button onclick="changeColor('#d8f3dc')">🌬️ Wind Whisper</button>
-</div>
-  </p>
-
-<!-- Footer -->
 <footer>
-  <p>🌍 Climate Change Club &nbsp; | &nbsp; © 2025 Peijie &nbsp; | &nbsp; Built with❤️ and HTML/CSS/JavaScript</p>
+    <p>🌍 Climate Change Club &nbsp; | &nbsp; © 2025 Peijie &nbsp; | &nbsp; Built with ❤️ and HTML/CSS/JavaScript</p>
 </footer>
 
 </body>

@@ -1,20 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="This page is all about the articles the climate change club made. We have 3 articles so far.">
-    <title>Our Projects | Climate Change Club</title>
+    <meta name="description" content="Explore articles by the Climate Change Club covering global impacts, local observations, and international field reports.">
+    <title>Articles | Climate Change Club</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="javascript.js"></script>
+    <script src="javascript.js" defer></script>
 
+    <style>
+        :root {
+            --primary-green: #1b4332;
+            --accent-teal: #2a9d8f;
+            --glass: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f0f4f1;
+            color: #1b4332;
+            margin: 0;
+            padding-top: 80px;
+        }
+
+        /* Hero Header */
+        .articles-hero {
+            background: linear-gradient(135deg, #2a9d8f, #264653);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+            margin-bottom: 40px;
+        }
+
+        .articles-hero h1 { font-size: 3rem; font-weight: 800; margin: 0; }
+        .articles-hero p { opacity: 0.9; font-size: 1.1rem; }
+
+        /* Article Card Layout */
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            padding: 0 10%;
+            margin-bottom: 60px;
+        }
+
+        .article-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-card:hover {
+            transform: translateY(-10px);
+            background: white;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.1);
+        }
+
+        /* Category Badges */
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            width: fit-content;
+        }
+        .urgent { background: #e63946; color: white; }
+        .observation { background: #f4a261; color: white; }
+        .international { background: #2a9d8f; color: white; }
+
+        .article-card h2 {
+            font-size: 1.4rem;
+            margin: 0 0 15px 0;
+            line-height: 1.3;
+        }
+
+        .article-card p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .read-more {
+            font-weight: 600;
+            color: var(--accent-teal);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Swatch Panel (Consistency with About page) */
+        .color-panel {
+            text-align: center;
+            background: white;
+            padding: 40px 20px;
+            margin: 40px 10%;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .swatch-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .swatch {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        .swatch:hover { transform: scale(1.2); }
+
+        /* Nav & Footer */
+        nav { position: fixed; top: 0; width: 100%; background: rgba(27, 67, 50, 0.95); backdrop-filter: blur(10px); z-index: 1000; padding: 15px 0; }
+        nav ul { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 0; padding: 0; }
+        nav a { color: white; text-decoration: none; font-weight: 600; }
+        .submenu { display: none; position: absolute; background: #1b4332; padding: 10px; border-radius: 8px; list-style: none; }
+        .dropdown:hover .submenu { display: block; }
+        
+        footer { background: #1b4332; color: white; padding: 40px; text-align: center; margin-top: 60px; }
+    </style>
 </head>
 <body>
 
-<!-- Navigation Bar -->
 <nav>
-    <div class="nav-right">
     <ul>
       <li class="dropdown">
         <a href="index.html">Home</a>
@@ -30,70 +163,64 @@
           <li><a href="notices.html">Notices</a></li>
           <li><a href="articles.html">Articles</a></li>
           <li><a href="climatechronicle.html">The Climate Chronicle</a></li>
-<li><a href="download.html">Download App</a></li>
-
+          <li><a href="download.html">Download App</a></li>
         </ul>
       </li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-  </div>
 </nav>
 
+<header class="articles-hero">
+    <h1>The Climate Library</h1>
+    <p>Critical perspectives and student-led investigations.</p>
+</header>
 
+<main>
+    <section class="article-grid">
+        <a href="https://climatechangeclub.pages.dev/screaming.html" class="article-card">
+            <span class="badge urgent">Urgent Read</span>
+            <h2>The Planet Is Screaming — Are We Listening?</h2>
+            <p>An in-depth look at global climate tipping points and why the time for quiet observation has ended.</p>
+            <span class="read-more">Full Article →</span>
+        </a>
 
-<!-- Header Section -->
-    <header>
-        <h1>Articles for the Climate Change Club</h1>
-        <p>We love sharing important articles about climate change and its effects with the world!</p>
-    </header>
+        <a href="https://climatechangeclub.pages.dev/egg.html" class="article-card">
+            <span class="badge observation">Field Observation</span>
+            <h2>The Blacktop Heat Effect</h2>
+            <p>A disturbing discovery of a broken egg on a treeless elementary school blacktop highlights the growing issue of urban heat islands.</p>
+            <span class="read-more">Full Article →</span>
+        </a>
 
-<section>
-<h1>Incomplete list of articles</h1>
-<ol> <!-- ✅ Ordered list without <ul> -->
-    <li><a class="featured-article" href="https://climatechangeclub.pages.dev/screaming.html">
-🌍🔥 Article: The Planet Is Screaming—Are We Listening?
-</a></li>
-<hr>
-    <li><a href="https://climatechangeclub.pages.dev/egg.html">
-    Article: A broken egg was found on the blacktop at the elementary school (name private) with no trees nearby. Click to learn more.</a></li>
-    <li><a href="https://climatechangeclub.pages.dev/suma">
-<hr>
-    Article: One of the Climate Change Club's members recently visited Japan and was shocked to see the Suma Beach in Japan. Click to learn more.</a></li>
-</ol>
-</section>
-<p>
-<div class="color-panel">
-<button onclick="changeColor('blue')">Change Background: Blue</button>
-<button onclick="changeColor('white')">Change Background: White</button>
-<button onclick="changeColor('#a8dadc')">Ocean Blue</button>
-<button onclick="changeColor('#2a9d8f')">Rainforest Green</button>
-<button onclick="changeColor('#f4a261')">Sunset Orange</button>
-<button onclick="changeColor('red')">Red</button>
-<button onclick="changeColor('lightblue')">Light Blue</button>
-<button onclick="changeColor('green')">Green</button>
-<button onclick="changeColor('')">Reset Background</button>
+        <a href="https://climatechangeclub.pages.dev/suma" class="article-card">
+            <span class="badge international">International</span>
+            <h2>Reflections from Suma Beach</h2>
+            <p>A member’s recent visit to Japan reveals the shocking reality of coastal pollution and rising sea levels at Suma Beach.</p>
+            <span class="read-more">Full Article →</span>
+        </a>
+    </section>
 
-  <button onclick="changeColor('#264653')">🌊 Ocean Depth</button>
-  <button onclick="changeColor('#2a9d8f')">🌿 Forest Floor</button>
-  <button style="background-color: #f4d35e; color: #222;" onclick="changeColor('#f4d35e')">☀️ Solar Glow</button>
-  <button onclick="changeColor('#e63946')">🔥 Wildfire</button>
-  <button onclick="changeColor('#a8dadc')">❄️ Polar Ice</button>
-  <button onclick="changeColor('#e9c46a')">🌾 Desert Sand</button>
-  <button onclick="changeColor('#6c757d')">🌪️ Storm Sky</button>
-  <button onclick="changeColor('#ffcad4')">🌸 Spring Bloom</button>
-  <button onclick="changeColor('#5e548e')">🌌 Midnight</button>
-  <button onclick="changeColor('#d8f3dc')">🌬️ Wind Whisper</button>
-</div>
-  </p>
+    <section class="color-panel">
+        <h2>🎨 Customize Your View</h2>
+        <div class="swatch-container">
+            <button class="swatch" style="background: white;" onclick="changeColor('white')" title="Reset"></button>
+            <button class="swatch" style="background: #a8dadc;" onclick="changeColor('#a8dadc')"></button>
+            <button class="swatch" style="background: #2a9d8f;" onclick="changeColor('#2a9d8f')"></button>
+            <button class="swatch" style="background: #f4a261;" onclick="changeColor('#f4a261')"></button>
+            <button class="swatch" style="background: #e63946;" onclick="changeColor('#e63946')"></button>
+            <button class="swatch" style="background: #264653;" onclick="changeColor('#264653')"></button>
+            <button class="swatch" style="background: #f4d35e;" onclick="changeColor('#f4d35e')"></button>
+            <button class="swatch" style="background: #e9c46a;" onclick="changeColor('#e9c46a')"></button>
+            <button class="swatch" style="background: #6c757d;" onclick="changeColor('#6c757d')"></button>
+            <button class="swatch" style="background: #ffcad4;" onclick="changeColor('#ffcad4')"></button>
+            <button class="swatch" style="background: #5e548e;" onclick="changeColor('#5e548e')"></button>
+            <button class="swatch" style="background: #d8f3dc;" onclick="changeColor('#d8f3dc')"></button>
+        </div>
+    </section>
+</main>
 
-<!-- Footer -->
 <footer>
-  <p>🌍 Climate Change Club &nbsp; | &nbsp; © 2025 Peijie &nbsp; | &nbsp; Built with❤️ and HTML/CSS/JavaScript</p>
+  <p>🌍 Climate Change Club &nbsp; | &nbsp; © 2025 Peijie &nbsp; | &nbsp; Built with ❤️ and HTML/CSS/JavaScript</p>
 </footer>
-
-
-
 
 </body>
 </html>
-
