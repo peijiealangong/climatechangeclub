@@ -1,6 +1,11 @@
+/**
+ * Climate Change Club - Main JavaScript
+ * 100% Functional & Optimized
+ */
 
-document.body.classList.add('captcha-lock');
-
+// ==========================================
+// 1. UTILITY FUNCTIONS
+// ==========================================
 
 // ✅ Reusable Modal Logic
 function showModal(title, message, duration = 6000) {
@@ -8,89 +13,121 @@ function showModal(title, message, duration = 6000) {
   const modalTitle = document.getElementById("modalTitle");
   const modalMessage = document.getElementById("modalMessage");
 
-  modalTitle.textContent = title;
-  modalMessage.innerHTML = message.replace(/\n/g, "<br>");
-  modal.style.display = "flex";
+  if (modal && modalTitle && modalMessage) {
+    modalTitle.textContent = title;
+    // Replace newlines with break tags for HTML rendering
+    modalMessage.innerHTML = message.replace(/\n/g, "<br>");
+    modal.style.display = "flex";
 
-  setTimeout(() => {
-    modal.style.display = "none";
-  }, duration);
+    // Auto-hide after duration (default 6s)
+    setTimeout(() => {
+      // Only hide if the user hasn't already closed it manually
+      if (modal.style.display === "flex") {
+        modal.style.display = "none";
+      }
+    }, duration);
+  }
 }
 
 function closeModal() {
-  document.getElementById("customModal").style.display = "none";
+  const modal = document.getElementById("customModal");
+  if (modal) {
+    modal.style.display = "none";
+  }
 }
 
-// ✅ Background Color Persistence
+// ✅ Background Color Logic
 function changeColor(color) {
-  document.body.style.backgroundColor = color;
-  localStorage.setItem("bgColor", color);
+  if (document.body) {
+    document.body.style.backgroundColor = color;
+    localStorage.setItem("bgColor", color);
+  }
 }
 
-// ✅ Restore Background on Load
-window.addEventListener("DOMContentLoaded", () => {
+// ==========================================
+// 2. MAIN EXECUTION (On Load)
+// ==========================================
+
+document.addEventListener("DOMContentLoaded", () => {
+  
+  // 🔒 Apply Captcha Lock (Safety: ensures body exists first)
+  document.body.classList.add('captcha-lock');
+
+  // 🎨 Restore Background Color
   const savedColor = localStorage.getItem("bgColor");
   if (savedColor) {
     document.body.style.backgroundColor = savedColor;
   }
 
-  // ✅ Navigation Link Handling
+  // 🔗 Navigation Link Handling
   const navLinks = document.querySelectorAll("nav a");
   navLinks.forEach(link => {
     link.addEventListener("click", function(event) {
-      if (!this.href.includes("#")) {
+      // If it's a standard link (not an anchor #), navigate manually
+      if (this.getAttribute("href") && !this.getAttribute("href").includes("#")) {
         event.preventDefault();
         window.location.href = this.href;
       }
     });
   });
 
-  // ✅ Show Welcome Modal
+  // 👋 Show Welcome Modal
   showModal(
     "🌱 Development Stage Update",
     `The climate change club website is back into development stage.\n\n💡 Please suggest changes via the contact form.\n\n🔧 Current stages:\n• Alpha stage – basic building blocks.\n• Beta stage (aka the lover stage) – major changes incoming.\n• Development beta – chill zone for feedback.\n• Published stage – coder retires... or reactivates for more quests!\n\nWe’ll post updates as we change stages. Thank you!`
   );
+
+  // 📧 Email Form Submission
+  const emailForm = document.getElementById("emailForm");
+  if (emailForm) {
+    emailForm.addEventListener("submit", function(event) {
+      event.preventDefault();
+      
+      const userEmail = document.getElementById("email").value;
+      const msgBox = document.getElementById("emailMessage");
+
+      fetch("/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: userEmail })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (msgBox) msgBox.innerText = data.message;
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        if (msgBox) msgBox.innerText = "Something went wrong. Please try again.";
+      });
+    });
+  }
 });
 
-// ✅ Scroll-triggered Reveal
+// ==========================================
+// 3. SCROLL HANDLERS (Unified for Performance)
+// ==========================================
+
 document.addEventListener("scroll", () => {
-  const elements = document.querySelectorAll(".hidden");
-  elements.forEach(el => {
+  const scrollY = window.scrollY;
+  const windowHeight = window.innerHeight;
+
+  // A. Navbar Effect
+  const navbar = document.querySelector("nav");
+  if (navbar) {
+    if (scrollY > 50) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+  }
+
+  // B. Reveal Elements on Scroll
+  const hiddenElements = document.querySelectorAll(".hidden");
+  hiddenElements.forEach(el => {
     const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.9 && !el.classList.contains("show")) {
+    // Reveal if element is within 90% of the viewport height
+    if (rect.top < windowHeight * 0.9 && !el.classList.contains("show")) {
       el.classList.add("show");
     }
   });
 });
-
-// ✅ Navbar Scroll Effect
-window.addEventListener("scroll", () => {
-  const navbar = document.querySelector("nav");
-  if (window.scrollY > 50) {
-    navbar.classList.add("scrolled");
-  } else {
-    navbar.classList.remove("scrolled");
-  }
-});
-
-// ✅ Email Form Submission
-document.getElementById("emailForm").addEventListener("submit", function(event) {
-  event.preventDefault();
-
-  const userEmail = document.getElementById("email").value;
-
-  fetch("/send-email", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email: userEmail })
-  })
-  .then(response => response.json())
-  .then(data => {
-    document.getElementById("emailMessage").innerText = data.message;
-  })
-  .catch(error => {
-    console.error("Error:", error);
-    document.getElementById("emailMessage").innerText = "Something went wrong. Please try again.";
-  });
-});
-

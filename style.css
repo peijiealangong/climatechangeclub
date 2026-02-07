@@ -1,6 +1,24 @@
-/* --------------------------------------------------
-   GLOBAL RESET & BASE STYLES
--------------------------------------------------- */
+/* ==================================================
+   1. VARIABLES & THEME CONFIGURATION
+   (Added this so you can easily change colors later)
+================================================== */
+:root {
+  --primary-color: #2c3e50;       /* Dark Blue (Nav, Headings) */
+  --secondary-color: #2a9d8f;     /* Teal (Buttons, Progress) */
+  --accent-color: #e63946;        /* Red (Featured) */
+  --hover-color: #34495e;         /* Nav Hover */
+  --bg-light: #f9f9f9;            /* Body Background */
+  --text-main: #333;
+  --white: #ffffff;
+  
+  /* Z-Index Layers */
+  --z-nav: 2000;
+  --z-overlay: 9999;
+}
+
+/* ==================================================
+   2. GLOBAL RESET & BASE STYLES
+================================================== */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -8,49 +26,29 @@
 }
 
 body {
-  font-family: system-ui, sans-serif;
-  padding-top: 80px;
-  background: #f9f9f9;
-  color: #333;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  padding-top: 80px; /* Space for fixed nav */
+  background: var(--bg-light);
+  color: var(--text-main);
   transition: background-color 0.5s ease;
+  line-height: 1.6;
 }
 
 body.captcha-lock {
   overflow: hidden;
 }
 
-/* --------------------------------------------------
-   CAPTCHA OVERLAY
--------------------------------------------------- */
-#captcha-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.85);
-  z-index: 9999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#captcha-box {
-  background: #fff;
-  padding: 30px;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
-}
-
-/* --------------------------------------------------
-   NAVIGATION BAR
--------------------------------------------------- */
+/* ==================================================
+   3. NAVIGATION BAR
+================================================== */
 nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background: #2c3e50;
+  background: var(--primary-color);
   padding: 15px 0;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  z-index: 2000;
+  z-index: var(--z-nav);
   display: flex;
   justify-content: center;
 }
@@ -60,10 +58,11 @@ nav ul {
   gap: 50px;
   list-style: none;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 nav a {
-  color: white;
+  color: var(--white);
   text-decoration: none;
   font-weight: bold;
   padding: 8px 12px;
@@ -72,25 +71,29 @@ nav a {
 }
 
 nav a:hover {
-  background-color: #34495e;
+  background-color: var(--hover-color);
 }
 
-/* Dropdown */
-.dropdown { position: relative; }
+/* --- Dropdown Menu --- */
+.dropdown {
+  position: relative;
+}
 
 .submenu {
   display: none;
   position: absolute;
   top: 100%;
-  background: #34495e;
+  left: 0;
+  background: var(--hover-color);
   border-radius: 5px;
   padding: 10px 0;
+  min-width: 150px;
 }
 
 .submenu li a {
   display: block;
   padding: 10px 20px;
-  color: white;
+  color: var(--white);
 }
 
 .submenu li a:hover {
@@ -101,9 +104,9 @@ nav a:hover {
   display: block;
 }
 
-/* --------------------------------------------------
-   HEADINGS
--------------------------------------------------- */
+/* ==================================================
+   4. TYPOGRAPHY & HEADINGS
+================================================== */
 h1, h2 {
   text-align: center;
   margin: 20px 0;
@@ -111,7 +114,7 @@ h1, h2 {
 
 h1 {
   font-size: 2rem;
-  color: #2c3e50;
+  color: var(--primary-color);
   animation: colorBounceFade 4s ease-in-out forwards;
 }
 
@@ -119,28 +122,16 @@ h2 {
   font-size: 1.5rem;
 }
 
-/* --------------------------------------------------
-   FEATURED ARTICLE
--------------------------------------------------- */
-.featured-article {
-  background: #e63946;
-  color: #fff;
-  padding: 10px;
-  border-left: 8px solid #f4d35e;
-  font-weight: bold;
-  font-size: 1.1em;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  text-align: center;
-}
+/* Text Utility Classes */
+.survey { color: blue; }
+.goals { color: green; }
+.ourOpportunity { color: tomato; }
 
-.featured-article:hover {
-  transform: scale(1.03);
-  background: #d62828;
-}
+/* ==================================================
+   5. COMPONENTS & CARDS
+================================================== */
 
-/* --------------------------------------------------
-   INTRO GRID
--------------------------------------------------- */
+/* --- Intro Grid (Cards) --- */
 .intro-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -163,9 +154,28 @@ h2 {
   transform: translateY(-5px);
 }
 
+/* --- Featured Article --- */
+.featured-article {
+  background: var(--accent-color);
+  color: var(--white);
+  padding: 10px;
+  border-left: 8px solid #f4d35e;
+  font-weight: bold;
+  font-size: 1.1em;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.featured-article:hover {
+  transform: scale(1.03);
+  background: #d62828;
+}
+
+/* --- Buttons --- */
 .btn-primary {
-  background: #2a9d8f;
-  color: white;
+  background: var(--secondary-color);
+  color: var(--white);
   padding: 10px 16px;
   border-radius: 6px;
   text-decoration: none;
@@ -173,51 +183,34 @@ h2 {
   margin-top: 10px;
 }
 
-/* --------------------------------------------------
-   PROGRESS BARS
--------------------------------------------------- */
-.progress-container {
-  background: #e0e0e0;
-  border-radius: 10px;
-  overflow: hidden;
-  width: 100%;
-  max-width: 250px;
-  height: 20px;
-  margin: 10px auto;
+.beta-toggle {
+  background: #ffcc00;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 6px;
+  margin-bottom: 10px;
 }
 
-.progress-bar {
-  height: 100%;
-  background: linear-gradient(90deg, #2a9d8f, #27ae60);
+/* --- Music Button --- */
+#musicBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: var(--z-overlay);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
-/* --------------------------------------------------
-   SURVEY
--------------------------------------------------- */
-iframe {
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  width: 100%;
-}
-
-.survey-container {
-  max-width: 420px;
-  margin: 30px auto;
-  padding: 20px;
-  background: #f1faee;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.survey-container iframe {
-  width: 100%;
-  height: 500px;
-}
-
-/* --------------------------------------------------
-   FORMS
--------------------------------------------------- */
+/* ==================================================
+   6. FORMS & INPUTS
+================================================== */
 form {
   display: flex;
   flex-direction: column;
@@ -234,22 +227,21 @@ input[type="submit"] {
   margin-bottom: 15px;
   border-radius: 5px;
   font-size: 16px;
+  border: 1px solid #ccc;
 }
 
 input[type="submit"] {
-  background: #2c3e50;
-  color: white;
+  background: var(--primary-color);
+  color: var(--white);
   border: none;
   cursor: pointer;
+  transition: background 0.3s;
 }
 
 input[type="submit"]:hover {
-  background: #34495e;
+  background: var(--hover-color);
 }
 
-/* --------------------------------------------------
-   COLOR PANEL
--------------------------------------------------- */
 .color-panel {
   display: flex;
   flex-wrap: wrap;
@@ -264,50 +256,97 @@ input[type="submit"]:hover {
   border: none;
   border-radius: 6px;
   font-weight: bold;
-  background: #2c3e50;
-  color: white;
+  background: var(--primary-color);
+  color: var(--white);
   cursor: pointer;
   transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
 .color-panel button:hover {
   transform: scale(1.05);
-  background: #34495e;
+  background: var(--hover-color);
 }
 
-/* --------------------------------------------------
-   SUBMISSION OVERLAY
--------------------------------------------------- */
-#submission-message {
-  display: flex;
-  visibility: hidden;
-  opacity: 0;
+/* ==================================================
+   7. SECTIONS (Survey, Progress)
+================================================== */
+/* Progress Bars */
+.progress-container {
+  background: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 250px;
+  height: 20px;
+  margin: 10px auto;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--secondary-color), #27ae60);
+}
+
+/* Survey Area */
+.survey-container {
+  max-width: 420px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #f1faee;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+iframe {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  width: 100%;
+}
+
+.survey-container iframe {
+  width: 100%;
+  height: 500px;
+}
+
+/* ==================================================
+   8. MODALS, POPUPS & OVERLAYS
+================================================== */
+
+/* Helper Class */
+.hidden { display: none; }
+
+/* Captcha Overlay */
+#captcha-overlay {
   position: fixed;
   inset: 0;
-  background: white;
-  color: black;
-  font-size: 1.5rem;
-  align-items: center;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: var(--z-overlay);
+  display: flex;
   justify-content: center;
-  z-index: 9999;
-  transition: opacity 0.5s ease;
+  align-items: center;
 }
 
-/* --------------------------------------------------
-   MODAL
--------------------------------------------------- */
+#captcha-box {
+  background: var(--white);
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+/* Standard Modal */
 .modal {
   display: none;
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.8);
-  z-index: 9999;
+  z-index: var(--z-overlay);
   justify-content: center;
   align-items: center;
 }
 
 .modal-content {
-  background: #fff;
+  background: var(--white);
   padding: 2rem;
   border-radius: 10px;
   max-width: 600px;
@@ -315,24 +354,7 @@ input[type="submit"]:hover {
   animation: slideUp 0.5s ease forwards;
 }
 
-/* --------------------------------------------------
-   BETA BUTTONS
--------------------------------------------------- */
-.hidden { display: none; }
-
-.beta-toggle {
-  background: #ffcc00;
-  padding: 10px 15px;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  border-radius: 6px;
-  margin-bottom: 10px;
-}
-
-/* --------------------------------------------------
-   POPUP
--------------------------------------------------- */
+/* Promo Popup */
 .popup {
   position: fixed;
   inset: 0;
@@ -340,7 +362,7 @@ input[type="submit"]:hover {
   display: none;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
+  z-index: var(--z-overlay);
 }
 
 .popup-content {
@@ -348,7 +370,7 @@ input[type="submit"]:hover {
   padding: 30px;
   border-radius: 12px;
   text-align: center;
-  color: white;
+  color: var(--white);
   box-shadow: 0 0 20px rgba(0,0,0,0.3);
   position: relative;
   width: 90%;
@@ -359,7 +381,7 @@ input[type="submit"]:hover {
   display: inline-block;
   margin-top: 15px;
   padding: 12px 24px;
-  background: white;
+  background: var(--white);
   color: #ff5f6d;
   font-weight: bold;
   border-radius: 8px;
@@ -374,9 +396,25 @@ input[type="submit"]:hover {
   cursor: pointer;
 }
 
-/* --------------------------------------------------
-   ANIMATIONS
--------------------------------------------------- */
+/* Submission Message Overlay */
+#submission-message {
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  inset: 0;
+  background: var(--white);
+  color: black;
+  font-size: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-overlay);
+  transition: opacity 0.5s ease;
+}
+
+/* ==================================================
+   9. ANIMATIONS
+================================================== */
 @keyframes slideUp {
   from { transform: translateY(50px); opacity: 0; }
   to   { transform: translateY(0); opacity: 1; }
@@ -384,21 +422,13 @@ input[type="submit"]:hover {
 
 @keyframes colorBounceFade {
   0%   { transform: translateY(0); color: red; opacity: 0; }
-  100% { transform: translateY(0); color: #2c3e50; opacity: 1; }
+  100% { transform: translateY(0); color: var(--primary-color); opacity: 1; }
 }
 
-/* --------------------------------------------------
-   TEXT COLOR UTILITIES
--------------------------------------------------- */
-.survey { color: blue; }
-.goals { color: green; }
-.ourOpportunity { color: tomato; }
-
-/* --------------------------------------------------
-   RESPONSIVE FIXES
--------------------------------------------------- */
+/* ==================================================
+   10. RESPONSIVE MEDIA QUERIES
+================================================== */
 @media (max-width: 768px) {
-
   nav ul {
     gap: 20px;
     flex-direction: column;
@@ -415,19 +445,4 @@ input[type="submit"]:hover {
   iframe {
     height: 400px;
   }
-}
-/* --------------------------------------------------
-   Music
--------------------------------------------------- */
-#musicBtn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 10px 15px;
-  background: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  z-index: 9999;
 }

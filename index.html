@@ -6,7 +6,6 @@
   <meta name="description" content="Discover the Climate Change Club—our mission, projects, and how you can help fight climate change." />
   <title>Climate Change Club Home Page</title>
 
-  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-68D6N5XQ6D"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -15,12 +14,47 @@
     gtag('config', 'G-68D6N5XQ6D');
   </script>
 
-  <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* Helper classes for functionality */
+    .hidden { display: none; }
+    
+    /* Basic Modal/Popup Styling to ensure they appear centered */
+    .modal, .popup {
+        display: none; /* Hidden by default */
+        position: fixed;
+        z-index: 1000;
+        left: 0; top: 0;
+        width: 100%; height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.5);
+    }
+    .modal-content, .popup-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 500px;
+        text-align: center;
+        border-radius: 8px;
+    }
+    .close-btn {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    /* Progress Bar Basic Style */
+    .progress-container { background-color: #ddd; border-radius: 5px; margin: 5px 0; }
+    .progress-bar { height: 20px; background-color: #4CAF50; border-radius: 5px; }
+  </style>
 </head>
 <body>
-  <!-- Navigation -->
+
   <nav>
     <ul>
       <li><a href="index.html">Home</a></li>
@@ -38,16 +72,17 @@
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
-<!-- HTML -->
-<section class="hero">
-  <h1>Welcome to Our Club</h1>
-  <p>Making a difference through climate action.</p>
-  <a class="btn" href="#">Join Us</a>
-</section>
 
-  <h1>Welcome to the Climate Change Club! 🌎</h1>
+  <section class="hero">
+    <h1>Welcome to Our Club</h1>
+    <p>Making a difference through climate action.</p>
+    <a class="btn" href="#">Join Us</a>
+  </section>
 
-  <!-- Intro Grid -->
+  <div style="text-align: center; margin: 20px 0;">
+      <h1>Welcome to the Climate Change Club! 🌎</h1>
+  </div>
+
   <section class="intro-grid">
     <div class="intro-card">
       <h2>🌱 Mission</h2>
@@ -66,41 +101,41 @@
     </div>
   </section>
 
-  <!-- Survey + Donate -->
-<section class="survey-donate-wrapper">
-  <div class="survey-container">
-    <h2 class="survey">📋 Climate Change Club Survey</h2>
-    <iframe src="https://forms.cloud.microsoft/r/3ch85QFxDB"
-            width="800" height="350" frameborder="0"
-            marginheight="0" marginwidth="0">
-      Loading…
-    </iframe>
-  </div>
-   
-  <button class="beta-toggle" data-target="beta-donate">
-  Show Beta Update: Warning — beta updates may be unstable or in demo mode
-</button>
+  <section class="survey-donate-wrapper">
+    <div class="survey-container">
+      <h2 class="survey">📋 Climate Change Club Survey</h2>
+      <iframe src="https://forms.cloud.microsoft/r/3ch85QFxDB"
+              width="800" height="350" frameborder="0"
+              marginheight="0" marginwidth="0">
+        Loading…
+      </iframe>
+    </div>
+     
+    <div style="margin-top: 20px;">
+        <button class="beta-toggle" data-target="beta-donate">
+        Show Beta Update: Warning — beta updates may be unstable or in demo mode
+        </button>
 
-<div id="beta-donate" class="beta-section hidden">
-  <!-- PayPal Donate Button -->
-  <form action="https://www.paypal.com/donate" method="post" target="_blank">
-    <input type="hidden" name="hosted_button_id" value="YOUR_BUTTON_ID_HERE" />
-    <input type="image"
-           src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
-           border="0"
-           name="submit"
-           title="PayPal - The safer, easier way to pay online!"
-           alt="Donate with PayPal button" />
-    <img alt="" border="0"
-         src="https://www.paypal.com/en_US/i/scr/pixel.gif"
-         width="1" height="1" />
-  </form>
-</div>
+        <div id="beta-donate" class="beta-section hidden">
+        <form action="https://www.paypal.com/donate" method="post" target="_blank">
+            <input type="hidden" name="hosted_button_id" value="YOUR_BUTTON_ID_HERE" />
+            <input type="image"
+                src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
+                border="0"
+                name="submit"
+                title="PayPal - The safer, easier way to pay online!"
+                alt="Donate with PayPal button" />
+            <img alt="" border="0"
+                src="https://www.paypal.com/en_US/i/scr/pixel.gif"
+                width="1" height="1" />
+        </form>
+        </div>
+    </div>
+  </section>
 
 
-  <!-- Goals Section -->
   <section class="impact-stats">
-    <h2 class = "goals">🎯 Our Goals</h2>
+    <h2 class="goals">🎯 Our Goals</h2>
     <div class="stats-grid">
       <div>
         <strong>Trees to Plant</strong>
@@ -110,11 +145,11 @@
         <p>5% complete</p>
       </div>
       <div>
-        <strong>Donations Goal <i>We got 5% more donations this month! Keep it up everyone.</i>($100,000)</strong>
+        <strong>Donations Goal <i>We got 5% more donations this month! Keep it up everyone.</i> ($100,000)</strong>
         <div class="progress-container">
           <div class="progress-bar" style="width:15%"></div>
         </div>
-        <p>10% complete</p>
+        <p>15% complete</p>
       </div>
       <div>
         <strong>Members to Empower</strong>
@@ -126,15 +161,13 @@
     </div>
   </section>
 
-  <!-- Featured Article -->
   <section class="featured-article">
     🌟 Featured: "Climate Action Week Recap – Students Lead the Charge!"
     <a href="articles.html">Read More →</a>
   </section>
 
-  <!-- Climate Message -->
   <section>
-    <h2 class = "ourOpportunity">🔥 Climate Change: Our Challenge, Our Opportunity</h2>
+    <h2 class="ourOpportunity">🔥 Climate Change: Our Challenge, Our Opportunity</h2>
     <ul>
       <li><strong>Extreme Weather:</strong> Hurricanes, wildfires, floods, and droughts are intensifying.</li>
       <li><strong>Rising Temperatures:</strong> Over 1°C increase since pre-industrial times.</li>
@@ -148,12 +181,13 @@
     </ul>
     <p><strong>✊ Join the Movement:</strong> The Climate Change Club is a student-powered force for the future.</p>
   </section>
-<a href="https://drive.google.com/file/d/1rmGnDCa2CLQI4ZROU6QUg3VpUSX2BLEL/view?usp=sharing" download>
-	<button>View or download our README file that lists our attributions and credits here! Everyone's support makes a difference on this website.</button>
-</a>
-	
 
-  <!-- GIF Embed -->
+  <div style="margin: 20px 0;">
+    <a href="https://drive.google.com/file/d/1rmGnDCa2CLQI4ZROU6QUg3VpUSX2BLEL/view?usp=sharing" download>
+        <button>View or download our README file that lists our attributions and credits here! Everyone's support makes a difference on this website.</button>
+    </a>
+  </div>
+
   <section>
     <div class="tenor-gif-embed"
          data-postid="21239161"
@@ -168,7 +202,6 @@
     <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
   </section>
 
-  <!-- Color Panel -->
   <section class="color-panel">
     <h2>🎨 Customize Your Background</h2>
     <button onclick="changeColor('blue')">Blue</button>
@@ -181,7 +214,6 @@
     <button onclick="changeColor('')">Reset</button>
   </section>
 
-  <!-- Email Form -->
   <form id="emailForm">
     <h2>📧 Stay Updated</h2>
     <input type="email" id="email" placeholder="Enter your email" required />
@@ -189,7 +221,16 @@
     <p id="emailMessage"></p>
   </form>
 
-  <!-- Modal -->
+  <div class="music-section" style="margin: 20px 0; padding: 10px; border-top: 1px solid #ccc;">
+      <h3>🎵 Music Player</h3>
+      <button id="musicBtn">Play Music</button>
+      
+      <audio id="bgMusic" controls style="display:block; margin-top:10px;">
+        <source src="/Sunny_Morning.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+  </div>
+
   <div id="customModal" class="modal">
     <div class="modal-content">
       <h2 id="modalTitle"></h2>
@@ -198,7 +239,15 @@
     </div>
   </div>
 
-  <!-- Footer -->
+  <div id="promoPopup" class="popup">
+    <div class="popup-content">
+      <span class="close-btn" onclick="closePopup()">&times;</span>
+      <h2>🎮 Want games and extras for free?</h2>
+      <p>Just download our ad-free simple game!</p>
+      <a href="/download" class="popup-btn">Download Now</a>
+    </div>
+  </div>
+
   <footer>
     <p>🌍 Climate Change Club | © 2025 Peijie | Built with ❤️ and HTML/CSS/JavaScript</p>
     <div class="socials">
@@ -209,12 +258,17 @@
   </footer>
 
   <script>
-    // Background color utility
+    // 1. Scroll to top on load
+    window.addEventListener("load", () => {
+        window.scrollTo(0, 0);
+    });
+
+    // 2. Background color utility
     function changeColor(val) {
       document.body.style.background = val || '';
     }
 
-    // Email form feedback
+    // 3. Email form feedback
     document.getElementById('emailForm').addEventListener('submit', function(e){
       e.preventDefault();
       const email = document.getElementById('email').value;
@@ -227,83 +281,70 @@
       this.reset();
     });
 
-    // Modal helper
+    // 4. Modal helper
     function closeModal() {
       document.getElementById('customModal').style.display = 'none';
     }
-  </script>
-  <script>
-// Reusable Beta Reveal System
-document.addEventListener("DOMContentLoaded", () => {
-  const toggles = document.querySelectorAll(".beta-toggle");
 
-  toggles.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const targetId = btn.getAttribute("data-target");
-      const target = document.getElementById(targetId);
-
-      if (target) {
-        target.classList.toggle("hidden");
-      }
+    // 5. Reusable Beta Reveal System
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggles = document.querySelectorAll(".beta-toggle");
+      toggles.forEach(btn => {
+        btn.addEventListener("click", () => {
+          const targetId = btn.getAttribute("data-target");
+          const target = document.getElementById(targetId);
+          if (target) {
+            target.classList.toggle("hidden");
+          }
+        });
+      });
     });
-  });
-});
-  </script>
-<!-- Popup HTML -->
-<div id="promoPopup" class="popup">
-  <div class="popup-content">
-    <span class="close-btn" onclick="closePopup()">&times;</span>
-    <h2>🎮 Want games and extras for free?</h2>
-    <p>Just download our ad-free simple game!</p>
-    <a href="/download" class="popup-btn">Download Now</a>
-  </div>
-</div>
-<!-- Music + Audio -->
-<button id="musicBtn">Play Music</button>
 
-<audio controls>
-  <source src="/Sunny_Morning.mp3" type="audio/mpeg">
-</audio>
-
-// Javascript for message box
-<script>
-function showPopup() {
-  document.getElementById("promoPopup").style.display = "flex";
-}
-
-function closePopup() {
-  document.getElementById("promoPopup").style.display = "none";
-}
-
-// Show popup after 5 seconds
-window.addEventListener("load", () => {
-  setTimeout(showPopup, 5000);
-});
-</script>
-<script>
-  window.addEventListener("load", () => {
-    window.scrollTo(0, 0);
-  });
-</script>
-<script>
-  const music = document.getElementById("bgMusic");
-  const btn = document.getElementById("musicBtn");
-
-  btn.addEventListener("click", () => {
-    if (music.paused) {
-      music.play();
-      btn.textContent = "Pause Music";
-    } else {
-      music.pause();
-      btn.textContent = "Play Music";
+    // 6. Promo Popup Logic
+    function showPopup() {
+      document.getElementById("promoPopup").style.display = "block"; // Changed from flex to block/match css
     }
-  });
-</script>
+    function closePopup() {
+      document.getElementById("promoPopup").style.display = "none";
+    }
+    // Show popup after 5 seconds
+    window.addEventListener("load", () => {
+      setTimeout(showPopup, 5000);
+    });
 
+    // 7. Music Player Logic (Consolidated)
+    const music = document.getElementById("bgMusic");
+    const btn = document.getElementById("musicBtn");
 
-</body>
-</html>
+    // Button toggle logic
+    if(btn && music) {
+        btn.addEventListener("click", () => {
+            if (music.paused) {
+            music.play();
+            btn.textContent = "Pause Music";
+            } else {
+            music.pause();
+            btn.textContent = "Play Music";
+            }
+        });
+    }
 
+    // Auto-play attempt (Browser may block this without interaction)
+    function tryPlayMusic() {
+        if(music) {
+            music.play().then(() => {
+                btn.textContent = "Pause Music";
+            }).catch(() => {
+                // Auto-play failed (expected in many browsers), waiting for user interaction
+            });
+            // Remove listeners once tried
+            document.removeEventListener("click", tryPlayMusic);
+            document.removeEventListener("scroll", tryPlayMusic);
+        }
+    }
+    document.addEventListener("click", tryPlayMusic);
+    document.addEventListener("scroll", tryPlayMusic);
 
+  </script>
 </body>
 </html>
