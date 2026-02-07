@@ -416,3 +416,18 @@ input[type="submit"]:hover {
     height: 400px;
   }
 }
+/* --------------------------------------------------
+   Music
+-------------------------------------------------- */
+#musicBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 9999;
+}

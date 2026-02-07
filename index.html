@@ -259,6 +259,8 @@ document.addEventListener("DOMContentLoaded", () => {
   </div>
 </div>
 <!-- Music + Audio -->
+<button id="musicBtn">Play Music</button>
+
 <audio controls>
   <source src="/Sunny_Morning.mp3" type="audio/mpeg">
 </audio>
@@ -284,17 +286,20 @@ window.addEventListener("load", () => {
   });
 </script>
 <script>
-  const bgm = document.getElementById("bgm");
+  const music = document.getElementById("bgMusic");
+  const btn = document.getElementById("musicBtn");
 
-  function tryPlayMusic() {
-    bgm.play().catch(() => {});
-    document.removeEventListener("click", tryPlayMusic);
-    document.removeEventListener("scroll", tryPlayMusic);
-  }
-
-  document.addEventListener("click", tryPlayMusic);
-  document.addEventListener("scroll", tryPlayMusic);
+  btn.addEventListener("click", () => {
+    if (music.paused) {
+      music.play();
+      btn.textContent = "Pause Music";
+    } else {
+      music.pause();
+      btn.textContent = "Play Music";
+    }
+  });
 </script>
+
 
 </body>
 </html>
