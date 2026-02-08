@@ -197,3 +197,61 @@ if (mBtn && music) {
         }
     });
 }
+// Optimized Music Toggle
+const music = document.getElementById("bgMusic");
+const mBtn = document.getElementById("musicBtn");
+const mText = document.getElementById("musicText");
+
+if (mBtn && music) {
+    mBtn.addEventListener("click", () => {
+        if (music.paused) {
+            music.play();
+            mText.textContent = "Pause Music";
+            mBtn.style.background = "var(--action-teal)";
+        } else {
+            music.pause();
+            mText.textContent = "Play Ambient Music";
+            mBtn.style.background = "var(--primary-green)";
+        }
+    });
+}
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // --- 1. Once-Per-Session Popup Logic ---
+    const popup = document.getElementById("promoPopup");
+    const hasSeenPopup = sessionStorage.getItem("hasSeenEcoPopup");
+
+    if (popup && !hasSeenPopup) {
+        setTimeout(() => {
+            popup.style.display = "flex";
+            // Mark as seen so it doesn't show again until tab is reopened
+            sessionStorage.setItem("hasSeenEcoPopup", "true");
+        }, 5000);
+    }
+
+    // --- 2. Fixed Music Button Logic ---
+    const music = document.getElementById("bgMusic");
+    const mBtn = document.getElementById("musicBtn");
+    const mText = document.getElementById("musicText");
+
+    if (mBtn && music) {
+        mBtn.addEventListener("click", () => {
+            if (music.paused) {
+                music.play();
+                // We update musicText span so the <i> icon remains untouched
+                mText.textContent = "Pause Music";
+                mBtn.style.background = "var(--action-teal)";
+            } else {
+                music.pause();
+                mText.textContent = "Play Ambient Music";
+                mBtn.style.background = "var(--primary-green)";
+            }
+        });
+    }
+});
+
+// Keep your existing close function
+function closePopup() {
+    const popup = document.getElementById("promoPopup");
+    if (popup) popup.style.display = "none";
+}
