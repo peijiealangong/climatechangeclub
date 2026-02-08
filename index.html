@@ -8,6 +8,9 @@
 
   <link rel="stylesheet" href="style.css">
   <script src="javascript.js" defer></script>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-68D6N5XQ6D"></script>
   <script>
@@ -16,8 +19,6 @@
     gtag('js', new Date());
     gtag('config', 'G-68D6N5XQ6D');
   </script>
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -45,52 +46,61 @@
   </nav>
 
   <section class="hero">
-    <h1>Change the Future</h1>
-    <p>We are a student-led force fighting for the only planet we have.</p>
-    <a class="btn" href="#join">Join the Movement</a>
+    <div class="hero-content">
+        <h1 class="animate-pop">Change the Future</h1>
+        <p>A student-led movement fighting for the only home we have.</p>
+        <div class="hero-btns">
+            <a class="btn" href="#mission">Start Here</a>
+            <a class="btn-secondary" href="contact.html">Join Us</a>
+        </div>
+    </div>
   </section>
 
-  <section class="intro-grid">
+  <section id="mission" class="intro-grid">
     <div class="intro-card">
-      <h2>🌱 Our Mission</h2>
-      <p>Education, advocacy, and direct action to halt the climate crisis.</p>
-      <a href="about.html" class="btn-primary">Read More</a>
+      <i class="fas fa-leaf fa-3x" style="color: var(--secondary-green); margin-bottom: 20px;"></i>
+      <h2>Our Mission</h2>
+      <p>Driving education and direct action to halt the global climate crisis.</p>
+      <a href="about.html" class="btn-primary">Learn More</a>
     </div>
     <div class="intro-card">
-      <h2>🛠️ Student Projects</h2>
-      <p>From campus composting to city-wide policy advocacy.</p>
-      <a href="projects.html" class="btn-primary">Explore</a>
+      <i class="fas fa-tools fa-3x" style="color: var(--action-teal); margin-bottom: 20px;"></i>
+      <h2>Active Projects</h2>
+      <p>From local campus composting to city-wide advocacy and policy.</p>
+      <a href="projects.html" class="btn-primary">View Projects</a>
     </div>
     <div class="intro-card">
-      <h2>📅 Upcoming Events</h2>
-      <p>Join our next march or community workshop this weekend.</p>
-      <a href="meetings.html" class="btn-primary">View Calendar</a>
+      <i class="fas fa-calendar-alt fa-3x" style="color: var(--milestone-gold); margin-bottom: 20px;"></i>
+      <h2>Global Events</h2>
+      <p>Join our next march or community workshop this coming weekend.</p>
+      <a href="meetings.html" class="btn-primary">See Calendar</a>
     </div>
   </section>
 
   <section class="impact-stats">
-    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 40px;">🎯 Our Live Impact</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
-      <div>
+    <h2 style="margin-bottom: 40px;">🌍 Live Impact Tracker</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+      <div class="stat-box">
         <strong>🌳 Trees Planted</strong>
         <div class="progress-container"><div class="progress-bar" style="width:5%"></div></div>
-        <p>500 / 10,000</p>
+        <span>500 / 10,000</span>
       </div>
-      <div>
+      <div class="stat-box">
         <strong>💰 Funding Raised</strong>
         <div class="progress-container"><div class="progress-bar" style="width:15%"></div></div>
-        <p>$15,000 / $100,000</p>
+        <span>$15,000 / $100,000</span>
       </div>
-      <div>
-        <strong>✊ Members Empowered</strong>
+      <div class="stat-box">
+        <strong>✊ Members Joined</strong>
         <div class="progress-container"><div class="progress-bar" style="width:20%"></div></div>
-        <p>200 / 1,000</p>
+        <span>200 / 1,000</span>
       </div>
     </div>
   </section>
 
-  <section class="color-panel">
-    <h3>🎨 Customize Interface</h3>
+  <section class="color-panel glass-effect">
+    <h3>🎨 Personalize Your Experience</h3>
+    <p>Change the environment color to suit your mood.</p>
     <div class="swatch-container">
         <button class="swatch" style="background: white;" onclick="changeColor('white')" title="Reset"></button>
         <button class="swatch" style="background: #a8dadc;" onclick="changeColor('#a8dadc')" title="Polar Ice"></button>
@@ -101,19 +111,8 @@
     </div>
   </section>
 
-  <section style="text-align: center; padding: 50px;">
-    <button class="beta-toggle btn-primary" data-target="beta-donate">Toggle Beta Features</button>
-    <div id="beta-donate" class="hidden" style="margin-top:20px;">
-        <p>⚠️ Beta Donation Portal</p>
-        <form action="https://www.paypal.com/donate" method="post" target="_blank">
-            <input type="hidden" name="hosted_button_id" value="YOUR_BUTTON_ID_HERE" />
-            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" name="submit" alt="Donate" />
-        </form>
-    </div>
-  </section>
-
-  <div class="music-section" style="position: fixed; bottom: 20px; left: 20px; z-index: 1000;">
-      <button id="musicBtn" style="padding: 10px 20px; border-radius: 50px; border: none; background: var(--primary-green); color: white; cursor: pointer;">🎵 Play Ambient Music</button>
+  <div class="music-section">
+      <button id="musicBtn"><i class="fas fa-music"></i> Ambient Mode</button>
       <audio id="bgMusic" loop>
         <source src="/Sunny_Morning.mp3" type="audio/mpeg">
       </audio>
@@ -121,15 +120,16 @@
 
   <div id="promoPopup" class="popup">
     <div class="popup-content">
-      <span class="close-btn" onclick="closePopup()" style="position:absolute; right:20px; top:10px; cursor:pointer; font-size:2rem;">&times;</span>
-      <h2>🎮 Eco-Game Available!</h2>
-      <p>Learn while you play. Download our ad-free game now.</p>
-      <a href="/download" class="btn-primary">Download</a>
+      <span class="close-btn" onclick="closePopup()">&times;</span>
+      <h2>🎮 Play the Eco-Game</h2>
+      <p>Test your climate knowledge in our new ad-free experience.</p>
+      <a href="download.html" class="btn-primary" style="background: var(--primary-green); color: white; border: none;">Download Now</a>
     </div>
   </div>
 
   <footer>
-    <p>🌍 Climate Change Club | Built with ❤️ by Peijie</p>
+    <p>🌍 <strong>Climate Change Club</strong></p>
+    <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 10px;">Designed with ❤️ for the Planet</p>
   </footer>
 
 </body>
