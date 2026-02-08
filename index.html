@@ -119,6 +119,29 @@
   <footer>
     <p>🌍 Climate Change Club | Built with ❤️ by Peijie</p>
   </footer>
-<button id="jumpToTop" title="Go to top">↑</button>
+
+  <script>
+    // Logic kept here or moved to javascript.js
+    function changeColor(val) { document.body.style.background = val || '#f0f4f1'; }
+    function closePopup() { document.getElementById("promoPopup").style.display = "none"; }
+
+    document.querySelectorAll(".beta-toggle").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const target = document.getElementById(btn.getAttribute("data-target"));
+        target.classList.toggle("hidden");
+      });
+    });
+
+    window.addEventListener("load", () => {
+      setTimeout(() => { document.getElementById("promoPopup").style.display = "flex"; }, 5000);
+    });
+
+    const music = document.getElementById("bgMusic");
+    const mBtn = document.getElementById("musicBtn");
+    mBtn.addEventListener("click", () => {
+      if (music.paused) { music.play(); mBtn.textContent = "⏸ Pause Music"; }
+      else { music.pause(); mBtn.textContent = "🎵 Play Ambient Music"; }
+    });
+  </script>
 </body>
 </html>
