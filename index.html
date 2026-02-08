@@ -1,147 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Discover the Climate Change Club—our mission, projects, and how you can help fight climate change." />
-  <title>Climate Change Club | Take Action</title>
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68D6N5XQ6D"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-68D6N5XQ6D');
-  </script>
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <script src="javascript.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Change Club | Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="javascript.js" defer></script>
 </head>
 <body>
 
-  <nav>
+<nav>
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">Mission</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="meetings.html">Events</a></li>
-      <li><a href="contact.html">Contact</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">Mission</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="notices.html">Notices</a></li>
+        <li><a href="contact.html">Contact</a></li>
     </ul>
-  </nav>
+</nav>
 
-  <header class="hero">
+<header class="hero">
     <h1>Change the Future</h1>
     <p>We are a student-led force fighting for the only planet we have.</p>
-    <a class="btn" href="#join">Join the Movement</a>
-  </header>
+    <a class="btn-primary" href="#join">Join the Movement</a>
+</header>
 
-  <main>
+<main>
     <section class="intro-grid">
-      <div class="intro-card">
-        <h2>🌱 Our Mission</h2>
-        <p>Education, advocacy, and direct action to halt the climate crisis.</p>
-        <a href="about.html" class="btn-primary">Read More</a>
-      </div>
-      <div class="intro-card">
-        <h2>🛠️ Student Projects</h2>
-        <p>From campus composting to city-wide policy advocacy.</p>
-        <a href="projects.html" class="btn-primary">Explore</a>
-      </div>
-      <div class="intro-card">
-        <h2>📅 Upcoming Events</h2>
-        <p>Join our next march or community workshop this weekend.</p>
-        <a href="meetings.html" class="btn-primary">View Calendar</a>
-      </div>
+        <div class="intro-card">
+            <h2>🌱 Our Mission</h2>
+            <p>Education, advocacy, and direct action to halt the climate crisis.</p>
+            <a href="about.html" class="btn-primary">Read More</a>
+        </div>
+        <div class="intro-card">
+            <h2>🛠️ Student Projects</h2>
+            <p>From campus composting to city-wide policy advocacy.</p>
+            <a href="projects.html" class="btn-primary">Explore</a>
+        </div>
+        <div class="intro-card">
+            <h2>📅 Upcoming Events</h2>
+            <p>Join our next march or community workshop this weekend.</p>
+            <a href="meetings.html" class="btn-primary">View Calendar</a>
+        </div>
     </section>
 
     <section class="impact-stats">
-      <h2 class="section-title">🎯 Our Live Impact</h2>
-      <div class="stats-grid">
-        <div class="stat-item">
-          <strong>🌳 Trees Planted</strong>
-          <div class="progress-container"><div class="progress-bar" style="width:5%"></div></div>
-          <p>500 / 10,000</p>
+        <h2 style="text-align:center; margin: 20px 0;">🎯 Our Live Impact</h2>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <strong>🌳 Trees Planted</strong>
+                <div class="progress-container"><div class="progress-bar" style="width:5%"></div></div>
+                <p>500 / 10,000</p>
+            </div>
         </div>
-        <div class="stat-item">
-          <strong>💰 Funding Raised</strong>
-          <div class="progress-container"><div class="progress-bar" style="width:15%"></div></div>
-          <p>$15,000 / $100,000</p>
-        </div>
-        <div class="stat-item">
-          <strong>✊ Members Empowered</strong>
-          <div class="progress-container"><div class="progress-bar" style="width:20%"></div></div>
-          <p>200 / 1,000</p>
-        </div>
-      </div>
     </section>
 
     <section class="color-panel">
-      <h3>🎨 Set the Mood</h3>
-      <div class="swatch-container">
-        <button onclick="changeColor('#a8dadc')" style="background:#a8dadc"></button>
-        <button onclick="changeColor('#2a9d8f')" style="background:#2a9d8f"></button>
-        <button onclick="changeColor('#f4a261')" style="background:#f4a261"></button>
-        <button onclick="changeColor('#e63946')" style="background:#e63946"></button>
-        <button onclick="changeColor('#ffcad4')" style="background:#ffcad4"></button>
-        <button onclick="changeColor('')" style="background:#ddd" title="Reset"></button>
-      </div>
+        <h3>🎨 Set the Mood</h3>
+        <div class="swatch-container">
+            <button class="swatch" onclick="changeColor('#a8dadc')" style="background:#a8dadc"></button>
+            <button class="swatch" onclick="changeColor('#2a9d8f')" style="background:#2a9d8f"></button>
+            <button class="swatch" onclick="changeColor('#f4a261')" style="background:#f4a261"></button>
+            <button class="swatch" onclick="changeColor('#e63946')" style="background:#e63946"></button>
+            <button class="swatch" onclick="changeColor('')" style="background:#ddd" title="Reset"></button>
+        </div>
     </section>
 
     <section class="beta-section">
-      <button class="beta-toggle btn-primary" data-target="beta-donate">Toggle Beta Features</button>
-      <div id="beta-donate" class="hidden">
-          <p>⚠️ Beta Donation Portal</p>
-          <form action="https://www.paypal.com/donate" method="post" target="_blank">
-              <input type="hidden" name="hosted_button_id" value="YOUR_BUTTON_ID_HERE" />
-              <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" name="submit" alt="Donate" />
-          </form>
-      </div>
+        <button class="beta-toggle btn-primary" data-target="beta-donate">Toggle Beta Features</button>
+        <div id="beta-donate" class="hidden">
+            <p>⚠️ Beta Donation Portal Active</p>
+        </div>
     </section>
-  </main>
+</main>
 
-  <div class="music-section">
-      <button id="musicBtn">🎵 Play Ambient Music</button>
-      <audio id="bgMusic" loop>
-        <source src="/Sunny_Morning.mp3" type="audio/mpeg">
-      </audio>
-  </div>
-
-  <div id="promoPopup" class="popup">
+<div id="promoPopup" class="popup" style="display:none;">
     <div class="popup-content">
-      <span class="close-btn" onclick="closePopup()">&times;</span>
-      <h2>🎮 Eco-Game Available!</h2>
-      <p>Learn while you play. Download our ad-free game now.</p>
-      <a href="/download" class="btn-primary">Download</a>
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <h2>🎮 Eco-Game Available!</h2>
+        <p>Learn while you play. Download our ad-free game now.</p>
+        <a href="/download" class="btn-primary">Download</a>
     </div>
-  </div>
+</div>
 
-  <footer>
+<div class="music-section">
+    <button id="musicBtn">🎵 Play Ambient Music</button>
+    <audio id="bgMusic" loop>
+        <source src="/Sunny_Morning.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<footer>
     <p>🌍 Climate Change Club | Built with ❤️ by Peijie</p>
-  </footer>
+</footer>
 
-  <script>
-    // Logic kept here or moved to javascript.js
-    function changeColor(val) { document.body.style.background = val || '#f0f4f1'; }
-    function closePopup() { document.getElementById("promoPopup").style.display = "none"; }
+<button id="jumpToTop" title="Go to top">↑</button>
 
-    document.querySelectorAll(".beta-toggle").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const target = document.getElementById(btn.getAttribute("data-target"));
-        target.classList.toggle("hidden");
-      });
-    });
-
-    window.addEventListener("load", () => {
-      setTimeout(() => { document.getElementById("promoPopup").style.display = "flex"; }, 5000);
-    });
-
-    const music = document.getElementById("bgMusic");
-    const mBtn = document.getElementById("musicBtn");
-    mBtn.addEventListener("click", () => {
-      if (music.paused) { music.play(); mBtn.textContent = "⏸ Pause Music"; }
-      else { music.pause(); mBtn.textContent = "🎵 Play Ambient Music"; }
-    });
-  </script>
 </body>
 </html>
