@@ -180,3 +180,20 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+const music = document.getElementById("bgMusic");
+const mBtn = document.getElementById("musicBtn");
+const mText = document.getElementById("musicText");
+
+if (mBtn && music) {
+    mBtn.addEventListener("click", () => {
+        if (music.paused) {
+            music.play();
+            mText.textContent = "Pause Music";
+            mBtn.style.background = "var(--action-teal)"; // Change color when playing
+        } else {
+            music.pause();
+            mText.textContent = "Play Ambient Music";
+            mBtn.style.background = "var(--primary-green)";
+        }
+    });
+}

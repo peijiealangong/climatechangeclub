@@ -111,8 +111,25 @@
     </div>
   </section>
 
-  <div class="music-section">
-      <button id="musicBtn"><i class="fas fa-music"></i> Ambient Mode</button>
+  <div class="music-section" style="position: fixed; bottom: 30px; left: 30px; z-index: 3000;">
+      <button id="musicBtn" style="
+          padding: 15px 25px; 
+          border-radius: 50px; 
+          border: none; 
+          background: var(--primary-green); 
+          color: white; 
+          cursor: pointer;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          transition: var(--transition);
+      ">
+        <i class="fas fa-music"></i> 
+        <span id="musicText">Play Ambient Music</span>
+      </button>
+      
       <audio id="bgMusic" loop>
         <source src="/Sunny_Morning.mp3" type="audio/mpeg">
       </audio>
