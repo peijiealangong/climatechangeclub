@@ -1,5 +1,5 @@
 /* ==================================================
-   1. CORE ENGINE & THEME
+   1. CORE ENGINE & SCROLL SAFETY
 ================================================== */
 :root {
   --primary-green: #1b4332;
@@ -16,7 +16,7 @@
 
 html, body {
   overflow-x: hidden;
-  overflow-y: auto !important; /* Fixed: Force scrollability */
+  overflow-y: auto !important;
   height: auto !important;
   min-height: 100%;
   scroll-behavior: smooth;
@@ -32,7 +32,7 @@ body {
 }
 
 /* ==================================================
-   2. NAVIGATION & FOOTER
+   2. NAVIGATION & FOOTER (Preserved Styles)
 ================================================== */
 nav {
   position: fixed;
@@ -46,31 +46,58 @@ nav {
 
 nav ul { display: flex; justify-content: center; gap: 30px; list-style: none; }
 nav a { color: white; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: var(--transition); }
-nav a:hover { color: var(--accent-teal); }
+nav a:hover { color: var(--accent-teal); transform: translateY(-2px); }
 
 .dropdown { position: relative; }
-.submenu { 
-  display: none; 
-  position: absolute; 
-  top: 100%; 
-  background: var(--primary-green); 
-  padding: 10px; 
-  border-radius: 8px; 
-  min-width: 160px; 
-}
+.submenu { display: none; position: absolute; top: 100%; left: 0; background: var(--primary-green); padding: 10px; border-radius: 8px; min-width: 160px; list-style: none; }
 .dropdown:hover .submenu { display: block; }
 
+footer { background: var(--primary-green); color: white; padding: 40px; text-align: center; }
+
 /* ==================================================
-   3. COMPONENTS (Cards, Buttons, Stats)
+   3. HERO VARIATIONS (Unique Page Looks)
+================================================== */
+.hero, .about-hero, .notices-hero {
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+  margin-bottom: 40px;
+}
+
+/* Home Page Gradient */
+.hero {
+  height: 60vh;
+  background: linear-gradient(-45deg, #2d6a4f, #40916c, #1b4332, #2a9d8f);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+}
+
+/* Command Center Look */
+.notices-hero { background: linear-gradient(135deg, #1b4332, #081c15); }
+
+/* About Page Look */
+.about-hero { background: linear-gradient(135deg, #2d6a4f, #1b4332); }
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ==================================================
+   4. LAYOUTS (Grids & Logs)
 ================================================== */
 .intro-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 25px;
-  padding: 20px 10%;
+  padding: 0 10%;
+  margin-top: -30px;
 }
 
-.intro-card, .alert-card {
+.intro-card, .alert-card, .log-item {
   background: var(--glass);
   backdrop-filter: blur(10px);
   padding: 30px;
@@ -84,14 +111,19 @@ nav a:hover { color: var(--accent-teal); }
 
 .intro-card:hover { transform: translateY(-10px); background: white; }
 
-.progress-container { background: #e9ecef; border-radius: 100px; height: 12px; margin: 10px 0; overflow: hidden; }
-.progress-bar { height: 100%; background: linear-gradient(90deg, #52b788, var(--accent-teal)); }
+/* Command Center Specifics */
+.critical-border { border-left: 8px solid var(--alert-red); }
+.milestone-border { border-left: 8px solid var(--milestone-gold); }
+.update-border { border-left: 8px solid var(--accent-teal); }
+
+.log-section { display: flex; flex-direction: column; gap: 15px; padding: 0 10%; }
+.badge { padding: 4px 12px; border-radius: 6px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; min-width: 90px; text-align: center; }
 
 /* ==================================================
-   4. UI ELEMENTS (Buttons, Top Button)
+   5. NEW FEATURES (Jump To Top)
 ================================================== */
 #jumpToTop {
-  display: none; 
+  display: none;
   position: fixed;
   bottom: 30px;
   right: 30px;
@@ -102,18 +134,8 @@ nav a:hover { color: var(--accent-teal); }
   width: 50px; height: 50px;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 20px;
   box-shadow: var(--shadow);
+  transition: var(--transition);
 }
 
-.swatch {
-  width: 35px; height: 35px;
-  border-radius: 50%;
-  border: 2px solid white;
-  cursor: pointer;
-  margin: 5px;
-  transition: transform 0.2s;
-}
-.swatch:hover { transform: scale(1.2); }
-
-.hidden { display: none; }
+#jumpToTop:hover { background: var(--accent-teal); transform: scale(1.1); }
