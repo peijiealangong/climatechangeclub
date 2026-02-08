@@ -17,7 +17,133 @@
     <link rel="stylesheet" href="style.css">
     <script src="javascript.js" defer></script>
 
-    
+    <style>
+        /* ✅ SCROLL FIX: Force the page to be scrollable */
+        html, body {
+            overflow-x: hidden; /* Prevent sideways scrolling */
+            overflow-y: auto !important;   /* Force vertical scrolling */
+            height: auto !important;       /* Allow body to grow with content */
+            min-height: 100%;
+        }
+
+        :root {
+            --primary-green: #1b4332;
+            --accent-teal: #2a9d8f;
+            --alert-red: #e63946;
+            --milestone-gold: #f4d35e;
+            --glass: rgba(255, 255, 255, 0.85);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f0f4f1;
+            color: #1b4332;
+            margin: 0;
+            padding-top: 100px; /* Increased space for fixed nav */
+        }
+
+        /* Hero Header */
+        .notices-hero {
+            background: linear-gradient(135deg, #1b4332, #081c15);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+            margin-bottom: 40px;
+        }
+
+        .notices-hero h1 { font-size: 3rem; font-weight: 800; }
+
+        /* Container */
+        .container { 
+            padding: 0 10%; 
+            margin-bottom: 60px;
+            overflow: visible; /* Ensures content isn't trapped */
+        }
+
+        /* Alert Section */
+        .alerts-wrapper { margin-bottom: 50px; }
+
+        .alert-card {
+            background: #fff;
+            border-left: 8px solid var(--alert-red);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            animation: slideIn 0.5s ease;
+        }
+
+        /* Timeline Log Layout */
+        .log-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .log-item {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.3);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .log-item:hover { transform: scale(1.02); background: white; }
+
+        /* Status Badges */
+        .badge {
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            min-width: 80px;
+            text-align: center;
+        }
+        .b-fix { background: #d8f3dc; color: #1b4332; }
+        .b-new { background: #caf0f8; color: #0077b6; }
+        .b-milestone { background: var(--milestone-gold); color: #000; }
+        .b-critical { background: var(--alert-red); color: white; }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Nav & Footer */
+        nav { position: fixed; top: 0; width: 100%; background: rgba(27, 67, 50, 0.95); backdrop-filter: blur(10px); z-index: 1000; padding: 15px 0; }
+        nav ul { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 0; }
+        nav a { color: white; text-decoration: none; font-weight: 600; }
+        .submenu { display: none; position: absolute; background: #1b4332; padding: 10px; border-radius: 8px; list-style: none; }
+        .dropdown:hover .submenu { display: block; }
+        
+        footer { 
+            background: #1b4332; 
+            color: white; 
+            padding: 40px; 
+            text-align: center; 
+            position: relative; 
+            z-index: 1;
+        }
+
+        /* Swatch Panel */
+        .color-panel {
+            text-align: center;
+            background: white;
+            padding: 40px 20px;
+            margin: 40px 10%;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+        }
+        .swatch-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px; }
+        .swatch { width: 35px; height: 35px; border-radius: 50%; border: 2px solid #fff; cursor: pointer; }
+    </style>
 </head>
 <body>
 
