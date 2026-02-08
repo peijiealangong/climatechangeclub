@@ -134,3 +134,28 @@ document.addEventListener("scroll", () => {
 // Force-unlock scrolling on load
 document.body.style.overflowY = "auto";
 document.body.style.height = "auto";
+// Jump to Top Logic
+const topBtn = document.getElementById("jumpToTop");
+
+window.onscroll = function() {
+  scrollFunction();
+};
+
+function scrollFunction() {
+  // Calculate 50% of the total scrollable height
+  const halfWay = document.documentElement.scrollHeight / 2;
+
+  if (document.body.scrollTop > halfWay || document.documentElement.scrollTop > halfWay) {
+    topBtn.style.display = "block";
+  } else {
+    topBtn.style.display = "none";
+  }
+}
+
+// When the user clicks, scroll to the top
+topBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
