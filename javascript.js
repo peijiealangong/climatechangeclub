@@ -134,3 +134,49 @@ document.addEventListener("scroll", () => {
 // Force-unlock scrolling on load
 document.body.style.overflowY = "auto";
 document.body.style.height = "auto";
+// 1. Color Theme Switcher
+function changeColor(val) {
+    document.body.style.background = val || '#f0f4f1';
+}
+
+// 2. Popup Controls
+function closePopup() {
+    const popup = document.getElementById("promoPopup");
+    if (popup) popup.style.display = "none";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    // 3. Beta Features Toggle
+    const betaBtns = document.querySelectorAll(".beta-toggle");
+    betaBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const targetId = btn.getAttribute("data-target");
+            const target = document.getElementById(targetId);
+            if (target) {
+                target.classList.toggle("hidden");
+            }
+        });
+    });
+
+    // 4. Auto-show Popup (5 seconds delay)
+    setTimeout(() => {
+        const popup = document.getElementById("promoPopup");
+        if (popup) popup.style.display = "flex";
+    }, 5000);
+
+    // 5. Ambient Music Player
+    const music = document.getElementById("bgMusic");
+    const mBtn = document.getElementById("musicBtn");
+
+    if (mBtn && music) {
+        mBtn.addEventListener("click", () => {
+            if (music.paused) {
+                music.play();
+                mBtn.textContent = "⏸ Pause Music";
+            } else {
+                music.pause();
+                mBtn.textContent = "🎵 Play Ambient Music";
+            }
+        });
+    }
+});
