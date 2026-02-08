@@ -232,3 +232,34 @@ footer { background: var(--primary-green); color: var(--white); padding: 40px; t
     from { transform: translateY(50px) scale(0.9); opacity: 0; }
     to { transform: translateY(0) scale(1); opacity: 1; }
 }
+/* Hero Logo Styling */
+.hero-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px; /* Space between logo and the tag */
+}
+
+.hero-logo i {
+    font-size: 4rem; /* Large Earth icon */
+    color: var(--milestone-gold);
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 15px rgba(244, 211, 94, 0.4));
+    animation: rotateGlobe 20s linear infinite; /* Subtle rotation */
+}
+
+.hero-logo .logo-text {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 1.1rem;
+    color: var(--white);
+    opacity: 0.9;
+}
+
+/* Optional: Slow spinning animation for the Earth */
+@keyframes rotateGlobe {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
