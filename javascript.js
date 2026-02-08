@@ -1,38 +1,27 @@
-// Restore Background on Load
-document.addEventListener("DOMContentLoaded", () => {
-    const savedColor = localStorage.getItem("bgColor");
-    if (savedColor) document.body.style.backgroundColor = savedColor;
-});
-
-// Theme Switcher
-function changeColor(color) {
-    const target = color || '#f0f4f1';
-    document.body.style.backgroundColor = target;
-    localStorage.setItem("bgColor", target);
+// 1. Restore Original Color Logic
+function changeColor(val) { 
+    document.body.style.background = val || '#f0f4f1'; 
+    localStorage.setItem("savedBg", val);
 }
 
-// Jump To Top Logic
+// 2. Add Jump to Top Functionality
 const topBtn = document.getElementById("jumpToTop");
 
-window.addEventListener("scroll", () => {
-    const halfWay = document.documentElement.scrollHeight / 2;
-    if (window.scrollY > halfWay) {
+window.onscroll = function() {
+    // Only show if user scrolled past 50% of the page
+    if (window.scrollY > (document.body.scrollHeight / 2)) {
         topBtn.style.display = "block";
     } else {
         topBtn.style.display = "none";
     }
-});
+};
 
-topBtn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-});
+topBtn.onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};
 
-// Music Logic
-const music = document.getElementById("bgMusic");
-const mBtn = document.getElementById("musicBtn");
-if (mBtn) {
-    mBtn.addEventListener("click", () => {
-        if (music.paused) { music.play(); mBtn.textContent = "⏸ Pause Music"; }
-        else { music.pause(); mBtn.textContent = "🎵 Play Ambient Music"; }
-    });
-}
+// 3. Restore Music Persistence
+window.onload = () => {
+    const saved = localStorage.getItem("savedBg");
+    if (saved) document.body.style.background = saved;
+};
