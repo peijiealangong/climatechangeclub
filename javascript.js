@@ -1,14 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    // 🎨 1. THEME MEMORY
+    // 1. Restore Color Theme
     const savedColor = localStorage.getItem("bgColor");
     if (savedColor) document.body.style.backgroundColor = savedColor;
 
-    // 🎵 2. MUSIC CONTROLLER
+    // 2. Ambient Music Controller
     const music = document.getElementById("bgMusic");
     const mBtn = document.getElementById("musicBtn");
     const mText = document.getElementById("musicText");
-
     if (mBtn && music) {
         mBtn.addEventListener("click", () => {
             if (music.paused) {
@@ -23,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 🕒 3. ECO-POPUP (Once per session)
+    // 3. One-Time Popup (Session based)
     const popup = document.getElementById("promoPopup");
     if (popup && !sessionStorage.getItem("hasSeenEcoPopup")) {
         setTimeout(() => {
@@ -32,55 +31,56 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 5000);
     }
 
-    // ✊ 4. LIVE MEMBER COUNT (Google Sheets)
+    // 4. Update Live Member Count
     updateMemberCount();
 
-    // 🎉 5. CONFETTI + DELAYED FORM LINK
-    setupNewsletter();
+    // 5. Subscription Persistence
+    setupPersistentNewsletter();
 });
 
-// Logic for Member Counter
+// Fetch Count from Google Apps Script
 async function updateMemberCount() {
     const apiURL = "https://script.google.com/macros/s/AKfycbzI0GMc3wPGfZDQ4AhERrpn3n3rEFd4236RgRR_cLq3rLDEarUG_yA3uywRjIzWT3bvKg/exec";
     const countElement = document.getElementById("member-count");
-
-    if (!countElement) return;
-
     try {
         const response = await fetch(apiURL);
         const data = await response.json();
-        countElement.innerText = data.count || "Many";
-    } catch (error) {
-        console.error("Counter failed:", error);
-        countElement.innerText = "Join us";
-    }
+        if(countElement) countElement.innerText = data.count || "200+";
+    } catch (e) { console.error("Counter failed"); }
 }
 
-// Logic for Confetti Celebration
-function setupNewsletter() {
+// Subscription Logic with LocalStorage
+function setupPersistentNewsletter() {
     const trigger = document.getElementById('confettiTrigger');
     if (!trigger) return;
 
-    trigger.addEventListener('click', (e) => {
-        e.preventDefault();
-        const url = trigger.getAttribute('data-url');
+    if (localStorage.getItem("isSubscribed") === "true") {
+        applySubscribedUI(trigger);
+    }
 
-        if (typeof confetti === "function") {
-            confetti({
-                particleCount: 150,
-                spread: 70,
-                origin: { y: 0.6 },
-                colors: ['#2a9d8f', '#f4d35e', '#1b4332']
-            });
+    trigger.addEventListener('click', (e) => {
+        const url = trigger.getAttribute('data-url');
+        if (localStorage.getItem("isSubscribed") === "true") {
+            window.open(url, '_blank');
+            return;
         }
 
-        setTimeout(() => {
-            window.open(url, '_blank');
-        }, 1000);
+        e.preventDefault();
+        if (typeof confetti === "function") {
+            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#2a9d8f', '#f4d35e', '#1b4332'] });
+        }
+        localStorage.setItem("isSubscribed", "true");
+        applySubscribedUI(trigger);
+        setTimeout(() => { window.open(url, '_blank'); }, 1200);
     });
 }
 
-// Global UI Helpers
+function applySubscribedUI(el) {
+    el.innerHTML = `✓ Subscribed <i class="fas fa-check-circle"></i>`;
+    el.classList.add('btn-subscribed');
+}
+
+// Global Helpers
 function changeColor(color) {
     document.body.style.backgroundColor = color;
     localStorage.setItem("bgColor", color);
