@@ -94,25 +94,35 @@ The reusable JS will automatically toggle visibility.
 
 ###### CSS
 
-/\* Popup CSS \*/
+/\* Popup Fix - Perfectly Centered \& Blur \*/
+
+/\* Update these in style.css \*/
+
+/\* Perfectly Centered Popup Overlay \*/
 
 .popup {
 
-  position: fixed;
+&#x20;   position: fixed;
 
-  top: 0; left: 0;
+&#x20;   top: 0;
 
-  width: 100%; height: 100%;
+&#x20;   left: 0;
 
-  background: rgba(0,0,0,0.6);
+&#x20;   width: 100vw;
 
-  display: none;
+&#x20;   height: 100vh;
 
-  justify-content: center;
+&#x20;   background: rgba(0, 0, 0, 0.75);
 
-  align-items: center;
+&#x20;   backdrop-filter: blur(8px);
 
-  z-index: 9999;
+&#x20;   z-index: 9999;
+
+&#x20;   display: none; /\* JS switches this to 'flex' \*/
+
+&#x20;   align-items: center;     /\* Centers vertically \*/
+
+&#x20;   justify-content: center;   /\* Centers horizontally \*/
 
 }
 
@@ -120,61 +130,33 @@ The reusable JS will automatically toggle visibility.
 
 .popup-content {
 
-  background: linear-gradient(135deg, #ff5f6d, #ffc371);
+&#x20;   background: var(--white);
 
-  padding: 30px;
+&#x20;   padding: 40px;
 
-  border-radius: 12px;
+&#x20;   border-radius: 25px;
 
-  text-align: center;
+&#x20;   max-width: 450px;
 
-  color: white;
+&#x20;   width: 90%;
 
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+&#x20;   position: relative;
 
-  animation: fadeIn 0.5s ease-in-out;
+&#x20;   box-shadow: 0 20px 60px rgba(0,0,0,0.5);
 
-}
+&#x20;   text-align: center;
 
-
-
-.popup-content h2 {
-
-  margin-top: 0;
-
-  font-size: 1.8em;
+&#x20;   animation: popupSlideIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
 }
 
 
 
-.popup-btn {
+@keyframes popupSlideIn {
 
-  display: inline-block;
+&#x20;   from { transform: translateY(50px) scale(0.9); opacity: 0; }
 
-  margin-top: 15px;
-
-  padding: 12px 24px;
-
-  background: white;
-
-  color: #ff5f6d;
-
-  font-weight: bold;
-
-  border-radius: 8px;
-
-  text-decoration: none;
-
-  transition: background 0.3s;
-
-}
-
-
-
-.popup-btn:hover {
-
-  background: #ffe0e0;
+&#x20;   to { transform: translateY(0) scale(1); opacity: 1; }
 
 }
 
@@ -182,17 +164,29 @@ The reusable JS will automatically toggle visibility.
 
 .close-btn {
 
-  position: absolute;
+&#x20;   position: absolute;
 
-  top: 15px; right: 20px;
+&#x20;   top: 15px;
 
-  font-size: 28px;
+&#x20;   right: 20px;
 
-  cursor: pointer;
+&#x20;   font-size: 1.5rem;
+
+&#x20;   cursor: pointer;
+
+&#x20;   color: #888;
 
 }
 
 
+
+@keyframes popupSlideIn {
+
+&#x20;   from { transform: translateY(50px) scale(0.9); opacity: 0; }
+
+&#x20;   to { transform: translateY(0) scale(1); opacity: 1; }
+
+}
 
 @keyframes fadeIn {
 
@@ -210,7 +204,7 @@ The reusable JS will automatically toggle visibility.
 
 function showPopup() {
 
-\&nbsp; document.getElementById("promoPopup").style.display = "flex";
+\\\&nbsp; document.getElementById("promoPopup").style.display = "flex";
 
 }
 
@@ -218,7 +212,7 @@ function showPopup() {
 
 function closePopup() {
 
-\&nbsp; document.getElementById("promoPopup").style.display = "none";
+\\\&nbsp; document.getElementById("promoPopup").style.display = "none";
 
 }
 
@@ -228,7 +222,7 @@ function closePopup() {
 
 window.addEventListener("load", () => {
 
-\&nbsp; setTimeout(showPopup, 5000);
+\\\&nbsp; setTimeout(showPopup, 5000);
 
 });
 
@@ -241,23 +235,23 @@ Use these patterns to make any website look cleaner, more modern, and more appea
 
 ====================================================
 
-🌟 1. SPACING \& LAYOUT (The #1 design improvement)
+🌟 1. SPACING \\\& LAYOUT (The #1 design improvement)
 
 ====================================================
 
 
 
-/\* Add breathing room around sections \*/
+/\\\* Add breathing room around sections \\\*/
 
 section {
 
-&#x20; padding: 40px 20px;
+\&#x20; padding: 40px 20px;
 
 }
 
 
 
-/\* Consistent spacing utilities \*/
+/\\\* Consistent spacing utilities \\\*/
 
 .spacing-lg { margin-bottom: 40px; }
 
@@ -267,15 +261,15 @@ section {
 
 
 
-/\* Keep content centered and readable \*/
+/\\\* Keep content centered and readable \\\*/
 
 .container {
 
-&#x20; max-width: 1100px;
+\&#x20; max-width: 1100px;
 
-&#x20; margin: auto;
+\&#x20; margin: auto;
 
-&#x20; padding: 0 20px;
+\&#x20; padding: 0 20px;
 
 }
 
@@ -285,9 +279,9 @@ section {
 
 <section class="container spacing-lg">
 
-&#x20; <h2>Section Title</h2>
+\&#x20; <h2>Section Title</h2>
 
-&#x20; <p>Readable text stays around 50–75 characters per line.</p>
+\&#x20; <p>Readable text stays around 50–75 characters per line.</p>
 
 </section>
 
@@ -303,19 +297,19 @@ section {
 
 
 
-/\* Clean, modern font + readable spacing \*/
+/\\\* Clean, modern font + readable spacing \\\*/
 
 body {
 
-&#x20; font-family: "Poppins", system-ui, sans-serif;
+\&#x20; font-family: "Poppins", system-ui, sans-serif;
 
-&#x20; line-height: 1.6;
+\&#x20; line-height: 1.6;
 
 }
 
 
 
-/\* Visual hierarchy \*/
+/\\\* Visual hierarchy \\\*/
 
 h1 { font-size: 2.2rem; font-weight: 700; }
 
@@ -327,9 +321,9 @@ h3 { font-size: 1.3rem; font-weight: 600; }
 
 p {
 
-&#x20; font-size: 1rem;
+\&#x20; font-size: 1rem;
 
-&#x20; margin-bottom: 1rem;
+\&#x20; margin-bottom: 1rem;
 
 }
 
@@ -355,25 +349,25 @@ p {
 
 :root {
 
-&#x20; --primary: #2a9d8f;
+\&#x20; --primary: #2a9d8f;
 
-&#x20; --accent: #e63946;
+\&#x20; --accent: #e63946;
 
-&#x20; --dark: #2c3e50;
+\&#x20; --dark: #2c3e50;
 
-&#x20; --light: #f1faee;
+\&#x20; --light: #f1faee;
 
 }
 
 
 
-/\* Use variables everywhere \*/
+/\\\* Use variables everywhere \\\*/
 
 .btn {
 
-&#x20; background: var(--primary);
+\&#x20; background: var(--primary);
 
-&#x20; color: white;
+\&#x20; color: white;
 
 }
 
@@ -381,9 +375,9 @@ p {
 
 .highlight {
 
-&#x20; background: var(--accent);
+\&#x20; background: var(--accent);
 
-&#x20; color: white;
+\&#x20; color: white;
 
 }
 
@@ -409,19 +403,19 @@ p {
 
 .btn {
 
-&#x20; padding: 12px 20px;
+\&#x20; padding: 12px 20px;
 
-&#x20; border-radius: 8px;
+\&#x20; border-radius: 8px;
 
-&#x20; background: var(--primary);
+\&#x20; background: var(--primary);
 
-&#x20; color: white;
+\&#x20; color: white;
 
-&#x20; text-decoration: none;
+\&#x20; text-decoration: none;
 
-&#x20; display: inline-block;
+\&#x20; display: inline-block;
 
-&#x20; transition: 0.2s ease;
+\&#x20; transition: 0.2s ease;
 
 }
 
@@ -429,9 +423,9 @@ p {
 
 .btn:hover {
 
-&#x20; background: #21867a;
+\&#x20; background: #21867a;
 
-&#x20; transform: translateY(-2px);
+\&#x20; transform: translateY(-2px);
 
 }
 
@@ -455,15 +449,15 @@ p {
 
 .card {
 
-&#x20; background: white;
+\&#x20; background: white;
 
-&#x20; padding: 20px;
+\&#x20; padding: 20px;
 
-&#x20; border-radius: 12px;
+\&#x20; border-radius: 12px;
 
-&#x20; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+\&#x20; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 
-&#x20; transition: transform 0.2s ease;
+\&#x20; transition: transform 0.2s ease;
 
 }
 
@@ -471,7 +465,7 @@ p {
 
 .card:hover {
 
-&#x20; transform: translateY(-5px);
+\&#x20; transform: translateY(-5px);
 
 }
 
@@ -481,9 +475,9 @@ p {
 
 <div class="card">
 
-&#x20; <h3>Card Title</h3>
+\&#x20; <h3>Card Title</h3>
 
-&#x20; <p>Short description text.</p>
+\&#x20; <p>Short description text.</p>
 
 </div>
 
@@ -501,11 +495,11 @@ p {
 
 .grid {
 
-&#x20; display: grid;
+\&#x20; display: grid;
 
-&#x20; gap: 20px;
+\&#x20; gap: 20px;
 
-&#x20; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+\&#x20; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 
 }
 
@@ -515,11 +509,11 @@ p {
 
 <div class="grid">
 
-&#x20; <div class="card">Item 1</div>
+\&#x20; <div class="card">Item 1</div>
 
-&#x20; <div class="card">Item 2</div>
+\&#x20; <div class="card">Item 2</div>
 
-&#x20; <div class="card">Item 3</div>
+\&#x20; <div class="card">Item 3</div>
 
 </div>
 
@@ -537,13 +531,13 @@ p {
 
 nav ul {
 
-&#x20; display: flex;
+\&#x20; display: flex;
 
-&#x20; gap: 20px;
+\&#x20; gap: 20px;
 
-&#x20; flex-wrap: wrap;
+\&#x20; flex-wrap: wrap;
 
-&#x20; justify-content: center;
+\&#x20; justify-content: center;
 
 }
 
@@ -551,13 +545,13 @@ nav ul {
 
 @media (max-width: 768px) {
 
-&#x20; nav ul {
+\&#x20; nav ul {
 
-&#x20;   flex-direction: column;
+\&#x20;   flex-direction: column;
 
-&#x20;   text-align: center;
+\&#x20;   text-align: center;
 
-&#x20; }
+\&#x20; }
 
 }
 
@@ -567,15 +561,15 @@ nav ul {
 
 <nav>
 
-&#x20; <ul>
+\&#x20; <ul>
 
-&#x20;   <li><a href="#">Home</a></li>
+\&#x20;   <li><a href="#">Home</a></li>
 
-&#x20;   <li><a href="#">Projects</a></li>
+\&#x20;   <li><a href="#">Projects</a></li>
 
-&#x20;   <li><a href="#">Contact</a></li>
+\&#x20;   <li><a href="#">Contact</a></li>
 
-&#x20; </ul>
+\&#x20; </ul>
 
 </nav>
 
@@ -593,15 +587,15 @@ nav ul {
 
 .hero {
 
-&#x20; background: linear-gradient(135deg, var(--primary), var(--accent));
+\&#x20; background: linear-gradient(135deg, var(--primary), var(--accent));
 
-&#x20; color: white;
+\&#x20; color: white;
 
-&#x20; padding: 80px 20px;
+\&#x20; padding: 80px 20px;
 
-&#x20; text-align: center;
+\&#x20; text-align: center;
 
-&#x20; border-radius: 12px;
+\&#x20; border-radius: 12px;
 
 }
 
@@ -609,9 +603,9 @@ nav ul {
 
 .hero h1 {
 
-&#x20; font-size: 2.5rem;
+\&#x20; font-size: 2.5rem;
 
-&#x20; margin-bottom: 15px;
+\&#x20; margin-bottom: 15px;
 
 }
 
@@ -621,11 +615,11 @@ nav ul {
 
 <section class="hero">
 
-&#x20; <h1>Welcome to Our Club</h1>
+\&#x20; <h1>Welcome to Our Club</h1>
 
-&#x20; <p>Making a difference through climate action.</p>
+\&#x20; <p>Making a difference through climate action.</p>
 
-&#x20; <a class="btn" href="#">Join Us</a>
+\&#x20; <a class="btn" href="#">Join Us</a>
 
 </section>
 
@@ -643,7 +637,7 @@ nav ul {
 
 .fade-in {
 
-&#x20; animation: fadeIn 0.8s ease forwards;
+\&#x20; animation: fadeIn 0.8s ease forwards;
 
 }
 
@@ -651,9 +645,9 @@ nav ul {
 
 @keyframes fadeIn {
 
-&#x20; from { opacity: 0; transform: translateY(10px); }
+\&#x20; from { opacity: 0; transform: translateY(10px); }
 
-&#x20; to   { opacity: 1; transform: translateY(0); }
+\&#x20; to   { opacity: 1; transform: translateY(0); }
 
 }
 
@@ -677,15 +671,15 @@ nav ul {
 
 footer {
 
-&#x20; background: var(--dark);
+\&#x20; background: var(--dark);
 
-&#x20; color: white;
+\&#x20; color: white;
 
-&#x20; text-align: center;
+\&#x20; text-align: center;
 
-&#x20; padding: 20px;
+\&#x20; padding: 20px;
 
-&#x20; margin-top: 40px;
+\&#x20; margin-top: 40px;
 
 }
 
@@ -693,7 +687,7 @@ footer {
 
 footer a {
 
-&#x20; color: var(--accent);
+\&#x20; color: var(--accent);
 
 }
 
@@ -703,18 +697,18 @@ footer a {
 
 <footer>
 
-&#x20; <p>© 2025 Climate Change Club</p>
+\&#x20; <p>© 2025 Climate Change Club</p>
 
 </footer>
 
 Even more!
 
-/* ================================================================
+/\* ================================================================
    CLIMATE CLUB DEVELOPER CHEAT SHEET
 ================================================================
 
 1. GLOBAL THEMING (CSS Variables)
--------------------------------------------------- */
+-------------------------------------------------- \*/
 :root {
   --primary-green: #2d6a4f;
   --action-teal: #2a9d8f;
@@ -723,10 +717,10 @@ Even more!
   --smooth: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* 2. MODERN LAYOUT & LOOK 
--------------------------------------------------- */
+/\* 2. MODERN LAYOUT \& LOOK 
+-------------------------------------------------- \*/
 
-/* Glassmorphism */
+/\* Glassmorphism \*/
 .glass {
   background: var(--glass-bg);
   backdrop-filter: blur(10px);
@@ -734,57 +728,58 @@ Even more!
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive Grid (No Media Queries Needed) */
+/\* Responsive Grid (No Media Queries Needed) \*/
 .grid-auto {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
 }
 
-/* Perfect Centering (The "Holy Grail") */
+/\* Perfect Centering (The "Holy Grail") \*/
 .center-flex {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* 3. MOTION & ANIMATION 
--------------------------------------------------- */
+/\* 3. MOTION \& ANIMATION 
+-------------------------------------------------- \*/
 
-/* Hover Lift */
+/\* Hover Lift \*/
 .lift:hover {
   transform: translateY(-10px);
   transition: var(--smooth);
 }
 
-/* Pulsing Effect */
+/\* Pulsing Effect \*/
 @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.05); }
   100% { transform: scale(1); }
 }
 
-/* 4. JAVASCRIPT LOGIC SNIPPETS
--------------------------------------------------- */
+/\* 4. JAVASCRIPT LOGIC SNIPPETS
+-------------------------------------------------- \*/
 
-/* 🔒 DOM Safety Wrapper */
+/\* 🔒 DOM Safety Wrapper \*/
 document.addEventListener("DOMContentLoaded", () => {
   // Your code runs safely here
 });
 
-/* 💾 LocalStorage (Save/Load Data) */
+/\* 💾 LocalStorage (Save/Load Data) \*/
 localStorage.setItem("key", "value");       // Save
 const data = localStorage.getItem("key");   // Load
 
-/* 🔄 Class Toggler (Beta Sections/Menus) */
+/\* 🔄 Class Toggler (Beta Sections/Menus) \*/
 element.classList.toggle("hidden");
 
-/* 5. QUICK LAYOUT REFERENCE
--------------------------------------------------- */
-/*
+/\* 5. QUICK LAYOUT REFERENCE
+-------------------------------------------------- \*/
+/\*
   MARGIN:  Space outside the box
   BORDER:  The line around the box
   PADDING: Space inside the box (between text and border)
   INSET:   Shorthand for top/right/bottom/left: 0
-*/
+\*/
+
 
