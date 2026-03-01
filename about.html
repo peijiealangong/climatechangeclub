@@ -109,6 +109,14 @@
     <p> We're getting all new information updated by 3/1/26! Stay tuned for more...</p>
   </div>
 </div>
+<script src="https://www.google.com/recaptcha/api.js?render=6LexhnssAAAAAJKsI0vXffvPWyNjPh76uV2Cqfip"></script>
+<script>
+   grecaptcha.ready(function() {
+       grecaptcha.execute('6LexhnssAAAAAJKsI0vXffvPWyNjPh76uV2Cqfip', {action: 'submit'}).then(function(token) {
+           // Send token to backend for verification
+       });
+   });
+</script>
 
 </body>
 </html>
