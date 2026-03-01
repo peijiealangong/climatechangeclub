@@ -149,3 +149,35 @@ footer { text-align: center; padding: 30px; background: var(--primary-green); co
 @keyframes rotateGlobe { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 @keyframes shine { to { background-position: 200% center; } }
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+/* Hero Section Layout - Stacked Globe */
+.hero-logo {
+    display: flex;
+    flex-direction: column; /* This puts globe on top of text */
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    gap: 15px; /* Space between globe and text */
+}
+
+.hero-logo i { 
+    font-size: 5rem; 
+    color: var(--milestone-gold); 
+    animation: rotateGlobe 20s linear infinite; 
+    filter: drop-shadow(0 0 15px rgba(244, 211, 94, 0.4));
+}
+
+.logo-text { 
+    font-size: 1.8rem; 
+    font-weight: 800; 
+    letter-spacing: 2px; 
+    text-transform: uppercase; 
+    color: var(--white);
+    display: block;
+}
+
+/* Original Floating Icons Styling */
+.floating-icons i { position: absolute; opacity: 0.5; font-size: 2rem; animation: float 6s ease-in-out infinite; }
+.icon-1 { top: 20%; left: 10%; }
+.icon-2 { bottom: 20%; right: 10%; animation-delay: 2s; }
+
+/* Rest of your original CSS remains identical... */
