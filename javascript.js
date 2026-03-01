@@ -109,3 +109,47 @@ document.addEventListener("scroll", () => {
         window.scrollY > 50 ? navbar.classList.add("scrolled") : navbar.classList.remove("scrolled");
     }
 });
+// Newsletter Submission Logic
+const newsForm = document.getElementById("newsletterForm");
+if (newsForm) {
+    newsForm.addEventListener("submit", (e) => {
+        e.preventDefault(); // Stop page reload
+        const email = document.getElementById("userEmail").value;
+        
+        // Show success message using your existing showModal function
+        showModal(
+            "Welcome to the Chronicle! 🌍",
+            `Thank you for joining. We've sent a confirmation to ${email}.`
+        );
+        
+        newsForm.reset();
+    });
+}
+async function updateMemberCount() {
+    const apiURL = "PASTE_YOUR_WEB_APP_URL_HERE";
+    const countElement = document.getElementById("member-count");
+
+    try {
+        const response = await fetch(apiURL);
+        const data = await response.json();
+        countElement.innerText = data.count;
+    } catch (error) {
+        console.error("Error fetching count:", error);
+        countElement.innerText = "Many"; // Backup if the script fails
+    }
+}
+
+// Run it when the page loads
+document.addEventListener("DOMContentLoaded", updateMemberCount);
+// Confetti Animation for the Mailing List Button
+const confettiBtn = document.getElementById('confettiTrigger');
+if (confettiBtn) {
+    confettiBtn.addEventListener('click', () => {
+        confetti({
+            particleCount: 150,
+            spread: 70,
+            origin: { y: 0.6 },
+            colors: ['#2a9d8f', '#264653', '#e9c46a']
+        });
+    });
+}

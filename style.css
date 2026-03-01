@@ -267,3 +267,145 @@ footer { background: var(--primary-green); color: var(--white); padding: 40px; t
 /* The new code..... Revert if needed */
 
 /* Follow up: Reverted */
+/* Centering the entire section */
+.newsletter-section {
+    display: flex;
+    justify-content: center; /* Horizontal center */
+    align-items: center;     /* Vertical center */
+    padding: 80px 20px;
+    background: linear-gradient(rgba(27, 67, 50, 0.8), rgba(27, 67, 50, 0.8)), 
+                url('your-nature-image.jpg') center/cover;
+}
+
+/* The Card Widget */
+.newsletter-card {
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    padding: 50px 40px;
+    border-radius: 30px;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    box-shadow: var(--shadow);
+    
+    /* Centering content inside the card */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.newsletter-icon {
+    font-size: 2.5rem;
+    color: var(--action-teal);
+    background: var(--white);
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+/* The Form Layout */
+.newsletter-form {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+.newsletter-form input {
+    flex: 2; /* Makes input twice as wide as the button */
+    padding: 15px 20px;
+    border-radius: 50px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.newsletter-form button {
+    flex: 1;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.privacy-note {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* Make it look good on phones */
+@media (max-width: 480px) {
+    .newsletter-form {
+        flex-direction: column;
+    }
+}
+.newsletter-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 20px;
+    background: #f0f4f1; /* Light eco-grey */
+}
+
+.newsletter-card {
+    background: white;
+    padding: 50px;
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    max-width: 550px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-large {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: #2a9d8f; /* Your Action Teal */
+    color: white;
+    text-decoration: none;
+    padding: 20px 40px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.btn-large:hover {
+    transform: translateY(-5px);
+    background: #1b4332; /* Deep Forest Green */
+}
+.live-badge {
+    background: rgba(42, 157, 143, 0.1);
+    color: var(--primary-green);
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.dot {
+    height: 8px;
+    width: 8px;
+    background-color: #2a9d8f;
+    border-radius: 50%;
+    display: inline-block;
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.2); }
+    100% { opacity: 1; transform: scale(1); }
+}
