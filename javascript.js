@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    
     // 1. Restore Color Theme
     const savedColor = localStorage.getItem("bgColor");
     if (savedColor) document.body.style.backgroundColor = savedColor;
@@ -10,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (mBtn && music) {
         mBtn.addEventListener("click", () => {
             if (music.paused) {
-                music.play().catch(() => console.log("User must interact first"));
+                music.play();
                 mText.textContent = "Pause Music";
                 mBtn.style.background = "var(--action-teal)";
             } else {
@@ -30,24 +31,26 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 5000);
     }
 
-    // 4. Update Member Counter
+    // 4. Update Live Member Count
     updateMemberCount();
 
-    // 5. Subscription Memory Logic
-    setupSubscription();
+    // 5. Subscription Persistence
+    setupPersistentNewsletter();
 });
 
+// Fetch Count from Google Apps Script
 async function updateMemberCount() {
     const apiURL = "https://script.google.com/macros/s/AKfycbzI0GMc3wPGfZDQ4AhERrpn3n3rEFd4236RgRR_cLq3rLDEarUG_yA3uywRjIzWT3bvKg/exec";
-    const countEl = document.getElementById("member-count");
+    const countElement = document.getElementById("member-count");
     try {
         const response = await fetch(apiURL);
         const data = await response.json();
-        if(countEl) countEl.innerText = data.count || "200+";
-    } catch (e) { console.log("Counter offline"); }
+        if(countElement) countElement.innerText = data.count || "200+";
+    } catch (e) { console.error("Counter failed"); }
 }
 
-function setupSubscription() {
+// Subscription Logic with LocalStorage
+function setupPersistentNewsletter() {
     const trigger = document.getElementById('confettiTrigger');
     if (!trigger) return;
 
@@ -64,7 +67,7 @@ function setupSubscription() {
 
         e.preventDefault();
         if (typeof confetti === "function") {
-            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#2a9d8f', '#f4d35e', '#1b4332'] });
         }
         localStorage.setItem("isSubscribed", "true");
         applySubscribedUI(trigger);
@@ -77,6 +80,7 @@ function applySubscribedUI(el) {
     el.classList.add('btn-subscribed');
 }
 
+// Global Helpers
 function changeColor(color) {
     document.body.style.backgroundColor = color;
     localStorage.setItem("bgColor", color);
