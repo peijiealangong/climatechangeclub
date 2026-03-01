@@ -1,6 +1,6 @@
 /**
  * Climate Change Club - Unified JavaScript
- * Fixes: Music Button, Color Persistence, and Once-per-session Popup
+ * Restored: Music Button, Color Persistence, and Once-per-session Popup
  */
 
 // ==========================================
@@ -93,11 +93,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // 👋 5. Show Welcome Modal
-    showModal(
-        "🌱 Development Update",
-        "The website is in the Alpha/Beta development stage. Thank you for your feedback!"
-    );
+    // 👋 5. Show Welcome Modal (Optional, remove if you don't have the HTML for it anymore)
+    // showModal(
+    //    "🌱 Development Update",
+    //    "The website is in the Alpha/Beta development stage. Thank you for your feedback!"
+    // );
 });
 
 // ==========================================
