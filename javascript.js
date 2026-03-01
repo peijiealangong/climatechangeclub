@@ -126,7 +126,7 @@ if (newsForm) {
     });
 }
 async function updateMemberCount() {
-    const apiURL = "PASTE_YOUR_WEB_APP_URL_HERE";
+    const apiURL = "https://script.google.com/macros/s/AKfycbzI0GMc3wPGfZDQ4AhERrpn3n3rEFd4236RgRR_cLq3rLDEarUG_yA3uywRjIzWT3bvKg/exec";
     const countElement = document.getElementById("member-count");
 
     try {
