@@ -10,9 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-  <script src="javascript.js" defer></script>
-
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="javascript.js" defer></script>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-68D6N5XQ6D"></script>
   <script>
@@ -113,6 +112,32 @@
       </div>
     </section>
 
+    <section class="newsletter-section">
+      <div class="newsletter-card">
+          <div class="live-badge">
+              <span class="dot"></span> 
+              <span id="member-count">Checking...</span> students have joined
+          </div>
+
+          <div class="newsletter-icon">
+              <i class="fas fa-file-signature"></i>
+          </div>
+          <h2>Climate Crisis Newsletter</h2>
+          <p>Subscribe to receive our latest <strong>Google Doc</strong> investigative reports directly in your inbox.</p>
+          
+          <div class="newsletter-portal">
+              <a href="javascript:void(0)" 
+                 data-url="https://forms.gle/8BBaZFaykad2XnYF9" 
+                 class="btn-primary btn-large" 
+                 id="confettiTrigger">
+                  Join the Mailing List <i class="fas fa-paper-plane"></i>
+              </a>
+          </div>
+          
+          <p class="privacy-note">🌍 Unlimited members. Zero ads. Pure action.</p>
+      </div>
+    </section>
+
     <section class="color-panel">
       <h3>🎨 Personalize Your Experience</h3>
       <p>Change the environment color to suit your mood.</p>
@@ -146,29 +171,6 @@
     </div>
   </div>
 
-  <section class="newsletter-section">
-      <div class="newsletter-card">
-          <div class="live-badge">
-              <span class="dot"></span> 
-              <span id="member-count">Checking...</span> students have joined
-          </div>
-
-          <div class="newsletter-icon">
-              <i class="fas fa-file-signature"></i>
-          </div>
-          <h2>The Climate Crisis</h2>
-          <p>Subscribe to receive our latest <strong>Google Doc</strong>learn about the climate change club news directly in your inbox</p>
-          
-          <div class="newsletter-portal">
-              <a href="https://forms.gle/8BBaZFaykad2XnYF9" target="_blank" class="btn-primary btn-large" id="confettiTrigger">
-                  Join the Mailing List <i class="fas fa-paper-plane"></i>
-              </a>
-          </div>
-          
-          <p class="privacy-note">🌍 Unlimited members. No ads. Just action.</p>
-      </div>
-  </section>
-
   <footer>
     <p>🌍 <strong>Climate Change Club</strong></p>
     <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 10px;">Designed with ❤️ for the Planet</p>
@@ -178,7 +180,7 @@
   <script>
     grecaptcha.ready(function() {
         grecaptcha.execute('6LexhnssAAAAAJKsI0vXffvPWyNjPh76uV2Cqfip', {action: 'submit'}).then(function(token) {
-            // Logic to send token to your backend
+            // Recaptcha token logic
         });
     });
   </script>
