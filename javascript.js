@@ -43,7 +43,7 @@ function setupUpdateNotification() {
     const updatePopup = document.getElementById("updatePopup");
     const updateBtn = document.getElementById("updateBtn");
 
-    const currentVersion = "1.3"; 
+    const currentVersion = "1.5"; 
 
     if (!updatePopup || !updateBtn) return;
 
