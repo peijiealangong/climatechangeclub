@@ -303,3 +303,28 @@ footer { text-align: center; padding: 30px; background: var(--primary-green); co
     cursor: pointer;
     color: var(--alert-red);
 }
+/* Enhanced Game UI */
+.carbon-cloud {
+    position: absolute;
+    font-size: 2.5rem; /* Made larger */
+    cursor: pointer;
+    user-select: none;
+    padding: 20px; /* This expands the clickable area significantly */
+    margin: -20px; /* Offsets padding so the icon stays centered */
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.8));
+    transition: transform 0.1s ease;
+}
+
+.carbon-cloud:hover {
+    transform: scale(1.2);
+}
+
+#high-score-board {
+    position: absolute;
+    top: 10px; right: 10px;
+    font-weight: 800;
+    color: var(--secondary-green);
+    background: rgba(255,255,255,0.7);
+    padding: 5px 10px;
+    border-radius: 10px;
+}
