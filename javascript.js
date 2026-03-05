@@ -1,17 +1,95 @@
+/**
+ * CLIMATE CHANGE CLUB - MAIN CORE SCRIPT
+ * Version: 1.3 (Update Popup System Active)
+ */
+
 document.addEventListener("DOMContentLoaded", () => {
     
-    // 1. Restore Color Theme
+    // 1. GLOBAL THEME INITIALIZATION
+    // Restores the user's preferred background color from previous visits.
     const savedColor = localStorage.getItem("bgColor");
     if (savedColor) document.body.style.backgroundColor = savedColor;
 
-    // 2. Ambient Music Controller
+    // 2. AMBIENT MUSIC SYSTEM
+    // Handles play/pause states and UI button feedback.
+    initAmbientMusic();
+
+    // 3. ECO-GAME SESSION POPUP
+    // Shows the download prompt once per browser session after 5 seconds.
+    initEcoPopup();
+
+    // 4. LIVE IMPACT TRACKER
+    // Fetches the latest member data from the Google Apps Script API.
+    updateMemberCount();
+
+    // 5. NEWSLETTER PERSISTENCE
+    // Remembers if the user joined the mailing list and triggers confetti.
+    setupPersistentNewsletter();
+
+    // 6. UPDATE NOTIFICATION (NEW VERSION-CONTROLLED SYSTEM)
+    // Checks the server version against the local version to force popups.
+    setupUpdateNotification();
+});
+
+/* ==========================================================================
+   LOGIC MODULES
+   ========================================================================== */
+
+/**
+ * MODULE 6: UPDATE NOTIFICATION & VERSION CONTROL
+ * 🚨 COMMAND: To force the popup to appear for every single user again, 
+ * change "1.3" to "1.4" below.
+ */
+function setupUpdateNotification() {
+    const updatePopup = document.getElementById("updatePopup");
+    const updateBtn = document.getElementById("updateBtn");
+
+    const currentVersion = "1.4"; // <--- CHANGE THIS TO REDEPLOY
+
+    if (!updatePopup || !updateBtn) return;
+
+    // Compare saved version to the code version
+    const savedVersion = localStorage.getItem("appVersion");
+
+    if (savedVersion !== currentVersion) {
+        // Delay entrance for 2 seconds to let the page settle
+        setTimeout(() => {
+            updatePopup.classList.add("show");
+        }, 2000);
+    }
+
+    updateBtn.addEventListener("click", () => {
+        // PHASE 1: "Updating..." (2 Second Duration)
+        updateBtn.innerText = "Updating...";
+        updateBtn.style.opacity = "0.7";
+        updateBtn.style.cursor = "not-allowed";
+        updateBtn.disabled = true; 
+        
+        setTimeout(() => {
+            // PHASE 2: "Refreshing..." (2 Second Duration)
+            updateBtn.innerText = "Refreshing...";
+            
+            setTimeout(() => {
+                // PHASE 3: Commit version to memory and reload
+                localStorage.setItem("appVersion", currentVersion);
+                window.location.reload();
+            }, 2000); 
+        }, 2000); 
+    });
+}
+
+/**
+ * MODULE 2: AMBIENT MUSIC
+ */
+function initAmbientMusic() {
     const music = document.getElementById("bgMusic");
     const mBtn = document.getElementById("musicBtn");
     const mText = document.getElementById("musicText");
+
     if (mBtn && music) {
         mBtn.addEventListener("click", () => {
             if (music.paused) {
-                music.play();
+                music.play().catch(() => console.log("Audio blocked: User interaction required."));
                 mText.textContent = "Pause Music";
                 mBtn.style.background = "var(--action-teal)";
             } else {
@@ -21,8 +99,12 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
+}
 
-    // 3. One-Time Popup (Session based)
+/**
+ * MODULE 3: SESSION POPUP
+ */
+function initEcoPopup() {
     const popup = document.getElementById("promoPopup");
     if (popup && !sessionStorage.getItem("hasSeenEcoPopup")) {
         setTimeout(() => {
@@ -30,55 +112,11 @@ document.addEventListener("DOMContentLoaded", () => {
             sessionStorage.setItem("hasSeenEcoPopup", "true");
         }, 5000);
     }
-
-    // 4. Update Live Member Count
-    updateMemberCount();
-
-    // 5. Subscription Persistence
-    setupPersistentNewsletter();
-    // 6. Update Notification Logic (Upgraded with Version Control & Timers)
-function setupUpdateNotification() {
-    const updatePopup = document.getElementById("updatePopup");
-    const updateBtn = document.getElementById("updateBtn");
-
-    // 🚨 YOUR COMMAND: Change this number (e.g., to "1.2", "1.3") to force the popup for everyone!
-    const currentVersion = "1.3"; 
-
-    if (!updatePopup || !updateBtn) return;
-
-    // Check if their saved version matches your current version
-    if (localStorage.getItem("appVersion") !== currentVersion) {
-        // Wait 2 seconds after page load, then slide it up smoothly
-        setTimeout(() => {
-            updatePopup.classList.add("show");
-        }, 2000);
-    }
-
-    // Handle the button click with the double-timer
-    updateBtn.addEventListener("click", () => {
-        // Step 1: "Updating..." state (2 seconds)
-        updateBtn.innerText = "Updating...";
-        updateBtn.style.opacity = "0.7";
-        updateBtn.style.cursor = "not-allowed";
-        updateBtn.disabled = true; // Prevents double-clicking
-        
-        setTimeout(() => {
-            // Step 2: "Refreshing..." state (2 seconds)
-            updateBtn.innerText = "Refreshing...";
-            
-            setTimeout(() => {
-                // Step 3: Save the NEW version to their browser memory
-                localStorage.setItem("appVersion", currentVersion);
-                
-                // Step 4: Actually refresh the page
-                window.location.reload();
-            }, 2000); // Waits 2 seconds on "Refreshing..."
-        }, 2000); // Waits 2 seconds on "Updating..."
-    });
 }
-});
 
-// Fetch Count from Google Apps Script
+/**
+ * MODULE 4: GOOGLE API MEMBER COUNTER
+ */
 async function updateMemberCount() {
     const apiURL = "https://script.google.com/macros/s/AKfycbzI0GMc3wPGfZDQ4AhERrpn3n3rEFd4236RgRR_cLq3rLDEarUG_yA3uywRjIzWT3bvKg/exec";
     const countElement = document.getElementById("member-count");
@@ -86,10 +124,14 @@ async function updateMemberCount() {
         const response = await fetch(apiURL);
         const data = await response.json();
         if(countElement) countElement.innerText = data.count || "200+";
-    } catch (e) { console.error("Counter failed"); }
+    } catch (e) {
+        console.error("Member counter API unavailable.");
+    }
 }
 
-// Subscription Logic with LocalStorage
+/**
+ * MODULE 5: NEWSLETTER PERSISTENCE & CONFETTI
+ */
 function setupPersistentNewsletter() {
     const trigger = document.getElementById('confettiTrigger');
     if (!trigger) return;
@@ -107,7 +149,12 @@ function setupPersistentNewsletter() {
 
         e.preventDefault();
         if (typeof confetti === "function") {
-            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#2a9d8f', '#f4d35e', '#1b4332'] });
+            confetti({ 
+                particleCount: 150, 
+                spread: 70, 
+                origin: { y: 0.6 }, 
+                colors: ['#2a9d8f', '#f4d35e', '#1b4332'] 
+            });
         }
         localStorage.setItem("isSubscribed", "true");
         applySubscribedUI(trigger);
@@ -120,7 +167,9 @@ function applySubscribedUI(el) {
     el.classList.add('btn-subscribed');
 }
 
-// Global Helpers
+/**
+ * GLOBAL HELPERS (Color Theme & UI)
+ */
 function changeColor(color) {
     document.body.style.backgroundColor = color;
     localStorage.setItem("bgColor", color);
@@ -128,35 +177,4 @@ function changeColor(color) {
 
 function closePopup() {
     document.getElementById("promoPopup").style.display = "none";
-}
-// 6. Update Notification Logic (Using LocalStorage "Cookies")
-function setupUpdateNotification() {
-    const updatePopup = document.getElementById("updatePopup");
-    const updateBtn = document.getElementById("updateBtn");
-
-    if (!updatePopup || !updateBtn) return;
-
-    // Check localStorage to see if they've already clicked update
-    if (localStorage.getItem("hasUpdated") !== "true") {
-        // Wait 2 seconds after page load, then slide it up
-        setTimeout(() => {
-            updatePopup.classList.add("show");
-        }, 2000);
-    }
-
-    // Handle the button click
-    updateBtn.addEventListener("click", () => {
-        // Change text and appearance
-        updateBtn.innerText = "Updating...";
-        updateBtn.style.opacity = "0.7";
-        updateBtn.style.cursor = "not-allowed";
-        
-        setTimeout(() => {
-            // Set the memory so it never shows again
-            localStorage.setItem("hasUpdated", "true");
-            
-            // Refresh the page
-            window.location.reload();
-        }, 2000);
-    });
 }
