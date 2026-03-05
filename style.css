@@ -209,3 +209,20 @@ footer { text-align: center; padding: 30px; background: var(--primary-green); co
     font-weight: 600;
     color: var(--primary-green);
 }
+/* Spinner Animation for the Update Button */
+.fa-spin-custom {
+    animation: fa-spin 1s infinite linear;
+    margin-right: 10px; /* Space between icon and text */
+}
+
+@keyframes fa-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(359deg); }
+}
+
+/* Ensure the button handles the icon and text alignment */
+#updateBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
