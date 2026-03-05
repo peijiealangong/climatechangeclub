@@ -29,6 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // 6. UPDATE NOTIFICATION (NEW VERSION-CONTROLLED SYSTEM)
     // Checks the server version against the local version to force popups.
     setupUpdateNotification();
+    // 7. Initialize the Mini-Game
+    initMiniGame();
 });
 
 /* ==========================================================================
@@ -43,7 +45,7 @@ function setupUpdateNotification() {
     const updatePopup = document.getElementById("updatePopup");
     const updateBtn = document.getElementById("updateBtn");
 
-    const currentVersion = "1.5"; 
+    const currentVersion = "1.6"; 
 
     if (!updatePopup || !updateBtn) return;
 
@@ -175,4 +177,87 @@ function changeColor(color) {
 
 function closePopup() {
     document.getElementById("promoPopup").style.display = "none";
+}
+/**
+ * MODULE 7: CARBON CATCHER MINIGAME
+ */
+function initMiniGame() {
+    const modal = document.getElementById("gameModal");
+    const openBtn = document.getElementById("openGameBtn");
+    const closeBtn = document.getElementById("closeGameBtn");
+    const startBtn = document.getElementById("startGameBtn");
+    const canvas = document.getElementById("game-canvas");
+    const scoreDisplay = document.getElementById("game-score");
+
+    let score = 0;
+    let gameActive = false;
+
+    if (!modal || !openBtn) return;
+
+    // Open/Close logic
+    openBtn.onclick = () => modal.style.display = "flex";
+    closeBtn.onclick = () => {
+        modal.style.display = "none";
+        gameActive = false;
+    };
+
+    startBtn.onclick = () => {
+        score = 0;
+        scoreDisplay.innerText = score;
+        gameActive = true;
+        startBtn.style.display = "none";
+        spawnCarbon();
+    };
+
+    function spawnCarbon() {
+        if (!gameActive) return;
+
+        const cloud = document.createElement("div");
+        cloud.className = "carbon-cloud";
+        cloud.innerHTML = "☁️"; // CO2 Cloud icon
+        cloud.style.left = Math.random() * (canvas.offsetWidth - 40) + "px";
+        cloud.style.top = "-50px";
+        canvas.appendChild(cloud);
+
+        // Falling animation using JS
+        let topPos = -50;
+        const fallInterval = setInterval(() => {
+            if (!gameActive) {
+                clearInterval(fallInterval);
+                cloud.remove();
+                return;
+            }
+
+            topPos += 3; // Speed of fall
+            cloud.style.top = topPos + "px";
+
+            // If it hits the bottom
+            if (topPos > canvas.offsetHeight) {
+                clearInterval(fallInterval);
+                cloud.remove();
+                endGame();
+            }
+        }, 30);
+
+        // Click to catch
+        cloud.onclick = () => {
+            score++;
+            scoreDisplay.innerText = score;
+            clearInterval(fallInterval);
+            cloud.innerHTML = "🌿"; // Turns into a leaf when "caught"
+            setTimeout(() => cloud.remove(), 200);
+        };
+
+        // Spawn next cloud
+        setTimeout(spawnCarbon, 1000 - Math.min(score * 10, 500)); 
+    }
+
+    function endGame() {
+        gameActive = false;
+        alert(`Game Over! You captured ${score} carbon clouds and helped the planet!`);
+        startBtn.style.display = "inline-block";
+        startBtn.innerText = "Play Again";
+        // Clear remaining clouds
+        canvas.querySelectorAll('.carbon-cloud').forEach(c => c.remove());
+    }
 }
