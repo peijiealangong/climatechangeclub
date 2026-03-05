@@ -36,8 +36,46 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 5. Subscription Persistence
     setupPersistentNewsletter();
-    // 6. Check for updates
-    setupUpdateNotification();
+    // 6. Update Notification Logic (Upgraded with Version Control & Timers)
+function setupUpdateNotification() {
+    const updatePopup = document.getElementById("updatePopup");
+    const updateBtn = document.getElementById("updateBtn");
+
+    // 🚨 YOUR COMMAND: Change this number (e.g., to "1.2", "1.3") to force the popup for everyone!
+    const currentVersion = "1.1"; 
+
+    if (!updatePopup || !updateBtn) return;
+
+    // Check if their saved version matches your current version
+    if (localStorage.getItem("appVersion") !== currentVersion) {
+        // Wait 2 seconds after page load, then slide it up smoothly
+        setTimeout(() => {
+            updatePopup.classList.add("show");
+        }, 2000);
+    }
+
+    // Handle the button click with the double-timer
+    updateBtn.addEventListener("click", () => {
+        // Step 1: "Updating..." state (2 seconds)
+        updateBtn.innerText = "Updating...";
+        updateBtn.style.opacity = "0.7";
+        updateBtn.style.cursor = "not-allowed";
+        updateBtn.disabled = true; // Prevents double-clicking
+        
+        setTimeout(() => {
+            // Step 2: "Refreshing..." state (2 seconds)
+            updateBtn.innerText = "Refreshing...";
+            
+            setTimeout(() => {
+                // Step 3: Save the NEW version to their browser memory
+                localStorage.setItem("appVersion", currentVersion);
+                
+                // Step 4: Actually refresh the page
+                window.location.reload();
+            }, 2000); // Waits 2 seconds on "Refreshing..."
+        }, 2000); // Waits 2 seconds on "Updating..."
+    });
+}
 });
 
 // Fetch Count from Google Apps Script
