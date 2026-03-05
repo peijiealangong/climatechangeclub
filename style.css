@@ -181,3 +181,31 @@ footer { text-align: center; padding: 30px; background: var(--primary-green); co
 .icon-2 { bottom: 20%; right: 10%; animation-delay: 2s; }
 
 /* Rest of your original CSS remains identical... */
+/* ==================================================
+   7. UPDATE POPUP NOTIFICATION (New Addition)
+   ================================================== */
+.update-popup {
+    position: fixed;
+    bottom: -150px; /* Hidden off-screen initially */
+    right: 30px;
+    background: var(--white);
+    padding: 20px 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    z-index: 4000;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-left: 5px solid var(--action-teal);
+    transition: bottom 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.update-popup.show {
+    bottom: 30px; /* Slides up smoothly into view */
+}
+
+.update-popup p {
+    margin: 0;
+    font-weight: 600;
+    color: var(--primary-green);
+}

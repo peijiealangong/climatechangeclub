@@ -36,6 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 5. Subscription Persistence
     setupPersistentNewsletter();
+    // 6. Check for updates
+    setupUpdateNotification();
 });
 
 // Fetch Count from Google Apps Script
@@ -88,4 +90,35 @@ function changeColor(color) {
 
 function closePopup() {
     document.getElementById("promoPopup").style.display = "none";
+}
+// 6. Update Notification Logic (Using LocalStorage "Cookies")
+function setupUpdateNotification() {
+    const updatePopup = document.getElementById("updatePopup");
+    const updateBtn = document.getElementById("updateBtn");
+
+    if (!updatePopup || !updateBtn) return;
+
+    // Check localStorage to see if they've already clicked update
+    if (localStorage.getItem("hasUpdated") !== "true") {
+        // Wait 2 seconds after page load, then slide it up
+        setTimeout(() => {
+            updatePopup.classList.add("show");
+        }, 2000);
+    }
+
+    // Handle the button click
+    updateBtn.addEventListener("click", () => {
+        // Change text and appearance
+        updateBtn.innerText = "Updating...";
+        updateBtn.style.opacity = "0.7";
+        updateBtn.style.cursor = "not-allowed";
+        
+        setTimeout(() => {
+            // Set the memory so it never shows again
+            localStorage.setItem("hasUpdated", "true");
+            
+            // Refresh the page
+            window.location.reload();
+        }, 2000);
+    });
 }
