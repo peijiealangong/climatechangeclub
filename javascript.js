@@ -42,7 +42,7 @@ function setupUpdateNotification() {
     const updateBtn = document.getElementById("updateBtn");
 
     // 🚨 YOUR COMMAND: Change this number (e.g., to "1.2", "1.3") to force the popup for everyone!
-    const currentVersion = "1.2"; 
+    const currentVersion = "1.3"; 
 
     if (!updatePopup || !updateBtn) return;
 
