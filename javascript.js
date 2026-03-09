@@ -39,13 +39,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /**
  * MODULE 6: UPDATE NOTIFICATION (With Spinning Icon)
- * 🚨 COMMAND: Change "1.3" to "1.4" to trigger for everyone.
+ * 🚨 COMMAND: Change "1.7" to "1.8" to trigger for everyone.
  */
 function setupUpdateNotification() {
     const updatePopup = document.getElementById("updatePopup");
     const updateBtn = document.getElementById("updateBtn");
 
-    const currentVersion = "1.6"; 
+    const currentVersion = "1.7"; 
 
     if (!updatePopup || !updateBtn) return;
 
@@ -280,5 +280,26 @@ function initMiniGame() {
         alert(`Game Over! Final Score: ${score}\nYour Best: ${highScore}`);
         startBtn.style.display = "inline-block";
         startBtn.innerText = "Try to Beat Record";
+    }
+}
+/**
+ * MODULE 8: VIDEO PROMO POPUP (Always Shows)
+ */
+function initVideoPromo() {
+    const popup = document.getElementById("videoPromoPopup");
+    const closeBtn = document.getElementById("closeVideoPromo");
+
+    if (!popup) return;
+
+    // Triggers every single time the page loads, waiting 3 seconds
+    setTimeout(() => {
+        popup.classList.add("show");
+    }, 3000);
+
+    if (closeBtn) {
+        closeBtn.addEventListener("click", () => {
+            // Simply hides the popup when clicked, without saving any memory
+            popup.classList.remove("show");
+        });
     }
 }

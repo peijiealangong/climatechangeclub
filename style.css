@@ -328,3 +328,65 @@ footer { text-align: center; padding: 30px; background: var(--primary-green); co
     padding: 5px 10px;
     border-radius: 10px;
 }
+/* ==================================================
+   9. VIDEO SECTION & PROMO POPUP (New Additions)
+   ================================================== */
+.video-section {
+    padding: 60px 20px;
+    text-align: center;
+    background: var(--bg-light);
+}
+
+.video-container {
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 4px solid var(--action-teal);
+    background: #000; /* Keeps the player background dark before loading */
+}
+
+/* Video Promo Popup Sliding from the Left */
+.video-promo-popup {
+    position: fixed;
+    bottom: -200px; /* Hidden off-screen initially */
+    left: 30px; 
+    background: var(--white);
+    padding: 20px 25px 20px 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    z-index: 4000;
+    display: flex;
+    flex-direction: column;
+    border-left: 5px solid var(--milestone-gold);
+    transition: bottom 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.video-promo-popup.show {
+    bottom: 30px; /* Slides up smoothly */
+}
+
+.close-video-promo {
+    position: absolute;
+    top: 5px;
+    right: 12px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--alert-red);
+    transition: var(--transition);
+}
+
+.close-video-promo:hover {
+    transform: scale(1.2);
+}
+
+.video-promo-content h3 {
+    margin: 0 0 5px 0;
+    color: var(--primary-green);
+}
+
+.video-promo-content p {
+    margin: 0 0 15px 0;
+    font-size: 0.9rem;
+}
