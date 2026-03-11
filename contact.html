@@ -19,6 +19,7 @@
     <title>Climate Change Club | Contact Us</title>
     <link rel="stylesheet" href="style.css">
 
+
     <!-- ✅ Updated EmailJS SDK v4 -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
@@ -55,8 +56,55 @@
 
 
 <section>
-<h1>Contact Us with this secure https:// form! You will be replied to in a few buisness days.</h1>
+<h1>Contact Us with this secure https:// form! You will receive a reply within a few business days.</h1>
 </section>
+<section>
+<h3>Alert: We have updated our secure form. You can send a message in the new form box, or send one in the old one at the bottom of the page.</h3>
+<style>
+h3 {
+color: tomato;
+}
+.warning {
+color: red;
+}
+        /* Simple styling for the button */
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e68900;
+        }
+</style>
+</section>
+
+<!-- UPDATED EMAIL FORM -->
+<p>So say what you wanna say here! </p>
+<form action-"mailto:gongpeijie620@gmail.com" method="POST">
+	<input type="text" value="Type what you wanna say here.">
+	<input type="submit">
+</form>
+    <button id="warnBtn">Show Warning</button>
+
+    <script>
+        // Get the button element
+        const warnBtn = document.getElementById('warnBtn');
+
+        // Add a click event listener
+        warnBtn.addEventListener('click', function () {
+            // Show a warning message
+            alert("⚠ Warning: This is a beta feature and is in testing. Please use the old form if this doesn't work, and notify us about this issue there. Thank you.");
+        });
+    </script>
+
+<hr>
+
+<p class = "warning"> Warning: this is the old form and is less secure. Please use it only if you are okay with a less secure form. </p>
 
  <!-- ✅ Email Form -->
     <form>

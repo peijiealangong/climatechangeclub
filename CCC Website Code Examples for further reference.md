@@ -823,4 +823,116 @@ Give your video section the ID "video-section" (using id="video-section"); you c
 
 
 
+##### Additional website tips
+
+<h1 hidden>New York City</h1>
+
+Only shows the text New York City when the mouse is over it.
+
+
+
+
+
+<img src="http://website.jpg>
+
+Use www.imgur.com to upload an image, then use link
+
+
+
+
+
+strong is important text, bold
+
+em is emphasized, italics
+
+u marks as underlined
+
+del marks as strikethrough
+
+sup for text marked as superscript
+
+sub for text marked as subscript
+
+sup is like the 1 as a source
+
+sub is like H20 (the 2 at the bottom)
+
+Use <element name> Affected text </element name>
+
+
+
+
+Ordered list:
+
+<ol>
+
+&#x09;<li> List item </li>
+
+</ol>
+
+
+
+Unordered:
+
+<ul>
+
+&#x09;<li> List item </li>
+
+</ul>
+
+
+
+Nesting list:
+
+<ul>
+
+&#x09;<li>item</li>
+
+&#x09;<ol>
+
+&#x09;	<li>item</li>
+
+&#x09;</ol>
+
+</ul>
+
+
+
+Table:
+
+tbc
+
+
+
+
+
+Warning button:
+
+&#x20;   <h2>Warning Button Example</h2>
+
+&#x20;   <button id="warnBtn">Show Warning</button>
+
+
+
+&#x20;   <script>
+
+&#x20;       // Get the button element
+
+&#x20;       const warnBtn = document.getElementById('warnBtn');
+
+
+
+&#x20;       // Add a click event listener
+
+&#x20;       warnBtn.addEventListener('click', function () {
+
+&#x20;           // Show a warning message
+
+&#x20;           alert("⚠ Warning: Please proceed with caution!");
+
+&#x20;       });
+
+&#x20;   </script>
+
+
 
