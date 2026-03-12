@@ -900,9 +900,61 @@ Nesting list:
 
 Table:
 
-tbc
+Add <table> </table> tags
+
+Divide table into rows with <tr> and </tr>
+
+Divide rows into cells with <td>
+
+Highlight cells that are headers with <th>
 
 
+
+Example:
+
+<table>
+
+&#x09;<tr>
+
+&#x09;	<th>Table header 1</th>
+
+&#x09;	<th>Table header 2</th>
+
+&#x09;</tr>
+
+&#x09;<tr>
+
+&#x09;	<td>Row #1, Cell #1</td>
+
+&#x09;	<td> Row #1, Cell #2</td>
+
+&#x09;</tr>
+
+&#x09;<tr>
+
+&#x09;	<td>Row #2, Cell #1</td>
+
+&#x09;	<td>Row #2, Cell #2</td>
+
+&#x09;</tr>
+
+</table>
+
+
+
+Span: colspan is set equal to the number of columns you want to span. <td colspan="2">
+
+You can use <strong></strong> for bold
+
+
+
+align left right center justify use align="right"
+
+valign top middle bottom
+
+width pixels(#) or %
+
+height pixels(#) or %
 
 
 
@@ -933,6 +985,154 @@ Warning button:
 &#x20;       });
 
 &#x20;   </script>
+
+
+
+Common CSS Properties and Values for Styling Lists
+
+list-style-type (unordered) disc, circle, square, none
+
+list-style-type (ordered list) decimal upper-roman lower-roman upper-alpha lower-alpha
+
+list-style-image url("URL TYPE IN HERE")
+
+Font family: Font name, or Generic.
+
+p {
+
+&#x09;font-family: "Times New Roman", Times, serif;
+
+}
+
+Styling Links
+
+color name, hex code, rgb value
+
+text-decoration none, underline (sets links to have no/have underline)
+
+a:link{
+
+&#x09;color: blue
+
+&#x09;text-decoration: none;
+
+}
+
+
+
+
+
+
+
+The onclick event in JavaScript is triggered when a user clicks on an HTML element. It is commonly used to execute a function when a button or any other clickable element is clicked.
+
+
+
+Example
+
+
+
+<button onclick="myFunction()">Click me</button>
+
+
+
+<script>
+
+function myFunction() {
+
+alert("Button was clicked!");
+
+}
+
+</script>
+
+Copy
+
+In the example above, when the button is clicked, the myFunction is executed, displaying an alert message.
+
+
+
+Using addEventListener
+
+
+
+Another way to handle click events is by using the addEventListener method.
+
+
+
+<button id="myBtn">Click me</button>
+
+
+
+<script>
+
+document.getElementById("myBtn").addEventListener("click", function() {
+
+alert("Button was clicked!");
+
+});
+
+</script>
+
+Copy
+
+This method allows you to separate JavaScript from HTML, promoting cleaner code.
+
+
+
+Changing Element Style
+
+
+
+You can also use the onclick event to change the style of an element.
+
+
+
+<h3 id="demo" onclick="changeColor()">Click me to change my color.</h3>
+
+
+
+<script>
+
+function changeColor() {
+
+document.getElementById("demo").style.color = "red";
+
+}
+
+</script>
+
+Copy
+
+In this example, clicking on the <h3> element changes its text color to red.
+
+
+
+Important Considerations
+
+
+
+Bubbling and Cancelable: The onclick event bubbles up through the DOM and can be canceled.
+
+
+
+Supported Elements: It can be used with almost all HTML elements except <base>, <bdo>, <br>, <head>, <html>, <iframe>, <meta>, <param>, <script>, <style>, and <title>.
+
+
+
+Using onclick events effectively can enhance user interaction and improve the functionality of your web pages.
+
+
+
+## ***Use Bootstrap to write HTML/CSS! https://getbootstrap.com***
+
+***Update: Bootstrap code in website now***
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+&#x09;
 
 
 
