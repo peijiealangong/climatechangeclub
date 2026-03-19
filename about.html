@@ -1,16 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-68D6N5XQ6D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-68D6N5XQ6D');
+</script>
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Learn more about the Climate Change Club—our mission, goals, and efforts to combat climate change.">
   <title>About Us | Climate Change Club</title>
-
+  
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="javascript.js" defer></script>
 </head>
 <body>
+
   <nav>
     <div class="nav-right">
       <ul>
@@ -37,13 +49,8 @@
   </nav>
 
   <header class="about-hero">
-    <picture>
-            <img class="hero-img" src="images\earth-11009_1280" alt="Club members planting trees" loading="eager" decoding="async">
-    </picture>
-    <div class="hero-text">
-      <h1>About Us</h1>
-      <p>Empowering the next generation to protect our planet.</p>
-    </div>
+    <h1>About Us</h1>
+    <p>Empowering the next generation to protect our planet.</p>
   </header>
 
   <main>
@@ -63,71 +70,46 @@
         <p>Explore our Microsoft Sway for a deep dive into our history, team, and long-term vision!</p>
       </a>
     </section>
-
-    <section class="card-single">
+    <section>
       <div class="intro-card">
-        <h2>🌲What we're doing now🌳</h2>
-        <p>When the weather gets warmer, we're planning to plant 1 tree for every $10 that we raise. Stay tuned for more!</p>
-      </div>
+	<h2>🌲What we're doing now🌳</h2>
+	<p>When the weather gets warmer, we're planning to plant 1 tree for every $10 that we raise. Stay tuned for more!</p>
     </section>
-
-    <section class="card-single">
+    <section>
       <div class="intro-card">
-        <h2>How <i>you</i> can stay updated <b>,too</b></h2>
-        <p>🔃You can stay updated by going to this website every month, where we have all the new updates and surprises! See you soon.</p>
-      </div>
+	<h2>How <i>you</i> can stay updated <b>,too</b></h2>
+	<p>🔃You can stay updated by going to this website every month, where we have all the new updates and surprises! See you soon.</p>
     </section>
-
-    <section id="video-section" class="video-section">
-      <h2>What we're going to be doing now</h2>
-      <div class="video-container">
+<section id="video-section" class="video-section">
+    <h2>What we're going to be doing now</h2>
+    <div class="video-container">
         <video controls width="100%" poster="video-thumbnail.jpg">
-          <source src="The Climate Change Club Tree Project 2026 Video.mp4" type="video/mp4">
-          Your browser does not support the video tag.
+            <source src="The Climate Change Club Tree Project 2026 Video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
         </video>
-      </div>
-    </section>
-
-    <section class="gallery" aria-label="Event gallery">
-      <h2>Gallery</h2>
-      <div class="grid">
-        <figure class="card">
-          <picture>
-            <source type="image/webp" srcset="images/event1-800.webp 800w, images/event1-400.webp 400w" sizes="(min-width:800px) 33vw, 50vw">
-            <source type="image/jpeg" srcset="images/event1-800.jpg 800w, images/event1-400.jpg 400w" sizes="(min-width:800px) 33vw, 50vw">
-            <img src="images/event1-400.jpg" alt="Volunteers planting a tree" loading="lazy" decoding="async" class="card-img">
-          </picture>
-          <figcaption>Monthly meetup — March</figcaption>
-        </figure>
-
-        <figure class="card">
-          <picture>
-            <source type="image/webp" srcset="images/event2-800.webp 800w, images/event2-400.webp 400w" sizes="(min-width:800px) 33vw, 50vw">
-            <source type="image/jpeg" srcset="images/event2-800.jpg 800w, images/event2-400.jpg 400w" sizes="(min-width:800px) 33vw, 50vw">
-            <img src="images/event2-400.jpg" alt="Club workshop" loading="lazy" decoding="async" class="card-img">
-          </picture>
-          <figcaption>Workshop — April</figcaption>
-        </figure>
-
-        <figure class="card">
-          <picture>
-            <source type="image/webp" srcset="images/event3-800.webp 800w, images/event3-400.webp 400w" sizes="(min-width:800px) 33vw, 50vw">
-            <source type="image/jpeg" srcset="images/event3-800.jpg 800w, images/event3-400.jpg 400w" sizes="(min-width:800px) 33vw, 50vw">
-            <img src="images/event3-400.jpg" alt="Community cleanup" loading="lazy" decoding="async" class="card-img">
-          </picture>
-          <figcaption>Cleanup — May</figcaption>
-        </figure>
-      </div>
-    </section>
+    </div>
+</section>
 
     <section class="color-panel">
       <h2>🌈 Customize Your Experience</h2>
       <p>Choose a theme that fits your mood.</p>
       <div class="swatch-container">
         <button class="swatch" style="background: white;" onclick="changeColor('white')" title="White"></button>
+        <button class="swatch" style="background: blue;" onclick="changeColor('blue')" title="Blue"></button>
+        <button class="swatch" style="background: lightblue;" onclick="changeColor('lightblue')" title="Light Blue"></button>
+        <button class="swatch" style="background: #a8dadc;" onclick="changeColor('#a8dadc')" title="Polar Ice"></button>
         <button class="swatch" style="background: #2a9d8f;" onclick="changeColor('#2a9d8f')" title="Forest Floor"></button>
+        <button class="swatch" style="background: green;" onclick="changeColor('green')" title="Green"></button>
+        <button class="swatch" style="background: #d8f3dc;" onclick="changeColor('#d8f3dc')" title="Wind Whisper"></button>
         <button class="swatch" style="background: #f4d35e;" onclick="changeColor('#f4d35e')" title="Solar Glow"></button>
+        <button class="swatch" style="background: #f4a261;" onclick="changeColor('#f4a261')" title="Sunset Orange"></button>
+        <button class="swatch" style="background: #e9c46a;" onclick="changeColor('#e9c46a')" title="Desert Sand"></button>
+        <button class="swatch" style="background: red;" onclick="changeColor('red')" title="Red"></button>
+        <button class="swatch" style="background: #e63946;" onclick="changeColor('#e63946')" title="Wildfire"></button>
+        <button class="swatch" style="background: #ffcad4;" onclick="changeColor('#ffcad4')" title="Spring Bloom"></button>
         <button class="swatch" style="background: #5e548e;" onclick="changeColor('#5e548e')" title="Midnight"></button>
+        <button class="swatch" style="background: #264653;" onclick="changeColor('#264653')" title="Ocean Depth"></button>
+        <button class="swatch" style="background: #6c757d;" onclick="changeColor('#6c757d')" title="Storm Sky"></button>
         <button class="swatch" style="background: #ddd;" onclick="changeColor('')" title="Reset"></button>
       </div>
     </section>
@@ -136,13 +118,22 @@
   <footer>
     <p>🌍 Climate Change Club &nbsp; | &nbsp; © 2025 Peijie &nbsp; | &nbsp; Built with ❤️ and HTML/CSS/JavaScript</p>
   </footer>
+<!-- Popup HTML -->
+<div id="promoPopup" class="popup">
+  <div class="popup-content">
+    <span class="close-btn" onclick="closePopup()">&times;</span>
+    <h2>🌎 Want to learn more?</h2>
+    <p> We're getting all new information updated by 3/1/26! Stay tuned for more...</p>
+  </div>
+</div>
+<script src="https://www.google.com/recaptcha/api.js?render=6LexhnssAAAAAJKsI0vXffvPWyNjPh76uV2Cqfip"></script>
+<script>
+   grecaptcha.ready(function() {
+       grecaptcha.execute('6LexhnssAAAAAJKsI0vXffvPWyNjPh76uV2Cqfip', {action: 'submit'}).then(function(token) {
+           // Send token to backend for verification
+       });
+   });
+</script>
 
-  <div id="promoPopup" class="popup" aria-hidden="true">
-    <div class="popup-content">
-      <button class="close-btn" onclick="closePopup()" aria-label="Close popup">&times;</button>
-      <h2>🌎 Want to learn more?</h2>
-      <p> We're getting all new information updated by 3/1/26! Stay tuned for more...</p>
-    </div>
-  </div>
 </body>
 </html>
