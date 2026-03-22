@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | Climate Change Club</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="javascript.js" defer></script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="beta-login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <main class="report-container" style="max-width: 400px; margin-top: 80px;">
+        <h2 style="text-align: center;">Create Beta Account</h2>
+        <form id="pureSignupForm" class="beta-form">
+            <div class="form-group">
+                <label for="newSubUser">Choose Username:</label>
+                <input type="text" id="newSubUser" required placeholder="e.g. AlanG">
+            </div>
+            <div class="form-group">
+                <label for="newSubPass">Choose Password:</label>
+                <input type="password" id="newSubPass" required placeholder="••••••••">
+            </div>
+            <button type="submit" class="btn-game" style="width: 100%;">Create Account 🚀</button>
+            <p id="signupMsg" style="display:none; text-align:center; margin-top:15px; font-weight:600;"></p>
+        </form>
+    </main>
+
+    <script>
+        document.getElementById('pureSignupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const user = document.getElementById('newSubUser').value;
+            const pass = document.getElementById('newSubPass').value;
+            const msg = document.getElementById('signupMsg');
+
+            // Get existing users or empty array
+            let users = JSON.parse(localStorage.getItem('betaUsers')) || [];
+
+            // Check if username exists
+            if (users.find(u => u.username === user)) {
+                msg.style.color = "red";
+                msg.innerText = "Username already taken!";
+                msg.style.display = "block";
+            } else {
+                // Add new user
+                users.push({username: user, password: pass});
+                localStorage.setItem('betaUsers', JSON.stringify(users));
+                msg.style.color = "var(--action-teal)";
+                msg.innerText = "Account created! Redirecting to login...";
+                msg.style.display = "block";
+                setTimeout(() => window.location.href = "beta-login.html", 2000);
+            }
+        });
+    </script>
+</body>
+</html>

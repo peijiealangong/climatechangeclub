@@ -10,102 +10,55 @@
     <script src="javascript.js" defer></script>
 </head>
 <body>
-
-  <nav>
-    <ul>
-      <li class="dropdown">
-        <a href="index.html">Home</a>
-        <ul class="submenu">
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="projects.html">Our Projects</a></li>
-          <li><a href="meetings.html">Upcoming Events</a></li>
-        </ul>
-      </li>
-      <li class="dropdown">
-        <a href="#">Resources</a>
-        <ul class="submenu">
-          <li><a href="notices.html">Notices</a></li>
-          <li><a href="articles.html">Articles</a></li>
-          <li><a href="climatechronicle.html">The Climate Chronicle</a></li>
-          <li><a href="download.html">Download App</a></li>
-        </ul>
-      </li>
-      <li><a href="contact.html">Contact</a></li>
-<li class="dropdown">
-    <a href="#" class="dropbtn">Beta Features 🧪 <i class="fas fa-caret-down"></i></a>
-    <div class="dropdown-content">
-        <a href="beta-test.html">Test</a>
-        <a href="beta-docs.html">Documentation</a>
-        <a href="beta-report.html">Report/Suggest a problem</a>
-    </div>
-</li>
-    </ul>
-  </nav>
-
     <main class="report-container" style="max-width: 400px; margin-top: 100px;">
         <h2 style="text-align: center;">Beta Access</h2>
-        <p style="text-align: center; margin-bottom: 20px;">Please sign in to view experimental features.</p>
-        
         <form id="betaLoginForm" class="beta-form">
             <div class="form-group">
                 <label for="betaUser">Username:</label>
                 <input type="text" id="betaUser" required placeholder="Enter username">
             </div>
-
             <div class="form-group">
                 <label for="betaPass">Password:</label>
                 <input type="password" id="betaPass" required placeholder="Enter password">
             </div>
-
             <div class="form-group" style="flex-direction: row; display: flex; align-items: center; gap: 10px;">
                 <input type="checkbox" id="rememberMe" style="width: auto;">
                 <label for="rememberMe" style="margin: 0; font-weight: 400; color: #555;">Remember Me</label>
             </div>
-
             <button type="submit" class="btn-game" style="width: 100%; margin-top: 10px;">Sign In 🔐</button>
+            <p id="loginError" style="display:none; color: red; font-weight:600; text-align:center; margin-top:15px;">Incorrect username or password.</p>
             
-            <p id="loginError" style="display:none; color: red; font-weight:600; text-align:center; margin-top:15px;">
-                Incorrect username or password.
-            </p>
+            <div style="text-align:center; margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
+                <p style="font-size: 0.9rem;">Need an account? <a href="beta-signup.html" style="color: var(--action-teal); font-weight:600;">Sign Up</a></p>
+            </div>
         </form>
     </main>
 
     <script>
-        // The Login Logic
-        const loginForm = document.getElementById('betaLoginForm');
-        
-        loginForm.addEventListener('submit', function(e) {
-            e.preventDefault(); // Stop page from refreshing
-            
-            const user = document.getElementById('betaUser').value;
-            const pass = document.getElementById('betaPass').value;
+        document.getElementById('betaLoginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const userInput = document.getElementById('betaUser').value;
+            const passInput = document.getElementById('betaPass').value;
             const remember = document.getElementById('rememberMe').checked;
-            const errorMsg = document.getElementById('loginError');
+            
+            // 1. Check our "Database"
+            let users = JSON.parse(localStorage.getItem('betaUsers')) || [];
+            
+            // 2. Also keep the master "student" account working
+            const isMaster = (userInput === "student" && passInput === "climate2026");
+            const isUser = users.find(u => u.username === userInput && u.password === passInput);
 
-            // --- SET YOUR USERNAME AND PASSWORD HERE ---
-            const correctUser = "student";
-            const correctPass = "climate2026";
-
-            if (user === correctUser && pass === correctPass) {
-                // Success! Save the login state.
+            if (isMaster || isUser) {
                 if (remember) {
-                    // Saves even if they close the browser
                     localStorage.setItem('betaLoggedIn', 'true'); 
                 } else {
-                    // Deletes when they close the tab
                     sessionStorage.setItem('betaLoggedIn', 'true'); 
                 }
-                // Redirect them to the test page
                 window.location.href = "beta-test.html";
             } else {
-                // Fail! Show error.
-                errorMsg.style.display = "block";
+                document.getElementById('loginError').style.display = "block";
             }
         });
     </script>
-    <footer><p>🌍 <strong>Climate Change Club Login</strong></p></footer>
-    <script src="https://www.google.com/recaptcha/api.js?render=6LexhnssAAAAAJKsI0vXffvPWyNjPh76uV2Cqfip"></script>
-
-
 </body>
 </html>

@@ -422,3 +422,9 @@ function initBetaForm() {
         }
     };
 }
+/* Add this to your javascript.js */
+function betaSignOut() {
+    localStorage.removeItem('betaLoggedIn');
+    sessionStorage.removeItem('betaLoggedIn');
+    window.location.replace("index.html");
+}
