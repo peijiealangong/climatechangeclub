@@ -42,6 +42,83 @@
 </li>
     </ul>
   </nav>
+<style>
+:root {
+  --clr-dark: #333;  /* Dark color for text in light mode, background in dark mode */
+  --clr-light: #fff; /* Light color for background in light mode, text in dark mode */
+}
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
+    transition: background-color 0.3s, color 0.3s;
+}
+/* Container for centering content */
+.container {
+    text-align: center;
+}
+/* Styles for dark mode */
+.dark-mode {
+    background-color: var(--clr-dark);
+    color: var(--clr-light);
+}
+/* Styles for the toggle container */
+.toggle-container {
+    cursor: pointer;
+}
+/* Styles for the sun and moon icons */
+.sun-icon, .moon-icon {
+    width: 24px;
+    height: 24px;
+    transition: opacity 0.3s;
+}
+/* Hide moon icon by default (light mode) */
+.moon-icon {
+    display: none;
+}
+/* Show moon icon and hide sun icon in dark mode */
+.dark-mode .sun-icon {
+    display: none;
+}
+.dark-mode .moon-icon {
+    display: inline-block;
+}
+
+</style>
+<script>
+
+const themeToggle = document.getElementById('themeToggle');
+const body = document.body;
+
+themeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+});
+
+themeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+
+    // Store user preference in local storage
+    if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark-mode');
+    } else {
+        localStorage.setItem('theme', '');
+    }
+});
+// Check if user preference exists in local storage
+
+const currentTheme = localStorage.getItem('theme');
+
+if (currentTheme) {
+
+    body.classList.add(currentTheme);
+
+}
+</script>
 
     <main class="hero">
         <h1>Beta <span class="text-gradient">Testing Lab</span></h1>
@@ -51,9 +128,23 @@
             <div class="intro-card">
                 <i class="fas fa-flask fa-2x" style="color: var(--action-teal);"></i>
                 <h3>Dark Mode Toggle</h3>
-                <p>Testing a new system-wide dark theme.</p>
-                <button class="btn-primary" onclick="alert('Feature coming in v1.4!')">Activate</button>
+                <p>Testing a new system-wide dark theme, test below!</p>
+                <button class="btn-primary" onclick="alert('Test Below!')">Scroll down to test</button>
             </div>
+<div class="toggle-container" id="themeToggle">
+            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
         </section>
         <section class="intro-grid">
             <div class="intro-card">
