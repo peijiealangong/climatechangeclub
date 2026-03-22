@@ -19,54 +19,51 @@
                 <input type="password" id="newSubPass" required placeholder="Pick a password">
             </div>
             <button type="submit" id="signupBtn" class="btn-game" style="width: 100%;">Create Account 🚀</button>
-            
             <p id="statusMsg" style="text-align:center; margin-top:15px; display:none;"></p>
+            <div style="text-align: center; margin-top: 15px;">
+                <a href="beta-login.html" style="font-size: 0.9rem; color: var(--action-teal); text-decoration: none;">Already have an account? Login</a>
+            </div>
         </form>
     </main>
 
 <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbym476k1A-i-yoX-1QhnIzuT4wwsQ10ykWUEJfKoqc7ebZm7ChB32EmN9WCWNJZjVg/exec";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzK_c0FmKiHqWAAr9kE231Qj0nxZgbcu-s4aUcrufzuoL5PrRaFbIEt-8VNunjgbf4/exec";
 
     document.getElementById('pureSignupForm').addEventListener('submit', function(e) {
         e.preventDefault();
-        
-        const user = document.getElementById('newSubUser').value;
-        const pass = document.getElementById('newSubPass').value;
         const btn = document.getElementById('signupBtn');
         const status = document.getElementById('statusMsg');
 
-        // 1. Visual Feedback
         btn.innerHTML = "Creating... ⏳";
         btn.disabled = true;
         status.style.display = "block";
-        status.style.color = "#666";
+        status.style.color = "gray";
         status.innerText = "Connecting to database...";
 
-        // 2. Send the Data
         fetch(SCRIPT_URL, {
             method: "POST",
-            mode: "no-cors", 
             body: JSON.stringify({ 
                 action: "signup", 
-                username: user, 
-                password: pass 
+                username: document.getElementById('newSubUser').value, 
+                password: document.getElementById('newSubPass').value 
             })
         })
-        .then(() => {
-            // 3. Success Feedback
-            status.style.color = "green";
-            status.innerText = "Account Created successfully! 🎉";
-            btn.innerHTML = "Success! ✅";
-            
-            // 4. Redirect to login after 1.5 seconds
-            setTimeout(() => {
-                window.location.href = "beta-login.html";
-            }, 1500);
+        .then(res => res.json())
+        .then(response => {
+            if (response.result === "success") {
+                status.style.color = "green";
+                status.innerText = "Account Created! Redirecting to login...";
+                setTimeout(() => { window.location.href = "beta-login.html"; }, 1500);
+            } else if (response.result === "exists") {
+                status.style.color = "red";
+                status.innerText = "Username already taken.";
+                btn.innerHTML = "Create Account 🚀";
+                btn.disabled = false;
+            }
         })
-        .catch(err => {
-            console.error("Signup Error:", err);
+        .catch(() => {
             status.style.color = "red";
-            status.innerText = "Error: Could not connect. Try again.";
+            status.innerText = "Error connecting to server.";
             btn.innerHTML = "Create Account 🚀";
             btn.disabled = false;
         });

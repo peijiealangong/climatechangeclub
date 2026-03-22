@@ -6,7 +6,6 @@
     <title>Beta Login | Climate Change Club</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <main class="report-container" style="max-width: 400px; margin-top: 100px;">
@@ -36,57 +35,43 @@
     </main>
 
     <script>
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbym476k1A-i-yoX-1QhnIzuT4wwsQ10ykWUEJfKoqc7ebZm7ChB32EmN9WCWNJZjVg/exec";
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzK_c0FmKiHqWAAr9kE231Qj0nxZgbcu-s4aUcrufzuoL5PrRaFbIEt-8VNunjgbf4/exec";
 
         document.getElementById('betaLoginForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            const btn = document.getElementById('loginBtn');
+            const err = document.getElementById('loginError');
             
-            const user = document.getElementById('betaUser').value;
-            const pass = document.getElementById('betaPass').value;
-            const remember = document.getElementById('rememberMe').checked;
-            const loginBtn = document.getElementById('loginBtn');
-            const errorMsg = document.getElementById('loginError');
-
-            // Visual feedback
-            loginBtn.innerHTML = "Checking... ⏳";
-            loginBtn.disabled = true;
-            errorMsg.style.display = "none";
+            btn.innerHTML = "Checking... ⏳";
+            btn.disabled = true;
+            err.style.display = "none";
 
             fetch(SCRIPT_URL, {
                 method: "POST",
-                body: JSON.stringify({ 
-                    action: "login", 
-                    username: user, 
-                    password: pass 
+                body: JSON.stringify({
+                    action: "login",
+                    username: document.getElementById('betaUser').value,
+                    password: document.getElementById('betaPass').value
                 })
             })
-            .then(res => res.json()) // CRITICAL: This converts the response so JS can read it
+            .then(res => res.json())
             .then(response => {
                 if (response.result === "success") {
-                    // Set session storage (clears when browser closes)
                     sessionStorage.setItem('betaLoggedIn', 'true');
-                    
-                    // Set local storage if "Remember Me" is checked (stays forever)
-                    if (remember) {
+                    if (document.getElementById('rememberMe').checked) {
                         localStorage.setItem('betaLoggedIn', 'true');
                     }
-                    
-                    // Brief delay to ensure storage is saved before redirecting
-                    setTimeout(() => {
-                        window.location.replace("beta-test.html");
-                    }, 100);
+                    window.location.replace("beta-test.html");
                 } else {
-                    // Show error and reset button
-                    errorMsg.style.display = "block";
-                    loginBtn.innerHTML = "Sign In 🔐";
-                    loginBtn.disabled = false;
+                    err.style.display = "block";
+                    btn.innerHTML = "Sign In 🔐";
+                    btn.disabled = false;
                 }
             })
-            .catch(err => {
-                console.error("Login Error:", err);
-                alert("Connection error. Please check your internet.");
-                loginBtn.innerHTML = "Sign In 🔐";
-                loginBtn.disabled = false;
+            .catch(() => {
+                alert("Connection error.");
+                btn.innerHTML = "Sign In 🔐";
+                btn.disabled = false;
             });
         });
     </script>
