@@ -303,3 +303,122 @@ function initVideoPromo() {
         });
     }
 }
+/* --- Initialize on Load --- */
+document.addEventListener("DOMContentLoaded", () => {
+    initVideoPromo();
+    initMiniGame();
+});
+
+/* --- Video Promo Logic --- */
+function initVideoPromo() {
+    const popup = document.getElementById("videoPromoPopup");
+    const close = document.getElementById("closeVideoPromo");
+    if (popup) {
+        setTimeout(() => popup.classList.add("show"), 3000);
+        close.onclick = () => popup.classList.remove("show");
+    }
+}
+
+/* --- Game Logic with High Score --- */
+function initMiniGame() {
+    const modal = document.getElementById("gameModal");
+    const openBtn = document.getElementById("openGameBtn");
+    const startBtn = document.getElementById("startGameBtn");
+    const canvas = document.getElementById("game-canvas");
+    const scoreDisplay = document.getElementById("game-score");
+    const highDisplay = document.getElementById("high-score");
+
+    let score = 0;
+    let gameActive = false;
+    let highScore = localStorage.getItem("carbonHighScore") || 0;
+    highDisplay.innerText = highScore;
+
+    if(openBtn) openBtn.onclick = () => modal.style.display = "flex";
+    
+    startBtn.onclick = () => {
+        score = 0;
+        scoreDisplay.innerText = "0";
+        gameActive = true;
+        startBtn.style.display = "none";
+        spawnCloud();
+    };
+
+    function spawnCloud() {
+        if (!gameActive) return;
+        const cloud = document.createElement("div");
+        cloud.className = "carbon-cloud";
+        cloud.innerHTML = "☁️";
+        cloud.style.left = Math.random() * (canvas.offsetWidth - 50) + "px";
+        cloud.style.top = "-50px";
+        canvas.appendChild(cloud);
+
+        let top = -50;
+        const fall = setInterval(() => {
+            if (!gameActive) { clearInterval(fall); cloud.remove(); return; }
+            top += (2 + (score / 10));
+            cloud.style.top = top + "px";
+            if (top > canvas.offsetHeight) { clearInterval(fall); cloud.remove(); endGame(); }
+        }, 30);
+
+        cloud.onclick = () => {
+            score++;
+            scoreDisplay.innerText = score;
+            if (score > highScore) {
+                highScore = score;
+                localStorage.setItem("carbonHighScore", highScore);
+                highDisplay.innerText = highScore;
+            }
+            clearInterval(fall);
+            cloud.innerHTML = "🌿";
+            setTimeout(() => cloud.remove(), 200);
+        };
+        setTimeout(spawnCloud, Math.max(1000 - (score * 20), 400));
+    }
+
+    function endGame() {
+        gameActive = false;
+        alert("Game Over! Score: " + score);
+        startBtn.style.display = "inline-block";
+    }
+}
+function initBetaForm() {
+    const form = document.getElementById("betaForm");
+    const submitBtn = document.getElementById("submitBetaBtn");
+    const successMsg = document.getElementById("formSuccessMessage");
+
+    if (!form) return;
+
+    form.onsubmit = async (e) => {
+        e.preventDefault(); // Stop page refresh
+        
+        submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin-custom"></i> Sending...`;
+        submitBtn.disabled = true;
+
+        const data = new FormData(form);
+        
+        // Sending the data to Formspree
+        const response = await fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+            form.reset();
+            submitBtn.style.display = "none";
+            successMsg.style.display = "block";
+            
+            // Re-enable button after 5 seconds
+            setTimeout(() => {
+                successMsg.style.display = "none";
+                submitBtn.style.display = "block";
+                submitBtn.innerHTML = "Send Report 🚀";
+                submitBtn.disabled = false;
+            }, 5000);
+        } else {
+            alert("Oops! There was a problem sending your report.");
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = "Send Report 🚀";
+        }
+    };
+}
