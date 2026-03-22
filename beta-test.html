@@ -9,11 +9,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <script>
-        // Gatekeeper: Check login without locking the body
-        if (!localStorage.getItem('betaLoggedIn') && !sessionStorage.getItem('betaLoggedIn')) {
+    (function() {
+        const isAuth = localStorage.getItem('betaLoggedIn') || sessionStorage.getItem('betaLoggedIn');
+        if (!isAuth) {
+            // Use replace so they can't click "Back" to get back in
             window.location.replace('beta-login.html');
         }
-    </script>
+    })();
+</script>
 </head>
 <body>
     <nav>

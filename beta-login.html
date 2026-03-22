@@ -40,23 +40,52 @@
 
         document.getElementById('betaLoginForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            
             const user = document.getElementById('betaUser').value;
             const pass = document.getElementById('betaPass').value;
             const remember = document.getElementById('rememberMe').checked;
+            const loginBtn = document.getElementById('loginBtn');
+            const errorMsg = document.getElementById('loginError');
+
+            // Visual feedback
+            loginBtn.innerHTML = "Checking... ⏳";
+            loginBtn.disabled = true;
+            errorMsg.style.display = "none";
 
             fetch(SCRIPT_URL, {
                 method: "POST",
-                body: JSON.stringify({ action: "login", username: user, password: pass })
+                body: JSON.stringify({ 
+                    action: "login", 
+                    username: user, 
+                    password: pass 
+                })
             })
-            .then(res => res.json())
+            .then(res => res.json()) // Essential: Converts raw response to JSON object
             .then(response => {
                 if (response.result === "success") {
+                    // Save login state to Session (temporary)
                     sessionStorage.setItem('betaLoggedIn', 'true');
-                    if (remember) localStorage.setItem('betaLoggedIn', 'true');
-                    window.location.href = "beta-test.html";
+                    
+                    // If checked, save to Local (permanent)
+                    if (remember) {
+                        localStorage.setItem('betaLoggedIn', 'true');
+                    }
+                    
+                    // Brief delay to ensure storage is committed before redirecting
+                    setTimeout(() => {
+                        window.location.replace("beta-test.html");
+                    }, 100);
                 } else {
-                    document.getElementById('loginError').style.display = "block";
+                    errorMsg.style.display = "block";
+                    loginBtn.innerHTML = "Sign In 🔐";
+                    loginBtn.disabled = false;
                 }
+            })
+            .catch(err => {
+                console.error("Login Error:", err);
+                alert("Connection error. Check your internet or the Google Script URL.");
+                loginBtn.innerHTML = "Sign In 🔐";
+                loginBtn.disabled = false;
             });
         });
     </script>
