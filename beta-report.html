@@ -16,16 +16,25 @@
         gtag('config', 'G-68D6N5XQ6D');
     </script>
 <script>
-        // Check if the user is logged in via Local Storage (Remember me) OR Session Storage
-        const isRemembered = localStorage.getItem('betaLoggedIn');
-        const isActiveSession = sessionStorage.getItem('betaLoggedIn');
+    // 1. Check if the user is logged in
+    const isRemembered = localStorage.getItem('betaLoggedIn');
+    const isActiveSession = sessionStorage.getItem('betaLoggedIn');
 
-        if (!isRemembered && !isActiveSession) {
-            // Kick them back out to the login page immediately
-            window.location.replace('beta-login.html');
-        }
-    </script>
-</head>
+    if (!isRemembered && !isActiveSession) {
+        // 2. Not logged in? Kick them out immediately
+        window.location.replace('beta-login.html');
+    } else {
+        // 3. Logged in? Make the page visible!
+        document.addEventListener("DOMContentLoaded", function() {
+            document.body.style.display = "block";
+        });
+    }
+</script>
+
+<style>
+    /* 4. Hide the body by default so no one can "peek" while the page loads */
+    body { display: none; }
+</style></head>
 </head>
 <body>
 
