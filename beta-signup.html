@@ -19,6 +19,8 @@
 
     <main class="report-container" style="max-width: 400px; margin-top: 80px;">
         <h2 style="text-align: center;">Create Beta Account</h2>
+        <p style="text-align: center; font-size: 0.9rem; margin-bottom: 20px;">Join the club's development team.</p>
+        
         <form id="pureSignupForm" class="beta-form">
             <div class="form-group">
                 <label for="newSubUser">Choose Username:</label>
@@ -28,27 +30,49 @@
                 <label for="newSubPass">Choose Password:</label>
                 <input type="password" id="newSubPass" required placeholder="••••••••">
             </div>
-            <button type="submit" class="btn-game" style="width: 100%;">Create Account 🚀</button>
+            <button type="submit" id="signupBtn" class="btn-game" style="width: 100%;">Create Account 🚀</button>
             <p id="signupMsg" style="display:none; text-align:center; margin-top:15px; font-weight:600;"></p>
         </form>
     </main>
 
-const SCRIPT_URL = "AKfycbym476k1A-i-yoX-1QhnIzuT4wwsQ10ykWUEJfKoqc7ebZm7ChB32EmN9WCWNJZjVg";
+    <script>
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbym476k1A-i-yoX-1QhnIzuT4wwsQ10ykWUEJfKoqc7ebZm7ChB32EmN9WCWNJZjVg/exec";
 
-document.getElementById('pureSignupForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const user = document.getElementById('newSubUser').value;
-    const pass = document.getElementById('newSubPass').value;
+        document.getElementById('pureSignupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const user = document.getElementById('newSubUser').value;
+            const pass = document.getElementById('newSubPass').value;
+            const btn = document.getElementById('signupBtn');
+            const msg = document.getElementById('signupMsg');
 
-    fetch(SCRIPT_URL, {
-        method: "POST",
-        body: JSON.stringify({ action: "signup", username: user, password: pass })
-    })
-    .then(res => res.json())
-    .then(response => {
-        alert("Account saved to Google Sheets!");
-        window.location.href = "beta-login.html";
-    });
-});
+            btn.innerText = "Connecting to Cloud...";
+            btn.disabled = true;
+
+            fetch(SCRIPT_URL, {
+                method: "POST",
+                // We send a string because Google Apps Script likes JSON strings
+                body: JSON.stringify({ action: "signup", username: user, password: pass })
+            })
+            .then(res => res.json())
+            .then(response => {
+                if (response.result === "success") {
+                    alert("Welcome to the team! Account created in Google Sheets.");
+                    window.location.href = "beta-login.html";
+                } else {
+                    msg.style.display = "block";
+                    msg.style.color = "red";
+                    msg.innerText = "Error creating account. Try again.";
+                    btn.innerText = "Create Account 🚀";
+                    btn.disabled = false;
+                }
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                btn.innerText = "Create Account 🚀";
+                btn.disabled = false;
+            });
+        });
+    </script>
 </body>
 </html>
