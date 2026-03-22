@@ -15,6 +15,17 @@
         gtag('js', new Date());
         gtag('config', 'G-68D6N5XQ6D');
     </script>
+<script>
+        // Check if the user is logged in via Local Storage (Remember me) OR Session Storage
+        const isRemembered = localStorage.getItem('betaLoggedIn');
+        const isActiveSession = sessionStorage.getItem('betaLoggedIn');
+
+        if (!isRemembered && !isActiveSession) {
+            // Kick them back out to the login page immediately
+            window.location.replace('beta-login.html');
+        }
+    </script>
+</head>
 </head>
 <body>
 
