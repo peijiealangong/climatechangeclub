@@ -1142,3 +1142,9 @@ Secret: ES\_21d5e5e4aba24c8cace13ee7fc31be39
 
 Site key: fa3ac6ba-bd48-4432-9618-c300f8ee79ee
 
+<div class="h-captcha" data-sitekey="fa3ac6ba-bd48-4432-9618-c300f8ee79ee"></div> (Before button of form)
+
+<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+
+
+
