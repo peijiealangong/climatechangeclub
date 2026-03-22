@@ -12,13 +12,15 @@
         <form id="pureSignupForm" class="beta-form">
             <div class="form-group">
                 <label for="newSubUser">Username:</label>
-                <input type="text" id="newSubUser" required>
+                <input type="text" id="newSubUser" required placeholder="Pick a username">
             </div>
             <div class="form-group">
                 <label for="newSubPass">Password:</label>
-                <input type="password" id="newSubPass" required>
+                <input type="password" id="newSubPass" required placeholder="Pick a password">
             </div>
-            <button type="submit" class="btn-game" style="width: 100%;">Create Account 🚀</button>
+            <button type="submit" id="signupBtn" class="btn-game" style="width: 100%;">Create Account 🚀</button>
+            
+            <p id="statusMsg" style="text-align:center; margin-top:15px; display:none;"></p>
         </form>
     </main>
 
@@ -43,7 +45,7 @@
         // 2. Send the Data
         fetch(SCRIPT_URL, {
             method: "POST",
-            mode: "no-cors", // Crucial for Google Apps Script + Cloudflare
+            mode: "no-cors", 
             body: JSON.stringify({ 
                 action: "signup", 
                 username: user, 
@@ -56,7 +58,7 @@
             status.innerText = "Account Created successfully! 🎉";
             btn.innerHTML = "Success! ✅";
             
-            // 4. THE REDIRECT: Wait 1.5 seconds, then go to login
+            // 4. Redirect to login after 1.5 seconds
             setTimeout(() => {
                 window.location.href = "beta-login.html";
             }, 1500);
@@ -69,5 +71,6 @@
             btn.disabled = false;
         });
     });
-</script></body>
+</script>
+</body>
 </html>

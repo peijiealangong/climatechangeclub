@@ -2,71 +2,91 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sign Up | Climate Change Club</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beta Login | Climate Change Club</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <main class="report-container" style="max-width: 400px; margin-top: 80px;">
-        <h2 style="text-align: center;">Create Beta Account</h2>
-        <form id="pureSignupForm" class="beta-form">
+    <main class="report-container" style="max-width: 400px; margin-top: 100px;">
+        <h2 style="text-align: center;">Beta Access</h2>
+        <p style="text-align: center; margin-bottom: 20px;">Please sign in to continue.</p>
+        
+        <form id="betaLoginForm" class="beta-form">
             <div class="form-group">
-                <label for="newSubUser">Username:</label>
-                <input type="text" id="newSubUser" required placeholder="Pick a username">
+                <label for="betaUser">Username:</label>
+                <input type="text" id="betaUser" required placeholder="Enter username">
             </div>
             <div class="form-group">
-                <label for="newSubPass">Password:</label>
-                <input type="password" id="newSubPass" required placeholder="Pick a password">
+                <label for="betaPass">Password:</label>
+                <input type="password" id="betaPass" required placeholder="Enter password">
             </div>
-            <button type="submit" id="signupBtn" class="btn-game" style="width: 100%;">Create Account 🚀</button>
-            <p id="statusMsg" style="text-align:center; margin-top:15px; display:none;"></p>
+            <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
+                <input type="checkbox" id="rememberMe" style="width: auto;">
+                <label for="rememberMe" style="margin: 0;">Remember Me</label>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                <button type="submit" id="loginBtn" class="btn-game" style="width: 100%;">Sign In 🔐</button>
+                <div style="text-align: center; font-size: 0.8rem; color: #666;">— OR —</div>
+                <a href="beta-signup.html" class="btn-primary" style="text-align: center; text-decoration: none; background-color: var(--action-teal);">Create Account 🚀</a>
+            </div>
+            <p id="loginError" style="display:none; color: red; text-align:center; margin-top:15px;">Incorrect username or password.</p>
         </form>
     </main>
 
     <script>
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbym476k1A-i-yoX-1QhnIzuT4wwsQ10ykWUEJfKoqc7ebZm7ChB32EmN9WCWNJZjVg/exec";
 
-        document.getElementById('pureSignupForm').addEventListener('submit', function(e) {
+        document.getElementById('betaLoginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const user = document.getElementById('newSubUser').value;
-            const pass = document.getElementById('newSubPass').value;
-            const btn = document.getElementById('signupBtn');
-            const status = document.getElementById('statusMsg');
+            const user = document.getElementById('betaUser').value;
+            const pass = document.getElementById('betaPass').value;
+            const remember = document.getElementById('rememberMe').checked;
+            const loginBtn = document.getElementById('loginBtn');
+            const errorMsg = document.getElementById('loginError');
 
-            // 1. UI Feedback
-            btn.innerHTML = "Creating... ⏳";
-            btn.disabled = true;
-            status.style.display = "block";
-            status.style.color = "gray";
-            status.innerText = "Connecting to server...";
+            // Visual feedback
+            loginBtn.innerHTML = "Checking... ⏳";
+            loginBtn.disabled = true;
+            errorMsg.style.display = "none";
 
-            // 2. The Request
             fetch(SCRIPT_URL, {
                 method: "POST",
-                mode: "no-cors", // This prevents the 'CORS' error on some browsers
                 body: JSON.stringify({ 
-                    action: "signup", 
+                    action: "login", 
                     username: user, 
                     password: pass 
                 })
             })
-            .then(() => {
-                // Note: with 'no-cors', we can't read the JSON response, 
-                // but if the fetch finishes, it usually means it hit the script.
-                status.style.color = "green";
-                status.innerText = "Account Created! Redirecting...";
-                
-                setTimeout(() => {
-                    window.location.href = "beta-login.html";
-                }, 1500);
+            .then(res => res.json()) // CRITICAL: This converts the response so JS can read it
+            .then(response => {
+                if (response.result === "success") {
+                    // Set session storage (clears when browser closes)
+                    sessionStorage.setItem('betaLoggedIn', 'true');
+                    
+                    // Set local storage if "Remember Me" is checked (stays forever)
+                    if (remember) {
+                        localStorage.setItem('betaLoggedIn', 'true');
+                    }
+                    
+                    // Brief delay to ensure storage is saved before redirecting
+                    setTimeout(() => {
+                        window.location.replace("beta-test.html");
+                    }, 100);
+                } else {
+                    // Show error and reset button
+                    errorMsg.style.display = "block";
+                    loginBtn.innerHTML = "Sign In 🔐";
+                    loginBtn.disabled = false;
+                }
             })
             .catch(err => {
-                console.error("Signup Error:", err);
-                status.style.color = "red";
-                status.innerText = "Error: Could not connect to database.";
-                btn.innerHTML = "Create Account 🚀";
-                btn.disabled = false;
+                console.error("Login Error:", err);
+                alert("Connection error. Please check your internet.");
+                loginBtn.innerHTML = "Sign In 🔐";
+                loginBtn.disabled = false;
             });
         });
     </script>
