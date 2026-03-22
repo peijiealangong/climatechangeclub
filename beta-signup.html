@@ -2,36 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up | Climate Change Club</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="javascript.js" defer></script>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="beta-login.html">Login</a></li>
-        </ul>
-    </nav>
-
     <main class="report-container" style="max-width: 400px; margin-top: 80px;">
         <h2 style="text-align: center;">Create Beta Account</h2>
-        <p style="text-align: center; font-size: 0.9rem; margin-bottom: 20px;">Join the club's development team.</p>
-        
         <form id="pureSignupForm" class="beta-form">
             <div class="form-group">
-                <label for="newSubUser">Choose Username:</label>
-                <input type="text" id="newSubUser" required placeholder="e.g. AlanG">
+                <label for="newSubUser">Username:</label>
+                <input type="text" id="newSubUser" required>
             </div>
             <div class="form-group">
-                <label for="newSubPass">Choose Password:</label>
-                <input type="password" id="newSubPass" required placeholder="••••••••">
+                <label for="newSubPass">Password:</label>
+                <input type="password" id="newSubPass" required>
             </div>
-            <button type="submit" id="signupBtn" class="btn-game" style="width: 100%;">Create Account 🚀</button>
-            <p id="signupMsg" style="display:none; text-align:center; margin-top:15px; font-weight:600;"></p>
+            <button type="submit" class="btn-game" style="width: 100%;">Create Account 🚀</button>
         </form>
     </main>
 
@@ -40,37 +27,17 @@
 
         document.getElementById('pureSignupForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
             const user = document.getElementById('newSubUser').value;
             const pass = document.getElementById('newSubPass').value;
-            const btn = document.getElementById('signupBtn');
-            const msg = document.getElementById('signupMsg');
-
-            btn.innerText = "Connecting to Cloud...";
-            btn.disabled = true;
 
             fetch(SCRIPT_URL, {
                 method: "POST",
-                // We send a string because Google Apps Script likes JSON strings
                 body: JSON.stringify({ action: "signup", username: user, password: pass })
             })
             .then(res => res.json())
             .then(response => {
-                if (response.result === "success") {
-                    alert("Welcome to the team! Account created in Google Sheets.");
-                    window.location.href = "beta-login.html";
-                } else {
-                    msg.style.display = "block";
-                    msg.style.color = "red";
-                    msg.innerText = "Error creating account. Try again.";
-                    btn.innerText = "Create Account 🚀";
-                    btn.disabled = false;
-                }
-            })
-            .catch(error => {
-                console.error('Error!', error.message);
-                btn.innerText = "Create Account 🚀";
-                btn.disabled = false;
+                alert("Account created!");
+                window.location.href = "beta-login.html";
             });
         });
     </script>
