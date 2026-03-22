@@ -33,31 +33,22 @@
         </form>
     </main>
 
-    <script>
-        document.getElementById('pureSignupForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const user = document.getElementById('newSubUser').value;
-            const pass = document.getElementById('newSubPass').value;
-            const msg = document.getElementById('signupMsg');
+const SCRIPT_URL = "AKfycbym476k1A-i-yoX-1QhnIzuT4wwsQ10ykWUEJfKoqc7ebZm7ChB32EmN9WCWNJZjVg";
 
-            // Get existing users or empty array
-            let users = JSON.parse(localStorage.getItem('betaUsers')) || [];
+document.getElementById('pureSignupForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const user = document.getElementById('newSubUser').value;
+    const pass = document.getElementById('newSubPass').value;
 
-            // Check if username exists
-            if (users.find(u => u.username === user)) {
-                msg.style.color = "red";
-                msg.innerText = "Username already taken!";
-                msg.style.display = "block";
-            } else {
-                // Add new user
-                users.push({username: user, password: pass});
-                localStorage.setItem('betaUsers', JSON.stringify(users));
-                msg.style.color = "var(--action-teal)";
-                msg.innerText = "Account created! Redirecting to login...";
-                msg.style.display = "block";
-                setTimeout(() => window.location.href = "beta-login.html", 2000);
-            }
-        });
-    </script>
+    fetch(SCRIPT_URL, {
+        method: "POST",
+        body: JSON.stringify({ action: "signup", username: user, password: pass })
+    })
+    .then(res => res.json())
+    .then(response => {
+        alert("Account saved to Google Sheets!");
+        window.location.href = "beta-login.html";
+    });
+});
 </body>
 </html>

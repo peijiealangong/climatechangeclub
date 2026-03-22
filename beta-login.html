@@ -50,31 +50,23 @@
         </form>
     </main>
 
-    <script>
-        document.getElementById('betaLoginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const userInput = document.getElementById('betaUser').value;
-            const passInput = document.getElementById('betaPass').value;
-            const remember = document.getElementById('rememberMe').checked;
-            
-            // 1. Check our "Database"
-            let users = JSON.parse(localStorage.getItem('betaUsers')) || [];
-            
-            // 2. Also keep the master "student" account working
-            const isMaster = (userInput === "student" && passInput === "climate2026");
-            const isUser = users.find(u => u.username === userInput && u.password === passInput);
+document.getElementById('betaLoginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const user = document.getElementById('betaUser').value;
+    const pass = document.getElementById('betaPass').value;
 
-            if (isMaster || isUser) {
-                if (remember) {
-                    localStorage.setItem('betaLoggedIn', 'true'); 
-                } else {
-                    sessionStorage.setItem('betaLoggedIn', 'true'); 
-                }
-                window.location.href = "beta-test.html";
-            } else {
-                document.getElementById('loginError').style.display = "block";
-            }
-        });
-    </script>
-</body>
+    fetch(SCRIPT_URL, {
+        method: "POST",
+        body: JSON.stringify({ action: "login", username: user, password: pass })
+    })
+    .then(res => res.json())
+    .then(response => {
+        if (response.result === "success") {
+            sessionStorage.setItem('betaLoggedIn', 'true');
+            window.location.href = "beta-test.html";
+        } else {
+            document.getElementById('loginError').style.display = "block";
+        }
+    });
+});</body>
 </html>
