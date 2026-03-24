@@ -39,13 +39,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /**
  * MODULE 6: UPDATE NOTIFICATION (With Spinning Icon)
- * 🚨 COMMAND: Change "1.7" to "1.8" to trigger for everyone.
+ * 🚨 COMMAND: Change "1.3" to "1.4" to trigger for everyone.
  */
 function setupUpdateNotification() {
     const updatePopup = document.getElementById("updatePopup");
     const updateBtn = document.getElementById("updateBtn");
 
-    const currentVersion = "1.7"; 
+    const currentVersion = "1.3"; 
 
     if (!updatePopup || !updateBtn) return;
 
