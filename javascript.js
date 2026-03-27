@@ -78,6 +78,49 @@ function setupUpdateNotification() {
         }, 2000); 
     });
 }
+
+/**
+ * MODULE 6A: UPDATE BETA NOTIFICATION (With Spinning Icon)
+ * 🚨 COMMAND: Change "1.3" to "1.4" to trigger for everyone (BETA).
+ */
+function setupUpdateNotification() {
+    const updatePopup = document.getElementById("updatePopupBETA");
+    const updateBtn = document.getElementById("updateBtn");
+
+    const currentVersion = "1.3"; 
+
+    if (!updatePopup || !updateBtn) return;
+
+    const savedVersion = localStorage.getItem("appVersion");
+
+    if (savedVersion !== currentVersion) {
+        setTimeout(() => {
+            updatePopup.classList.add("show");
+        }, 2000);
+    }
+
+    updateBtn.addEventListener("click", () => {
+        // PHASE 1: "Updating..." with Spinner (2 Seconds)
+        // We use innerHTML to include the Font Awesome spinner icon
+        updateBtn.innerHTML = `<i class="fas fa-spinner fa-spin-custom"></i> Updating...`;
+        updateBtn.style.opacity = "0.7";
+        updateBtn.style.cursor = "not-allowed";
+        updateBtn.disabled = true; 
+        
+        setTimeout(() => {
+            // PHASE 2: "Refreshing..." (2 Seconds)
+            // We keep the spinner going for the refresh phase too
+            updateBtn.innerHTML = `<i class="fas fa-sync-alt fa-spin-custom"></i> Refreshing...`;
+            
+            setTimeout(() => {
+                // PHASE 3: Commit and reload
+                localStorage.setItem("appVersion", currentVersion);
+                window.location.reload();
+            }, 2000); 
+        }, 2000); 
+    });
+}
+
 /**
  * MODULE 2: AMBIENT MUSIC
  */
