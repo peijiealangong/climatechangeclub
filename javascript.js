@@ -1,129 +1,108 @@
 /**
- * CLIMATE CHANGE CLUB - MAIN CORE SCRIPT
- * Version: 1.3 (Update Popup System Active)
+ * CLIMATE CHANGE CLUB - MASTER CORE SCRIPT
+ * Version: 1.3
+ * Contains: 
+ * - Theme & Music Persistence
+ * - Session-based Eco-Popups
+ * - Live API Member Counter
+ * - Newsletter Confetti & Persistence
+ * - Dual Update Systems (Standard & Beta Redirect)
+ * - Carbon Catcher Mini-Game (High Score Logic)
+ * - Video Promo & Beta Form Handling
  */
 
 document.addEventListener("DOMContentLoaded", () => {
     
     // 1. GLOBAL THEME INITIALIZATION
-    // Restores the user's preferred background color from previous visits.
+    // Checks localStorage to see if the user set a custom background color previously.
     const savedColor = localStorage.getItem("bgColor");
     if (savedColor) document.body.style.backgroundColor = savedColor;
 
-    // 2. AMBIENT MUSIC SYSTEM
-    // Handles play/pause states and UI button feedback.
-    initAmbientMusic();
-
-    // 3. ECO-GAME SESSION POPUP
-    // Shows the download prompt once per browser session after 5 seconds.
-    initEcoPopup();
-
-    // 4. LIVE IMPACT TRACKER
-    // Fetches the latest member data from the Google Apps Script API.
-    updateMemberCount();
-
-    // 5. NEWSLETTER PERSISTENCE
-    // Remembers if the user joined the mailing list and triggers confetti.
-    setupPersistentNewsletter();
-
-    // 6. UPDATE NOTIFICATION (NEW VERSION-CONTROLLED SYSTEM)
-    // Checks the server version against the local version to force popups.
-    setupUpdateNotification();
-    // 7. Initialize the Mini-Game
-    initMiniGame();
+    // 2. INITIALIZE ALL UI MODULES
+    initAmbientMusic();        // Background audio controller
+    initEcoPopup();           // Session-based download prompt
+    updateMemberCount();       // Google Apps Script API fetcher
+    setupPersistentNewsletter(); // Newsletter button & confetti
+    initVideoPromo();          // 3-second delay video popup
+    
+    // 3. INITIALIZE UPDATE NOTIFICATIONS
+    // We run both; they check their respective IDs in the HTML.
+    setupUpdateNotification();     // Standard -> index.html
+    setupUpdateNotificationBETA(); // Beta -> beta-login.html
+    
+    // 4. INITIALIZE INTERACTIVE MODULES
+    initMiniGame();            // Carbon Catcher game engine
+    initBetaForm();            // Formspree reporter (if on beta page)
 });
 
 /* ==========================================================================
-   LOGIC MODULES
+   UPDATE & REDIRECT SYSTEM
    ========================================================================== */
 
 /**
- * MODULE 6: UPDATE NOTIFICATION (With Spinning Icon)
- * 🚨 COMMAND: Change "1.3" to "1.4" to trigger for everyone.
+ * Reusable helper to handle the "Updating -> Refreshing" animation sequence.
+ * @param {HTMLElement} btn - The button clicked.
+ * @param {string} version - The target version to save.
+ * @param {string} redirectUrl - Where to send the user after "updating".
  */
+function handleUpdateSequence(btn, version, redirectUrl) {
+    // PHASE 1: Spinner Start
+    btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Updating...`;
+    btn.style.opacity = "0.7";
+    btn.style.cursor = "not-allowed";
+    btn.disabled = true; 
+
+    setTimeout(() => {
+        // PHASE 2: Change icon to Refresh
+        btn.innerHTML = `<i class="fas fa-sync-alt fa-spin"></i> Refreshing...`;
+        
+        setTimeout(() => {
+            // PHASE 3: Save version to localStorage and redirect
+            localStorage.setItem("appVersion", version);
+            window.location.href = redirectUrl; 
+        }, 2000); 
+    }, 2000); 
+}
+
+// Standard Update: Just refreshes the current page
 function setupUpdateNotification() {
     const updatePopup = document.getElementById("updatePopup");
     const updateBtn = document.getElementById("updateBtn");
-
     const currentVersion = "1.3"; 
 
     if (!updatePopup || !updateBtn) return;
 
-    const savedVersion = localStorage.getItem("appVersion");
-
-    if (savedVersion !== currentVersion) {
-        setTimeout(() => {
-            updatePopup.classList.add("show");
-        }, 2000);
+    if (localStorage.getItem("appVersion") !== currentVersion) {
+        setTimeout(() => { updatePopup.classList.add("show"); }, 2000);
     }
 
     updateBtn.addEventListener("click", () => {
-        // PHASE 1: "Updating..." with Spinner (2 Seconds)
-        // We use innerHTML to include the Font Awesome spinner icon
-        updateBtn.innerHTML = `<i class="fas fa-spinner fa-spin-custom"></i> Updating...`;
-        updateBtn.style.opacity = "0.7";
-        updateBtn.style.cursor = "not-allowed";
-        updateBtn.disabled = true; 
-        
-        setTimeout(() => {
-            // PHASE 2: "Refreshing..." (2 Seconds)
-            // We keep the spinner going for the refresh phase too
-            updateBtn.innerHTML = `<i class="fas fa-sync-alt fa-spin-custom"></i> Refreshing...`;
-            
-            setTimeout(() => {
-                // PHASE 3: Commit and reload
-                localStorage.setItem("appVersion", currentVersion);
-                window.location.reload();
-            }, 2000); 
-        }, 2000); 
+        handleUpdateSequence(updateBtn, currentVersion, "index.html");
     });
 }
 
-/**
- * MODULE 6A: UPDATE BETA NOTIFICATION (With Spinning Icon)
- * 🚨 COMMAND: Change "1.3" to "1.4" to trigger for everyone (BETA).
- */
-function setupUpdateNotification() {
+// BETA Update: Specifically redirects users to the Beta Login
+function setupUpdateNotificationBETA() {
     const updatePopup = document.getElementById("updatePopupBETA");
-    const updateBtn = document.getElementById("updateBtn");
-
-    const currentVersion = "1.3"; 
+    // Looks for the button inside the Beta-specific popup
+    const updateBtn = updatePopup ? updatePopup.querySelector("button") : null;
+    const currentVersion = "1.4"; 
 
     if (!updatePopup || !updateBtn) return;
 
-    const savedVersion = localStorage.getItem("appVersion");
-
-    if (savedVersion !== currentVersion) {
-        setTimeout(() => {
-            updatePopup.classList.add("show");
-        }, 2000);
+    if (localStorage.getItem("appVersion") !== currentVersion) {
+        setTimeout(() => { updatePopup.classList.add("show"); }, 2500);
     }
 
     updateBtn.addEventListener("click", () => {
-        // PHASE 1: "Updating..." with Spinner (2 Seconds)
-        // We use innerHTML to include the Font Awesome spinner icon
-        updateBtn.innerHTML = `<i class="fas fa-spinner fa-spin-custom"></i> Updating...`;
-        updateBtn.style.opacity = "0.7";
-        updateBtn.style.cursor = "not-allowed";
-        updateBtn.disabled = true; 
-        
-        setTimeout(() => {
-            // PHASE 2: "Refreshing..." (2 Seconds)
-            // We keep the spinner going for the refresh phase too
-            updateBtn.innerHTML = `<i class="fas fa-sync-alt fa-spin-custom"></i> Refreshing...`;
-            
-            setTimeout(() => {
-                // PHASE 3: Commit and reload
-                localStorage.setItem("appVersion", currentVersion);
-                window.location.reload();
-            }, 2000); 
-        }, 2000); 
+        handleUpdateSequence(updateBtn, currentVersion, "beta-login.html");
     });
 }
 
-/**
- * MODULE 2: AMBIENT MUSIC
- */
+/* ==========================================================================
+   CORE UTILITIES (Music, Counter, Newsletter)
+   ========================================================================== */
+
 function initAmbientMusic() {
     const music = document.getElementById("bgMusic");
     const mBtn = document.getElementById("musicBtn");
@@ -132,21 +111,19 @@ function initAmbientMusic() {
     if (mBtn && music) {
         mBtn.addEventListener("click", () => {
             if (music.paused) {
-                music.play().catch(() => console.log("Audio blocked: User interaction required."));
+                music.play().catch(() => console.log("Audio blocked: Interaction required."));
                 mText.textContent = "Pause Music";
-                mBtn.style.background = "var(--action-teal)";
+                mBtn.style.background = "#2a9d8f"; // Teal
             } else {
                 music.pause();
                 mText.textContent = "Play Ambient Music";
-                mBtn.style.background = "var(--primary-green)";
+                mBtn.style.background = "#1b4332"; // Dark Green
             }
         });
     }
 }
 
-/**
- * MODULE 3: SESSION POPUP
- */
+// Session Popup: Shows once per browser tab session
 function initEcoPopup() {
     const popup = document.getElementById("promoPopup");
     if (popup && !sessionStorage.getItem("hasSeenEcoPopup")) {
@@ -157,30 +134,28 @@ function initEcoPopup() {
     }
 }
 
-/**
- * MODULE 4: GOOGLE API MEMBER COUNTER
- */
 async function updateMemberCount() {
     const apiURL = "https://script.google.com/macros/s/AKfycbzI0GMc3wPGfZDQ4AhERrpn3n3rEFd4236RgRR_cLq3rLDEarUG_yA3uywRjIzWT3bvKg/exec";
     const countElement = document.getElementById("member-count");
+    if (!countElement) return;
+
     try {
         const response = await fetch(apiURL);
         const data = await response.json();
-        if(countElement) countElement.innerText = data.count || "200+";
+        countElement.innerText = data.count || "200+";
     } catch (e) {
-        console.error("Member counter API unavailable.");
+        countElement.innerText = "200+";
     }
 }
 
-/**
- * MODULE 5: NEWSLETTER PERSISTENCE & CONFETTI
- */
 function setupPersistentNewsletter() {
     const trigger = document.getElementById('confettiTrigger');
     if (!trigger) return;
 
+    // Check if user is already in the "Subscribed" state
     if (localStorage.getItem("isSubscribed") === "true") {
-        applySubscribedUI(trigger);
+        trigger.innerHTML = `✓ Subscribed <i class="fas fa-check-circle"></i>`;
+        trigger.classList.add('btn-subscribed');
     }
 
     trigger.addEventListener('click', (e) => {
@@ -192,38 +167,18 @@ function setupPersistentNewsletter() {
 
         e.preventDefault();
         if (typeof confetti === "function") {
-            confetti({ 
-                particleCount: 150, 
-                spread: 70, 
-                origin: { y: 0.6 }, 
-                colors: ['#2a9d8f', '#f4d35e', '#1b4332'] 
-            });
+            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
         }
         localStorage.setItem("isSubscribed", "true");
-        applySubscribedUI(trigger);
+        trigger.innerHTML = `✓ Subscribed <i class="fas fa-check-circle"></i>`;
         setTimeout(() => { window.open(url, '_blank'); }, 1200);
     });
 }
 
-function applySubscribedUI(el) {
-    el.innerHTML = `✓ Subscribed <i class="fas fa-check-circle"></i>`;
-    el.classList.add('btn-subscribed');
-}
+/* ==========================================================================
+   CARBON CATCHER GAME ENGINE
+   ========================================================================== */
 
-/**
- * GLOBAL HELPERS (Color Theme & UI)
- */
-function changeColor(color) {
-    document.body.style.backgroundColor = color;
-    localStorage.setItem("bgColor", color);
-}
-
-function closePopup() {
-    document.getElementById("promoPopup").style.display = "none";
-}
-/**
- * MODULE 7: CARBON CATCHER (High Score & Easy-Click Edition)
- */
 function initMiniGame() {
     const modal = document.getElementById("gameModal");
     const openBtn = document.getElementById("openGameBtn");
@@ -233,58 +188,43 @@ function initMiniGame() {
     const scoreDisplay = document.getElementById("game-score");
     const highDisplay = document.getElementById("high-score");
 
-    let score = 0;
-    let gameActive = false;
-
-    // Load High Score from "Cookies" (localStorage)
+    let score = 0, gameActive = false;
     let highScore = localStorage.getItem("carbonHighScore") || 0;
-    highDisplay.innerText = highScore;
-
+    
+    if (highDisplay) highDisplay.innerText = highScore;
     if (!modal || !openBtn) return;
 
-    openBtn.onclick = () => {
-        modal.style.display = "flex";
-        // Update high score display when opening
-        highDisplay.innerText = localStorage.getItem("carbonHighScore") || 0;
-    };
-    
-    closeBtn.onclick = () => {
-        modal.style.display = "none";
-        gameActive = false;
+    openBtn.onclick = () => { modal.style.display = "flex"; };
+    closeBtn.onclick = () => { 
+        modal.style.display = "none"; 
+        gameActive = false; 
+        // Cleanup remaining clouds
         canvas.querySelectorAll('.carbon-cloud').forEach(c => c.remove());
     };
 
     startBtn.onclick = () => {
-        score = 0;
-        scoreDisplay.innerText = score;
-        gameActive = true;
+        score = 0; 
+        scoreDisplay.innerText = "0";
+        gameActive = true; 
         startBtn.style.display = "none";
         spawnCarbon();
     };
 
     function spawnCarbon() {
         if (!gameActive) return;
-
         const cloud = document.createElement("div");
         cloud.className = "carbon-cloud";
-        cloud.innerHTML = "☁️"; 
-        
-        // Random horizontal position
-        const maxX = canvas.offsetWidth - 60;
-        cloud.style.left = Math.floor(Math.random() * maxX) + "px";
+        cloud.innerHTML = "☁️";
+        cloud.style.left = Math.random() * (canvas.offsetWidth - 60) + "px";
         cloud.style.top = "-60px";
         canvas.appendChild(cloud);
 
         let topPos = -60;
         const fallInterval = setInterval(() => {
-            if (!gameActive) {
-                clearInterval(fallInterval);
-                cloud.remove();
-                return;
-            }
-
-            // Falling speed - stays manageable but speeds up slightly with score
-            topPos += (2 + (score / 15)); 
+            if (!gameActive) { clearInterval(fallInterval); cloud.remove(); return; }
+            
+            // Difficulty increases with score
+            topPos += (2 + (score / 15));
             cloud.style.top = topPos + "px";
 
             if (topPos > canvas.offsetHeight) {
@@ -294,13 +234,12 @@ function initMiniGame() {
             }
         }, 30);
 
-        // Clicking the cloud (Enhanced Hitbox)
         cloud.addEventListener('mousedown', (e) => {
-            e.stopPropagation(); // Prevents clicking the background
+            e.stopPropagation();
             score++;
             scoreDisplay.innerText = score;
             
-            // Check for New High Score immediately
+            // Update High Score
             if (score > highScore) {
                 highScore = score;
                 highDisplay.innerText = highScore;
@@ -309,50 +248,57 @@ function initMiniGame() {
 
             clearInterval(fallInterval);
             cloud.innerHTML = "🌿";
-            cloud.style.pointerEvents = "none"; // Prevent double-clicking same cloud
+            cloud.style.pointerEvents = "none"; // Disable double clicks
             setTimeout(() => cloud.remove(), 250);
         });
 
-        // Spawn timing
-        const spawnRate = Math.max(1000 - (score * 20), 400);
-        setTimeout(spawnCarbon, spawnRate);
+        // Loop spawn
+        setTimeout(spawnCarbon, Math.max(1000 - (score * 20), 400));
     }
 
     function endGame() {
         gameActive = false;
-        alert(`Game Over! Final Score: ${score}\nYour Best: ${highScore}`);
+        alert(`Game Over! Final Score: ${score}`);
         startBtn.style.display = "inline-block";
-        startBtn.innerText = "Try to Beat Record";
+        startBtn.innerText = "Try Again";
     }
 }
-/**
- * MODULE 8: VIDEO PROMO POPUP (Always Shows)
- */
-function initVideoPromo() {
-    const popup = document.getElementById("videoPromoPopup");
-    const closeBtn = document.getElementById("closeVideoPromo");
 
-    if (!popup) return;
+/* ==========================================================================
+   MISC: FORMS, VIDEO, & GLOBAL HELPERS
+   ========================================================================== */
 
-    // Triggers every single time the page loads, waiting 3 seconds
-    setTimeout(() => {
-        popup.classList.add("show");
-    }, 3000);
+function initBetaForm() {
+    const form = document.getElementById("betaForm");
+    const submitBtn = document.getElementById("submitBetaBtn");
+    const successMsg = document.getElementById("formSuccessMessage");
+    if (!form) return;
 
-    if (closeBtn) {
-        closeBtn.addEventListener("click", () => {
-            // Simply hides the popup when clicked, without saving any memory
-            popup.classList.remove("show");
+    form.onsubmit = async (e) => {
+        e.preventDefault();
+        submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Sending...`;
+        submitBtn.disabled = true;
+
+        const response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
         });
-    }
-}
-/* --- Initialize on Load --- */
-document.addEventListener("DOMContentLoaded", () => {
-    initVideoPromo();
-    initMiniGame();
-});
 
-/* --- Video Promo Logic --- */
+        if (response.ok) {
+            form.reset();
+            submitBtn.style.display = "none";
+            successMsg.style.display = "block";
+            setTimeout(() => {
+                successMsg.style.display = "none";
+                submitBtn.style.display = "block";
+                submitBtn.innerHTML = "Send Report 🚀";
+                submitBtn.disabled = false;
+            }, 5000);
+        }
+    };
+}
+
 function initVideoPromo() {
     const popup = document.getElementById("videoPromoPopup");
     const close = document.getElementById("closeVideoPromo");
@@ -362,110 +308,11 @@ function initVideoPromo() {
     }
 }
 
-/* --- Game Logic with High Score --- */
-function initMiniGame() {
-    const modal = document.getElementById("gameModal");
-    const openBtn = document.getElementById("openGameBtn");
-    const startBtn = document.getElementById("startGameBtn");
-    const canvas = document.getElementById("game-canvas");
-    const scoreDisplay = document.getElementById("game-score");
-    const highDisplay = document.getElementById("high-score");
-
-    let score = 0;
-    let gameActive = false;
-    let highScore = localStorage.getItem("carbonHighScore") || 0;
-    highDisplay.innerText = highScore;
-
-    if(openBtn) openBtn.onclick = () => modal.style.display = "flex";
-    
-    startBtn.onclick = () => {
-        score = 0;
-        scoreDisplay.innerText = "0";
-        gameActive = true;
-        startBtn.style.display = "none";
-        spawnCloud();
-    };
-
-    function spawnCloud() {
-        if (!gameActive) return;
-        const cloud = document.createElement("div");
-        cloud.className = "carbon-cloud";
-        cloud.innerHTML = "☁️";
-        cloud.style.left = Math.random() * (canvas.offsetWidth - 50) + "px";
-        cloud.style.top = "-50px";
-        canvas.appendChild(cloud);
-
-        let top = -50;
-        const fall = setInterval(() => {
-            if (!gameActive) { clearInterval(fall); cloud.remove(); return; }
-            top += (2 + (score / 10));
-            cloud.style.top = top + "px";
-            if (top > canvas.offsetHeight) { clearInterval(fall); cloud.remove(); endGame(); }
-        }, 30);
-
-        cloud.onclick = () => {
-            score++;
-            scoreDisplay.innerText = score;
-            if (score > highScore) {
-                highScore = score;
-                localStorage.setItem("carbonHighScore", highScore);
-                highDisplay.innerText = highScore;
-            }
-            clearInterval(fall);
-            cloud.innerHTML = "🌿";
-            setTimeout(() => cloud.remove(), 200);
-        };
-        setTimeout(spawnCloud, Math.max(1000 - (score * 20), 400));
-    }
-
-    function endGame() {
-        gameActive = false;
-        alert("Game Over! Score: " + score);
-        startBtn.style.display = "inline-block";
-    }
+function changeColor(color) {
+    document.body.style.backgroundColor = color;
+    localStorage.setItem("bgColor", color);
 }
-function initBetaForm() {
-    const form = document.getElementById("betaForm");
-    const submitBtn = document.getElementById("submitBetaBtn");
-    const successMsg = document.getElementById("formSuccessMessage");
 
-    if (!form) return;
-
-    form.onsubmit = async (e) => {
-        e.preventDefault(); // Stop page refresh
-        
-        submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin-custom"></i> Sending...`;
-        submitBtn.disabled = true;
-
-        const data = new FormData(form);
-        
-        // Sending the data to Formspree
-        const response = await fetch(form.action, {
-            method: 'POST',
-            body: data,
-            headers: { 'Accept': 'application/json' }
-        });
-
-        if (response.ok) {
-            form.reset();
-            submitBtn.style.display = "none";
-            successMsg.style.display = "block";
-            
-            // Re-enable button after 5 seconds
-            setTimeout(() => {
-                successMsg.style.display = "none";
-                submitBtn.style.display = "block";
-                submitBtn.innerHTML = "Send Report 🚀";
-                submitBtn.disabled = false;
-            }, 5000);
-        } else {
-            alert("Oops! There was a problem sending your report.");
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = "Send Report 🚀";
-        }
-    };
-}
-/* Add this to your javascript.js */
 function betaSignOut() {
     localStorage.removeItem('betaLoggedIn');
     sessionStorage.removeItem('betaLoggedIn');
