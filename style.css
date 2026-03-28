@@ -184,30 +184,31 @@ footer { text-align: center; padding: 30px; background: var(--primary-green); co
 /* ==================================================
    7. UPDATE POPUP NOTIFICATION (New Addition)
    ================================================== */
+/* Update this specific section in your style.css */
 .update-popup {
     position: fixed;
-    bottom: -150px; /* Hidden off-screen initially */
-    right: 30px;
-    background: var(--white);
-    padding: 20px 25px;
-    border-radius: 15px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    z-index: 4000;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    border-left: 5px solid var(--action-teal);
-    transition: bottom 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    bottom: -200px; /* Moves it further down so it's truly hidden */
+    right: 20px;
+    background: #ffffff !important; /* Force white background */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    border-left: 6px solid #2a9d8f;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10001; /* Stay above everything, including reCAPTCHA */
+    
+    /* FIX: Force text to be dark so it doesn't blend into the white background */
+    color: #333333 !important; 
+}
+
+.update-popup p, 
+.update-popup strong {
+    color: #333333 !important; 
+    margin: 0;
 }
 
 .update-popup.show {
-    bottom: 30px; /* Slides up smoothly into view */
-}
-
-.update-popup p {
-    margin: 0;
-    font-weight: 600;
-    color: var(--primary-green);
+    bottom: 20px; /* Slides up into view */
 }
 /* Spinner Animation for the Update Button */
 .fa-spin-custom {
