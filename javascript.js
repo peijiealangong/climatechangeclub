@@ -7,7 +7,7 @@
  * - Session-based Eco-Popups
  * - Live API Member Counter
  * - Newsletter Confetti & Persistence
- * - Dual Update Systems (Standard & Beta Redirect)
+ * - Dual Update Systems (Standard & Beta Redirect) - NO DELAYS
  * - Carbon Catcher Mini-Game (High Score Logic)
  * - Video Promo & Beta Form Handling
  */
@@ -15,37 +15,29 @@
 document.addEventListener("DOMContentLoaded", () => {
     
     // 1. GLOBAL THEME INITIALIZATION
-    // Checks localStorage to see if the user set a custom background color previously.
     const savedColor = localStorage.getItem("bgColor");
     if (savedColor) document.body.style.backgroundColor = savedColor;
 
     // 2. INITIALIZE ALL UI MODULES
-    initAmbientMusic();        // Background audio controller
-    initEcoPopup();           // Session-based download prompt
-    updateMemberCount();       // Google Apps Script API fetcher
-    setupPersistentNewsletter(); // Newsletter button & confetti
-    initVideoPromo();          // 3-second delay video popup
+    initAmbientMusic();        
+    initEcoPopup();           
+    updateMemberCount();       
+    setupPersistentNewsletter(); 
+    initVideoPromo();          
     
     // 3. INITIALIZE UPDATE NOTIFICATIONS
-    // We run both; they check their respective IDs in the HTML.
-    setupUpdateNotification();     // Standard -> index.html
-    setupUpdateNotificationBETA(); // Beta -> beta-login.html
+    setupUpdateNotification();     
+    setupUpdateNotificationBETA(); 
     
     // 4. INITIALIZE INTERACTIVE MODULES
-    initMiniGame();            // Carbon Catcher game engine
-    initBetaForm();            // Formspree reporter (if on beta page)
+    initMiniGame();            
+    initBetaForm();            
 });
 
 /* ==========================================================================
    UPDATE & REDIRECT SYSTEM
    ========================================================================== */
 
-/**
- * Reusable helper to handle the "Updating -> Refreshing" animation sequence.
- * @param {HTMLElement} btn - The button clicked.
- * @param {string} version - The target version to save.
- * @param {string} redirectUrl - Where to send the user after "updating".
- */
 function handleUpdateSequence(btn, version, redirectUrl) {
     // PHASE 1: Spinner Start
     btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Updating...`;
@@ -65,7 +57,7 @@ function handleUpdateSequence(btn, version, redirectUrl) {
     }, 2000); 
 }
 
-// Standard Update: Just refreshes the current page
+// Standard Update: Just refreshes the current page (Delay Removed!)
 function setupUpdateNotification() {
     const updatePopup = document.getElementById("updatePopup");
     const updateBtn = document.getElementById("updateBtn");
@@ -74,7 +66,8 @@ function setupUpdateNotification() {
     if (!updatePopup || !updateBtn) return;
 
     if (localStorage.getItem("appVersion") !== currentVersion) {
-        setTimeout(() => { updatePopup.classList.add("show"); }, 2000);
+        // Removed the setTimeout here so it shows instantly
+        updatePopup.classList.add("show");
     }
 
     updateBtn.addEventListener("click", () => {
@@ -85,21 +78,26 @@ function setupUpdateNotification() {
 // BETA Update: Specifically redirects users to the Beta Login
 function setupUpdateNotificationBETA() {
     const updatePopup = document.getElementById("updatePopupBETA");
-    // Looks for the button inside the Beta-specific popup
     const updateBtn = updatePopup ? updatePopup.querySelector("button") : null;
     const currentVersion = "1.4"; 
 
-    if (!updatePopup || !updateBtn) return;
+    // 1. Check if the user is actually logged into the Beta
+    const isBetaLoggedIn = localStorage.getItem('betaLoggedIn') || sessionStorage.getItem('betaLoggedIn');
+
+    // If they aren't logged in, or the popup doesn't exist, stop right here.
+    if (!isBetaLoggedIn || !updatePopup || !updateBtn) return;
 
     if (localStorage.getItem("appVersion") !== currentVersion) {
-        setTimeout(() => { updatePopup.classList.add("show"); }, 2500);
+        updatePopup.classList.add("show");
+        
+        // 2. Push the Beta popup higher so it doesn't cover the standard popup
+        updatePopup.style.bottom = "130px"; 
     }
 
     updateBtn.addEventListener("click", () => {
         handleUpdateSequence(updateBtn, currentVersion, "beta-login.html");
     });
 }
-
 /* ==========================================================================
    CORE UTILITIES (Music, Counter, Newsletter)
    ========================================================================== */
@@ -124,7 +122,6 @@ function initAmbientMusic() {
     }
 }
 
-// Session Popup: Shows once per browser tab session
 function initEcoPopup() {
     const popup = document.getElementById("promoPopup");
     if (popup && !sessionStorage.getItem("hasSeenEcoPopup")) {
@@ -153,7 +150,6 @@ function setupPersistentNewsletter() {
     const trigger = document.getElementById('confettiTrigger');
     if (!trigger) return;
 
-    // Check if user is already in the "Subscribed" state
     if (localStorage.getItem("isSubscribed") === "true") {
         trigger.innerHTML = `✓ Subscribed <i class="fas fa-check-circle"></i>`;
         trigger.classList.add('btn-subscribed');
@@ -199,7 +195,6 @@ function initMiniGame() {
     closeBtn.onclick = () => { 
         modal.style.display = "none"; 
         gameActive = false; 
-        // Cleanup remaining clouds
         canvas.querySelectorAll('.carbon-cloud').forEach(c => c.remove());
     };
 
@@ -224,7 +219,6 @@ function initMiniGame() {
         const fallInterval = setInterval(() => {
             if (!gameActive) { clearInterval(fallInterval); cloud.remove(); return; }
             
-            // Difficulty increases with score
             topPos += (2 + (score / 15));
             cloud.style.top = topPos + "px";
 
@@ -240,7 +234,6 @@ function initMiniGame() {
             score++;
             scoreDisplay.innerText = score;
             
-            // Update High Score
             if (score > highScore) {
                 highScore = score;
                 highDisplay.innerText = highScore;
@@ -249,11 +242,10 @@ function initMiniGame() {
 
             clearInterval(fallInterval);
             cloud.innerHTML = "🌿";
-            cloud.style.pointerEvents = "none"; // Disable double clicks
+            cloud.style.pointerEvents = "none"; 
             setTimeout(() => cloud.remove(), 250);
         });
 
-        // Loop spawn
         setTimeout(spawnCarbon, Math.max(1000 - (score * 20), 400));
     }
 
