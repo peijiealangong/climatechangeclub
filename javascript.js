@@ -311,3 +311,37 @@ function betaSignOut() {
     sessionStorage.removeItem('betaLoggedIn');
     window.location.replace("index.html");
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// THE SAFETY NET: Prevents one small error from crashing the whole site KEEP THIS AT THE BOTTOM OF THE FILE AT ALL TIMES
+window.onerror = function(message, source, lineno, colno, error) {
+    console.log(`%c 🛡️ Shield Active: Caught an error at line ${lineno}`, 'color: #ff4d4d; font-weight: bold;');
+    return true; // This stops the error from showing up in the user's face
+};
