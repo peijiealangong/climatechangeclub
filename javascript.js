@@ -1,6 +1,7 @@
 /**
  * CLIMATE CHANGE CLUB - MASTER CORE SCRIPT
  * Version: 1.3
+ * Beta Version: 1.4
  * Contains: 
  * - Theme & Music Persistence
  * - Session-based Eco-Popups
