@@ -660,3 +660,23 @@ html {
     margin-right: 10px;
     font-size: 1.5rem;
 }
+/* This handles the "Old" versions so the Teal stays on the new one */
+
+.history-item.stable {
+    border-left: 5px solid var(--action-teal); /* The "Active" Teal Color */
+    opacity: 1;
+}
+
+.history-item.archived {
+    border-left: 5px solid #666; /* Neutral Gray for old versions */
+    background: rgba(255, 255, 255, 0.02); /* Slightly darker/faded */
+    opacity: 0.7; /* Makes it look like it's in the past */
+}
+
+.history-item.archived .version-badge {
+    background: #444 !important; /* Gray badge for old versions */
+}
+
+.history-item.archived .history-content h3 {
+    color: #888; /* Dim the title of old updates */
+}
