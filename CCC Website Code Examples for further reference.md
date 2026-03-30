@@ -2570,7 +2570,9 @@ rainbowLog("100 FUNCTIONS COMPLETE!");
 
 
 
-
+<!-- Elfsight Poll | Untitled Poll -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-cc687bf5-0a29-4983-bed1-9fb3e9e286c8" data-elfsight-app-lazy></div>
 
 
 
