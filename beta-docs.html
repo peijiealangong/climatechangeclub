@@ -6,17 +6,10 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script>
-    (function() {
-        const isAuth = localStorage.getItem('betaLoggedIn') || sessionStorage.getItem('betaLoggedIn');
-        if (!isAuth) {
-            // Use replace so they can't click "Back" to get back in
-            window.location.replace('beta-login.html');
-        }
-    })();
-</script>
+    <!-- Removed login lock so everyone can see it! :) -->
 </head>
 <body>
+
     <nav>
         <ul>
             <li class="dropdown">
@@ -41,63 +34,99 @@
                 <a href="#" class="dropbtn">Beta Features 🧪 <i class="fas fa-caret-down"></i></a>
                 <div class="dropdown-content">
                     <a href="beta-test.html">Test</a>
-                    <a href="beta-docs.html">Documentation</a>
+                    <a href="beta-docs.html">Documentation (NO LOGIN REQURIED)</a>
                     <a href="beta-report.html">Report/Suggest a problem</a>
                 </div>
             </li>
         </ul>
     </nav>
 
-<main class="container py-5">
-    <section class="hero" style="padding: 40px 20px;">
-        <h1>Project <span class="text-gradient">Documentation</span></h1>
-        <p>Our commitment: Features are rolled out <strong>WHEN THEY'RE READY</strong>.</p>
-    </section>
+    <main class="container py-5">
+        <section class="hero" style="padding: 40px 20px;">
+            <h1>Project <span class="text-gradient">Documentation</span></h1>
+            <p>Our commitment: Features are rolled out <strong>WHEN THEY'RE READY</strong>.</p>
+        </section>
 
-    <section class="current-focus">
-        <h2 class="section-title"><i class="fas fa-microscope"></i> Under Development</h2>
-        <div class="intro-grid">
-            <div class="intro-card">
-                <span class="hero-tag tag-testing">In Testing</span>
-                <h3>Interactive Impact Map</h3>
-                <p>Solving data-sync lag. Releasing only when rendering is 100% functional.</p>
+        <section class="current-focus">
+            <h2 class="section-title"><i class="fas fa-microscope"></i> Under Development</h2>
+            <div class="intro-grid">
+                <div class="intro-card">
+                    <span class="hero-tag tag-testing">In Testing</span>
+                    <h3>Interactive Impact Map</h3>
+                    <p>Solving data-sync lag. Releasing only when rendering is 100% functional.</p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <hr class="section-divider">
+        <hr class="section-divider">
+<!-- Timeline -->
+        <div class="timeline-container">
+<!-- Stable Updates -->
+            <div class="timeline-column">
+                <h2 class="section-title"><i class="fas fa-check-circle"></i> Stable Updates</h2>
+                <p class="versions-subtitle">Official live versions of the main site.</p>
+                
+                <div class="history-timeline">
+                    <div class="history-item stable">
+                        <div class="version-badge">v1.3.1</div>
+                        <div class="history-content">
+                            <h3>The Optimization Patch</h3>
+                            <p class="release-date"><i class="far fa-calendar-alt"></i> Released: March 2026</p>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Real time update triggers</li>
+                                <li><i class="fas fa-check"></i> Added new comment system for articles</li>
+                                <li><i class="fas fa-check"></i> Improved mobile navigation stability.</li>
+                            </ul>
+                        </div>
+                    </div>
 
-    <section class="version-history">
-        <h2 class="section-title"><i class="fas fa-history"></i> Release Log</h2>
-        <p class="versions-subtitle">Track the evolution of the Climate Change Club platform.</p>
-        
-        <div class="history-timeline">
-            <div class="history-item">
-                <div class="version-badge">v1.4</div>
-                <div class="history-content">
-                    <h3>The Optimization Patch</h3>
-                    <p class="release-date"><i class="far fa-calendar-alt"></i> Released: March 2026</p>
-                    <ul>
-                        <li><i class="fas fa-check"></i> Integrated real-time update triggers for popups.</li>
-                        <li><i class="fas fa-check"></i> Enhanced Carbon Catcher game engine logic.</li>
-                        <li><i class="fas fa-check"></i> Removed redundant script delays.</li>
-                    </ul>
+                    <div class="history-item stable">
+                        <div class="version-badge secondary">v1.3</div>
+                        <div class="history-content">
+                            <h3>Standard Build</h3>
+                            <p class="release-date"><i class="far fa-calendar-alt"></i> Released: February 2026</p>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Core site framework established.</li>
+                                <li><i class="fas fa-check"></i> Initial Resource Library launch.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!-- Beta features column -->
+            <div class="timeline-column">
+                <h2 class="section-title"><i class="fas fa-flask"></i> Beta Features</h2>
+                <p class="versions-subtitle">Experimental builds and tester-only features.</p>
+                
+                <div class="history-timeline">
+                    <div class="history-item beta">
+                        <div class="version-badge beta-tag">BETA</div>
+                        <div class="history-content">
+                            <h3>Carbon Catcher Engine</h3>
+                            <p class="release-date"><i class="far fa-calendar-alt"></i> Current Phase: v1.4-beta</p>
+                            <ul>
+                                <li><i class="fas fa-vial"></i> Enhanced game engine logic testing.</li>
+                                <li><i class="fas fa-vial"></i> Testing LocalStorage for high scores.</li>
+                                <li><i class="fas fa-vial"></i> Multi-popup stacking logic.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="history-item beta">
+                        <div class="version-badge beta-tag">BETA</div>
+                        <div class="history-content">
+                            <h3>The Beta Suite</h3>
+                            <p class="release-date"><i class="far fa-calendar-alt"></i> Released: March 2026</p>
+                            <ul>
+                                <li><i class="fas fa-vial"></i> Added restricted access Beta nav system.</li>
+                                <li><i class="fas fa-vial"></i> Initial authentication shield testing.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="history-item">
-                <div class="version-badge secondary">v1.3</div>
-                <div class="history-content">
-                    <h3>The Beta Suite</h3>
-                    <p class="release-date"><i class="far fa-calendar-alt"></i> Released: March 2026</p>
-                    <ul>
-                        <li><i class="fas fa-check"></i> Integrated LocalStorage for high score persistence.</li>
-                        <li><i class="fas fa-check"></i> Added restricted access Beta navigation system.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-</main>
+        </div> </main>
+
 </body>
 </html>

@@ -617,3 +617,46 @@ html {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+/* Layout for the dual timelines */
+.timeline-container {
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.timeline-column {
+    flex: 1; /* Makes both columns equal width */
+    min-width: 300px;
+}
+
+/* Stable vs Beta Visual Styling */
+.history-item.stable {
+    border-left: 5px solid var(--action-teal);
+}
+
+.history-item.beta {
+    border-left: 5px solid #ff9f43; /* Orange for Beta */
+    background: rgba(255, 159, 67, 0.03);
+}
+
+.beta-tag {
+    background: #ff9f43 !important;
+}
+
+/* Bullet icon colors */
+.history-item.beta ul li i {
+    color: #ff9f43;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+    .timeline-container {
+        flex-direction: column;
+    }
+}
+
+/* Section Title Tweak */
+.section-title i {
+    margin-right: 10px;
+    font-size: 1.5rem;
+}

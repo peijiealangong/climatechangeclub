@@ -2528,3 +2528,63 @@ rainbowLog("100 FUNCTIONS COMPLETE!");
 
 
 
+
+
+
+
+
+
+<div id="disqus_thread"></div>
+<script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://climatechangeclub.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<script id="dsq-count-scr" src="//climatechangeclub.disqus.com/count.js" async></script>
+
+
+
+
+
+
+
+<!-- Elfsight Comments | Untitled Comments -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-bc7be1bb-94bd-4a93-9743-67b7cb0d6ad6" data-elfsight-app-lazy></div>
+
+
+
+
+
+
+
+
+
+
+Lock for Beta testing (except for docs)
+
+    <script>
+    (function() {
+        const isAuth = localStorage.getItem('betaLoggedIn') || sessionStorage.getItem('betaLoggedIn');
+        if (!isAuth) {
+            // Use replace so they can't click "Back" to get back in
+            window.location.replace('beta-login.html');
+        }
+    })();
+</script>
+
+
+
