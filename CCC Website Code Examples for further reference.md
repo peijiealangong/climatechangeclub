@@ -198,7 +198,7 @@ The reusable JS will automatically toggle visibility.
 
 function showPopup() {
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&nbsp; document.getElementById("promoPopup").style.display = "flex";
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&nbsp; document.getElementById("promoPopup").style.display = "flex";
 
 }
 
@@ -206,7 +206,7 @@ function showPopup() {
 
 function closePopup() {
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&nbsp; document.getElementById("promoPopup").style.display = "none";
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&nbsp; document.getElementById("promoPopup").style.display = "none";
 
 }
 
@@ -216,7 +216,7 @@ function closePopup() {
 
 window.addEventListener("load", () => {
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&nbsp; setTimeout(showPopup, 5000);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&nbsp; setTimeout(showPopup, 5000);
 
 });
 
@@ -229,23 +229,23 @@ Use these patterns to make any website look cleaner, more modern, and more appea
 
 ====================================================
 
-🌟 1. SPACING \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\& LAYOUT (The #1 design improvement)
+🌟 1. SPACING \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\& LAYOUT (The #1 design improvement)
 
 ====================================================
 
 
 
-/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* Add breathing room around sections \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* Add breathing room around sections \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
 
 section {
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; padding: 40px 20px;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; padding: 40px 20px;
 
 }
 
 
 
-/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* Consistent spacing utilities \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* Consistent spacing utilities \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
 
 .spacing-lg { margin-bottom: 40px; }
 
@@ -255,15 +255,15 @@ section {
 
 
 
-/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* Keep content centered and readable \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* Keep content centered and readable \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
 
 .container {
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; max-width: 1100px;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; max-width: 1100px;
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; margin: auto;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; margin: auto;
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; padding: 0 20px;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; padding: 0 20px;
 
 }
 
@@ -273,9 +273,9 @@ section {
 
 <section class="container spacing-lg">
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; <h2>Section Title</h2>
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; <h2>Section Title</h2>
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; <p>Readable text stays around 50–75 characters per line.</p>
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; <p>Readable text stays around 50–75 characters per line.</p>
 
 </section>
 
@@ -291,19 +291,19 @@ section {
 
 
 
-/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* Clean, modern font + readable spacing \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* Clean, modern font + readable spacing \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
 
 body {
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; font-family: "Poppins", system-ui, sans-serif;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; font-family: "Poppins", system-ui, sans-serif;
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; line-height: 1.6;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; line-height: 1.6;
 
 }
 
 
 
-/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* Visual hierarchy \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* Visual hierarchy \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
 
 h1 { font-size: 2.2rem; font-weight: 700; }
 
@@ -315,9 +315,9 @@ h3 { font-size: 1.3rem; font-weight: 600; }
 
 p {
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; font-size: 1rem;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; font-size: 1rem;
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; margin-bottom: 1rem;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; margin-bottom: 1rem;
 
 }
 
@@ -343,25 +343,25 @@ p {
 
 :root {
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; --primary: #2a9d8f;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; --primary: #2a9d8f;
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; --accent: #e63946;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; --accent: #e63946;
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; --dark: #2c3e50;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; --dark: #2c3e50;
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; --light: #f1faee;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; --light: #f1faee;
 
 }
 
 
 
-/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* Use variables everywhere \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* Use variables everywhere \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
 
 .btn {
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; background: var(--primary);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; background: var(--primary);
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; color: white;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; color: white;
 
 }
 
@@ -369,9 +369,9 @@ p {
 
 .highlight {
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; background: var(--accent);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; background: var(--accent);
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; color: white;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; color: white;
 
 }
 
@@ -397,19 +397,19 @@ p {
 
 .btn {
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; padding: 12px 20px;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; padding: 12px 20px;
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; border-radius: 8px;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; border-radius: 8px;
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; background: var(--primary);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; background: var(--primary);
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; color: white;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; color: white;
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; text-decoration: none;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; text-decoration: none;
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; display: inline-block;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; display: inline-block;
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; transition: 0.2s ease;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; transition: 0.2s ease;
 
 }
 
@@ -417,9 +417,9 @@ p {
 
 .btn:hover {
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; background: #21867a;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; background: #21867a;
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; transform: translateY(-2px);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; transform: translateY(-2px);
 
 }
 
@@ -443,15 +443,15 @@ p {
 
 .card {
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; background: white;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; background: white;
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; padding: 20px;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; padding: 20px;
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; border-radius: 12px;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; border-radius: 12px;
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; transition: transform 0.2s ease;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; transition: transform 0.2s ease;
 
 }
 
@@ -459,7 +459,7 @@ p {
 
 .card:hover {
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; transform: translateY(-5px);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; transform: translateY(-5px);
 
 }
 
@@ -469,9 +469,9 @@ p {
 
 <div class="card">
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; <h3>Card Title</h3>
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; <h3>Card Title</h3>
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; <p>Short description text.</p>
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; <p>Short description text.</p>
 
 </div>
 
@@ -489,11 +489,11 @@ p {
 
 .grid {
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; display: grid;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; display: grid;
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; gap: 20px;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; gap: 20px;
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 
 }
 
@@ -503,11 +503,11 @@ p {
 
 <div class="grid">
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; <div class="card">Item 1</div>
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; <div class="card">Item 1</div>
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; <div class="card">Item 2</div>
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; <div class="card">Item 2</div>
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; <div class="card">Item 3</div>
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; <div class="card">Item 3</div>
 
 </div>
 
@@ -525,13 +525,13 @@ p {
 
 nav ul {
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; display: flex;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; display: flex;
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; gap: 20px;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; gap: 20px;
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; flex-wrap: wrap;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; flex-wrap: wrap;
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; justify-content: center;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; justify-content: center;
 
 }
 
@@ -539,13 +539,13 @@ nav ul {
 
 @media (max-width: 768px) {
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; nav ul {
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; nav ul {
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20;   flex-direction: column;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20;   flex-direction: column;
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20;   text-align: center;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20;   text-align: center;
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; }
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; }
 
 }
 
@@ -555,15 +555,15 @@ nav ul {
 
 <nav>
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; <ul>
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; <ul>
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20;   <li><a href="#">Home</a></li>
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20;   <li><a href="#">Home</a></li>
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20;   <li><a href="#">Projects</a></li>
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20;   <li><a href="#">Projects</a></li>
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20;   <li><a href="#">Contact</a></li>
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20;   <li><a href="#">Contact</a></li>
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; </ul>
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; </ul>
 
 </nav>
 
@@ -581,15 +581,15 @@ nav ul {
 
 .hero {
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; background: linear-gradient(135deg, var(--primary), var(--accent));
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; background: linear-gradient(135deg, var(--primary), var(--accent));
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; color: white;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; color: white;
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; padding: 80px 20px;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; padding: 80px 20px;
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; text-align: center;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; text-align: center;
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; border-radius: 12px;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; border-radius: 12px;
 
 }
 
@@ -597,9 +597,9 @@ nav ul {
 
 .hero h1 {
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; font-size: 2.5rem;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; font-size: 2.5rem;
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; margin-bottom: 15px;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; margin-bottom: 15px;
 
 }
 
@@ -609,11 +609,11 @@ nav ul {
 
 <section class="hero">
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; <h1>Welcome to Our Club</h1>
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; <h1>Welcome to Our Club</h1>
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; <p>Making a difference through climate action.</p>
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; <p>Making a difference through climate action.</p>
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; <a class="btn" href="#">Join Us</a>
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; <a class="btn" href="#">Join Us</a>
 
 </section>
 
@@ -631,7 +631,7 @@ nav ul {
 
 .fade-in {
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; animation: fadeIn 0.8s ease forwards;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; animation: fadeIn 0.8s ease forwards;
 
 }
 
@@ -639,9 +639,9 @@ nav ul {
 
 @keyframes fadeIn {
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; from { opacity: 0; transform: translateY(10px); }
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; from { opacity: 0; transform: translateY(10px); }
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; to   { opacity: 1; transform: translateY(0); }
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; to   { opacity: 1; transform: translateY(0); }
 
 }
 
@@ -665,15 +665,15 @@ nav ul {
 
 footer {
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; background: var(--dark);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; background: var(--dark);
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; color: white;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; color: white;
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; text-align: center;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; text-align: center;
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; padding: 20px;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; padding: 20px;
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; margin-top: 40px;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; margin-top: 40px;
 
 }
 
@@ -681,7 +681,7 @@ footer {
 
 footer a {
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; color: var(--accent);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; color: var(--accent);
 
 }
 
@@ -691,18 +691,18 @@ footer a {
 
 <footer>
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; <p>© 2025 Climate Change Club</p>
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#x20; <p>© 2025 Climate Change Club</p>
 
 </footer>
 
 Even more!
 
-/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* ================================================================
+/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* ================================================================
    CLIMATE CLUB DEVELOPER CHEAT SHEET
 ================================================================
 
 1. GLOBAL THEMING (CSS Variables)
--------------------------------------------------- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+-------------------------------------------------- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
 :root {
   --primary-green: #2d6a4f;
   --action-teal: #2a9d8f;
@@ -711,10 +711,10 @@ Even more!
   --smooth: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* 2. MODERN LAYOUT \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\& LOOK 
--------------------------------------------------- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* 2. MODERN LAYOUT \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\& LOOK 
+-------------------------------------------------- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
 
-/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* Glassmorphism \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* Glassmorphism \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
 .glass {
   background: var(--glass-bg);
   backdrop-filter: blur(10px);
@@ -722,65 +722,65 @@ Even more!
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
-/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* Responsive Grid (No Media Queries Needed) \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* Responsive Grid (No Media Queries Needed) \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
 .grid-auto {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
 }
 
-/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* Perfect Centering (The "Holy Grail") \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* Perfect Centering (The "Holy Grail") \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
 .center-flex {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* 3. MOTION \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\& ANIMATION 
--------------------------------------------------- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* 3. MOTION \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\& ANIMATION 
+-------------------------------------------------- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
 
-/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* Hover Lift \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* Hover Lift \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
 .lift:hover {
   transform: translateY(-10px);
   transition: var(--smooth);
 }
 
-/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* Pulsing Effect \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* Pulsing Effect \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
 @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.05); }
   100% { transform: scale(1); }
 }
 
-/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* 4. JAVASCRIPT LOGIC SNIPPETS
--------------------------------------------------- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* 4. JAVASCRIPT LOGIC SNIPPETS
+-------------------------------------------------- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
 
-/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* 🔒 DOM Safety Wrapper \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* 🔒 DOM Safety Wrapper \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
 document.addEventListener("DOMContentLoaded", () => {
   // Your code runs safely here
 });
 
-/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* 💾 LocalStorage (Save/Load Data) \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* 💾 LocalStorage (Save/Load Data) \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
 localStorage.setItem("key", "value");       // Save
 const data = localStorage.getItem("key");   // Load
 
-/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* 🔄 Class Toggler (Beta Sections/Menus) \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* 🔄 Class Toggler (Beta Sections/Menus) \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
 element.classList.toggle("hidden");
 
-/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* 5. QUICK LAYOUT REFERENCE
--------------------------------------------------- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
-/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*
+/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* 5. QUICK LAYOUT REFERENCE
+-------------------------------------------------- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*
   MARGIN:  Space outside the box
   BORDER:  The line around the box
   PADDING: Space inside the box (between text and border)
   INSET:   Shorthand for top/right/bottom/left: 0
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
 
 ### Additional Info:
 
-\\\\\\\\\\\\\\\[Click Here (Or copy URL below)](read://https\\\\\\\\\\\\\\\_www.howtogeek.com/?url=https%253A%252F%252Fwww.howtogeek.com%252Fget-a-clean-attractive-site-with-lines-of-css%252F)
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\[Click Here (Or copy URL below)](read://https\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\_www.howtogeek.com/?url=https%253A%252F%252Fwww.howtogeek.com%252Fget-a-clean-attractive-site-with-lines-of-css%252F)
 
-\\\\\\\\\\\\\\\*\\\\\\\\\\\\\\\*\\\\\\\\\\\\\\\*read://https\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\_www.howtogeek.com/?url=https%3A%2F%2Fwww.howtogeek.com%2Fget-a-clean-attractive-site-with-lines-of-css%2F\\\\\\\\\\\\\\\*\\\\\\\\\\\\\\\*\\\\\\\\\\\\\\\*
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*read://https\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\_www.howtogeek.com/?url=https%3A%2F%2Fwww.howtogeek.com%2Fget-a-clean-attractive-site-with-lines-of-css%2F\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*
 
 ### Google Analytics Tag
 
@@ -789,15 +789,15 @@ element.classList.toggle("hidden");
 
 <script>
 
-\\\\\\\&#x20; window.dataLayer = window.dataLayer || \\\\\\\\\\\\\\\[];
+\\\\\\\\\\\\\\\&#x20; window.dataLayer = window.dataLayer || \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\[];
 
-\\\\\\\&#x20; function gtag(){dataLayer.push(arguments);}
+\\\\\\\\\\\\\\\&#x20; function gtag(){dataLayer.push(arguments);}
 
-\\\\\\\&#x20; gtag('js', new Date());
+\\\\\\\\\\\\\\\&#x20; gtag('js', new Date());
 
 
 
-\\\\\\\&#x20; gtag('config', 'G-68D6N5XQ6D');
+\\\\\\\\\\\\\\\&#x20; gtag('config', 'G-68D6N5XQ6D');
 
 
 
@@ -805,11 +805,11 @@ element.classList.toggle("hidden");
 
 <!-- Use the content here -->
 
-<div id="element\\\\\\\_target">Content</div>
+<div id="element\\\\\\\\\\\\\\\_target">Content</div>
 
 <!-- Link to content -->
 
-<a id="link" href="#element\\\\\\\_target">Go to content</a>
+<a id="link" href="#element\\\\\\\\\\\\\\\_target">Go to content</a>
 
 <!-- If on a different page -->
 
@@ -866,7 +866,7 @@ Ordered list:
 
 <ol>
 
-\\\&#x09;<li> List item </li>
+\\\\\\\&#x09;<li> List item </li>
 
 </ol>
 
@@ -876,7 +876,7 @@ Unordered:
 
 <ul>
 
-\\\&#x09;<li> List item </li>
+\\\\\\\&#x09;<li> List item </li>
 
 </ul>
 
@@ -886,13 +886,13 @@ Nesting list:
 
 <ul>
 
-\\\&#x09;<li>item</li>
+\\\\\\\&#x09;<li>item</li>
 
-\\\&#x09;<ol>
+\\\\\\\&#x09;<ol>
 
-\\\&#x09;	<li>item</li>
+\\\\\\\&#x09;	<li>item</li>
 
-\\\&#x09;</ol>
+\\\\\\\&#x09;</ol>
 
 </ul>
 
@@ -914,29 +914,29 @@ Example:
 
 <table>
 
-\\\&#x09;<tr>
+\\\\\\\&#x09;<tr>
 
-\\\&#x09;	<th>Table header 1</th>
+\\\\\\\&#x09;	<th>Table header 1</th>
 
-\\\&#x09;	<th>Table header 2</th>
+\\\\\\\&#x09;	<th>Table header 2</th>
 
-\\\&#x09;</tr>
+\\\\\\\&#x09;</tr>
 
-\\\&#x09;<tr>
+\\\\\\\&#x09;<tr>
 
-\\\&#x09;	<td>Row #1, Cell #1</td>
+\\\\\\\&#x09;	<td>Row #1, Cell #1</td>
 
-\\\&#x09;	<td> Row #1, Cell #2</td>
+\\\\\\\&#x09;	<td> Row #1, Cell #2</td>
 
-\\\&#x09;</tr>
+\\\\\\\&#x09;</tr>
 
-\\\&#x09;<tr>
+\\\\\\\&#x09;<tr>
 
-\\\&#x09;	<td>Row #2, Cell #1</td>
+\\\\\\\&#x09;	<td>Row #2, Cell #1</td>
 
-\\\&#x09;	<td>Row #2, Cell #2</td>
+\\\\\\\&#x09;	<td>Row #2, Cell #2</td>
 
-\\\&#x09;</tr>
+\\\\\\\&#x09;</tr>
 
 </table>
 
@@ -960,29 +960,29 @@ height pixels(#) or %
 
 Warning button:
 
-\\\&#x20;   <h2>Warning Button Example</h2>
+\\\\\\\&#x20;   <h2>Warning Button Example</h2>
 
-\\\&#x20;   <button id="warnBtn">Show Warning</button>
-
-
-
-\\\&#x20;   <script>
-
-\\\&#x20;       // Get the button element
-
-\\\&#x20;       const warnBtn = document.getElementById('warnBtn');
+\\\\\\\&#x20;   <button id="warnBtn">Show Warning</button>
 
 
 
-\\\&#x20;       // Add a click event listener
+\\\\\\\&#x20;   <script>
 
-\\\&#x20;       warnBtn.addEventListener('click', function () {
+\\\\\\\&#x20;       // Get the button element
 
-\\\&#x20;           // Show a warning message
+\\\\\\\&#x20;       const warnBtn = document.getElementById('warnBtn');
 
-\\\&#x20;           alert("⚠ Warning: Please proceed with caution!");
 
-\\\&#x20;       });
+
+\\\\\\\&#x20;       // Add a click event listener
+
+\\\\\\\&#x20;       warnBtn.addEventListener('click', function () {
+
+\\\\\\\&#x20;           // Show a warning message
+
+\\\\\\\&#x20;           alert("⚠ Warning: Please proceed with caution!");
+
+\\\\\\\&#x20;       });
 
 
 
@@ -999,7 +999,7 @@ Font family: Font name, or Generic.
 
 p {
 
-\&#x09;font-family: "Times New Roman", Times, serif;
+\\\&#x09;font-family: "Times New Roman", Times, serif;
 
 }
 
@@ -1011,9 +1011,9 @@ text-decoration none, underline (sets links to have no/have underline)
 
 a:link{
 
-\&#x09;color: blue
+\\\&#x09;color: blue
 
-\&#x09;text-decoration: none;
+\\\&#x09;text-decoration: none;
 
 }
 
@@ -1120,9 +1120,9 @@ Using onclick events effectively can enhance user interaction and improve the fu
 
 
 
-## \*\*\*Use Bootstrap to write HTML/CSS! https://getbootstrap.com\*\*\*
+## \\\*\\\*\\\*Use Bootstrap to write HTML/CSS! https://getbootstrap.com\\\*\\\*\\\*
 
-\*\*\*Update: Bootstrap code in website now\*\*\*
+\\\*\\\*\\\*Update: Bootstrap code in website now\\\*\\\*\\\*
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
@@ -1137,13 +1137,12 @@ Using onclick events effectively can enhance user interaction and improve the fu
 
 # hCATCHPA keys
 
-Secret: ES\_21d5e5e4aba24c8cace13ee7fc31be39
+Secret: ES\\\_21d5e5e4aba24c8cace13ee7fc31be39
 
 Site key: fa3ac6ba-bd48-4432-9618-c300f8ee79ee
 
 <div class="h-captcha" data-sitekey="fa3ac6ba-bd48-4432-9618-c300f8ee79ee"></div> (Before button of form)
 
-<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 
 
 
@@ -1205,7 +1204,7 @@ Site key: fa3ac6ba-bd48-4432-9618-c300f8ee79ee
 
 // Select an element (Modern way)
 
-const element = document.querySelector('.my-class'); 
+const element = document.querySelector('.my-class');
 
 
 
@@ -1530,7 +1529,7 @@ function updateProgress(barId, current, goal) {
 
 &#x20;       // Optional: Change color if goal is met
 
-&#x20;       if (percentage >= 100) bar.style.background = "#ffd700"; 
+&#x20;       if (percentage >= 100) bar.style.background = "#ffd700";
 
 &#x20;   }
 
@@ -1564,7 +1563,7 @@ function typeWriter(elementId, text, speed = 100) {
 
 &#x20;   element.innerHTML = ""; // Clear existing text
 
-&#x20;   
+&#x20;
 
 &#x20;   function type() {
 
@@ -1722,7 +1721,7 @@ const getParam = (param) => new URLSearchParams(window.location.search).get(para
 
 // Fun for randomizing UI elements
 
-const getRandomColor = () => `#${Math.floor(Math.random()\*16777215).toString(16)}`;
+const getRandomColor = () => `#${Math.floor(Math.random()\\\*16777215).toString(16)}`;
 
 
 
@@ -1736,7 +1735,7 @@ window.addEventListener("scroll", () => {
 
 &#x20;   let currentScroll = window.pageYOffset;
 
-&#x20;   if (currentScroll > lastScroll) { /\* Scrolling Down \*/ } 
+&#x20;   if (currentScroll > lastScroll) { /\* Scrolling Down \*/ }
 
 &#x20;   else { /\* Scrolling Up \*/ }
 
@@ -2016,7 +2015,7 @@ const vibrate = (ms) => navigator.vibrate(ms);
 
 // 12. GET BATTERY STATUS
 
-navigator.getBattery().then(batt => console.log(`Battery: ${batt.level \* 100}%`));
+navigator.getBattery().then(batt => console.log(`Battery: ${batt.level \\\* 100}%`));
 
 
 
@@ -2378,7 +2377,7 @@ const isTimeWrong = () => Math.abs(new Date().getTime() - Date.now()) > 60000;
 
 // 20. GET COOKIE VALUE
 
-const getCookie = (name) => document.cookie.match(`(^|;)\\\\s\*${name}\\\\s\*=\\\\s\*(\[^;]+)`)?.pop();
+const getCookie = (name) => document.cookie.match(`(^|;)\\\\\\\\s\\\*${name}\\\\\\\\s\\\*=\\\\\\\\s\\\*(\\\[^;]+)`)?.pop();
 
 
 
@@ -2534,17 +2533,17 @@ rainbowLog("100 FUNCTIONS COMPLETE!");
 
 
 
-<div id="disqus_thread"></div>
+<div id="disqus\_thread"></div>
 <script>
-    /**
-    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-    /*
-    var disqus_config = function () {
-    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    /\*\*
+    \*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    \*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    \*/
+    /\*
+    var disqus\_config = function () {
+    this.page.url = PAGE\_URL;  // Replace PAGE\_URL with your page's canonical URL variable
+    this.page.identifier = PAGE\_IDENTIFIER; // Replace PAGE\_IDENTIFIER with your page's unique identifier variable
     };
-    */
+    \*/
     (function() { // DON'T EDIT BELOW THIS LINE
     var d = document, s = d.createElement('script');
     s.src = 'https://climatechangeclub.disqus.com/embed.js';
@@ -2552,7 +2551,7 @@ rainbowLog("100 FUNCTIONS COMPLETE!");
     (d.head || d.body).appendChild(s);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref\_noscript">comments powered by Disqus.</a></noscript>
 <script id="dsq-count-scr" src="//climatechangeclub.disqus.com/count.js" async></script>
 
 
@@ -2562,7 +2561,9 @@ rainbowLog("100 FUNCTIONS COMPLETE!");
 
 
 <!-- Elfsight Comments | Untitled Comments -->
+
 <script src="https://elfsightcdn.com/platform.js" async></script>
+
 <div class="elfsight-app-bc7be1bb-94bd-4a93-9743-67b7cb0d6ad6" data-elfsight-app-lazy></div>
 
 
@@ -2570,15 +2571,18 @@ rainbowLog("100 FUNCTIONS COMPLETE!");
 
 
 
+
 <!-- Elfsight Poll | Untitled Poll -->
+
 <script src="https://elfsightcdn.com/platform.js" async></script>
+
 <div class="elfsight-app-cc687bf5-0a29-4983-bed1-9fb3e9e286c8" data-elfsight-app-lazy></div>
 
 
 
 Lock for Beta testing (except for docs)
 
-    <script>
+&#x20;   <script>
     (function() {
         const isAuth = localStorage.getItem('betaLoggedIn') || sessionStorage.getItem('betaLoggedIn');
         if (!isAuth) {
@@ -2586,7 +2590,22 @@ Lock for Beta testing (except for docs)
             window.location.replace('beta-login.html');
         }
     })();
+
 </script>
+
+
+
+
+
+&#x20;   <div class="music-section">
+        <button id="musicBtn" aria-label="Toggle Music">
+            <i class="fas fa-music"></i> 
+            <span id="musicText">Play Ambient Music</span>
+        </button>
+        <audio id="bgMusic" loop>
+            <source src="Sunny\_Morning.mp3" type="audio/mpeg">
+        </audio>
+    </div>
 
 
 
