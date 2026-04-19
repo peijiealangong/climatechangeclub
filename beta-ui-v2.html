@@ -1,744 +1,372 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New UI Testing v2.0 | Climate Change Club</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UI Testing v2.0 — RAGE MODE | Climate Change Club</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --bg: #f5f5f5;
-            --text: #222;
-            --accent: #00b894;
-            --accent-alt: #0984e3;
-            --glass: rgba(255,255,255,0.7);
-            --glass-dark: rgba(20,20,20,0.7);
-            --card-bg: rgba(255,255,255,0.6);
-            --card-bg-dark: rgba(30,30,30,0.7);
-        }
+<style>
+/* ============================================================
+   RAGE MODE UI TESTING v2.0 — EXTREME ANIMATIONS EDITION
+   ============================================================ */
 
-        body.dark-mode {
-            --bg: #050608;
-            --text: #f5f5f5;
-        }
+/* Root variables */
+:root {
+    --bg: #f5f5f5;
+    --text: #222;
+    --accent: #00b894;
+    --accent-alt: #0984e3;
+    --rage: #ff0033;
+    --glass: rgba(255,255,255,0.7);
+    --glass-dark: rgba(20,20,20,0.7);
+    --card-bg: rgba(255,255,255,0.6);
+    --card-bg-dark: rgba(30,30,30,0.7);
+}
 
-        * {
-            box-sizing: border-box;
-        }
+/* Dark mode */
+body.dark-mode {
+    --bg: #050608;
+    --text: #f5f5f5;
+}
 
-        body {
-            margin: 0;
-            padding: 0;
-            background: radial-gradient(circle at top, #dfe6e9 0, var(--bg) 40%);
-            color: var(--text);
-            font-family: 'Poppins', sans-serif;
-            transition: background 0.4s ease, color 0.4s ease;
-            overflow-x: hidden;
-        }
+/* Rage mode */
+body.rage-mode {
+    --accent: var(--rage);
+    --accent-alt: #ff8800;
+    background: black !important;
+    color: white !important;
+    animation: ragePulse 1.2s infinite alternate;
+}
 
-        /* Global animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+@keyframes ragePulse {
+    from { box-shadow: inset 0 0 40px rgba(255,0,0,0.4); }
+    to { box-shadow: inset 0 0 80px rgba(255,0,0,0.8); }
+}
 
-        .float {
-            animation: float 6s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
+/* Global */
+body {
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(circle at top, #dfe6e9 0, var(--bg) 40%);
+    color: var(--text);
+    font-family: 'Poppins', sans-serif;
+    transition: background 0.4s ease, color 0.4s ease;
+    overflow-x: hidden;
+}
 
-        .pulse-border {
-            position: relative;
-        }
-        .pulse-border::before {
-            content: "";
-            position: absolute;
-            inset: -3px;
-            border-radius: inherit;
-            border: 2px solid rgba(0,184,148,0.4);
-            opacity: 0;
-            animation: pulseBorder 2.5s infinite;
-        }
-        @keyframes pulseBorder {
-            0% { opacity: 0; transform: scale(0.95); }
-            50% { opacity: 1; transform: scale(1.02); }
-            100% { opacity: 0; transform: scale(1.08); }
-        }
+/* Fade-in */
+.fade-in {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-        /* Header / hero */
-        .hero {
-            padding: 80px 20px 40px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
+/* Float */
+.float {
+    animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
 
-        .hero-bg-orbit {
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(0,184,148,0.25), transparent 60%);
-            top: -200px;
-            right: -150px;
-            filter: blur(2px);
-            pointer-events: none;
-            animation: orbit 18s linear infinite;
-        }
+/* Hero */
+.hero {
+    padding: 80px 20px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
 
-        .hero h1 {
-            font-size: 3.2rem;
-            font-weight: 800;
-            margin-bottom: 10px;
-            background: linear-gradient(120deg, var(--accent), var(--accent-alt));
-            -webkit-background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 18px rgba(0,0,0,0.15);
-        }
+.hero-bg-orbit {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,184,148,0.25), transparent 60%);
+    top: -200px;
+    right: -150px;
+    filter: blur(2px);
+    pointer-events: none;
+    animation: orbit 18s linear infinite;
+}
 
-        .hero p {
-            font-size: 1.1rem;
-            opacity: 0.85;
-            max-width: 650px;
-            margin: 0 auto;
-        }
+@keyframes orbit {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
 
-        .beta-chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 14px;
-            border-radius: 999px;
-            background: rgba(0,0,0,0.05);
-            font-size: 0.85rem;
-            margin-bottom: 16px;
-        }
+.hero h1 {
+    font-size: 3.4rem;
+    font-weight: 800;
+    background: linear-gradient(120deg, var(--accent), var(--accent-alt));
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 18px rgba(0,0,0,0.15);
+    animation: glow 3s infinite alternate;
+}
 
-        body.dark-mode .beta-chip {
-            background: rgba(255,255,255,0.08);
-        }
+@keyframes glow {
+    from { filter: drop-shadow(0 0 0px var(--accent)); }
+    to { filter: drop-shadow(0 0 12px var(--accent)); }
+}
 
-        .beta-chip span {
-            font-weight: 600;
-            color: var(--accent);
-        }
+/* Beta banner */
+.beta-banner {
+    text-align: center;
+    padding: 10px 16px;
+    background: #ffeaa7;
+    color: #2d3436;
+    font-weight: 600;
+    animation: bannerPulse 3s infinite;
+}
+@keyframes bannerPulse {
+    0%, 100% { background: #ffeaa7; }
+    50% { background: #fdcb6e; }
+}
 
-        @keyframes orbit {
-            from { transform: rotate(0deg) translateX(0); }
-            to { transform: rotate(360deg) translateX(0); }
-        }
+/* Rage Mode Button */
+.rage-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 22px;
+    background: var(--rage);
+    color: white;
+    font-weight: 700;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.rage-btn:hover {
+    transform: scale(1.1);
+}
 
-        /* Beta banner */
-        .beta-banner {
-            text-align: center;
-            padding: 10px 16px;
-            background: #ffeaa7;
-            color: #2d3436;
-            font-weight: 600;
-            font-size: 0.95rem;
-            animation: bannerPulse 3s infinite;
-        }
-        @keyframes bannerPulse {
-            0%, 100% { background: #ffeaa7; }
-            50% { background: #fdcb6e; }
-        }
+/* Glass panel */
+.glass-panel {
+    background: var(--glass);
+    backdrop-filter: blur(14px);
+    border-radius: 18px;
+    padding: 26px 24px;
+    margin-bottom: 26px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+body.dark-mode .glass-panel {
+    background: var(--glass-dark);
+}
 
-        /* Layout container */
-        .page-container {
-            max-width: 1100px;
-            margin: 0 auto 60px;
-            padding: 0 20px 40px;
-        }
+/* Experiment grid */
+.experiment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+    margin-top: 18px;
+}
 
-        /* Glass panels */
-        .glass-panel {
-            background: var(--glass);
-            backdrop-filter: blur(14px);
-            border-radius: 18px;
-            padding: 26px 24px;
-            margin-bottom: 26px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-        }
-        body.dark-mode .glass-panel {
-            background: var(--glass-dark);
-            box-shadow: 0 10px 30px rgba(255,255,255,0.06);
-        }
+.experiment-card {
+    background: var(--card-bg);
+    border-radius: 14px;
+    padding: 16px 16px 18px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.experiment-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+}
 
-        .glass-panel h2 {
-            margin-top: 0;
-            font-size: 1.7rem;
-        }
+/* Micro experiments */
+.micro-experiments {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px;
+    margin-top: 16px;
+    font-size: 0.9rem;
+}
 
-        .glass-panel p {
-            line-height: 1.7;
-            font-size: 1rem;
-        }
+.micro-experiments div {
+    padding: 8px 10px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.55);
+    position: relative;
+    overflow: hidden;
+}
 
-        /* Two-column layout */
-        .two-col {
-            display: grid;
-            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-            gap: 24px;
-            align-items: start;
-        }
+/* FAQ */
+.faq-item {
+    margin-bottom: 10px;
+}
+.faq-q {
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+}
+.faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+.faq-item.open .faq-a {
+    max-height: 200px;
+}
 
-        @media (max-width: 800px) {
-            .two-col {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Pillars list */
-        .pillars-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .pillars-list li {
-            margin-bottom: 10px;
-            padding-left: 26px;
-            position: relative;
-        }
-
-        .pillars-list li::before {
-            content: "●";
-            position: absolute;
-            left: 0;
-            top: 0;
-            color: var(--accent);
-            font-size: 0.8rem;
-            transform: translateY(4px);
-        }
-
-        /* Stats row */
-        .stats-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 16px;
-            margin-top: 18px;
-        }
-
-        .stat-card {
-            background: var(--card-bg);
-            border-radius: 14px;
-            padding: 14px 16px;
-            text-align: center;
-            font-size: 0.9rem;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        body.dark-mode .stat-card {
-            background: var(--card-bg-dark);
-        }
-
-        .stat-card strong {
-            display: block;
-            font-size: 1.4rem;
-            margin-bottom: 4px;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.18);
-        }
-
-        /* Experiment grid */
-        .experiment-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 18px;
-            margin-top: 18px;
-        }
-
-        .experiment-card {
-            background: var(--card-bg);
-            border-radius: 14px;
-            padding: 16px 16px 18px;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        body.dark-mode .experiment-card {
-            background: var(--card-bg-dark);
-        }
-
-        .experiment-card h3 {
-            margin-top: 0;
-            font-size: 1.1rem;
-        }
-
-        .experiment-card p {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        .experiment-card::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at top left, rgba(255,255,255,0.4), transparent 55%);
-            opacity: 0;
-            transition: opacity 0.25s ease;
-        }
-
-        .experiment-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 28px rgba(0,0,0,0.2);
-        }
-
-        .experiment-card:hover::after {
-            opacity: 1;
-        }
-
-        /* 50 micro-experiments list */
-        .micro-experiments {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 10px;
-            margin-top: 16px;
-            font-size: 0.9rem;
-        }
-
-        .micro-experiments div {
-            padding: 8px 10px;
-            border-radius: 10px;
-            background: rgba(255,255,255,0.55);
-            position: relative;
-            overflow: hidden;
-        }
-
-        body.dark-mode .micro-experiments div {
-            background: rgba(25,25,25,0.75);
-        }
-
-        .micro-experiments div span {
-            font-weight: 600;
-            color: var(--accent);
-            margin-right: 6px;
-        }
-
-        .micro-experiments div::before {
-            content: "";
-            position: absolute;
-            width: 120%;
-            height: 2px;
-            left: -10%;
-            bottom: 0;
-            background: linear-gradient(90deg, var(--accent), var(--accent-alt));
-            transform: translateX(-100%);
-            opacity: 0.3;
-            transition: transform 0.4s ease;
-        }
-
-        .micro-experiments div:hover::before {
-            transform: translateX(0);
-        }
-
-        /* Timeline */
-        .timeline {
-            border-left: 2px solid rgba(0,0,0,0.1);
-            padding-left: 16px;
-            margin-top: 10px;
-        }
-
-        body.dark-mode .timeline {
-            border-left-color: rgba(255,255,255,0.15);
-        }
-
-        .timeline-item {
-            margin-bottom: 12px;
-            position: relative;
-        }
-
-        .timeline-item::before {
-            content: "";
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--accent);
-            left: -21px;
-            top: 4px;
-        }
-
-        .timeline-item strong {
-            display: block;
-            font-size: 0.95rem;
-        }
-
-        .timeline-item span {
-            font-size: 0.85rem;
-            opacity: 0.8;
-        }
-
-        /* FAQ */
-        .faq-item {
-            margin-bottom: 10px;
-        }
-
-        .faq-q {
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px 0;
-        }
-
-        .faq-a {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        .faq-item.open .faq-a {
-            max-height: 200px;
-        }
-
-        .faq-toggle {
-            font-size: 1.2rem;
-            color: var(--accent);
-            margin-left: 8px;
-        }
-
-        /* Back button */
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 26px;
-            padding: 14px 26px;
-            background: linear-gradient(120deg, var(--accent), var(--accent-alt));
-            color: white;
-            font-weight: 600;
-            border-radius: 999px;
-            text-decoration: none;
-            font-size: 1.05rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .back-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 14px 30px rgba(0,0,0,0.3);
-        }
-
-        .back-btn span {
-            font-size: 1.2rem;
-        }
-
-        /* Footer */
-        .footer-note {
-            text-align: center;
-            margin: 40px 0 20px;
-            opacity: 0.7;
-            font-size: 0.85rem;
-        }
-    </style>
+/* Back button */
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 26px;
+    padding: 14px 26px;
+    background: linear-gradient(120deg, var(--accent), var(--accent-alt));
+    color: white;
+    font-weight: 600;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 1.05rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    transition: transform 0.2s ease;
+}
+.back-btn:hover {
+    transform: translateY(-3px);
+}
+</style>
 </head>
 
 <body>
 
-    <div class="beta-banner">
-        ⚠ You are viewing an experimental preview (UI Testing v2.0). Things may change, break, or disappear.
+<div class="beta-banner">
+⚠ RAGE MODE ENABLED — EXTREME UI TESTING v2.0
+</div>
+
+<section class="hero fade-in">
+    <div class="hero-bg-orbit float"></div>
+    <h1>UI Testing v2.0 — RAGE MODE</h1>
+    <p>Welcome to the most chaotic, animated, overloaded UI preview ever created for the Climate Change Club.</p>
+
+    <div class="rage-btn" onclick="toggleRage()">🔥 Toggle Rage Mode</div>
+</section>
+
+<div class="page-container">
+
+<!-- ABOUT SECTION -->
+<section class="glass-panel fade-in">
+    <h2>About the Climate Change Club</h2>
+    <p>
+        The Climate Change Club is a student‑powered community focused on sustainability,
+        environmental awareness, and real‑world action. This RAGE MODE UI is intentionally
+        overloaded to stress‑test animations, layout, readability, and performance.
+    </p>
+</section>
+
+<!-- EXPERIMENT GRID -->
+<section class="glass-panel fade-in">
+    <h2>UI Experiments</h2>
+    <div class="experiment-grid">
+        <div class="experiment-card"><h3>🔥 Rage Mode</h3><p>Everything turns red and angry.</p></div>
+        <div class="experiment-card"><h3>🌈 Neon Glow</h3><p>Glowing text and buttons.</p></div>
+        <div class="experiment-card"><h3>⚡ Hover Explosions</h3><p>Hover to see chaos.</p></div>
+        <div class="experiment-card"><h3>🎭 Easter Eggs</h3><p>Click around to find secrets.</p></div>
+        <div class="experiment-card"><h3>🌀 Parallax</h3><p>Background elements move.</p></div>
+        <div class="experiment-card"><h3>📚 Dense Content</h3><p>Lots of text to test readability.</p></div>
     </div>
+</section>
 
-    <section class="hero fade-in">
-        <div class="hero-bg-orbit float"></div>
-        <div class="beta-chip">
-            <span>Beta</span> New UI Testing v2.0 · Climate Change Club
-        </div>
-        <h1>Exploring the Future of Our Climate Hub</h1>
-        <p>
-            This page is a live playground for new layouts, animations, and content structures
-            we’re considering for the Climate Change Club website. Scroll, hover, and read everything—
-            your feedback will decide what ships.
-        </p>
-    </section>
-
-    <div class="page-container">
-
-        <!-- About + Pillars -->
-        <section class="glass-panel fade-in two-col pulse-border">
-            <div>
-                <h2>About the Climate Change Club</h2>
-                <p>
-                    The Climate Change Club is a student‑powered community focused on sustainability,
-                    environmental awareness, and real‑world action. We host events, run campaigns,
-                    publish resources, and collaborate with local organizations to make climate
-                    literacy and climate action part of everyday life.
-                </p>
-                <p>
-                    This experimental UI is designed to make our mission easier to explore:
-                    clearer sections, more visual hierarchy, and subtle motion that guides your eye
-                    without overwhelming you.
-                </p>
-                <ul class="pillars-list">
-                    <li><strong>Education:</strong> Workshops, articles, and presentations about climate science and solutions.</li>
-                    <li><strong>Action:</strong> School‑wide initiatives, local clean‑ups, and advocacy projects.</li>
-                    <li><strong>Community:</strong> A welcoming space for anyone curious about climate issues.</li>
-                    <li><strong>Creativity:</strong> Posters, zines, digital media, and student‑led campaigns.</li>
-                </ul>
-            </div>
-            <div>
-                <h2>Club Snapshot</h2>
-                <p>Here’s a quick look at what the club is doing this year:</p>
-                <div class="stats-row">
-                    <div class="stat-card">
-                        <strong>25+</strong>
-                        Active members
-                    </div>
-                    <div class="stat-card">
-                        <strong>10</strong>
-                        Projects in progress
-                    </div>
-                    <div class="stat-card">
-                        <strong>4</strong>
-                        Major events planned
-                    </div>
-                    <div class="stat-card">
-                        <strong>∞</strong>
-                        Ideas welcome
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- UI Experiment Panel -->
-        <section class="glass-panel fade-in">
-            <h2>UI Experiment Panel</h2>
-            <p>
-                Below are some of the visual and interaction experiments we’re testing on this page.
-                Think of them as building blocks we might reuse across the site. Try hovering, scrolling,
-                and reading carefully—then tell us what feels good and what feels distracting.
-            </p>
-
-            <div class="experiment-grid">
-                <div class="experiment-card">
-                    <h3>✨ Glass Panels</h3>
-                    <p>Soft, frosted containers that separate content without heavy borders.</p>
-                </div>
-                <div class="experiment-card">
-                    <h3>🌓 Dark Mode Awareness</h3>
-                    <p>Colors and shadows that adapt when dark mode is enabled on the site.</p>
-                </div>
-                <div class="experiment-card">
-                    <h3>🎨 Gradient Typography</h3>
-                    <p>Gradient‑filled headings that highlight important sections without using images.</p>
-                </div>
-                <div class="experiment-card">
-                    <h3>⚡ Motion on Hover</h3>
-                    <p>Cards that lift, glow, or shift slightly when you interact with them.</p>
-                </div>
-                <div class="experiment-card">
-                    <h3>🌐 Orbiting Backgrounds</h3>
-                    <p>Subtle animated shapes behind the content to add depth and energy.</p>
-                </div>
-                <div class="experiment-card">
-                    <h3>📚 Dense but Scannable Text</h3>
-                    <p>Longer explanations broken into sections so you can skim or dive deep.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 50 Micro Experiments -->
-        <section class="glass-panel fade-in">
-            <h2>50 UI Micro‑Experiments on This Page</h2>
-            <p>
-                This preview intentionally packs in a lot of small details. Not all of them will survive
-                to the final version—but seeing them together helps us decide what’s worth keeping.
-                Here are 50 micro‑experiments you can look for as you explore:
-            </p>
-
-            <div class="micro-experiments">
-                <div><span>01.</span> Gradient hero title with animated glow.</div>
-                <div><span>02.</span> Floating orbit background behind the header.</div>
-                <div><span>03.</span> Beta chip label above the main heading.</div>
-                <div><span>04.</span> Animated beta warning banner at the top.</div>
-                <div><span>05.</span> Glass‑style panels with blur and rounded corners.</div>
-                <div><span>06.</span> Dark‑mode aware background and text colors.</div>
-                <div><span>07.</span> Hover‑lift effect on stat cards.</div>
-                <div><span>08.</span> Hover‑glow line animation under micro‑experiment items.</div>
-                <div><span>09.</span> Staggered fade‑in animations on scroll.</div>
-                <div><span>10.</span> Pulse border around the main about section.</div>
-                <div><span>11.</span> Emoji‑based section icons for quick scanning.</div>
-                <div><span>12.</span> Two‑column layout that collapses on mobile.</div>
-                <div><span>13.</span> Timeline with vertical line and dots.</div>
-                <div><span>14.</span> FAQ accordion with smooth height transitions.</div>
-                <div><span>15.</span> Back button with gradient and drop shadow.</div>
-                <div><span>16.</span> Rounded pill‑shaped buttons and chips.</div>
-                <div><span>17.</span> Subtle text shadows on hero heading.</div>
-                <div><span>18.</span> Radial gradient background behind the whole page.</div>
-                <div><span>19.</span> Responsive grid for experiment cards.</div>
-                <div><span>20.</span> Responsive grid for micro‑experiments list.</div>
-                <div><span>21.</span> Icon‑like numbers for micro‑experiments.</div>
-                <div><span>22.</span> Slight parallax feel from floating orbit element.</div>
-                <div><span>23.</span> Soft box shadows tuned for light mode.</div>
-                <div><span>24.</span> Softer, lighter shadows in dark mode.</div>
-                <div><span>25.</span> Emphasis on verbs in micro‑experiment descriptions.</div>
-                <div><span>26.</span> Use of infinity symbol in stats for “ideas welcome.”</div>
-                <div><span>27.</span> Consistent spacing scale between sections.</div>
-                <div><span>28.</span> Section titles sized for hierarchy, not just decoration.</div>
-                <div><span>29.</span> Body text line‑height tuned for long reading.</div>
-                <div><span>30.</span> Accent color reused across headings and bullets.</div>
-                <div><span>31.</span> Bullet list with custom colored dots for pillars.</div>
-                <div><span>32.</span> Cards that feel clickable without being buttons.</div>
-                <div><span>33.</span> Subtle opacity differences for secondary text.</div>
-                <div><span>34.</span> Timeline labels separated into title and detail lines.</div>
-                <div><span>35.</span> FAQ toggles using plus/minus icons.</div>
-                <div><span>36.</span> Smooth transitions on hover and focus states.</div>
-                <div><span>37.</span> Use of emojis to reduce visual heaviness of text.</div>
-                <div><span>38.</span> Section intros that explain why the section exists.</div>
-                <div><span>39.</span> Micro‑copy that invites exploration (“look for,” “try hovering”).</div>
-                <div><span>40.</span> Reusable card style for stats and experiments.</div>
-                <div><span>41.</span> Consistent border‑radius across components.</div>
-                <div><span>42.</span> Slightly smaller font size in dense lists.</div>
-                <div><span>43.</span> Footer note that labels the page as a test.</div>
-                <div><span>44.</span> Use of keyframes for glow and float effects.</div>
-                <div><span>45.</span> Scroll‑triggered visibility using IntersectionObserver.</div>
-                <div><span>46.</span> Accent gradient reused in multiple places.</div>
-                <div><span>47.</span> No external JS libraries—pure CSS + vanilla JS.</div>
-                <div><span>48.</span> Layout that still works with JS disabled (minus animations).</div>
-                <div><span>49.</span> Content written to be both human‑readable and test‑oriented.</div>
-                <div><span>50.</span> A single page that acts as a living design document.</div>
-            </div>
-        </section>
-
-        <!-- Timeline + FAQ -->
-        <section class="glass-panel fade-in two-col">
-            <div>
-                <h2>How This UI Might Roll Out</h2>
-                <p>
-                    Nothing on this page is final. Think of it as a sketchbook that happens to be interactive.
-                    If people like this direction, we’ll gradually bring pieces of it into the main site.
-                </p>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <strong>Phase 1 — Feedback</strong>
-                        <span>Collect reactions from beta members and club officers.</span>
-                    </div>
-                    <div class="timeline-item">
-                        <strong>Phase 2 — Refine</strong>
-                        <span>Keep the best ideas, remove anything that feels distracting.</span>
-                    </div>
-                    <div class="timeline-item">
-                        <strong>Phase 3 — Integrate</strong>
-                        <span>Apply the chosen patterns to the About, Projects, and Events pages.</span>
-                    </div>
-                    <div class="timeline-item">
-                        <strong>Phase 4 — Launch</strong>
-                        <span>Ship a polished v1.4 UI to everyone visiting the site.</span>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <h2>FAQ (For This UI Test)</h2>
-
-                <div class="faq-item">
-                    <div class="faq-q">
-                        <span>Is this the final design?</span>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-a">
-                        No. This is a preview environment where we can try ideas quickly.
-                        Some parts will change, and some may never reach the main site.
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-q">
-                        <span>What kind of feedback is most helpful?</span>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-a">
-                        Tell us what feels clear, what feels confusing, what’s fun, and what’s annoying.
-                        Specific comments like “this card is too bright” or “this section is my favorite”
-                        are incredibly useful.
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-q">
-                        <span>Will dark mode stay?</span>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-a">
-                        Almost certainly yes. This page is testing how well our components adapt to
-                        both light and dark themes without needing separate designs.
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-q">
-                        <span>Can I suggest my own UI ideas?</span>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-a">
-                        Absolutely. If you have layout sketches, color ideas, or animation concepts,
-                        share them in the beta feedback form or directly with the club leaders.
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Back button -->
-        <section class="glass-panel fade-in" style="text-align:center;">
-            <h2>Ready to Go Back?</h2>
-            <p>
-                When you’re done exploring this preview, head back to the Beta Test Lab to vote on
-                which parts of v2.0 should move forward.
-            </p>
-            <a href="beta-test.html" class="back-btn">
-                <span>⬅</span> Back to Beta Test Lab
-            </a>
-        </section>
-
-        <p class="footer-note fade-in">
-            Climate Change Club · New UI Testing v2.0 · Experimental Preview
-        </p>
+<!-- 50 MICRO EXPERIMENTS -->
+<section class="glass-panel fade-in">
+    <h2>50+ Micro‑Experiments</h2>
+    <div class="micro-experiments">
+        <!-- I will generate 50 items -->
+        <!-- Rage mode demands MORE -->
+        <!-- So here are 60 -->
+        <script>
+            document.write(
+                Array.from({length: 60}, (_, i) =>
+                    `<div><span>${String(i+1).padStart(2,'0')}.</span> Micro‑experiment #${i+1} — test animation, layout, or chaos.</div>`
+                ).join("")
+            );
+        </script>
     </div>
+</section>
+
+<!-- 30+ FAQ -->
+<section class="glass-panel fade-in">
+    <h2>FAQ — Rage Mode Edition</h2>
+
+    <div id="faq-container"></div>
 
     <script>
-        // Apply saved theme from main site
-        if (localStorage.getItem('theme') === 'dark-mode') {
-            document.body.classList.add('dark-mode');
+        const faqContainer = document.getElementById("faq-container");
+        const faqList = [];
+
+        for (let i = 1; i <= 30; i++) {
+            faqList.push({
+                q: `Rage Mode Question #${i}`,
+                a: `This is the answer to Rage Mode Question #${i}. It exists purely to test FAQ animations, layout, and scrolling.`
+            });
         }
 
-        // Scroll reveal for .fade-in elements
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15 });
-
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-        // FAQ toggles
-        document.querySelectorAll('.faq-item').forEach(item => {
-            const q = item.querySelector('.faq-q');
-            const toggle = item.querySelector('.faq-toggle');
-            q.addEventListener('click', () => {
-                const open = item.classList.toggle('open');
-                toggle.textContent = open ? '−' : '+';
-            });
-        });
+        faqContainer.innerHTML = faqList.map((f, i) => `
+            <div class="faq-item">
+                <div class="faq-q">
+                    <span>${f.q}</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-a">${f.a}</div>
+            </div>
+        `).join("");
     </script>
+</section>
+
+<!-- BACK BUTTON -->
+<section class="glass-panel fade-in" style="text-align:center;">
+    <h2>Return to Safety</h2>
+    <p>When you're done surviving Rage Mode, return to the Beta Test Lab.</p>
+    <a href="beta-test.html" class="back-btn">⬅ Back to Beta Test Lab</a>
+</section>
+
+</div>
+
+<script>
+// Dark mode sync
+if (localStorage.getItem('theme') === 'dark-mode') {
+    document.body.classList.add('dark-mode');
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// FAQ toggles
+document.addEventListener("click", e => {
+    if (e.target.closest(".faq-q")) {
+        const item = e.target.closest(".faq-item");
+        const toggle = item.querySelector(".faq-toggle");
+        item.classList.toggle("open");
+        toggle.textContent = item.classList.contains("open") ? "−" : "+";
+    }
+});
+
+// Rage mode toggle
+function toggleRage() {
+    document.body.classList.toggle("rage-mode");
+}
+</script>
+
 </body>
 </html>
