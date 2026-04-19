@@ -5,31 +5,52 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>New UI Testing v2.0 | Climate Change Club</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <style>
 /* ============================================================
-   UI TESTING v2.0 — FUTURISTIC TECH DEMO EDITION
+   UI TESTING v2.0 — FUTURISTIC LAB, EVERYTHING ENABLED
    ============================================================ */
 
-/* Root variables */
 :root {
     --bg: #f5f7fa;
     --text: #1a1a1a;
     --accent: #00b894;
     --accent-alt: #0984e3;
-    --glass: rgba(255,255,255,0.65);
-    --glass-dark: rgba(20,20,20,0.65);
-    --card-bg: rgba(255,255,255,0.55);
-    --card-bg-dark: rgba(30,30,30,0.55);
+    --glass: rgba(255,255,255,0.7);
+    --glass-dark: rgba(20,20,20,0.7);
+    --card-bg: rgba(255,255,255,0.6);
+    --card-bg-dark: rgba(30,30,30,0.6);
 }
 
-/* Dark mode */
+/* Dark mode sync */
 body.dark-mode {
-    --bg: #0b0c0d;
+    --bg: #050608;
     --text: #f5f5f5;
 }
 
+/* Accessibility modes */
+body.high-contrast {
+    --bg: #000;
+    --text: #fff;
+    --accent: #ffff00;
+    --accent-alt: #ff00ff;
+}
+body.large-text {
+    font-size: 18px;
+}
+body.dyslexic-font {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+body.reduced-motion * {
+    animation: none !important;
+    transition: none !important;
+}
+
 /* Global */
+* {
+    box-sizing: border-box;
+}
 body {
     margin: 0;
     padding: 0;
@@ -51,14 +72,168 @@ body {
     transform: translateY(0);
 }
 
-/* Parallax hero */
+/* Preview notification bar */
+.preview-bar {
+    position: fixed;
+    top: -80px;
+    left: 0;
+    width: 100%;
+    padding: 14px 20px;
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95rem;
+    z-index: 9999;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    transition: top 0.6s ease;
+}
+body.dark-mode .preview-bar {
+    background: var(--glass-dark);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+.preview-bar.show {
+    top: 0;
+}
+.preview-close {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: var(--text);
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+.preview-close:hover {
+    opacity: 1;
+}
+
+/* Floating warning banner */
+.floating-warning {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    padding: 12px 16px;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    font-size: 0.9rem;
+    animation: pulseWarn 3s infinite;
+    z-index: 999;
+}
+body.dark-mode .floating-warning {
+    background: var(--glass-dark);
+}
+@keyframes pulseWarn {
+    0%, 100% { box-shadow: 0 0 12px rgba(255,200,0,0.4); }
+    50% { box-shadow: 0 0 20px rgba(255,200,0,0.7); }
+}
+
+/* Notification Icon */
+.notification-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    z-index: 9999;
+}
+body.dark-mode .notification-icon {
+    background: var(--glass-dark);
+}
+.notification-icon:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+.notification-icon i {
+    font-size: 1.3rem;
+    color: var(--text);
+}
+.notif-count {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: #ff4757;
+    color: white;
+    font-size: 0.75rem;
+    padding: 3px 7px;
+    border-radius: 999px;
+    font-weight: 700;
+    box-shadow: 0 0 8px rgba(255,0,0,0.4);
+}
+
+/* Notification Panel */
+.notification-panel {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    width: 320px;
+    max-height: 420px;
+    background: var(--glass);
+    backdrop-filter: blur(14px);
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    display: none;
+    flex-direction: column;
+    overflow-y: auto;
+    z-index: 9999;
+    animation: slideDown 0.35s ease forwards;
+}
+body.dark-mode .notification-panel {
+    background: var(--glass-dark);
+}
+.notification-panel h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.notif-item {
+    padding: 12px 14px;
+    background: rgba(255,255,255,0.55);
+    border-radius: 12px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+body.dark-mode .notif-item {
+    background: rgba(30,30,30,0.55);
+}
+.notif-item:hover {
+    background: rgba(255,255,255,0.75);
+}
+.notif-title {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+.notif-time {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* Hero */
 .hero {
-    padding: 90px 20px 50px;
+    padding: 100px 20px 60px;
     text-align: center;
     position: relative;
     overflow: hidden;
 }
-
 .hero-bg {
     position: absolute;
     width: 900px;
@@ -71,12 +246,10 @@ body {
     animation: slowSpin 40s linear infinite;
     pointer-events: none;
 }
-
 @keyframes slowSpin {
     from { transform: translateX(-50%) rotate(0deg); }
     to { transform: translateX(-50%) rotate(360deg); }
 }
-
 .hero h1 {
     font-size: 3.2rem;
     font-weight: 800;
@@ -85,7 +258,6 @@ body {
     color: transparent;
     margin-bottom: 10px;
 }
-
 .hero p {
     font-size: 1.15rem;
     opacity: 0.85;
@@ -93,24 +265,11 @@ body {
     margin: 0 auto;
 }
 
-/* Floating warning banner */
-.floating-warning {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: var(--glass);
-    backdrop-filter: blur(12px);
-    padding: 14px 18px;
-    border-radius: 14px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    font-size: 0.9rem;
-    animation: pulseWarn 3s infinite;
-    z-index: 999;
-}
-
-@keyframes pulseWarn {
-    0%, 100% { box-shadow: 0 0 12px rgba(255,200,0,0.4); }
-    50% { box-shadow: 0 0 20px rgba(255,200,0,0.7); }
+/* Layout */
+.page-container {
+    max-width: 1100px;
+    margin: 0 auto 60px;
+    padding: 0 20px 40px;
 }
 
 /* Glass panel */
@@ -120,11 +279,71 @@ body {
     border-radius: 18px;
     padding: 28px 26px;
     margin: 30px auto;
-    max-width: 1100px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.12);
 }
 body.dark-mode .glass-panel {
     background: var(--glass-dark);
+}
+
+/* Two-column */
+.two-col {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 24px;
+}
+@media (max-width: 900px) {
+    .two-col {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Pillars list */
+.pillars-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.pillars-list li {
+    margin-bottom: 10px;
+    padding-left: 26px;
+    position: relative;
+}
+.pillars-list li::before {
+    content: "●";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--accent);
+    font-size: 0.8rem;
+    transform: translateY(4px);
+}
+
+/* Stats row */
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin-top: 18px;
+}
+.stat-card {
+    background: var(--card-bg);
+    border-radius: 14px;
+    padding: 14px 16px;
+    text-align: center;
+    font-size: 0.9rem;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+body.dark-mode .stat-card {
+    background: var(--card-bg-dark);
+}
+.stat-card strong {
+    display: block;
+    font-size: 1.4rem;
+    margin-bottom: 4px;
+}
+.stat-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.18);
 }
 
 /* Feature testing buttons */
@@ -134,9 +353,8 @@ body.dark-mode .glass-panel {
     gap: 14px;
     margin-top: 18px;
 }
-
 .test-btn {
-    padding: 12px 20px;
+    padding: 10px 18px;
     background: linear-gradient(120deg, var(--accent), var(--accent-alt));
     color: white;
     border-radius: 12px;
@@ -144,6 +362,7 @@ body.dark-mode .glass-panel {
     cursor: pointer;
     border: none;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    font-size: 0.9rem;
 }
 .test-btn:hover {
     transform: translateY(-3px);
@@ -159,6 +378,9 @@ body.dark-mode .glass-panel {
     display: none;
     animation: fadeInBox 0.5s ease forwards;
 }
+body.dark-mode .demo-box {
+    background: var(--card-bg-dark);
+}
 @keyframes fadeInBox {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
@@ -171,7 +393,6 @@ body.dark-mode .glass-panel {
     gap: 18px;
     margin-top: 18px;
 }
-
 .experiment-card {
     background: var(--card-bg);
     border-radius: 14px;
@@ -180,6 +401,9 @@ body.dark-mode .glass-panel {
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+body.dark-mode .experiment-card {
+    background: var(--card-bg-dark);
 }
 .experiment-card:hover {
     transform: translateY(-6px);
@@ -194,13 +418,52 @@ body.dark-mode .glass-panel {
     margin-top: 16px;
     font-size: 0.9rem;
 }
-
 .micro-experiments div {
     padding: 8px 10px;
     border-radius: 10px;
     background: rgba(255,255,255,0.55);
     position: relative;
     overflow: hidden;
+}
+body.dark-mode .micro-experiments div {
+    background: rgba(25,25,25,0.75);
+}
+.micro-experiments div span {
+    font-weight: 600;
+    color: var(--accent);
+    margin-right: 6px;
+}
+
+/* Timeline */
+.timeline {
+    border-left: 2px solid rgba(0,0,0,0.1);
+    padding-left: 16px;
+    margin-top: 10px;
+}
+body.dark-mode .timeline {
+    border-left-color: rgba(255,255,255,0.15);
+}
+.timeline-item {
+    margin-bottom: 12px;
+    position: relative;
+}
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    left: -21px;
+    top: 4px;
+}
+.timeline-item strong {
+    display: block;
+    font-size: 0.95rem;
+}
+.timeline-item span {
+    font-size: 0.85rem;
+    opacity: 0.8;
 }
 
 /* FAQ */
@@ -218,9 +481,35 @@ body.dark-mode .glass-panel {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
+    font-size: 0.9rem;
+    opacity: 0.9;
 }
 .faq-item.open .faq-a {
     max-height: 200px;
+}
+.faq-toggle {
+    font-size: 1.2rem;
+    color: var(--accent);
+    margin-left: 8px;
+}
+
+/* Release notes / Known issues */
+.notes-list, .issues-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.notes-list li, .issues-list li {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+/* Stress test area */
+#stressContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 6px;
+    margin-top: 14px;
 }
 
 /* Back button */
@@ -242,37 +531,94 @@ body.dark-mode .glass-panel {
 .back-btn:hover {
     transform: translateY(-3px);
 }
+
+/* Footer */
+.footer-note {
+    text-align: center;
+    margin: 40px 0 20px;
+    opacity: 0.7;
+    font-size: 0.85rem;
+}
 </style>
 </head>
 
 <body>
 
-<!-- Floating warning -->
+<!-- Preview Notification Bar -->
+<div class="preview-bar" id="previewBar">
+    <span>🔧 You are viewing a Preview Build (UI Testing v2.0). Features may change or break.</span>
+    <button class="preview-close" onclick="closePreviewBar()">✕</button>
+</div>
+
+<!-- Floating Warning -->
 <div class="floating-warning">
-⚠ Experimental Preview — Features may break
+    ⚠ Experimental environment — some components are intentionally unstable.
+</div>
+
+<!-- Notification Icon + Panel -->
+<div class="notification-icon" id="notifIcon" onclick="toggleNotifications()">
+    <i class="fas fa-bell"></i>
+    <span class="notif-count" id="notifCount">0</span>
+</div>
+<div class="notification-panel" id="notifPanel">
+    <h3>Notifications</h3>
+    <div id="notifList"></div>
 </div>
 
 <!-- HERO -->
 <section class="hero fade-in">
     <div class="hero-bg"></div>
     <h1>New UI Testing v2.0</h1>
-    <p>A futuristic, experimental preview of the upcoming Climate Change Club interface.</p>
+    <p>A futuristic, feature‑rich preview of the upcoming Climate Change Club interface.</p>
 </section>
 
-<!-- ABOUT -->
-<section class="glass-panel fade-in">
-    <h2>About This Preview</h2>
-    <p>
-        This page is a controlled testing environment for new UI components, animations,
-        and interaction patterns being considered for the Climate Change Club website.
-        Everything here is experimental and may change based on feedback.
-    </p>
+<div class="page-container">
+
+<!-- ABOUT + SNAPSHOT -->
+<section class="glass-panel fade-in two-col">
+    <div>
+        <h2>About This UI Testing Lab</h2>
+        <p>
+            This page is a comprehensive testing environment for new UI components, animations,
+            accessibility tools, and interaction patterns being considered for the Climate Change
+            Club website. It is intentionally dense with features so we can evaluate what works
+            well in practice.
+        </p>
+        <ul class="pillars-list">
+            <li><strong>Clarity:</strong> Make information easy to find and understand.</li>
+            <li><strong>Engagement:</strong> Use motion and structure to guide attention.</li>
+            <li><strong>Accessibility:</strong> Ensure the UI works for as many people as possible.</li>
+            <li><strong>Performance:</strong> Stress‑test layouts and animations at scale.</li>
+        </ul>
+    </div>
+    <div>
+        <h2>Snapshot</h2>
+        <p>Key metrics for this experimental build:</p>
+        <div class="stats-row">
+            <div class="stat-card">
+                <strong>20+</strong>
+                Components under test
+            </div>
+            <div class="stat-card">
+                <strong>50+</strong>
+                Micro‑experiments
+            </div>
+            <div class="stat-card">
+                <strong>15+</strong>
+                FAQ entries
+            </div>
+            <div class="stat-card">
+                <strong>v2.0</strong>
+                Current preview version
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- FEATURE TESTING PANEL -->
 <section class="glass-panel fade-in">
     <h2>Feature Testing Panel</h2>
-    <p>Click a button below to test an individual UI feature.</p>
+    <p>Use these buttons to trigger specific UI tests and behaviors.</p>
 
     <div class="feature-buttons">
         <button class="test-btn" onclick="showDemo('animationDemo')">Test Animation</button>
@@ -282,95 +628,171 @@ body.dark-mode .glass-panel {
         <button class="test-btn" onclick="showDemo('scrollDemo')">Test Scroll Reveal</button>
         <button class="test-btn" onclick="showDemo('bannerDemo')">Test Banner Behavior</button>
         <button class="test-btn" onclick="showDemo('glassDemo')">Test Glass Panel</button>
-        <button class="test-btn" onclick="showDemo('accessDemo')">Test Accessibility Mode</button>
+        <button class="test-btn" onclick="showDemo('accessDemo')">Test Accessibility Toggles</button>
+        <button class="test-btn" onclick="showDemo('themeDemo')">Test Color Themes</button>
+        <button class="test-btn" onclick="showDemo('perfDemo')">Test Performance / Stress</button>
     </div>
 
-    <!-- Demo boxes -->
-    <div id="animationDemo" class="demo-box">This is an animation demo. It fades and slides in.</div>
-    <div id="modalDemo" class="demo-box">Modal demo placeholder (future feature).</div>
-    <div id="hoverDemo" class="demo-box">Hover card demo placeholder.</div>
-    <div id="darkDemo" class="demo-box">Dark mode sync demo: toggle dark mode on the main site.</div>
-    <div id="scrollDemo" class="demo-box">Scroll reveal demo: scroll to see animations.</div>
-    <div id="bannerDemo" class="demo-box">Banner demo: the floating warning is always active.</div>
-    <div id="glassDemo" class="demo-box">Glass panel demo: this entire page uses glassmorphism.</div>
-    <div id="accessDemo" class="demo-box">Accessibility demo placeholder.</div>
+    <div id="animationDemo" class="demo-box">
+        This box demonstrates a simple fade‑in animation when activated.
+    </div>
+    <div id="modalDemo" class="demo-box">
+        Modal demo placeholder — in a future iteration, this will open a full overlay modal.
+    </div>
+    <div id="hoverDemo" class="demo-box">
+        Hover over experiment cards below to see lift and glow effects.
+    </div>
+    <div id="darkDemo" class="demo-box">
+        Dark mode is synced with the main site via <code>localStorage.getItem('theme')</code>.
+    </div>
+    <div id="scrollDemo" class="demo-box">
+        Scroll down the page to see sections fade in as they enter the viewport.
+    </div>
+    <div id="bannerDemo" class="demo-box">
+        The preview bar and floating warning banner are always active in this build.
+    </div>
+    <div id="glassDemo" class="demo-box">
+        Most sections use glassmorphism to separate content without heavy borders.
+    </div>
+    <div id="accessDemo" class="demo-box">
+        Use the Accessibility Testing Panel below to toggle high contrast, large text, and more.
+    </div>
+    <div id="themeDemo" class="demo-box">
+        Use the Color Theme Testing Panel below to preview alternate accent colors.
+    </div>
+    <div id="perfDemo" class="demo-box">
+        Use the Performance / Stress Test section to spawn many components and observe behavior.
+    </div>
 </section>
 
-<!-- EXPERIMENT GRID -->
+<!-- UI EXPERIMENT GRID -->
 <section class="glass-panel fade-in">
     <h2>UI Experiments</h2>
+    <p>These are the primary UI patterns under evaluation in this preview.</p>
     <div class="experiment-grid">
-        <div class="experiment-card"><h3>✨ Glass Panels</h3><p>Soft, frosted containers.</p></div>
-        <div class="experiment-card"><h3>🌓 Dark Mode</h3><p>Adaptive color system.</p></div>
-        <div class="experiment-card"><h3>🎨 Gradients</h3><p>Modern color transitions.</p></div>
-        <div class="experiment-card"><h3>⚡ Motion</h3><p>Subtle animations.</p></div>
-        <div class="experiment-card"><h3>🌐 Parallax</h3><p>Floating background.</p></div>
-        <div class="experiment-card"><h3>📚 Dense Text</h3><p>Readable long content.</p></div>
+        <div class="experiment-card"><h3>✨ Glass Panels</h3><p>Frosted containers with blur and depth.</p></div>
+        <div class="experiment-card"><h3>🌓 Dark Mode</h3><p>Color system that adapts to theme.</p></div>
+        <div class="experiment-card"><h3>🎨 Gradients</h3><p>Modern accent gradients for headings.</p></div>
+        <div class="experiment-card"><h3>⚡ Motion</h3><p>Subtle animations for feedback and focus.</p></div>
+        <div class="experiment-card"><h3>🌐 Parallax</h3><p>Background motion for visual interest.</p></div>
+        <div class="experiment-card"><h3>📚 Dense Content</h3><p>Long‑form sections tuned for readability.</p></div>
     </div>
 </section>
 
 <!-- MICRO EXPERIMENTS -->
 <section class="glass-panel fade-in">
     <h2>50 UI Micro‑Experiments</h2>
-    <div class="micro-experiments">
-        <script>
-            document.write(
-                Array.from({length: 50}, (_, i) =>
-                    `<div><span>${String(i+1).padStart(2,'0')}.</span> Micro‑experiment #${i+1} — testing UI behavior.</div>`
-                ).join("")
-            );
-        </script>
+    <p>Each item below represents a small, focused UI detail being evaluated.</p>
+    <div class="micro-experiments" id="microList"></div>
+</section>
+
+<!-- RELEASE NOTES + KNOWN ISSUES -->
+<section class="glass-panel fade-in two-col">
+    <div>
+        <h2>Release Notes (v2.0 Preview)</h2>
+        <ul class="notes-list" id="notesList"></ul>
+    </div>
+    <div>
+        <h2>Known Issues</h2>
+        <ul class="issues-list" id="issuesList"></ul>
     </div>
 </section>
 
-<!-- FAQ -->
+<!-- COLOR THEME TESTING + ACCESSIBILITY -->
+<section class="glass-panel fade-in two-col">
+    <div>
+        <h2>Color Theme Testing Panel</h2>
+        <p>Preview alternate accent themes for future iterations.</p>
+        <div class="feature-buttons">
+            <button class="test-btn" onclick="setTheme('default')">Default</button>
+            <button class="test-btn" onclick="setTheme('teal')">Teal</button>
+            <button class="test-btn" onclick="setTheme('blue')">Blue</button>
+            <button class="test-btn" onclick="setTheme('purple')">Purple</button>
+            <button class="test-btn" onclick="setTheme('solar')">Solarized</button>
+        </div>
+    </div>
+    <div>
+        <h2>Accessibility Testing Panel</h2>
+        <p>Toggle accessibility‑related modes to evaluate compatibility.</p>
+        <div class="feature-buttons">
+            <button class="test-btn" onclick="toggleMode('high-contrast')">High Contrast</button>
+            <button class="test-btn" onclick="toggleMode('large-text')">Large Text</button>
+            <button class="test-btn" onclick="toggleMode('dyslexic-font')">Dyslexia‑Friendly Font</button>
+            <button class="test-btn" onclick="toggleMode('reduced-motion')">Reduced Motion</button>
+        </div>
+    </div>
+</section>
+
+<!-- PERFORMANCE / STRESS TEST -->
 <section class="glass-panel fade-in">
-    <h2>FAQ</h2>
-    <div id="faq-container"></div>
+    <h2>Performance / Component Stress Test</h2>
+    <p>Spawn many small components to observe layout and performance behavior.</p>
+    <div class="feature-buttons">
+        <button class="test-btn" onclick="spawnStress(50)">Spawn 50</button>
+        <button class="test-btn" onclick="spawnStress(100)">Spawn 100</button>
+        <button class="test-btn" onclick="clearStress()">Clear</button>
+    </div>
+    <div id="stressContainer"></div>
+</section>
 
-    <script>
-        const faqContainer = document.getElementById("faq-container");
-        const faqList = [
-            "What is this preview for?",
-            "Will these features go live?",
-            "How do I report issues?",
-            "Does dark mode work here?",
-            "Why is everything animated?",
-            "Is this the final design?",
-            "Can I suggest features?",
-            "What happens to old UI?",
-            "How often is this updated?",
-            "Is this mobile‑friendly?",
-            "What is glassmorphism?",
-            "Why test so many features?",
-            "How do animations help UX?",
-            "What is parallax?",
-            "Will performance improve?"
-        ];
-
-        faqContainer.innerHTML = faqList.map((q, i) => `
-            <div class="faq-item">
-                <div class="faq-q">
-                    <span>${q}</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-a">This is the answer to: ${q}. This preview is for testing UI patterns.</div>
+<!-- TIMELINE + FAQ -->
+<section class="glass-panel fade-in two-col">
+    <div>
+        <h2>Rollout Timeline</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <strong>Phase 1 — Internal Testing</strong>
+                <span>Collect feedback from beta members and club leaders.</span>
             </div>
-        `).join("");
-    </script>
+            <div class="timeline-item">
+                <strong>Phase 2 — Refinement</strong>
+                <span>Keep the strongest patterns, remove anything distracting.</span>
+            </div>
+            <div class="timeline-item">
+                <strong>Phase 3 — Integration</strong>
+                <span>Apply chosen patterns to core pages (About, Projects, Events).</span>
+            </div>
+            <div class="timeline-item">
+                <strong>Phase 4 — Public Launch</strong>
+                <span>Release a polished v1.4 UI to all visitors.</span>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h2>FAQ</h2>
+        <div id="faqContainer"></div>
+    </div>
 </section>
 
 <!-- BACK BUTTON -->
 <section class="glass-panel fade-in" style="text-align:center;">
-    <h2>Return to Beta Lab</h2>
-    <p>When you're done testing, return to the Beta Test Lab.</p>
+    <h2>Return to Beta Test Lab</h2>
+    <p>When you're done exploring this preview, return to the Beta Test Lab to share your feedback.</p>
     <a href="beta-test.html" class="back-btn">⬅ Back to Beta Test Lab</a>
 </section>
 
+<p class="footer-note fade-in">
+    Climate Change Club · New UI Testing v2.0 · Experimental Preview
+</p>
+
+</div>
+
 <script>
-// Dark mode sync
+// Apply saved theme from main site
 if (localStorage.getItem('theme') === 'dark-mode') {
     document.body.classList.add('dark-mode');
+}
+
+// Show preview bar on load
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        document.getElementById("previewBar").classList.add("show");
+    }, 300);
+});
+
+// Close preview bar
+function closePreviewBar() {
+    document.getElementById("previewBar").classList.remove("show");
 }
 
 // Scroll reveal
@@ -382,10 +804,144 @@ const observer = new IntersectionObserver((entries) => {
         }
     });
 }, { threshold: 0.15 });
-
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// FAQ toggles
+// Notifications
+const notifications = [
+    {
+        title: "v2.0 Preview Released",
+        message: "New UI Testing v2.0 is now live with feature panels and notifications.",
+        time: "2 hours ago",
+        read: false
+    },
+    {
+        title: "Bug Fixes Applied",
+        message: "Resolved layout issues in the Feature Testing Panel.",
+        time: "1 day ago",
+        read: false
+    },
+    {
+        title: "Accessibility Tools Added",
+        message: "High contrast, large text, and reduced motion toggles are now available.",
+        time: "3 days ago",
+        read: false
+    },
+    {
+        title: "Color Themes Enabled",
+        message: "Try Teal, Blue, Purple, and Solarized accent themes.",
+        time: "5 days ago",
+        read: false
+    }
+];
+
+function loadNotifications() {
+    const list = document.getElementById("notifList");
+    list.innerHTML = "";
+    notifications.forEach((n, index) => {
+        const item = document.createElement("div");
+        item.className = "notif-item";
+        item.innerHTML = `
+            <div class="notif-title">${n.title}</div>
+            <div class="notif-time">${n.time}</div>
+        `;
+        item.onclick = () => markAsRead(index);
+        list.appendChild(item);
+    });
+    updateNotifCount();
+}
+function updateNotifCount() {
+    const count = notifications.filter(n => !n.read).length;
+    const badge = document.getElementById("notifCount");
+    if (count === 0) {
+        badge.style.display = "none";
+    } else {
+        badge.style.display = "block";
+        badge.textContent = count;
+    }
+}
+function toggleNotifications() {
+    const panel = document.getElementById("notifPanel");
+    panel.style.display = panel.style.display === "flex" ? "none" : "flex";
+}
+function markAsRead(index) {
+    notifications[index].read = true;
+    loadNotifications();
+}
+
+// Micro experiments
+const microList = document.getElementById("microList");
+for (let i = 1; i <= 50; i++) {
+    const div = document.createElement("div");
+    div.innerHTML = `<span>${String(i).padStart(2,'0')}.</span> Micro‑experiment #${i} — testing a specific UI detail.`;
+    microList.appendChild(div);
+}
+
+// Release notes
+const notes = [
+    "Introduced glassmorphism panels for major sections.",
+    "Added Feature Testing Panel with multiple demo triggers.",
+    "Implemented notification center with unread counts.",
+    "Added floating experimental warning banner.",
+    "Integrated preview notification bar at the top.",
+    "Added color theme testing controls.",
+    "Introduced accessibility toggles (contrast, text size, motion).",
+    "Implemented performance / stress test component.",
+    "Expanded FAQ and rollout timeline sections.",
+    "Synced dark mode with main site settings."
+];
+const notesList = document.getElementById("notesList");
+notes.forEach(n => {
+    const li = document.createElement("li");
+    li.textContent = n;
+    notesList.appendChild(li);
+});
+
+// Known issues
+const issues = [
+    "Modal demo is currently a placeholder and does not open a full overlay.",
+    "Performance may vary on older devices when running large stress tests.",
+    "Color theme changes are not persisted between page reloads.",
+    "Accessibility modes may conflict with some custom themes.",
+    "Notification messages are static in this preview build."
+];
+const issuesList = document.getElementById("issuesList");
+issues.forEach(i => {
+    const li = document.createElement("li");
+    li.textContent = i;
+    issuesList.appendChild(li);
+});
+
+// FAQ
+const faqQuestions = [
+    "What is this preview for?",
+    "Will these features go live?",
+    "How do I report issues?",
+    "Does dark mode work here?",
+    "Why are there so many components?",
+    "Is this the final design?",
+    "Can I suggest new UI ideas?",
+    "What happens to the old UI?",
+    "How often is this updated?",
+    "Is this mobile‑friendly?",
+    "What is glassmorphism?",
+    "Why test color themes?",
+    "How do animations help UX?",
+    "What is the stress test for?",
+    "Will accessibility remain a priority?"
+];
+const faqContainer = document.getElementById("faqContainer");
+faqQuestions.forEach(q => {
+    const item = document.createElement("div");
+    item.className = "faq-item";
+    item.innerHTML = `
+        <div class="faq-q">
+            <span>${q}</span>
+            <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">This preview exists to test UI patterns, performance, and accessibility before they are considered for the main site.</div>
+    `;
+    faqContainer.appendChild(item);
+});
 document.addEventListener("click", e => {
     if (e.target.closest(".faq-q")) {
         const item = e.target.closest(".faq-item");
@@ -398,8 +954,59 @@ document.addEventListener("click", e => {
 // Feature demo boxes
 function showDemo(id) {
     document.querySelectorAll(".demo-box").forEach(box => box.style.display = "none");
-    document.getElementById(id).style.display = "block";
+    const target = document.getElementById(id);
+    if (target) target.style.display = "block";
 }
+
+// Theme testing
+function setTheme(name) {
+    const root = document.documentElement;
+    if (name === "default") {
+        root.style.setProperty("--accent", "#00b894");
+        root.style.setProperty("--accent-alt", "#0984e3");
+    } else if (name === "teal") {
+        root.style.setProperty("--accent", "#00b894");
+        root.style.setProperty("--accent-alt", "#00cec9");
+    } else if (name === "blue") {
+        root.style.setProperty("--accent", "#0984e3");
+        root.style.setProperty("--accent-alt", "#74b9ff");
+    } else if (name === "purple") {
+        root.style.setProperty("--accent", "#6c5ce7");
+        root.style.setProperty("--accent-alt", "#a29bfe");
+    } else if (name === "solar") {
+        root.style.setProperty("--accent", "#e1b12c");
+        root.style.setProperty("--accent-alt", "#fbc531");
+    }
+}
+
+// Accessibility modes
+function toggleMode(mode) {
+    document.body.classList.toggle(mode);
+}
+
+// Stress test
+function spawnStress(count) {
+    const container = document.getElementById("stressContainer");
+    container.innerHTML = "";
+    for (let i = 0; i < count; i++) {
+        const div = document.createElement("div");
+        div.style.padding = "6px";
+        div.style.borderRadius = "8px";
+        div.style.background = "rgba(255,255,255,0.7)";
+        div.style.fontSize = "0.8rem";
+        div.textContent = "Card " + (i + 1);
+        if (document.body.classList.contains("dark-mode")) {
+            div.style.background = "rgba(30,30,30,0.7)";
+        }
+        container.appendChild(div);
+    }
+}
+function clearStress() {
+    document.getElementById("stressContainer").innerHTML = "";
+}
+
+// Init notifications
+window.addEventListener("load", loadNotifications);
 </script>
 
 </body>
