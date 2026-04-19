@@ -312,7 +312,59 @@ function betaSignOut() {
     window.location.replace("index.html");
 }
 
+/* ADD THIS TO YOUR JAVASCRIPT */
 
+document.addEventListener("DOMContentLoaded", function() {
+    const navButton = document.getElementById('betaNavBtn');
+    const dot = document.getElementById('updateDot');
+
+    // 1. Hide the dot when the user clicks the button
+    if (navButton && dot) {
+        navButton.addEventListener('click', function() {
+            dot.style.display = 'none';
+        });
+    }
+});
+
+// 2. Global function to resend the notification 
+// Call this function anywhere in your app when a new update arrives
+function triggerNewNotification() {
+    const dot = document.getElementById('updateDot');
+    if (dot) {
+        dot.style.display = 'inline-block';
+    }
+}
+
+// --- Optional Test ---
+// If you want to test it, uncomment the line below. 
+// It will bring the red dot back 5 seconds after you click it away.
+// setTimeout(triggerNewNotification, 5000);
+
+/* --- VERSION CONTROL SYSTEM v1.1 --- */
+
+// 1. CHANGE THIS NUMBER to resend the notification to all users
+const LATEST_BETA_VERSION = "1.5.2"; 
+
+document.addEventListener("DOMContentLoaded", function() {
+    const dot = document.getElementById('updateDot');
+    const navButton = document.getElementById('betaNavBtn');
+    
+    // Check if the user has already seen this specific version
+    const lastSeenVersion = localStorage.getItem('lastSeenBetaVersion');
+
+    // 2. Logic: If the version in the code is newer than the browser's memory, show the dot
+    if (lastSeenVersion !== LATEST_BETA_VERSION) {
+        dot.style.display = 'inline-block';
+    }
+
+    // 3. When the user clicks the button, mark THIS version as "seen"
+    if (navButton) {
+        navButton.addEventListener('click', function() {
+            dot.style.display = 'none';
+            localStorage.setItem('lastSeenBetaVersion', LATEST_BETA_VERSION);
+        });
+    }
+});
 
 
 

@@ -680,3 +680,22 @@ html {
 .history-item.archived .history-content h3 {
     color: #888; /* Dim the title of old updates */
 }
+/* ADD THIS TO YOUR CSS */
+
+/* Ensure the button acts as an anchor for the absolute positioned dot */
+#betaNavBtn {
+    position: relative; 
+}
+
+/* The styling for the red notification dot */
+.notification-dot {
+    height: 12px;
+    width: 12px;
+    background-color: #e63946; /* Matching your 'Wildfire' red from the color panel */
+    border-radius: 50%;
+    display: inline-block; /* Visible by default */
+    position: absolute;
+    top: 5px;   
+    right: 5px; 
+    box-shadow: 0 0 5px rgba(230, 57, 70, 0.6); /* Adds a slight glow */
+}
