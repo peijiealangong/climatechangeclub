@@ -72,42 +72,136 @@ body {
     transform: translateY(0);
 }
 
-/* Preview notification bar */
-.preview-bar {
+/* Notification Icon */
+.notification-icon {
     position: fixed;
-    top: -80px;
-    left: 0;
-    width: 100%;
-    padding: 14px 20px;
+    top: 20px;
+    right: 20px;
     background: var(--glass);
     backdrop-filter: blur(12px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    font-size: 0.95rem;
-    z-index: 9999;
-    border-bottom: 1px solid rgba(255,255,255,0.3);
-    transition: top 0.6s ease;
-}
-body.dark-mode .preview-bar {
-    background: var(--glass-dark);
-    border-bottom: 1px solid rgba(255,255,255,0.15);
-}
-.preview-bar.show {
-    top: 0;
-}
-.preview-close {
-    background: none;
-    border: none;
-    font-size: 1.1rem;
     cursor: pointer;
-    color: var(--text);
-    opacity: 0.7;
-    transition: opacity 0.2s ease;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    z-index: 9999;
 }
-.preview-close:hover {
-    opacity: 1;
+body.dark-mode .notification-icon {
+    background: var(--glass-dark);
+}
+.notification-icon:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+.notification-icon i {
+    font-size: 1.3rem;
+    color: var(--text);
+}
+
+/* Notification Count Badge */
+.notif-count {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: #ff4757;
+    color: white;
+    font-size: 0.75rem;
+    padding: 3px 7px;
+    border-radius: 999px;
+    font-weight: 700;
+    box-shadow: 0 0 8px rgba(255,0,0,0.4);
+}
+
+/* Notification Panel */
+.notification-panel {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    width: 340px;
+    max-height: 500px;
+    background: var(--glass);
+    backdrop-filter: blur(14px);
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    display: none;
+    flex-direction: column;
+    overflow-y: auto;
+    z-index: 9999;
+    animation: slideDown 0.35s ease forwards;
+}
+body.dark-mode .notification-panel {
+    background: var(--glass-dark);
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Notification Item */
+.notif-item {
+    background: rgba(255,255,255,0.55);
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+    overflow: hidden;
+}
+body.dark-mode .notif-item {
+    background: rgba(30,30,30,0.55);
+}
+.notif-item:hover {
+    background: rgba(255,255,255,0.75);
+    transform: translateY(-2px);
+}
+
+/* Notification Title */
+.notif-title {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+/* Notification Time */
+.notif-time {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* Expanded Notification Body */
+.notif-body {
+    max-height: 0;
+    overflow: hidden;
+    font-size: 0.9rem;
+    opacity: 0.85;
+    margin-top: 6px;
+    transition: max-height 0.3s ease;
+}
+
+/* Expanded state */
+.notif-item.open .notif-body {
+    max-height: 200px;
+}
+
+/* Delete button */
+.notif-delete {
+    margin-top: 10px;
+    background: #ff4757;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+.notif-delete:hover {
+    background: #e84141;
 }
 
 /* Floating warning banner */
@@ -555,11 +649,13 @@ body.dark-mode .timeline {
     ⚠ Experimental environment — some components are intentionally unstable.
 </div>
 
-<!-- Notification Icon + Panel -->
+<!-- Notification Icon -->
 <div class="notification-icon" id="notifIcon" onclick="toggleNotifications()">
     <i class="fas fa-bell"></i>
     <span class="notif-count" id="notifCount">0</span>
 </div>
+
+<!-- Notification Panel -->
 <div class="notification-panel" id="notifPanel">
     <h3>Notifications</h3>
     <div id="notifList"></div>
@@ -806,8 +902,8 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// Notifications
-const notifications = [
+// Notification Data
+let notifications = [
     {
         title: "v2.0 Preview Released",
         message: "New UI Testing v2.0 is now live with feature panels and notifications.",
@@ -825,33 +921,52 @@ const notifications = [
         message: "High contrast, large text, and reduced motion toggles are now available.",
         time: "3 days ago",
         read: false
-    },
-    {
-        title: "Color Themes Enabled",
-        message: "Try Teal, Blue, Purple, and Solarized accent themes.",
-        time: "5 days ago",
-        read: false
     }
 ];
 
+// Load notifications into panel
 function loadNotifications() {
     const list = document.getElementById("notifList");
     list.innerHTML = "";
+
     notifications.forEach((n, index) => {
         const item = document.createElement("div");
         item.className = "notif-item";
+        if (n.read) item.classList.add("read");
+
         item.innerHTML = `
             <div class="notif-title">${n.title}</div>
             <div class="notif-time">${n.time}</div>
+            <div class="notif-body">${n.message}
+                <button class="notif-delete" onclick="deleteNotification(${index}); event.stopPropagation();">Delete</button>
+            </div>
         `;
-        item.onclick = () => markAsRead(index);
+
+        item.onclick = () => expandNotification(index, item);
         list.appendChild(item);
     });
+
     updateNotifCount();
 }
+
+// Expand notification + mark as read
+function expandNotification(index, item) {
+    notifications[index].read = true;
+    item.classList.toggle("open");
+    loadNotifications();
+}
+
+// Delete notification
+function deleteNotification(index) {
+    notifications.splice(index, 1);
+    loadNotifications();
+}
+
+// Update unread count
 function updateNotifCount() {
     const count = notifications.filter(n => !n.read).length;
     const badge = document.getElementById("notifCount");
+
     if (count === 0) {
         badge.style.display = "none";
     } else {
@@ -859,14 +974,15 @@ function updateNotifCount() {
         badge.textContent = count;
     }
 }
+
+// Toggle panel
 function toggleNotifications() {
     const panel = document.getElementById("notifPanel");
     panel.style.display = panel.style.display === "flex" ? "none" : "flex";
 }
-function markAsRead(index) {
-    notifications[index].read = true;
-    loadNotifications();
-}
+
+// Initialize
+window.addEventListener("load", loadNotifications);
 
 // Micro experiments
 const microList = document.getElementById("microList");
