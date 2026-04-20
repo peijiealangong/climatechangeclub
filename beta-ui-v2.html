@@ -3,883 +3,1029 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>New UI Testing v2.0 | Climate Change Club</title>
+<title>UI Testing v3.0 | Climate Change Club</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <style>
 /* ============================================================
-   UI TESTING v2.0 — FUTURISTIC LAB, EVERYTHING ENABLED
+   UI TESTING v3.0 — EXTREME REWRITE · MATERIAL YOU + FUTURISTIC LAB
    ============================================================ */
 
+/* Base tokens */
 :root {
-    --bg: #f5f7fa;
-    --text: #1a1a1a;
-    --accent: #00b894;
-    --accent-alt: #0984e3;
-    --glass: rgba(255,255,255,0.7);
-    --glass-dark: rgba(20,20,20,0.7);
-    --card-bg: rgba(255,255,255,0.6);
-    --card-bg-dark: rgba(30,30,30,0.6);
+    --bg: #f5f5f7;
+    --surface: #ffffff;
+    --surface-variant: #f0f2f7;
+    --text: #111827;
+    --text-muted: #6b7280;
+    --primary: #2563eb;
+    --primary-container: #dbeafe;
+    --primary-on: #ffffff;
+    --secondary: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --info: #0ea5e9;
+    --shadow-soft: 0 18px 45px rgba(15,23,42,0.18);
+    --radius-lg: 24px;
+    --radius-md: 18px;
+    --radius-sm: 12px;
+    --transition-fast: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-med: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Dark mode sync */
 body.dark-mode {
-    --bg: #050608;
-    --text: #f5f5f5;
-}
-
-/* Accessibility modes */
-body.high-contrast {
-    --bg: #000;
-    --text: #fff;
-    --accent: #ffff00;
-    --accent-alt: #ff00ff;
-}
-body.large-text {
-    font-size: 18px;
-}
-body.dyslexic-font {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-body.reduced-motion * {
-    animation: none !important;
-    transition: none !important;
+    --bg: #020617;
+    --surface: #020617;
+    --surface-variant: #0b1120;
+    --text: #e5e7eb;
+    --text-muted: #9ca3af;
+    --primary: #60a5fa;
+    --primary-container: #1d4ed8;
+    --primary-on: #e5e7eb;
+    --shadow-soft: 0 18px 45px rgba(15,23,42,0.75);
 }
 
 /* Global */
-* {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 body {
     margin: 0;
     padding: 0;
-    background: var(--bg);
+    background: radial-gradient(circle at top, #e0f2fe 0, #f5f5f7 40%, #e5e7eb 100%);
     color: var(--text);
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     transition: background 0.4s ease, color 0.4s ease;
     overflow-x: hidden;
 }
-
-/* Fade-in */
-.fade-in {
-    opacity: 0;
-    transform: translateY(12px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
+body.dark-mode {
+    background: radial-gradient(circle at top, #0f172a 0, #020617 40%, #020617 100%);
 }
-.fade-in.visible {
+
+/* Motion reduction */
+body.reduced-motion * {
+    animation: none !important;
+    transition: none !important;
+}
+
+/* Material-style elevation surfaces */
+.surface {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+}
+
+/* Fade-in / slide-up */
+.reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity var(--transition-med), transform var(--transition-med);
+}
+.reveal.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Notification Icon */
-.notification-icon {
+/* Top preview bar */
+.preview-bar {
     position: fixed;
-    top: 20px;
-    right: 20px;
-    background: var(--glass);
-    backdrop-filter: blur(12px);
-    width: 48px;
-    height: 48px;
-    border-radius: 14px;
+    top: -80px;
+    left: 0;
+    width: 100%;
+    padding: 12px 20px;
+    background: rgba(15,23,42,0.9);
+    color: #e5e7eb;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    cursor: pointer;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    z-index: 9999;
-}
-body.dark-mode .notification-icon {
-    background: var(--glass-dark);
-}
-.notification-icon:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-}
-.notification-icon i {
-    font-size: 1.3rem;
-    color: var(--text);
-}
-
-/* Notification Count Badge */
-.notif-count {
-    position: absolute;
-    top: -6px;
-    right: -6px;
-    background: #ff4757;
-    color: white;
-    font-size: 0.75rem;
-    padding: 3px 7px;
-    border-radius: 999px;
-    font-weight: 700;
-    box-shadow: 0 0 8px rgba(255,0,0,0.4);
-}
-
-/* Notification Panel */
-.notification-panel {
-    position: fixed;
-    top: 80px;
-    right: 20px;
-    width: 340px;
-    max-height: 500px;
-    background: var(--glass);
-    backdrop-filter: blur(14px);
-    border-radius: 16px;
-    padding: 18px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    display: none;
-    flex-direction: column;
-    overflow-y: auto;
-    z-index: 9999;
-    animation: slideDown 0.35s ease forwards;
-}
-body.dark-mode .notification-panel {
-    background: var(--glass-dark);
-}
-
-@keyframes slideDown {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Notification Item */
-.notif-item {
-    background: rgba(255,255,255,0.55);
-    border-radius: 12px;
-    padding: 12px 14px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    transition: background 0.2s ease, transform 0.2s ease;
-    overflow: hidden;
-}
-body.dark-mode .notif-item {
-    background: rgba(30,30,30,0.55);
-}
-.notif-item:hover {
-    background: rgba(255,255,255,0.75);
-    transform: translateY(-2px);
-}
-
-/* Notification Title */
-.notif-title {
-    font-weight: 600;
-    margin-bottom: 4px;
-}
-
-/* Notification Time */
-.notif-time {
-    font-size: 0.8rem;
-    opacity: 0.7;
-}
-
-/* Expanded Notification Body */
-.notif-body {
-    max-height: 0;
-    overflow: hidden;
     font-size: 0.9rem;
-    opacity: 0.85;
-    margin-top: 6px;
-    transition: max-height 0.3s ease;
+    z-index: 9999;
+    backdrop-filter: blur(18px);
+    transition: top 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-/* Expanded state */
-.notif-item.open .notif-body {
-    max-height: 200px;
+.preview-bar.show {
+    top: 0;
 }
-
-/* Delete button */
-.notif-delete {
-    margin-top: 10px;
-    background: #ff4757;
-    color: white;
+.preview-bar button {
+    background: transparent;
     border: none;
-    padding: 6px 10px;
-    border-radius: 8px;
-    font-size: 0.8rem;
+    color: #e5e7eb;
     cursor: pointer;
-    transition: background 0.2s ease;
+    font-size: 1.1rem;
+    opacity: 0.7;
+    transition: opacity var(--transition-fast);
 }
-.notif-delete:hover {
-    background: #e84141;
+.preview-bar button:hover {
+    opacity: 1;
 }
 
-/* Floating warning banner */
-.floating-warning {
+/* Floating experimental chip */
+.experimental-chip {
     position: fixed;
     bottom: 20px;
     left: 20px;
-    background: var(--glass);
-    backdrop-filter: blur(12px);
-    padding: 12px 16px;
-    border-radius: 14px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    font-size: 0.9rem;
-    animation: pulseWarn 3s infinite;
-    z-index: 999;
-}
-body.dark-mode .floating-warning {
-    background: var(--glass-dark);
-}
-@keyframes pulseWarn {
-    0%, 100% { box-shadow: 0 0 12px rgba(255,200,0,0.4); }
-    50% { box-shadow: 0 0 20px rgba(255,200,0,0.7); }
-}
-
-/* Notification Icon */
-.notification-icon {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: var(--glass);
-    backdrop-filter: blur(12px);
-    width: 48px;
-    height: 48px;
-    border-radius: 14px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    z-index: 9999;
-}
-body.dark-mode .notification-icon {
-    background: var(--glass-dark);
-}
-.notification-icon:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-}
-.notification-icon i {
-    font-size: 1.3rem;
-    color: var(--text);
-}
-.notif-count {
-    position: absolute;
-    top: -6px;
-    right: -6px;
-    background: #ff4757;
-    color: white;
-    font-size: 0.75rem;
-    padding: 3px 7px;
+    padding: 10px 14px;
     border-radius: 999px;
-    font-weight: 700;
-    box-shadow: 0 0 8px rgba(255,0,0,0.4);
+    background: rgba(15,23,42,0.9);
+    color: #e5e7eb;
+    font-size: 0.8rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    backdrop-filter: blur(18px);
+    box-shadow: 0 18px 40px rgba(15,23,42,0.6);
+    z-index: 999;
+    animation: chipPulse 3s infinite;
+}
+@keyframes chipPulse {
+    0%, 100% { box-shadow: 0 0 12px rgba(56,189,248,0.4); }
+    50% { box-shadow: 0 0 22px rgba(56,189,248,0.9); }
 }
 
-/* Notification Panel */
+/* Notification icon (Material bell) */
+.notification-fab {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    width: 52px;
+    height: 52px;
+    border-radius: 999px;
+    background: var(--primary);
+    color: var(--primary-on);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 18px 40px rgba(37,99,235,0.55);
+    cursor: pointer;
+    z-index: 9999;
+    overflow: hidden;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+.notification-fab:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 22px 50px rgba(37,99,235,0.7);
+}
+.notification-fab i {
+    font-size: 1.3rem;
+}
+.notification-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border-radius: 999px;
+    background: #ef4444;
+    color: #fff;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(239,68,68,0.7);
+}
+.notification-fab.pulse {
+    animation: bellPulse 1.4s infinite;
+}
+@keyframes bellPulse {
+    0% { transform: scale(1); }
+    30% { transform: scale(1.08); }
+    60% { transform: scale(0.98); }
+    100% { transform: scale(1); }
+}
+
+/* Notification panel (Material sheet) */
 .notification-panel {
     position: fixed;
     top: 80px;
-    right: 20px;
-    width: 320px;
-    max-height: 420px;
-    background: var(--glass);
-    backdrop-filter: blur(14px);
-    border-radius: 16px;
-    padding: 18px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    right: 18px;
+    width: min(380px, 92vw);
+    max-height: 520px;
+    background: var(--surface);
+    border-radius: 24px;
+    box-shadow: var(--shadow-soft);
     display: none;
     flex-direction: column;
-    overflow-y: auto;
+    overflow: hidden;
     z-index: 9999;
-    animation: slideDown 0.35s ease forwards;
 }
-body.dark-mode .notification-panel {
-    background: var(--glass-dark);
+.notification-panel.open {
+    display: flex;
+    animation: panelSlideIn 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.notification-panel h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
-    font-size: 1.2rem;
+@keyframes panelSlideIn {
+    from { opacity: 0; transform: translateY(-8px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
 }
-@keyframes slideDown {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+
+/* Panel header */
+.notif-header {
+    padding: 14px 18px 10px;
+    border-bottom: 1px solid rgba(148,163,184,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
-.notif-item {
-    padding: 12px 14px;
-    background: rgba(255,255,255,0.55);
-    border-radius: 12px;
-    margin-bottom: 10px;
+.notif-header-left {
+    display: flex;
+    flex-direction: column;
+}
+.notif-header-title {
+    font-size: 1rem;
+    font-weight: 600;
+}
+.notif-header-sub {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+.notif-header-actions {
+    display: flex;
+    gap: 8px;
+}
+.notif-chip-btn {
+    border-radius: 999px;
+    border: none;
+    padding: 6px 10px;
+    font-size: 0.75rem;
     cursor: pointer;
-    transition: background 0.2s ease;
+    background: var(--surface-variant);
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
 }
-body.dark-mode .notif-item {
-    background: rgba(30,30,30,0.55);
+.notif-chip-btn:hover {
+    transform: translateY(-1px);
+}
+.notif-chip-btn.primary {
+    background: var(--primary);
+    color: var(--primary-on);
+}
+
+/* Filter tabs */
+.notif-tabs {
+    display: flex;
+    gap: 6px;
+    padding: 8px 12px 6px;
+    border-bottom: 1px solid rgba(148,163,184,0.25);
+}
+.notif-tab {
+    flex: 1;
+    text-align: center;
+    padding: 6px 0;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    color: var(--text-muted);
+    background: transparent;
+    border: none;
+    transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+}
+.notif-tab.active {
+    background: var(--primary-container);
+    color: var(--primary);
+    transform: translateY(-1px);
+}
+
+/* Search bar */
+.notif-search {
+    padding: 8px 12px 6px;
+}
+.notif-search input {
+    width: 100%;
+    border-radius: 999px;
+    border: none;
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    background: var(--surface-variant);
+    color: var(--text);
+    outline: none;
+}
+
+/* Notification list */
+.notif-list {
+    padding: 8px 10px 10px;
+    overflow-y: auto;
+}
+
+/* Notification item (Material card) */
+.notif-item {
+    position: relative;
+    border-radius: var(--radius-md);
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    background: var(--surface-variant);
+    cursor: pointer;
+    overflow: hidden;
+    transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 .notif-item:hover {
-    background: rgba(255,255,255,0.75);
+    transform: translateY(-1px);
+    box-shadow: 0 10px 25px rgba(15,23,42,0.18);
+}
+.notif-item.unread::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 3px;
+    height: 18px;
+    border-radius: 999px;
+    background: var(--primary);
+}
+.notif-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .notif-title {
+    font-size: 0.9rem;
     font-weight: 600;
-    margin-bottom: 4px;
+}
+.notif-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+.notif-priority {
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+.notif-priority.high {
+    background: rgba(239,68,68,0.1);
+    color: #b91c1c;
+}
+.notif-priority.medium {
+    background: rgba(245,158,11,0.1);
+    color: #92400e;
+}
+.notif-priority.low {
+    background: rgba(37,99,235,0.1);
+    color: #1d4ed8;
 }
 .notif-time {
+    font-size: 0.75rem;
+}
+.notif-body {
+    max-height: 0;
+    overflow: hidden;
     font-size: 0.8rem;
-    opacity: 0.7;
+    color: var(--text-muted);
+    margin-top: 4px;
+    transition: max-height var(--transition-med);
+}
+.notif-item.open .notif-body {
+    max-height: 200px;
+}
+.notif-actions {
+    margin-top: 8px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+}
+.notif-action-btn {
+    border-radius: 999px;
+    border: none;
+    padding: 4px 8px;
+    font-size: 0.7rem;
+    cursor: pointer;
+    background: transparent;
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: background var(--transition-fast), color var(--transition-fast);
+}
+.notif-action-btn.delete {
+    color: #b91c1c;
+}
+.notif-action-btn:hover {
+    background: rgba(148,163,184,0.15);
+}
+
+/* Ripple effect */
+.notif-ripple {
+    position: absolute;
+    border-radius: 999px;
+    transform: scale(0);
+    animation: ripple 0.5s linear;
+    background-color: rgba(148,163,184,0.4);
+}
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* FAB clear all */
+.notif-fab-clear {
+    position: absolute;
+    bottom: 10px;
+    right: 12px;
+    border-radius: 999px;
+    border: none;
+    padding: 6px 10px;
+    font-size: 0.75rem;
+    background: var(--danger);
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 10px 25px rgba(239,68,68,0.6);
+}
+
+/* Page layout */
+.page-shell {
+    max-width: 1200px;
+    margin: 90px auto 60px;
+    padding: 0 20px 40px;
 }
 
 /* Hero */
 .hero {
-    padding: 100px 20px 60px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-.hero-bg {
-    position: absolute;
-    width: 900px;
-    height: 900px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(0,184,148,0.25), transparent 70%);
-    top: -300px;
-    left: 50%;
-    transform: translateX(-50%);
-    animation: slowSpin 40s linear infinite;
-    pointer-events: none;
-}
-@keyframes slowSpin {
-    from { transform: translateX(-50%) rotate(0deg); }
-    to { transform: translateX(-50%) rotate(360deg); }
-}
-.hero h1 {
-    font-size: 3.2rem;
-    font-weight: 800;
-    background: linear-gradient(120deg, var(--accent), var(--accent-alt));
-    -webkit-background-clip: text;
-    color: transparent;
-    margin-bottom: 10px;
-}
-.hero p {
-    font-size: 1.15rem;
-    opacity: 0.85;
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-/* Layout */
-.page-container {
-    max-width: 1100px;
-    margin: 0 auto 60px;
-    padding: 0 20px 40px;
-}
-
-/* Glass panel */
-.glass-panel {
-    background: var(--glass);
-    backdrop-filter: blur(14px);
-    border-radius: 18px;
-    padding: 28px 26px;
-    margin: 30px auto;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-}
-body.dark-mode .glass-panel {
-    background: var(--glass-dark);
-}
-
-/* Two-column */
-.two-col {
     display: grid;
     grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-    gap: 24px;
+    gap: 26px;
+    align-items: center;
+    margin-bottom: 30px;
 }
 @media (max-width: 900px) {
-    .two-col {
+    .hero {
         grid-template-columns: 1fr;
     }
 }
-
-/* Pillars list */
-.pillars-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.hero-main {
+    padding: 24px 26px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, rgba(37,99,235,0.08), rgba(16,185,129,0.08));
+    backdrop-filter: blur(18px);
 }
-.pillars-list li {
-    margin-bottom: 10px;
-    padding-left: 26px;
-    position: relative;
+.hero-title {
+    font-size: 2.4rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 6px;
 }
-.pillars-list li::before {
-    content: "●";
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: var(--accent);
-    font-size: 0.8rem;
-    transform: translateY(4px);
+.hero-title span {
+    background: linear-gradient(120deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    color: transparent;
 }
-
-/* Stats row */
-.stats-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 16px;
-    margin-top: 18px;
+.hero-sub {
+    font-size: 0.98rem;
+    color: var(--text-muted);
+    max-width: 520px;
 }
-.stat-card {
-    background: var(--card-bg);
-    border-radius: 14px;
-    padding: 14px 16px;
-    text-align: center;
-    font-size: 0.9rem;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-body.dark-mode .stat-card {
-    background: var(--card-bg-dark);
-}
-.stat-card strong {
-    display: block;
-    font-size: 1.4rem;
-    margin-bottom: 4px;
-}
-.stat-card:hover {
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.18);
-}
-
-/* Feature testing buttons */
-.feature-buttons {
+.hero-tags {
+    margin-top: 14px;
     display: flex;
     flex-wrap: wrap;
-    gap: 14px;
-    margin-top: 18px;
+    gap: 8px;
 }
-.test-btn {
-    padding: 10px 18px;
-    background: linear-gradient(120deg, var(--accent), var(--accent-alt));
-    color: white;
-    border-radius: 12px;
+.hero-tag {
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    background: rgba(15,23,42,0.06);
+    color: var(--text-muted);
+}
+.hero-side {
+    padding: 18px 18px 20px;
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    box-shadow: var(--shadow-soft);
+}
+.hero-metric-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 10px;
+}
+.hero-metric {
+    padding: 10px 12px;
+    border-radius: var(--radius-md);
+    background: var(--surface-variant);
+    font-size: 0.8rem;
+}
+.hero-metric strong {
+    display: block;
+    font-size: 1.2rem;
+}
+
+/* Section shells */
+.section {
+    margin-top: 26px;
+    padding: 22px 24px;
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    box-shadow: var(--shadow-soft);
+}
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.section-title {
+    font-size: 1.1rem;
     font-weight: 600;
-    cursor: pointer;
-    border: none;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    font-size: 0.9rem;
 }
-.test-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+.section-sub {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* Feature buttons */
+.chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+.chip-btn {
+    border-radius: 999px;
+    border: none;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    background: var(--surface-variant);
+    color: var(--text);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+.chip-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 25px rgba(15,23,42,0.18);
 }
 
 /* Demo box */
 .demo-box {
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 14px;
-    background: var(--card-bg);
+    margin-top: 12px;
+    padding: 12px 14px;
+    border-radius: var(--radius-md);
+    background: var(--surface-variant);
+    font-size: 0.85rem;
     display: none;
-    animation: fadeInBox 0.5s ease forwards;
-}
-body.dark-mode .demo-box {
-    background: var(--card-bg-dark);
-}
-@keyframes fadeInBox {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
 }
 
-/* Experiment grid */
-.experiment-grid {
+/* Grid experiments */
+.grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 18px;
-    margin-top: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin-top: 10px;
 }
-.experiment-card {
-    background: var(--card-bg);
-    border-radius: 14px;
-    padding: 16px 16px 18px;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+.card {
+    border-radius: var(--radius-md);
+    padding: 12px 14px;
+    background: var(--surface-variant);
+    font-size: 0.85rem;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
-body.dark-mode .experiment-card {
-    background: var(--card-bg-dark);
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(15,23,42,0.18);
 }
-.experiment-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+.card h3 {
+    margin: 0 0 4px;
+    font-size: 0.95rem;
 }
 
 /* Micro experiments */
-.micro-experiments {
+.micro-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 10px;
-    margin-top: 16px;
-    font-size: 0.9rem;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 8px;
+    margin-top: 10px;
 }
-.micro-experiments div {
-    padding: 8px 10px;
-    border-radius: 10px;
-    background: rgba(255,255,255,0.55);
-    position: relative;
-    overflow: hidden;
+.micro-item {
+    border-radius: var(--radius-sm);
+    padding: 6px 8px;
+    background: var(--surface-variant);
+    font-size: 0.8rem;
 }
-body.dark-mode .micro-experiments div {
-    background: rgba(25,25,25,0.75);
-}
-.micro-experiments div span {
+.micro-item span {
     font-weight: 600;
-    color: var(--accent);
-    margin-right: 6px;
+    color: var(--primary);
+    margin-right: 4px;
+}
+
+/* Release notes / issues */
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 6px 0 0;
+    font-size: 0.85rem;
+}
+.list li {
+    margin-bottom: 6px;
 }
 
 /* Timeline */
 .timeline {
-    border-left: 2px solid rgba(0,0,0,0.1);
-    padding-left: 16px;
-    margin-top: 10px;
-}
-body.dark-mode .timeline {
-    border-left-color: rgba(255,255,255,0.15);
+    border-left: 2px solid rgba(148,163,184,0.4);
+    padding-left: 12px;
+    margin-top: 8px;
 }
 .timeline-item {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     position: relative;
 }
 .timeline-item::before {
     content: "";
     position: absolute;
+    left: -7px;
+    top: 4px;
     width: 10px;
     height: 10px;
-    border-radius: 50%;
-    background: var(--accent);
-    left: -21px;
-    top: 4px;
+    border-radius: 999px;
+    background: var(--primary);
 }
 .timeline-item strong {
     display: block;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
 }
 .timeline-item span {
-    font-size: 0.85rem;
-    opacity: 0.8;
+    font-size: 0.8rem;
+    color: var(--text-muted);
 }
 
 /* FAQ */
 .faq-item {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 .faq-q {
-    font-weight: 600;
-    cursor: pointer;
     display: flex;
     justify-content: space-between;
-    padding: 8px 0;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.9rem;
 }
 .faq-a {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease;
-    font-size: 0.9rem;
-    opacity: 0.9;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    transition: max-height var(--transition-med);
 }
 .faq-item.open .faq-a {
     max-height: 200px;
 }
 .faq-toggle {
     font-size: 1.2rem;
-    color: var(--accent);
-    margin-left: 8px;
+    color: var(--primary);
 }
 
-/* Release notes / Known issues */
-.notes-list, .issues-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-.notes-list li, .issues-list li {
-    margin-bottom: 8px;
-    font-size: 0.9rem;
-}
-
-/* Stress test area */
+/* Stress test */
 #stressContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
     gap: 6px;
-    margin-top: 14px;
+    margin-top: 10px;
+}
+.stress-card {
+    border-radius: var(--radius-sm);
+    padding: 6px 8px;
+    background: var(--surface-variant);
+    font-size: 0.75rem;
 }
 
 /* Back button */
+.back-row {
+    text-align: center;
+    margin-top: 26px;
+}
 .back-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    margin-top: 26px;
-    padding: 14px 26px;
-    background: linear-gradient(120deg, var(--accent), var(--accent-alt));
-    color: white;
-    font-weight: 600;
+    padding: 12px 22px;
     border-radius: 999px;
+    border: none;
+    background: linear-gradient(120deg, var(--primary), var(--secondary));
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 18px 40px rgba(37,99,235,0.6);
     text-decoration: none;
-    font-size: 1.05rem;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-    transition: transform 0.2s ease;
-}
-.back-btn:hover {
-    transform: translateY(-3px);
 }
 
 /* Footer */
-.footer-note {
+.footer {
     text-align: center;
-    margin: 40px 0 20px;
-    opacity: 0.7;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 26px;
 }
 </style>
 </head>
-
 <body>
 
-<!-- Preview Notification Bar -->
+<!-- Preview bar -->
 <div class="preview-bar" id="previewBar">
-    <span>🔧 You are viewing a Preview Build (UI Testing v2.0). Features may change or break.</span>
-    <button class="preview-close" onclick="closePreviewBar()">✕</button>
+    <span>🔧 UI Testing v3.0 · Material You Experimental Build · Features may change or break.</span>
+    <button onclick="closePreviewBar()">✕</button>
 </div>
 
-<!-- Floating Warning -->
-<div class="floating-warning">
-    ⚠ Experimental environment — some components are intentionally unstable.
+<!-- Experimental chip -->
+<div class="experimental-chip">
+    <i class="fas fa-flask"></i>
+    <span>Experimental UI Lab · v3.0</span>
 </div>
 
-<!-- Notification Icon -->
-<div class="notification-icon" id="notifIcon" onclick="toggleNotifications()">
+<!-- Notification FAB -->
+<div class="notification-fab" id="notifFab" onclick="toggleNotificationPanel()">
     <i class="fas fa-bell"></i>
-    <span class="notif-count" id="notifCount">0</span>
+    <span class="notification-badge" id="notifCount">0</span>
 </div>
 
 <!-- Notification Panel -->
 <div class="notification-panel" id="notifPanel">
-    <h3>Notifications</h3>
-    <div id="notifList"></div>
+    <div class="notif-header">
+        <div class="notif-header-left">
+            <div class="notif-header-title">Notifications</div>
+            <div class="notif-header-sub" id="notifHeaderSub">Loading…</div>
+        </div>
+        <div class="notif-header-actions">
+            <button class="notif-chip-btn" onclick="markAllRead()">
+                <i class="fas fa-check-double"></i> Mark all read
+            </button>
+            <button class="notif-chip-btn" onclick="clearAllNotifications()">
+                <i class="fas fa-trash"></i> Clear
+            </button>
+        </div>
+    </div>
+
+    <div class="notif-tabs">
+        <button class="notif-tab active" data-filter="all" onclick="setFilter('all', this)">All</button>
+        <button class="notif-tab" data-filter="unread" onclick="setFilter('unread', this)">Unread</button>
+        <button class="notif-tab" data-filter="updates" onclick="setFilter('updates', this)">Updates</button>
+        <button class="notif-tab" data-filter="fixes" onclick="setFilter('fixes', this)">Fixes</button>
+        <button class="notif-tab" data-filter="announcements" onclick="setFilter('announcements', this)">Announcements</button>
+    </div>
+
+    <div class="notif-search">
+        <input type="text" id="notifSearch" placeholder="Search notifications…" oninput="renderNotifications()">
+    </div>
+
+    <div class="notif-list" id="notifList"></div>
+
+    <button class="notif-fab-clear" onclick="clearAllNotifications()">
+        <i class="fas fa-broom"></i> Clear all
+    </button>
 </div>
 
-<!-- HERO -->
-<section class="hero fade-in">
-    <div class="hero-bg"></div>
-    <h1>New UI Testing v2.0</h1>
-    <p>A futuristic, feature‑rich preview of the upcoming Climate Change Club interface.</p>
-</section>
+<div class="page-shell">
 
-<div class="page-container">
-
-<!-- ABOUT + SNAPSHOT -->
-<section class="glass-panel fade-in two-col">
-    <div>
-        <h2>About This UI Testing Lab</h2>
-        <p>
-            This page is a comprehensive testing environment for new UI components, animations,
-            accessibility tools, and interaction patterns being considered for the Climate Change
-            Club website. It is intentionally dense with features so we can evaluate what works
-            well in practice.
-        </p>
-        <ul class="pillars-list">
-            <li><strong>Clarity:</strong> Make information easy to find and understand.</li>
-            <li><strong>Engagement:</strong> Use motion and structure to guide attention.</li>
-            <li><strong>Accessibility:</strong> Ensure the UI works for as many people as possible.</li>
-            <li><strong>Performance:</strong> Stress‑test layouts and animations at scale.</li>
-        </ul>
-    </div>
-    <div>
-        <h2>Snapshot</h2>
-        <p>Key metrics for this experimental build:</p>
-        <div class="stats-row">
-            <div class="stat-card">
-                <strong>20+</strong>
-                Components under test
+    <!-- HERO -->
+    <section class="hero reveal">
+        <div class="hero-main">
+            <div class="hero-title">New UI <span>Testing v3.0</span></div>
+            <div class="hero-sub">
+                A fully experimental interface for the Climate Change Club, combining Material You patterns,
+                futuristic motion, and dense feature testing in one controlled environment.
             </div>
-            <div class="stat-card">
-                <strong>50+</strong>
-                Micro‑experiments
-            </div>
-            <div class="stat-card">
-                <strong>15+</strong>
-                FAQ entries
-            </div>
-            <div class="stat-card">
-                <strong>v2.0</strong>
-                Current preview version
+            <div class="hero-tags">
+                <div class="hero-tag">Material You</div>
+                <div class="hero-tag">Notifications v2.1</div>
+                <div class="hero-tag">Accessibility</div>
+                <div class="hero-tag">Performance</div>
+                <div class="hero-tag">Experimental</div>
             </div>
         </div>
-    </div>
-</section>
-
-<!-- FEATURE TESTING PANEL -->
-<section class="glass-panel fade-in">
-    <h2>Feature Testing Panel</h2>
-    <p>Use these buttons to trigger specific UI tests and behaviors.</p>
-
-    <div class="feature-buttons">
-        <button class="test-btn" onclick="showDemo('animationDemo')">Test Animation</button>
-        <button class="test-btn" onclick="showDemo('modalDemo')">Test Modal</button>
-        <button class="test-btn" onclick="showDemo('hoverDemo')">Test Hover Card</button>
-        <button class="test-btn" onclick="showDemo('darkDemo')">Test Dark Mode Sync</button>
-        <button class="test-btn" onclick="showDemo('scrollDemo')">Test Scroll Reveal</button>
-        <button class="test-btn" onclick="showDemo('bannerDemo')">Test Banner Behavior</button>
-        <button class="test-btn" onclick="showDemo('glassDemo')">Test Glass Panel</button>
-        <button class="test-btn" onclick="showDemo('accessDemo')">Test Accessibility Toggles</button>
-        <button class="test-btn" onclick="showDemo('themeDemo')">Test Color Themes</button>
-        <button class="test-btn" onclick="showDemo('perfDemo')">Test Performance / Stress</button>
-    </div>
-
-    <div id="animationDemo" class="demo-box">
-        This box demonstrates a simple fade‑in animation when activated.
-    </div>
-    <div id="modalDemo" class="demo-box">
-        Modal demo placeholder — in a future iteration, this will open a full overlay modal.
-    </div>
-    <div id="hoverDemo" class="demo-box">
-        Hover over experiment cards below to see lift and glow effects.
-    </div>
-    <div id="darkDemo" class="demo-box">
-        Dark mode is synced with the main site via <code>localStorage.getItem('theme')</code>.
-    </div>
-    <div id="scrollDemo" class="demo-box">
-        Scroll down the page to see sections fade in as they enter the viewport.
-    </div>
-    <div id="bannerDemo" class="demo-box">
-        The preview bar and floating warning banner are always active in this build.
-    </div>
-    <div id="glassDemo" class="demo-box">
-        Most sections use glassmorphism to separate content without heavy borders.
-    </div>
-    <div id="accessDemo" class="demo-box">
-        Use the Accessibility Testing Panel below to toggle high contrast, large text, and more.
-    </div>
-    <div id="themeDemo" class="demo-box">
-        Use the Color Theme Testing Panel below to preview alternate accent colors.
-    </div>
-    <div id="perfDemo" class="demo-box">
-        Use the Performance / Stress Test section to spawn many components and observe behavior.
-    </div>
-</section>
-
-<!-- UI EXPERIMENT GRID -->
-<section class="glass-panel fade-in">
-    <h2>UI Experiments</h2>
-    <p>These are the primary UI patterns under evaluation in this preview.</p>
-    <div class="experiment-grid">
-        <div class="experiment-card"><h3>✨ Glass Panels</h3><p>Frosted containers with blur and depth.</p></div>
-        <div class="experiment-card"><h3>🌓 Dark Mode</h3><p>Color system that adapts to theme.</p></div>
-        <div class="experiment-card"><h3>🎨 Gradients</h3><p>Modern accent gradients for headings.</p></div>
-        <div class="experiment-card"><h3>⚡ Motion</h3><p>Subtle animations for feedback and focus.</p></div>
-        <div class="experiment-card"><h3>🌐 Parallax</h3><p>Background motion for visual interest.</p></div>
-        <div class="experiment-card"><h3>📚 Dense Content</h3><p>Long‑form sections tuned for readability.</p></div>
-    </div>
-</section>
-
-<!-- MICRO EXPERIMENTS -->
-<section class="glass-panel fade-in">
-    <h2>50 UI Micro‑Experiments</h2>
-    <p>Each item below represents a small, focused UI detail being evaluated.</p>
-    <div class="micro-experiments" id="microList"></div>
-</section>
-
-<!-- RELEASE NOTES + KNOWN ISSUES -->
-<section class="glass-panel fade-in two-col">
-    <div>
-        <h2>Release Notes (v2.0 Preview)</h2>
-        <ul class="notes-list" id="notesList"></ul>
-    </div>
-    <div>
-        <h2>Known Issues</h2>
-        <ul class="issues-list" id="issuesList"></ul>
-    </div>
-</section>
-
-<!-- COLOR THEME TESTING + ACCESSIBILITY -->
-<section class="glass-panel fade-in two-col">
-    <div>
-        <h2>Color Theme Testing Panel</h2>
-        <p>Preview alternate accent themes for future iterations.</p>
-        <div class="feature-buttons">
-            <button class="test-btn" onclick="setTheme('default')">Default</button>
-            <button class="test-btn" onclick="setTheme('teal')">Teal</button>
-            <button class="test-btn" onclick="setTheme('blue')">Blue</button>
-            <button class="test-btn" onclick="setTheme('purple')">Purple</button>
-            <button class="test-btn" onclick="setTheme('solar')">Solarized</button>
-        </div>
-    </div>
-    <div>
-        <h2>Accessibility Testing Panel</h2>
-        <p>Toggle accessibility‑related modes to evaluate compatibility.</p>
-        <div class="feature-buttons">
-            <button class="test-btn" onclick="toggleMode('high-contrast')">High Contrast</button>
-            <button class="test-btn" onclick="toggleMode('large-text')">Large Text</button>
-            <button class="test-btn" onclick="toggleMode('dyslexic-font')">Dyslexia‑Friendly Font</button>
-            <button class="test-btn" onclick="toggleMode('reduced-motion')">Reduced Motion</button>
-        </div>
-    </div>
-</section>
-
-<!-- PERFORMANCE / STRESS TEST -->
-<section class="glass-panel fade-in">
-    <h2>Performance / Component Stress Test</h2>
-    <p>Spawn many small components to observe layout and performance behavior.</p>
-    <div class="feature-buttons">
-        <button class="test-btn" onclick="spawnStress(50)">Spawn 50</button>
-        <button class="test-btn" onclick="spawnStress(100)">Spawn 100</button>
-        <button class="test-btn" onclick="clearStress()">Clear</button>
-    </div>
-    <div id="stressContainer"></div>
-</section>
-
-<!-- TIMELINE + FAQ -->
-<section class="glass-panel fade-in two-col">
-    <div>
-        <h2>Rollout Timeline</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <strong>Phase 1 — Internal Testing</strong>
-                <span>Collect feedback from beta members and club leaders.</span>
+        <div class="hero-side">
+            <div class="section-header">
+                <div class="section-title">Build Snapshot</div>
             </div>
-            <div class="timeline-item">
-                <strong>Phase 2 — Refinement</strong>
-                <span>Keep the strongest patterns, remove anything distracting.</span>
-            </div>
-            <div class="timeline-item">
-                <strong>Phase 3 — Integration</strong>
-                <span>Apply chosen patterns to core pages (About, Projects, Events).</span>
-            </div>
-            <div class="timeline-item">
-                <strong>Phase 4 — Public Launch</strong>
-                <span>Release a polished v1.4 UI to all visitors.</span>
+            <div class="hero-metric-row">
+                <div class="hero-metric">
+                    <strong>3.0</strong>
+                    Current preview version
+                </div>
+                <div class="hero-metric">
+                    <strong>20+</strong>
+                    Components under test
+                </div>
+                <div class="hero-metric">
+                    <strong>50+</strong>
+                    Micro‑experiments
+                </div>
+                <div class="hero-metric">
+                    <strong>15+</strong>
+                    FAQ entries
+                </div>
             </div>
         </div>
-    </div>
-    <div>
-        <h2>FAQ</h2>
-        <div id="faqContainer"></div>
-    </div>
-</section>
+    </section>
 
-<!-- BACK BUTTON -->
-<section class="glass-panel fade-in" style="text-align:center;">
-    <h2>Return to Beta Test Lab</h2>
-    <p>When you're done exploring this preview, return to the Beta Test Lab to share your feedback.</p>
-    <a href="beta-test.html" class="back-btn">⬅ Back to Beta Test Lab</a>
-</section>
+    <!-- Feature Testing Panel -->
+    <section class="section reveal">
+        <div class="section-header">
+            <div>
+                <div class="section-title">Feature Testing Panel</div>
+                <div class="section-sub">Trigger specific UI behaviors and observe how they respond.</div>
+            </div>
+        </div>
+        <div class="chip-row">
+            <button class="chip-btn" onclick="showDemo('animationDemo')"><i class="fas fa-play"></i> Animation</button>
+            <button class="chip-btn" onclick="showDemo('modalDemo')"><i class="fas fa-window-maximize"></i> Modal</button>
+            <button class="chip-btn" onclick="showDemo('hoverDemo')"><i class="fas fa-hand-pointer"></i> Hover</button>
+            <button class="chip-btn" onclick="showDemo('darkDemo')"><i class="fas fa-moon"></i> Dark Mode Sync</button>
+            <button class="chip-btn" onclick="showDemo('scrollDemo')"><i class="fas fa-arrow-down"></i> Scroll Reveal</button>
+            <button class="chip-btn" onclick="showDemo('bannerDemo')"><i class="fas fa-exclamation-triangle"></i> Banners</button>
+            <button class="chip-btn" onclick="showDemo('notifDemo')"><i class="fas fa-bell"></i> Notifications</button>
+            <button class="chip-btn" onclick="showDemo('accessDemo')"><i class="fas fa-universal-access"></i> Accessibility</button>
+            <button class="chip-btn" onclick="showDemo('themeDemo')"><i class="fas fa-palette"></i> Color Themes</button>
+            <button class="chip-btn" onclick="showDemo('perfDemo')"><i class="fas fa-tachometer-alt"></i> Performance</button>
+        </div>
 
-<p class="footer-note fade-in">
-    Climate Change Club · New UI Testing v2.0 · Experimental Preview
-</p>
+        <div id="animationDemo" class="demo-box">This box appears with a simple slide‑up animation when selected.</div>
+        <div id="modalDemo" class="demo-box">Modal demo placeholder — future builds may include a full overlay dialog.</div>
+        <div id="hoverDemo" class="demo-box">Hover over cards below to see lift, shadow, and subtle motion.</div>
+        <div id="darkDemo" class="demo-box">Dark mode is synced with the main site via <code>localStorage.getItem('theme')</code>.</div>
+        <div id="scrollDemo" class="demo-box">Scroll down to see sections reveal as they enter the viewport.</div>
+        <div id="bannerDemo" class="demo-box">The preview bar and experimental chip are always active in this build.</div>
+        <div id="notifDemo" class="demo-box">Notifications v2.1 uses Material You patterns, categories, filters, and ripple effects.</div>
+        <div id="accessDemo" class="demo-box">Use the Accessibility Panel below to toggle high contrast, large text, and reduced motion.</div>
+        <div id="themeDemo" class="demo-box">Use the Color Theme Panel below to preview alternate accent palettes.</div>
+        <div id="perfDemo" class="demo-box">Use the Stress Test section to spawn many components and observe performance.</div>
+    </section>
+
+    <!-- UI Experiments -->
+    <section class="section reveal">
+        <div class="section-header">
+            <div>
+                <div class="section-title">UI Experiments</div>
+                <div class="section-sub">Primary patterns under evaluation in this preview.</div>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <h3>Material Surfaces</h3>
+                <p>Layered surfaces with elevation, rounded corners, and soft shadows.</p>
+            </div>
+            <div class="card">
+                <h3>Dynamic Color</h3>
+                <p>Accent colors that can be swapped to test different visual identities.</p>
+            </div>
+            <div class="card">
+                <h3>Motion & Feedback</h3>
+                <p>Subtle transitions and micro‑interactions to guide attention.</p>
+            </div>
+            <div class="card">
+                <h3>Notification Center</h3>
+                <p>Inbox‑style notifications with categories, filters, and search.</p>
+            </div>
+            <div class="card">
+                <h3>Accessibility Modes</h3>
+                <p>High contrast, large text, reduced motion, and font adjustments.</p>
+            </div>
+            <div class="card">
+                <h3>Stress Testing</h3>
+                <p>Component spawning to observe layout and performance under load.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Micro Experiments -->
+    <section class="section reveal">
+        <div class="section-header">
+            <div>
+                <div class="section-title">50 UI Micro‑Experiments</div>
+                <div class="section-sub">Each item represents a small, focused UI detail under review.</div>
+            </div>
+        </div>
+        <div class="micro-grid" id="microList"></div>
+    </section>
+
+    <!-- Release Notes + Known Issues -->
+    <section class="section reveal">
+        <div class="section-header">
+            <div class="section-title">Release Notes & Known Issues</div>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <h3>Release Notes (v3.0)</h3>
+                <ul class="list" id="notesList"></ul>
+            </div>
+            <div class="card">
+                <h3>Known Issues</h3>
+                <ul class="list" id="issuesList"></ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Color Themes + Accessibility -->
+    <section class="section reveal">
+        <div class="grid">
+            <div class="card">
+                <h3>Color Theme Testing Panel</h3>
+                <p>Preview alternate accent palettes for future iterations.</p>
+                <div class="chip-row">
+                    <button class="chip-btn" onclick="setTheme('default')">Default</button>
+                    <button class="chip-btn" onclick="setTheme('blue')">Blue</button>
+                    <button class="chip-btn" onclick="setTheme('teal')">Teal</button>
+                    <button class="chip-btn" onclick="setTheme('purple')">Purple</button>
+                    <button class="chip-btn" onclick="setTheme('amber')">Amber</button>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Accessibility Testing Panel</h3>
+                <p>Toggle modes to evaluate compatibility and comfort.</p>
+                <div class="chip-row">
+                    <button class="chip-btn" onclick="toggleMode('high-contrast')"><i class="fas fa-adjust"></i> High Contrast</button>
+                    <button class="chip-btn" onclick="toggleMode('large-text')"><i class="fas fa-text-height"></i> Large Text</button>
+                    <button class="chip-btn" onclick="toggleMode('dyslexic-font')"><i class="fas fa-font"></i> Dyslexia‑Friendly Font</button>
+                    <button class="chip-btn" onclick="toggleMode('reduced-motion')"><i class="fas fa-wave-square"></i> Reduced Motion</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Performance / Stress Test -->
+    <section class="section reveal">
+        <div class="section-header">
+            <div>
+                <div class="section-title">Performance / Stress Test</div>
+                <div class="section-sub">Spawn many components to observe layout and responsiveness.</div>
+            </div>
+        </div>
+        <div class="chip-row">
+            <button class="chip-btn" onclick="spawnStress(50)">Spawn 50</button>
+            <button class="chip-btn" onclick="spawnStress(100)">Spawn 100</button>
+            <button class="chip-btn" onclick="spawnStress(200)">Spawn 200</button>
+            <button class="chip-btn" onclick="clearStress()">Clear</button>
+        </div>
+        <div id="stressContainer"></div>
+    </section>
+
+    <!-- Timeline + FAQ -->
+    <section class="section reveal">
+        <div class="grid">
+            <div class="card">
+                <h3>Rollout Timeline</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <strong>Phase 1 — Internal Testing</strong>
+                        <span>Gather feedback from beta members and club leaders.</span>
+                    </div>
+                    <div class="timeline-item">
+                        <strong>Phase 2 — Refinement</strong>
+                        <span>Keep the strongest patterns, remove anything distracting.</span>
+                    </div>
+                    <div class="timeline-item">
+                        <strong>Phase 3 — Integration</strong>
+                        <span>Apply chosen patterns to core pages (About, Projects, Events).</span>
+                    </div>
+                    <div class="timeline-item">
+                        <strong>Phase 4 — Public Launch</strong>
+                        <span>Release a polished UI to all visitors.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <h3>FAQ</h3>
+                <div id="faqContainer"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back -->
+    <div class="back-row reveal">
+        <a href="beta-test.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back to Beta Test Lab
+        </a>
+    </div>
+
+    <div class="footer reveal">
+        Climate Change Club · UI Testing v3.0 · Material You Experimental Build
+    </div>
 
 </div>
 
 <script>
-// Apply saved theme from main site
+// Dark mode sync
 if (localStorage.getItem('theme') === 'dark-mode') {
     document.body.classList.add('dark-mode');
 }
 
-// Show preview bar on load
+// Preview bar
 window.addEventListener("load", () => {
     setTimeout(() => {
         document.getElementById("previewBar").classList.add("show");
@@ -891,7 +1037,7 @@ function closePreviewBar() {
     document.getElementById("previewBar").classList.remove("show");
 }
 
-// Scroll reveal
+// Reveal on scroll
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -900,110 +1046,291 @@ const observer = new IntersectionObserver((entries) => {
         }
     });
 }, { threshold: 0.15 });
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Notification Data
+/* ===========================
+   Notifications v2.1 — Material You
+   =========================== */
+
 let notifications = [
     {
-        title: "v2.0 Preview Released",
-        message: "New UI Testing v2.0 is now live with feature panels and notifications.",
+        id: 1,
+        title: "v3.0 Preview Released",
+        message: "New UI Testing v3.0 is now live with Material You notifications and expanded feature panels.",
         time: "2 hours ago",
+        category: "updates",
+        priority: "high",
         read: false
     },
     {
+        id: 2,
         title: "Bug Fixes Applied",
-        message: "Resolved layout issues in the Feature Testing Panel.",
+        message: "Resolved layout issues in the Feature Testing Panel and improved scroll reveal performance.",
         time: "1 day ago",
+        category: "fixes",
+        priority: "medium",
         read: false
     },
     {
+        id: 3,
         title: "Accessibility Tools Added",
-        message: "High contrast, large text, and reduced motion toggles are now available.",
+        message: "High contrast, large text, dyslexia‑friendly font, and reduced motion toggles are now available.",
         time: "3 days ago",
+        category: "announcements",
+        priority: "medium",
         read: false
+    },
+    {
+        id: 4,
+        title: "Color Themes Enabled",
+        message: "Try Blue, Teal, Purple, and Amber accent palettes in the Color Theme Testing Panel.",
+        time: "5 days ago",
+        category: "updates",
+        priority: "low",
+        read: true
     }
 ];
 
-// Load notifications into panel
-function loadNotifications() {
-    const list = document.getElementById("notifList");
-    list.innerHTML = "";
+let notifFilter = "all";
+let notifNextId = 5;
+let notifAutoTimer = null;
 
-    notifications.forEach((n, index) => {
-        const item = document.createElement("div");
-        item.className = "notif-item";
-        if (n.read) item.classList.add("read");
+const notifListEl = document.getElementById("notifList");
+const notifCountEl = document.getElementById("notifCount");
+const notifHeaderSubEl = document.getElementById("notifHeaderSub");
+const notifSearchEl = document.getElementById("notifSearch");
+const notifPanelEl = document.getElementById("notifPanel");
+const notifFabEl = document.getElementById("notifFab");
 
-        item.innerHTML = `
-            <div class="notif-title">${n.title}</div>
-            <div class="notif-time">${n.time}</div>
-            <div class="notif-body">${n.message}
-                <button class="notif-delete" onclick="deleteNotification(${index}); event.stopPropagation();">Delete</button>
-            </div>
-        `;
+// Render notifications
+function renderNotifications() {
+    const query = notifSearchEl.value.toLowerCase().trim();
+    notifListEl.innerHTML = "";
 
-        item.onclick = () => expandNotification(index, item);
-        list.appendChild(item);
+    let filtered = notifications.filter(n => {
+        if (notifFilter === "unread" && n.read) return false;
+        if (["updates","fixes","announcements"].includes(notifFilter) && n.category !== notifFilter) return false;
+        if (query && !(n.title.toLowerCase().includes(query) || n.message.toLowerCase().includes(query))) return false;
+        return true;
     });
 
-    updateNotifCount();
-}
-
-// Expand notification + mark as read
-function expandNotification(index, item) {
-    notifications[index].read = true;
-    item.classList.toggle("open");
-    loadNotifications();
-}
-
-// Delete notification
-function deleteNotification(index) {
-    notifications.splice(index, 1);
-    loadNotifications();
-}
-
-// Update unread count
-function updateNotifCount() {
-    const count = notifications.filter(n => !n.read).length;
-    const badge = document.getElementById("notifCount");
-
-    if (count === 0) {
-        badge.style.display = "none";
+    if (filtered.length === 0) {
+        const empty = document.createElement("div");
+        empty.style.fontSize = "0.8rem";
+        empty.style.color = "#9ca3af";
+        empty.style.padding = "8px 4px 40px";
+        empty.textContent = "No notifications match the current filters.";
+        notifListEl.appendChild(empty);
     } else {
-        badge.style.display = "block";
-        badge.textContent = count;
+        filtered.forEach(n => {
+            const item = document.createElement("div");
+            item.className = "notif-item" + (n.read ? "" : " unread");
+            item.dataset.id = n.id;
+
+            const priorityClass = n.priority === "high" ? "high" : n.priority === "medium" ? "medium" : "low";
+
+            item.innerHTML = `
+                <div class="notif-header-row">
+                    <div class="notif-title">${n.title}</div>
+                    <div class="notif-meta">
+                        <span class="notif-priority ${priorityClass}">${n.priority.toUpperCase()}</span>
+                        <span class="notif-time">${n.time}</span>
+                    </div>
+                </div>
+                <div class="notif-body">${n.message}</div>
+                <div class="notif-actions">
+                    <button class="notif-action-btn" onclick="markRead(${n.id}); event.stopPropagation();">
+                        <i class="fas fa-check"></i> Read
+                    </button>
+                    <button class="notif-action-btn delete" onclick="deleteNotification(${n.id}); event.stopPropagation();">
+                        <i class="fas fa-trash"></i> Delete
+                    </button>
+                </div>
+            `;
+
+            item.addEventListener("click", (e) => {
+                createRipple(e, item);
+                toggleNotificationOpen(n.id);
+            });
+
+            notifListEl.appendChild(item);
+        });
+    }
+
+    updateNotifCount();
+    updateNotifHeader();
+}
+
+// Ripple effect
+function createRipple(e, item) {
+    const circle = document.createElement("span");
+    const diameter = Math.max(item.clientWidth, item.clientHeight);
+    const radius = diameter / 2;
+    circle.style.width = circle.style.height = `${diameter}px`;
+    circle.style.left = `${e.clientX - item.getBoundingClientRect().left - radius}px`;
+    circle.style.top = `${e.clientY - item.getBoundingClientRect().top - radius}px`;
+    circle.classList.add("notif-ripple");
+    const ripple = item.getElementsByClassName("notif-ripple")[0];
+    if (ripple) ripple.remove();
+    item.appendChild(circle);
+}
+
+// Toggle open + mark read
+function toggleNotificationOpen(id) {
+    notifications = notifications.map(n => n.id === id ? { ...n, read: true } : n);
+    const item = notifListEl.querySelector(`.notif-item[data-id="${id}"]`);
+    if (item) item.classList.toggle("open");
+    updateNotifCount();
+    updateNotifHeader();
+}
+
+// Mark read
+function markRead(id) {
+    notifications = notifications.map(n => n.id === id ? { ...n, read: true } : n);
+    renderNotifications();
+}
+
+// Delete
+function deleteNotification(id) {
+    notifications = notifications.filter(n => n.id !== id);
+    renderNotifications();
+}
+
+// Mark all read
+function markAllRead() {
+    notifications = notifications.map(n => ({ ...n, read: true }));
+    renderNotifications();
+}
+
+// Clear all
+function clearAllNotifications() {
+    notifications = [];
+    renderNotifications();
+}
+
+// Update count + bell pulse
+function updateNotifCount() {
+    const unread = notifications.filter(n => !n.read).length;
+    if (unread === 0) {
+        notifCountEl.style.display = "none";
+        notifFabEl.classList.remove("pulse");
+    } else {
+        notifCountEl.style.display = "flex";
+        notifCountEl.textContent = unread;
+        notifFabEl.classList.add("pulse");
     }
 }
 
-// Toggle panel
-function toggleNotifications() {
-    const panel = document.getElementById("notifPanel");
-    panel.style.display = panel.style.display === "flex" ? "none" : "flex";
+// Header text
+function updateNotifHeader() {
+    const total = notifications.length;
+    const unread = notifications.filter(n => !n.read).length;
+    notifHeaderSubEl.textContent = `${unread} unread · ${total} total`;
 }
 
-// Initialize
-window.addEventListener("load", loadNotifications);
+// Filter
+function setFilter(filter, el) {
+    notifFilter = filter;
+    document.querySelectorAll(".notif-tab").forEach(tab => tab.classList.remove("active"));
+    el.classList.add("active");
+    renderNotifications();
+}
+
+// Panel toggle
+function toggleNotificationPanel() {
+    notifPanelEl.classList.toggle("open");
+}
+
+// Auto-add notifications (simulation)
+function startAutoNotifications() {
+    if (notifAutoTimer) clearInterval(notifAutoTimer);
+    notifAutoTimer = setInterval(() => {
+        const types = [
+            {
+                title: "New Beta Note",
+                message: "A new observation has been logged in the UI Testing Lab.",
+                category: "announcements",
+                priority: "low"
+            },
+            {
+                title: "Minor Fix Deployed",
+                message: "Adjusted spacing in the micro‑experiments grid for better readability.",
+                category: "fixes",
+                priority: "low"
+            },
+            {
+                title: "Performance Observation",
+                message: "Stress test with 200 cards completed successfully on this device.",
+                category: "updates",
+                priority: "medium"
+            }
+        ];
+        const pick = types[Math.floor(Math.random() * types.length)];
+        notifications.unshift({
+            id: notifNextId++,
+            title: pick.title,
+            message: pick.message,
+            time: "Just now",
+            category: pick.category,
+            priority: pick.priority,
+            read: false
+        });
+        renderNotifications();
+        playNotificationSound();
+    }, 45000); // every 45s
+}
+
+// Sound (subtle)
+function playNotificationSound() {
+    try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const o = ctx.createOscillator();
+        const g = ctx.createGain();
+        o.type = "triangle";
+        o.frequency.value = 880;
+        o.connect(g);
+        g.connect(ctx.destination);
+        g.gain.setValueAtTime(0.0001, ctx.currentTime);
+        g.gain.exponentialRampToValueAtTime(0.08, ctx.currentTime + 0.01);
+        g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.25);
+        o.start();
+        o.stop(ctx.currentTime + 0.3);
+    } catch (e) {
+        // ignore if audio not allowed
+    }
+}
+
+// Init notifications
+window.addEventListener("load", () => {
+    renderNotifications();
+    startAutoNotifications();
+});
+
+/* ===========================
+   Micro experiments, notes, issues, FAQ, etc.
+   =========================== */
 
 // Micro experiments
 const microList = document.getElementById("microList");
 for (let i = 1; i <= 50; i++) {
     const div = document.createElement("div");
+    div.className = "micro-item";
     div.innerHTML = `<span>${String(i).padStart(2,'0')}.</span> Micro‑experiment #${i} — testing a specific UI detail.`;
     microList.appendChild(div);
 }
 
 // Release notes
 const notes = [
-    "Introduced glassmorphism panels for major sections.",
-    "Added Feature Testing Panel with multiple demo triggers.",
-    "Implemented notification center with unread counts.",
-    "Added floating experimental warning banner.",
-    "Integrated preview notification bar at the top.",
-    "Added color theme testing controls.",
-    "Introduced accessibility toggles (contrast, text size, motion).",
-    "Implemented performance / stress test component.",
-    "Expanded FAQ and rollout timeline sections.",
-    "Synced dark mode with main site settings."
+    "Introduced Material You‑inspired notification center with categories, filters, and search.",
+    "Added ripple effects and priority labels to notifications.",
+    "Implemented auto‑refresh simulation for new notifications.",
+    "Expanded Feature Testing Panel with additional demo triggers.",
+    "Refined color theme testing and accessibility toggles.",
+    "Improved scroll reveal and section transitions.",
+    "Enhanced stress test tools for layout and performance evaluation.",
+    "Updated layout to a v3.0 experimental shell with hero metrics.",
+    "Expanded FAQ and rollout timeline for clearer context.",
+    "Synced dark mode with main site and improved contrast handling."
 ];
 const notesList = document.getElementById("notesList");
 notes.forEach(n => {
@@ -1015,10 +1342,10 @@ notes.forEach(n => {
 // Known issues
 const issues = [
     "Modal demo is currently a placeholder and does not open a full overlay.",
-    "Performance may vary on older devices when running large stress tests.",
+    "Auto‑generated notifications are simulated and not connected to a backend.",
     "Color theme changes are not persisted between page reloads.",
-    "Accessibility modes may conflict with some custom themes.",
-    "Notification messages are static in this preview build."
+    "Accessibility modes may overlap visually with some theme combinations.",
+    "Stress tests with very high counts may impact performance on older devices."
 ];
 const issuesList = document.getElementById("issuesList");
 issues.forEach(i => {
@@ -1039,7 +1366,7 @@ const faqQuestions = [
     "What happens to the old UI?",
     "How often is this updated?",
     "Is this mobile‑friendly?",
-    "What is glassmorphism?",
+    "What is Material You?",
     "Why test color themes?",
     "How do animations help UX?",
     "What is the stress test for?",
@@ -1054,7 +1381,9 @@ faqQuestions.forEach(q => {
             <span>${q}</span>
             <span class="faq-toggle">+</span>
         </div>
-        <div class="faq-a">This preview exists to test UI patterns, performance, and accessibility before they are considered for the main site.</div>
+        <div class="faq-a">
+            This preview exists to test UI patterns, performance, and accessibility before they are considered for the main site.
+        </div>
     `;
     faqContainer.appendChild(item);
 });
@@ -1067,7 +1396,11 @@ document.addEventListener("click", e => {
     }
 });
 
-// Feature demo boxes
+/* ===========================
+   Feature demos, themes, accessibility, stress test
+   =========================== */
+
+// Demo boxes
 function showDemo(id) {
     document.querySelectorAll(".demo-box").forEach(box => box.style.display = "none");
     const target = document.getElementById(id);
@@ -1078,20 +1411,25 @@ function showDemo(id) {
 function setTheme(name) {
     const root = document.documentElement;
     if (name === "default") {
-        root.style.setProperty("--accent", "#00b894");
-        root.style.setProperty("--accent-alt", "#0984e3");
-    } else if (name === "teal") {
-        root.style.setProperty("--accent", "#00b894");
-        root.style.setProperty("--accent-alt", "#00cec9");
+        root.style.setProperty("--primary", "#2563eb");
+        root.style.setProperty("--secondary", "#10b981");
+        root.style.setProperty("--primary-container", "#dbeafe");
     } else if (name === "blue") {
-        root.style.setProperty("--accent", "#0984e3");
-        root.style.setProperty("--accent-alt", "#74b9ff");
+        root.style.setProperty("--primary", "#1d4ed8");
+        root.style.setProperty("--secondary", "#0ea5e9");
+        root.style.setProperty("--primary-container", "#bfdbfe");
+    } else if (name === "teal") {
+        root.style.setProperty("--primary", "#0d9488");
+        root.style.setProperty("--secondary", "#22c55e");
+        root.style.setProperty("--primary-container", "#ccfbf1");
     } else if (name === "purple") {
-        root.style.setProperty("--accent", "#6c5ce7");
-        root.style.setProperty("--accent-alt", "#a29bfe");
-    } else if (name === "solar") {
-        root.style.setProperty("--accent", "#e1b12c");
-        root.style.setProperty("--accent-alt", "#fbc531");
+        root.style.setProperty("--primary", "#7c3aed");
+        root.style.setProperty("--secondary", "#ec4899");
+        root.style.setProperty("--primary-container", "#e9d5ff");
+    } else if (name === "amber") {
+        root.style.setProperty("--primary", "#d97706");
+        root.style.setProperty("--secondary", "#f97316");
+        root.style.setProperty("--primary-container", "#fef3c7");
     }
 }
 
@@ -1106,24 +1444,14 @@ function spawnStress(count) {
     container.innerHTML = "";
     for (let i = 0; i < count; i++) {
         const div = document.createElement("div");
-        div.style.padding = "6px";
-        div.style.borderRadius = "8px";
-        div.style.background = "rgba(255,255,255,0.7)";
-        div.style.fontSize = "0.8rem";
+        div.className = "stress-card";
         div.textContent = "Card " + (i + 1);
-        if (document.body.classList.contains("dark-mode")) {
-            div.style.background = "rgba(30,30,30,0.7)";
-        }
         container.appendChild(div);
     }
 }
 function clearStress() {
     document.getElementById("stressContainer").innerHTML = "";
 }
-
-// Init notifications
-window.addEventListener("load", loadNotifications);
 </script>
-
 </body>
 </html>
