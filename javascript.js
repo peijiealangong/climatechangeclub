@@ -1,7 +1,7 @@
 /**
  * CLIMATE CHANGE CLUB - MASTER CORE SCRIPT
  * Version: 1.6
- * Beta Version: 3.0
+ * Beta Version: 3.1
  * Contains: 
  * - Theme & Music Persistence
  * - Session-based Eco-Popups
@@ -77,9 +77,9 @@ function setupUpdateNotification() {
 
 // BETA Update: Specifically redirects users to the Beta Login
 function setupUpdateNotificationBETA() {
-    const updatePopup = document.getElementById("updatePopupBETA");
+    const updatePopup = document.getElementById("updatePopupBETA");	
     const updateBtn = updatePopup ? updatePopup.querySelector("button") : null;
-    const currentVersion = "3.0"; 
+    const currentVersion = "3.1"; 
 
     // 1. Check if the user is actually logged into the Beta
     const isBetaLoggedIn = localStorage.getItem('betaLoggedIn') || sessionStorage.getItem('betaLoggedIn');
