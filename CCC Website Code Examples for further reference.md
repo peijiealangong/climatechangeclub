@@ -2608,10 +2608,9 @@ Lock for Beta testing (except for docs)
     </div>
 
 <script>
-  var beamer_config = {
-    product_id : "hgibdeWX83576", // DO NOT CHANGE: This is your product code on Beamer
-    user_id : "user's unique id" // A unique ID to identify the user
-  };
+var beamer_config = {
+  product_id : 'hgibdeWX83576', //DO NOT CHANGE: This is your product code on Beamer
+  user_id: "user's unique id", // A unique ID to identify the user
+};
 </script>
 <script type="text/javascript" src="https://app.getbeamer.com/js/beamer-embed.js" defer="defer"></script>
-
