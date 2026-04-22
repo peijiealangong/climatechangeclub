@@ -1,6 +1,6 @@
 /**
  * CLIMATE CHANGE CLUB - MASTER CORE SCRIPT
- * Version: 1.6
+ * Version: 1.7
  * Beta Version: 3.1
  * Contains: 
  * - Theme & Music Persistence
@@ -61,7 +61,7 @@ function handleUpdateSequence(btn, version, redirectUrl) {
 function setupUpdateNotification() {
     const updatePopup = document.getElementById("updatePopup");
     const updateBtn = document.getElementById("updateBtn");
-    const currentVersion = "1.6"; 
+    const currentVersion = "1.7"; 
 
     if (!updatePopup || !updateBtn) return;
 
