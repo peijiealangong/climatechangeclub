@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Track your Climate Change Club order using your unique order ID." />
+
+  <title>Climate Change Club | Order Tracking</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <script src="javascript.js" defer></script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68D6N5XQ6D"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-68D6N5XQ6D');
+  </script>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: #f4f6f8;
+      color: #111;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+
+    .subtext {
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .example-box {
+      background: #eef4ff;
+      border-left: 5px solid #1a73e8;
+      padding: 15px;
+      border-radius: 8px;
+      font-family: monospace;
+      margin-top: 10px;
+      word-break: break-all;
+    }
+
+    .highlight {
+      color: #1a73e8;
+      font-weight: 600;
+    }
+
+    .note {
+      margin-top: 20px;
+      color: #666;
+      font-size: 14px;
+    }
+
+    .warning {
+      margin-top: 25px;
+      padding: 15px;
+      background: #fff3cd;
+      border-left: 5px solid #ffcc00;
+      border-radius: 8px;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      background: #111;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    nav li {
+      position: relative;
+    }
+
+    nav a {
+      display: block;
+      padding: 14px 18px;
+      color: white;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      background: #333;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="orders.html">Orders</a></li>
+  </ul>
+</nav>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+  <div class="card">
+
+    <h1>Order Tracking System</h1>
+
+    <p class="subtext">
+      Track your Climate Change Club order using your <span class="highlight">unique order ID</span>.
+    </p>
+
+    <h2>How to use it</h2>
+    <p>Paste your tracking link into your browser:</p>
+
+    <div class="example-box">
+      https://climatechangeclub.pages.dev/orders/<span class="highlight">YOUR_UNIQUE_ID_HERE</span>
+    </div>
+
+    <p class="note">
+      Example: ORD-001, 109382, or your assigned tracking code.
+    </p>
+
+    <div class="warning">
+      ⚠️ Make sure your ID is correct. If the page does not load, the order may not exist yet.
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Order Tracking</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f3f4f6;
+    margin: 0;
+    color: #111;
+  }
+
+  .topbar {
+    background: #111;
+    color: white;
+    padding: 15px 20px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .container {
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 0 15px;
+  }
+
+  .card {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  }
+
+  .order-title {
+    font-size: 22px;
+    margin-bottom: 5px;
+  }
+
+  .order-id {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .status {
+    font-size: 16px;
+    font-weight: bold;
+    color: #1a73e8;
+    margin-bottom: 20px;
+  }
+
+  /* Progress bar */
+  .progress {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0 10px;
+    position: relative;
+  }
+
+  .progress::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: #ddd;
+    z-index: 0;
+  }
+
+  .step {
+    text-align: center;
+    width: 25%;
+    position: relative;
+    z-index: 1;
+    font-size: 12px;
+  }
+
+  .dot {
+    width: 20px;
+    height: 20px;
+    background: #ddd;
+    border-radius: 50%;
+    margin: 0 auto 6px;
+  }
+
+  .active .dot {
+    background: #1a73e8;
+  }
+
+  .active-text {
+    color: #1a73e8;
+    font-weight: bold;
+  }
+
+  .info {
+    margin-top: 25px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+  }
+
+  .label {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  a {
+    color: #1a73e8;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 15px;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+  Order Tracking
+</div>
+
+<div class="container">
+
+  <div class="card">
+    <div class="order-title">Yousuf Fahad</div>
+    <div class="order-id">Order ID: ORD-001</div>
+
+    <div class="status">🚚 Out for delivery (estimated)</div>
+
+    <!-- Progress tracker -->
+    <div class="progress">
+
+      <div class="step active">
+        <div class="dot"></div>
+        Ordered
+      </div>
+
+      <div class="step active">
+        <div class="dot"></div>
+        Packed
+      </div>
+
+      <div class="step active">
+        <div class="dot"></div>
+        Shipped
+      </div>
+
+      <div class="step">
+        <div class="dot"></div>
+        Delivered
+      </div>
+
+    </div>
+
+    <div class="info">
+      <div class="label">Item</div>
+      <div>2 paper guns</div>
+
+      <div class="label">Last Update</div>
+      <div>May 4, 2026</div>
+
+      <div class="label">Location</div>
+      <div>Warehouse → In transit</div>
+    </div>
+
+    <a href="https://climatechangeclub.pages.dev/orders">← Back to orders</a>
+  </div>
+
+</div>
+
+</body>
+</html>
