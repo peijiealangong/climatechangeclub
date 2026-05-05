@@ -1,175 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Order Tracking</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Orders to the CCC please sign in with the link provided." />
+  <title>Climate Change Club | Orders</title>
 
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background: #f3f4f6;
-    margin: 0;
-    color: #111;
-  }
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-  .topbar {
-    background: #111;
-    color: white;
-    padding: 15px 20px;
-    font-size: 18px;
-    font-weight: bold;
-  }
+  <script src="javascript.js" defer></script>
 
-  .container {
-    max-width: 700px;
-    margin: 30px auto;
-    padding: 0 15px;
-  }
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68D6N5XQ6D"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-68D6N5XQ6D');
+  </script>
 
-  .card {
-    background: white;
-    border-radius: 10px;
-    padding: 25px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  }
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+    }
 
-  .order-title {
-    font-size: 22px;
-    margin-bottom: 5px;
-  }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+    }
 
-  .order-id {
-    color: #666;
-    font-size: 14px;
-    margin-bottom: 20px;
-  }
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
 
-  .status {
-    font-size: 16px;
-    font-weight: bold;
-    color: #1a73e8;
-    margin-bottom: 20px;
-  }
+    .status {
+      background: #e8f1ff;
+      color: #1a73e8;
+      padding: 8px 12px;
+      display: inline-block;
+      border-radius: 20px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
 
-  /* Progress bar */
-  .progress {
-    display: flex;
-    justify-content: space-between;
-    margin: 30px 0 10px;
-    position: relative;
-  }
+    /* Progress */
+    .progress {
+      display: flex;
+      justify-content: space-between;
+      margin: 30px 0;
+      position: relative;
+    }
 
-  .progress::before {
-    content: "";
-    position: absolute;
-    top: 10px;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: #ddd;
-    z-index: 0;
-  }
+    .progress::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: #ddd;
+    }
 
-  .step {
-    text-align: center;
-    width: 25%;
-    position: relative;
-    z-index: 1;
-    font-size: 12px;
-  }
+    .step {
+      text-align: center;
+      width: 25%;
+    }
 
-  .dot {
-    width: 20px;
-    height: 20px;
-    background: #ddd;
-    border-radius: 50%;
-    margin: 0 auto 6px;
-  }
+    .dot {
+      width: 20px;
+      height: 20px;
+      background: #ddd;
+      border-radius: 50%;
+      margin: 0 auto 6px;
+    }
 
-  .active .dot {
-    background: #1a73e8;
-  }
+    .active .dot {
+      background: #1a73e8;
+    }
 
-  .active-text {
-    color: #1a73e8;
-    font-weight: bold;
-  }
+    .active {
+      font-weight: bold;
+      color: #1a73e8;
+    }
 
-  .info {
-    margin-top: 25px;
-    border-top: 1px solid #eee;
-    padding-top: 15px;
-  }
-
-  .label {
-    font-weight: bold;
-    margin-top: 10px;
-  }
-
-  a {
-    color: #1a73e8;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 15px;
-  }
-</style>
+    .label {
+      font-weight: bold;
+      margin-top: 15px;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="topbar">
-  Order Tracking
-</div>
+<!-- NAV (UNCHANGED) -->
+<nav>
+  <ul>
+    <li class="dropdown">
+      <a href="index.html">Home</a>
+      <ul class="submenu">
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="projects.html">Our Projects</a></li>
+        <li><a href="meetings.html">Upcoming Events</a></li>
+      </ul>
+    </li>
+    <li class="dropdown">
+      <a href="#">Resources</a>
+      <ul class="submenu">
+        <li><a href="notices.html">Notices</a></li>
+        <li><a href="articles.html">Articles</a></li>
+        <li><a href="climatechronicle.html">The Climate Chronicle</a></li>
+        <li><a href="download.html">Download App</a></li>
+      </ul>
+    </li>
+    <li><a href="contact.html">Contact</a></li>
+    <li class="dropdown">
+      <a href="#" class="dropbtn">Beta Features 🧪 <i class="fas fa-caret-down"></i></a>
+      <div class="dropdown-content">
+        <a href="beta-test.html">Test</a>
+        <a href="beta-docs.html">Documentation</a>
+        <a href="beta-report.html">Report</a>
+      </div>
+    </li>
+  </ul>
+</nav>
 
 <div class="container">
 
+  <!-- ORIGINAL INSTRUCTIONS (KEPT) -->
+  <h1><b>PLEASE SIGN IN WITH OUR UNIQUE ID PROVIDED.</b></h1>
+  <hr>
+  <p>https://climatechangeclub.pages.dev/orders/YOUR_UNIQUE_ID_HERE</p>
+
+  <!-- TRACKING CARD -->
   <div class="card">
-    <div class="order-title">Yousuf Fahad</div>
-    <div class="order-id">Order ID: ORD-001</div>
 
-    <div class="status">🚚 Out for delivery (estimated)</div>
+    <h1 id="name">Loading...</h1>
+    <div id="status" class="status">Loading...</div>
 
-    <!-- Progress tracker -->
     <div class="progress">
-
-      <div class="step active">
-        <div class="dot"></div>
-        Ordered
-      </div>
-
-      <div class="step active">
-        <div class="dot"></div>
-        Packed
-      </div>
-
-      <div class="step active">
-        <div class="dot"></div>
-        Shipped
-      </div>
-
-      <div class="step">
-        <div class="dot"></div>
-        Delivered
-      </div>
-
+      <div class="step" id="step0"><div class="dot"></div>Ordered</div>
+      <div class="step" id="step1"><div class="dot"></div>Packed</div>
+      <div class="step" id="step2"><div class="dot"></div>Shipped</div>
+      <div class="step" id="step3"><div class="dot"></div>Delivered</div>
     </div>
 
-    <div class="info">
-      <div class="label">Item</div>
-      <div>2 paper guns</div>
+    <div class="label">Item</div>
+    <div id="item"></div>
 
-      <div class="label">Last Update</div>
-      <div>May 4, 2026</div>
+    <div class="label">Location</div>
+    <div id="location"></div>
 
-      <div class="label">Location</div>
-      <div>Warehouse → In transit</div>
-    </div>
+    <div class="label">Last Updated</div>
+    <div id="updatedAt"></div>
 
-    <a href="https://climatechangeclub.pages.dev/orders">← Back to orders</a>
   </div>
 
 </div>
+
+<!-- FIREBASE SCRIPT -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-analytics.js";
+import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDWFE3sdCWYr3FzEsWvB5d0eU5hqoeEu1Y",
+  authDomain: "climatechangeclub-orders.firebaseapp.com",
+  projectId: "climatechangeclub-orders",
+  storageBucket: "climatechangeclub-orders.firebasestorage.app",
+  messagingSenderId: "428670798053",
+  appId: "1:428670798053:web:e6b53d439ed54164cb6c0c",
+  measurementId: "G-FFRSCTY9T2"
+};
+
+const app = initializeApp(firebaseConfig);
+getAnalytics(app);
+const db = getFirestore(app);
+
+const orderId = window.location.pathname.split('/').pop();
+
+const nameEl = document.getElementById("name");
+const statusEl = document.getElementById("status");
+const itemEl = document.getElementById("item");
+const locationEl = document.getElementById("location");
+const updatedEl = document.getElementById("updatedAt");
+
+function updateProgress(stage) {
+  for (let i = 0; i < 4; i++) {
+    document.getElementById("step" + i).classList.remove("active");
+  }
+  for (let i = 0; i <= stage; i++) {
+    document.getElementById("step" + i).classList.add("active");
+  }
+}
+
+onSnapshot(doc(db, "orders", orderId), (docSnap) => {
+
+  if (!docSnap.exists()) {
+    nameEl.textContent = "Order not found";
+    statusEl.textContent = "Invalid ID";
+    return;
+  }
+
+  const data = docSnap.data();
+
+  nameEl.textContent = data.name;
+  statusEl.textContent = data.status;
+  itemEl.textContent = data.item;
+  locationEl.textContent = data.location;
+
+  if (data.updatedAt && data.updatedAt.toDate) {
+    updatedEl.textContent = data.updatedAt.toDate().toLocaleString();
+  } else {
+    updatedEl.textContent = data.updatedAt;
+  }
+
+  updateProgress(data.stage);
+});
+</script>
 
 </body>
 </html>

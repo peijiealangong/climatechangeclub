@@ -2614,3 +2614,22 @@ var beamer_config = {
 };
 </script>
 <script type="text/javascript" src="https://app.getbeamer.com/js/beamer-embed.js" defer="defer"></script>
+
+
+
+
+In the Firebase console
+
+When editing the document:
+
+stage should be int64 or number in the console
+the value should be 2
+do not type "2" with quotes
+updatedAt should stay as a timestamp, not text
+What stage means
+0 = Ordered
+1 = Packed
+2 = Shipped
+3 = Delivered
+
+That number controls the progress bar in the page.
