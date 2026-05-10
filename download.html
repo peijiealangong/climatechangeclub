@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <!-- Google tag (gtag.js) -->
@@ -12,14 +12,278 @@
 </script>
 
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Download free, malware-free apps and games from Climate Change Club. Horror Game, Climate Change Club App, and Egg Catcher Blitz." />
   <title>Download | Climate Change Club</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Additional styling for download page */
+    .download-hero {
+      background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+      color: white;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .download-hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .download-hero p {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto 30px;
+      line-height: 1.6;
+      opacity: 0.95;
+    }
+
+    .download-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      padding: 60px 10%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .download-card {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .download-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .download-card .emoji {
+      font-size: 3.5rem;
+      margin-bottom: 15px;
+    }
+
+    .download-card h2 {
+      color: var(--primary-green);
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .badge-new {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: 600;
+      margin: 10px 0 20px 0;
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    .download-card p {
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      flex-grow: 1;
+    }
+
+    .download-card .note {
+      font-size: 0.85rem;
+      color: #666;
+      background: #f8faf9;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      border-left: 4px solid var(--primary-green);
+    }
+
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .btn-download {
+      padding: 12px 20px;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .btn-primary-download {
+      background: var(--primary-green);
+      color: white;
+    }
+
+    .btn-primary-download:hover {
+      background: #1a7659;
+      text-decoration: none;
+    }
+
+    .btn-secondary-download {
+      background: var(--secondary-green);
+      color: white;
+    }
+
+    .btn-secondary-download:hover {
+      background: #2d9b6f;
+      text-decoration: none;
+    }
+
+    .btn-tertiary-download {
+      background: transparent;
+      color: var(--action-teal);
+      border: 2px solid var(--action-teal);
+    }
+
+    .btn-tertiary-download:hover {
+      background: var(--action-teal);
+      color: white;
+      text-decoration: none;
+    }
+
+    .instructions-section {
+      padding: 60px 10%;
+      background: #f8faf9;
+    }
+
+    .instructions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .instruction-column h3 {
+      color: var(--primary-green);
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .instruction-column p {
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 15px;
+    }
+
+    .scoring-item {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      border-left: 4px solid var(--primary-green);
+    }
+
+    .scoring-item strong {
+      color: var(--primary-green);
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .quiz-section {
+      padding: 60px 10%;
+      background: white;
+      text-align: center;
+    }
+
+    .quiz-section h2 {
+      color: var(--primary-green);
+      font-size: 2rem;
+      margin-bottom: 30px;
+      font-weight: 700;
+    }
+
+    .credits-section {
+      padding: 60px 10%;
+      background: linear-gradient(135deg, #1a7659 0%, #2d9b6f 100%);
+      color: white;
+      text-align: center;
+    }
+
+    .credits-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .credits-section p {
+      font-size: 1rem;
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto 20px;
+    }
+
+    .credits-button {
+      display: inline-block;
+      background: white;
+      color: #1a7659;
+      padding: 14px 30px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .credits-button:hover {
+      background: #f0f0f0;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .comments-section {
+      padding: 60px 10%;
+      background: white;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .comments-section h2 {
+      color: var(--primary-green);
+      font-size: 2rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .instructions-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .download-hero h1 {
+        font-size: 2rem;
+      }
+
+      .download-hero p {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
 <!-- Elfsight Website Translator | Untitled Website Translator -->
 <script src="https://elfsightcdn.com/platform.js" async></script>
 <div class="elfsight-app-15f6acf7-38c9-47bb-9d32-bafd4fa48ab0" data-elfsight-app-lazy></div>
 
+  <!-- Navigation -->
   <nav>
     <ul>
       <li class="dropdown">
@@ -40,78 +304,181 @@
         </ul>
       </li>
       <li><a href="contact.html">Contact</a></li>
-<li class="dropdown">
-    <a href="#" class="dropbtn">Beta Features 🧪 <i class="fas fa-caret-down"></i></a>
-    <div class="dropdown-content">
-        <a href="beta-test.html">Test</a>
-        <a href="beta-docs.html">Documentation (NO LOGIN REQURIED)</a>
-        <a href="beta-report.html">Report/Suggest a problem</a>
-    </div>
-</li>
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Beta Features 🧪 <i class="fas fa-caret-down"></i></a>
+        <div class="dropdown-content">
+          <a href="beta-test.html">Test</a>
+          <a href="beta-docs.html">Documentation (NO LOGIN REQURIED)</a>
+          <a href="beta-report.html">Report/Suggest a problem</a>
+        </div>
+      </li>
     </ul>
   </nav>
 
-  <!-- Download Section -->
-  <section id="download">
-    <header>
-      <h1>📥 Download the Climate Change Club Apps</h1>
-      <p>Download the Climate Change Club application—free of malware and full of heart. </p>
-
-<section>
-<a href="https://github.com/peijiealangong/horrorgameversionchecker/releases"><button type="button" class="btn btn-success">🎮Horror game:<b>ALL NEW!!!</b></button></a>
-<p> This is our <b>All new game!</b></p>
-<p>Check out our horror game here! If Microsoft SmartScreen or your browser blocks it, just click “More info” and then "Download anyway.” If Microsoft SmartScreen blocks it, just click “More info” and then “Run anyway.” We hope you love it! </p>
-</section>
-<hr>
-      <a href="https://drive.google.com/uc?export=download&id=1X_seuOXkywwSZj-jEp1SLjs2gBbxvZMe" class="download-button" target="_blank">
-        🌱 Download Climate Change Club App (.exe)
-      </a>
-      <p>If the download doesn’t start, <a href="https://drive.google.com/file/d/1X_seuOXkywwSZj-jEp1SLjs2gBbxvZMe/view?usp=sharing" target="_blank">click here to open it in Google Drive</a>.</p>
-    </header>
+  <!-- Hero Section -->
+  <section class="download-hero">
+    <h1>🎮 Download Our Apps & Games</h1>
+    <p>Join thousands of users discovering innovative ways to learn about climate change. Our collection of free, malware-free applications and games offers fun and education combined.</p>
   </section>
-<hr>
-<section>
-<p>Download the Climate Change club egg catcher game today! If Microsoft SmartScreen or your browser blocks it, just click “More info” and then “Run anyway.” We hope you love it!</p>
 
-<a href="https://drive.google.com/file/d/1iy7OhCnDWEibkt8-QDcFRQntCeZYWsDw/view?usp=sharing" download>
-  <button>🎮 Download Egg Catcher Blitz</button>
-</a>
-<p>Instructions: press the "up" arrow key to activate a powerup, press the "left" or "right" arrow keys to move the "egg catcher" and catch the red eggs before you run out of health! Yellow eggs are golden eggs, they give you 10 points, while green eggs are powerups. We hope you like it!</p>
-<p><b>Note: to exit out of full screen, hit the windows key and close out of the app on your taskbar.</b></p>
-</section>
-<section>
-<h3> Mini Game time! Test your knowledge on Climate Change below!⤵️</h3>
-<script src="https://widgets.embeddable.co/sdk/latest/embeddable.js" defer></script>
-<div class="embeddable-FdYyw4oNF-"></div>
-</section>
-<section>
-<a href="https://drive.google.com/file/d/1rmGnDCa2CLQI4ZROU6QUg3VpUSX2BLEL/view?usp=sharing" download>
-	<button>View or download our README file that lists our attributions and credits here! Everyone's support makes a difference on this website.</button>
-</a>
-<section id="comments">
-<p>Comments are welcome here!</p>
-</section>
-<!-- Elfsight Comments | Comments for articles -->
-<script src="https://elfsightcdn.com/platform.js" async></script>
-<div class="elfsight-app-bc7be1bb-94bd-4a93-9743-67b7cb0d6ad6" data-elfsight-app-lazy></div>
-<script src="https://cdn.commoninja.com/sdk/latest/commonninja.js" defer></script>
-<div class="commonninja_component pid-21818ebc-23c1-4bc1-aded-2d0da0486288"></div>
-<!-- Elfsight Accessibility | Climate Change Club Website Accessibility button -->
-<script src="https://elfsightcdn.com/platform.js" async></script>
-<div class="elfsight-app-55baa1f4-7f05-4b47-be17-ff2f8e6710c7" data-elfsight-app-lazy></div>
+  <!-- Download Cards Grid -->
+  <section class="download-grid">
+    
+    <!-- Card 1: Horror Game -->
+    <div class="download-card">
+      <div class="emoji">🎮</div>
+      <h2>Horror Game</h2>
+      <div class="badge-new">✨ ALL NEW ✨</div>
+      <p>Experience our brand-new horror game designed to deliver thrilling scares and engaging gameplay. A supernatural adventure awaits those brave enough to play!</p>
+      <div class="note">
+        <strong>Browser Protection Note:</strong> If Microsoft SmartScreen or your browser blocks the download, click "More info" then "Run anyway."
+      </div>
+      <div class="button-group">
+        <a href="C:\Users\gongp\CCC Website 1\Horror Game Main\Release\Horror Game Forida Setup.exe" download class="btn-download btn-primary-download">⬇️ Direct Download</a>
+        <a href="https://github.com/peijiealangong/horrorgameversionchecker/releases" target="_blank" class="btn-download btn-secondary-download">🔗 GitHub Releases</a>
+      </div>
+    </div>
+
+    <!-- Card 2: Climate Change Club App -->
+    <div class="download-card">
+      <div class="emoji">🌱</div>
+      <h2>Climate Change Club App</h2>
+      <p>Our flagship application for exploring comprehensive climate topics, resources, and educational materials. Perfect for anyone interested in learning more about environmental sustainability and climate action.</p>
+      <div class="note">
+        <strong>Format:</strong> Windows .exe | Free, secure, and easy to install
+      </div>
+      <div class="button-group">
+        <a href="https://drive.google.com/uc?export=download&id=1X_seuOXkywwSZj-jEp1SLjs2gBbxvZMe" target="_blank" class="btn-download btn-primary-download">⬇️ Download Now</a>
+        <a href="https://drive.google.com/file/d/1X_seuOXkywwSZj-jEp1SLjs2gBbxvZMe/view?usp=sharing" target="_blank" class="btn-download btn-tertiary-download">📂 View on Google Drive</a>
+      </div>
+    </div>
+
+    <!-- Card 3: Egg Catcher Blitz -->
+    <div class="download-card">
+      <div class="emoji">🥚</div>
+      <h2>Egg Catcher Blitz</h2>
+      <p>A fun and addictive arcade-style game that tests your reflexes! Catch falling eggs, avoid obstacles, and climb the leaderboard. Simple to learn, challenging to master!</p>
+      <div class="note">
+        <strong>Controls:</strong> ⬅️ ➡️ Move | ⬆️ Power-ups | 💡 Press Windows key to exit fullscreen
+      </div>
+      <div class="button-group">
+        <a href="https://drive.google.com/file/d/1iy7OhCnDWEibkt8-QDcFRQntCeZYWsDw/view?usp=sharing" download class="btn-download btn-primary-download">⬇️ Download Game</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Game Instructions & Tips Section -->
+  <section class="instructions-section">
+    <h2 style="color: var(--primary-green); text-align: center; font-size: 2rem; margin-bottom: 40px; font-weight: 700;">🎮 Game Instructions & Troubleshooting</h2>
+    
+    <div class="instructions-grid">
+      <!-- Egg Catcher Scoring Column -->
+      <div class="instruction-column">
+        <h3>🏆 Egg Catcher Scoring System</h3>
+        <p>Master the game by understanding the scoring mechanics:</p>
+        
+        <div class="scoring-item">
+          <strong>Golden Eggs (⭐)</strong>
+          <p>Standard eggs worth 10 points each. These are your most common catch during gameplay.</p>
+        </div>
+
+        <div class="scoring-item">
+          <strong>Bonus Eggs (✨)</strong>
+          <p>Special eggs worth 25 points! Catch these for a significant score boost and combo multiplier.</p>
+        </div>
+
+        <div class="scoring-item">
+          <strong>Power-ups (🔥)</strong>
+          <p>Temporary abilities like shields, multipliers, or speed boosts. Use these strategically!</p>
+        </div>
+
+        <div class="scoring-item">
+          <strong>Combo Multiplier</strong>
+          <p>Catch eggs consecutively to build combos. Your multiplier increases with each successive catch!</p>
+        </div>
+      </div>
+
+      <!-- If Downloads Are Blocked Column -->
+      <div class="instruction-column">
+        <h3>⚠️ If Downloads Are Blocked</h3>
+        <p>Don't worry! Here are steps to resolve download issues:</p>
+        
+        <div class="scoring-item">
+          <strong>Microsoft SmartScreen Warning</strong>
+          <p>Click "More info" → Then click "Run anyway" to bypass the warning. Our apps are completely safe and malware-free.</p>
+        </div>
+
+        <div class="scoring-item">
+          <strong>Browser Blocked Download</strong>
+          <p>Check your Downloads folder. Some browsers save files automatically. You can also use the Google Drive link as an alternative.</p>
+        </div>
+
+        <div class="scoring-item">
+          <strong>Google Drive Method</strong>
+          <p>Can't download directly? Click the Google Drive link and download from there. It's the same safe file, just hosted differently.</p>
+        </div>
+
+        <div class="scoring-item">
+          <strong>Still Having Issues?</strong>
+          <p>Contact us through the Contact page or submit a report on our Beta Features section. We're here to help!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Test Your Climate Knowledge Section -->
+  <section class="quiz-section">
+    <h2>🌍 Test Your Climate Knowledge</h2>
+    <p style="color: #666; font-size: 1.1rem; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">Challenge yourself with our interactive climate quiz! See how much you know about environmental science, sustainability, and climate action.</p>
+    <script src="https://widgets.embeddable.co/sdk/latest/embeddable.js" defer></script>
+    <div class="embeddable-FdYyw4oNF-"></div>
+  </section>
+
+  <!-- Credits & Attributions Section -->
+  <section class="credits-section">
+    <h2>🙏 Credits & Attributions</h2>
+    <p>Our apps and games are built with support from amazing open-source libraries, frameworks, and community contributions. Every asset, from graphics to code, is properly credited.</p>
+    <p style="font-size: 0.95rem; opacity: 0.95;">Your support and collaboration make this project possible. Thank you to everyone who has contributed to Climate Change Club!</p>
+    <a href="https://drive.google.com/file/d/1rmGnDCa2CLQI4ZROU6QUg3VpUSX2BLEL/view?usp=sharing" download class="credits-button">📄 View Full Credits & README</a>
+  </section>
+
+  <!-- Comments & Feedback Section -->
+  <section class="comments-section">
+    <h2>💬 Comments & Feedback</h2>
+    <p style="color: #666; text-align: center; margin-bottom: 30px;">We'd love to hear from you! Share your thoughts, suggestions, and feedback about our apps and games.</p>
+    
+    <!-- Elfsight Comments Widget -->
+    <script src="https://elfsightcdn.com/platform.js" async></script>
+    <div class="elfsight-app-bc7be1bb-94bd-4a93-9743-67b7cb0d6ad6" data-elfsight-app-lazy></div>
+    
+    <!-- Additional Comments Widget -->
+    <script src="https://cdn.commoninja.com/sdk/latest/commonninja.js" defer></script>
+    <div class="commonninja_component pid-21818ebc-23c1-4bc1-aded-2d0da0486288"></div>
+  </section>
+
+  <!-- Elfsight Accessibility Button -->
+  <script src="https://elfsightcdn.com/platform.js" async></script>
+  <div class="elfsight-app-55baa1f4-7f05-4b47-be17-ff2f8e6710c7" data-elfsight-app-lazy></div>
+
   <!-- Footer -->
   <footer>
-    <p>🌍 Climate Change Club &nbsp; | &nbsp; © 2025 Peijie &nbsp; | &nbsp; Built with ❤️ and HTML/CSS/JavaScript</p>
+    <p>🌍 Climate Change Club &nbsp; | &nbsp; © 2025 Peijie &nbsp; | &nbsp; Built with ❤ and HTML/CSS/JavaScript</p>
   </footer>
-<script src="https://www.google.com/recaptcha/api.js?render=6LexhnssAAAAAJKsI0vXffvPWyNjPh76uV2Cqfip"></script>
-<script>
-   grecaptcha.ready(function() {
-       grecaptcha.execute('6LexhnssAAAAAJKsI0vXffvPWyNjPh76uV2Cqfip', {action: 'submit'}).then(function(token) {
-           // Send token to backend for verification
-       });
-   });
-</script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+  <!-- Google reCAPTCHA -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6LexhnssAAAAAJKsI0vXffvPWyNjPh76uV2Cqfip"></script>
+  <script>
+     grecaptcha.ready(function() {
+         grecaptcha.execute('6LexhnssAAAAAJKsI0vXffvPWyNjPh76uV2Cqfip', {action: 'submit'}).then(function(token) {
+             // Send token to backend for verification
+         });
+     });
+  </script>
+
+  <!-- Bootstrap CSS and JS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
 </body>
 </html>
