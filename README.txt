@@ -17,6 +17,10 @@ Beta Features: Test Lab, Documentation, Report a Problem
 
 The navigation includes mobile menu behavior, dropdown controls, active-page highlighting, and a beta logout option when a beta session is active.
 
+Appearance Customization
+
+The site now supports color theme selection using the swatches on pages such as Home, About, and Articles. The selected theme color is stored in localStorage and applied across all pages on load.
+
 Homepage Games
 
 Climate Defender is the visible homepage game added in v3.0.1. Use arrow keys, WASD, touch buttons, or drag controls to collect clean-energy powerups and avoid pollution hazards. The best score is saved in the browser with localStorage.

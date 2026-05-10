@@ -1,6 +1,6 @@
 /**
  * CLIMATE CHANGE CLUB - MASTER CORE SCRIPT
- * Version: 3.0.1
+ * Version: 3.0.2
  * Beta Version: 3.2
  */
 
@@ -28,15 +28,16 @@ document.addEventListener("DOMContentLoaded", () => {
 function initTheme() {
     const savedColor = localStorage.getItem("bgColor");
     if (savedColor) {
-        document.body.style.backgroundColor = savedColor;
+        document.documentElement.style.setProperty("--bg-color", savedColor);
     }
 }
 
 function changeColor(color) {
-    document.body.style.backgroundColor = color;
     if (color) {
+        document.documentElement.style.setProperty("--bg-color", color);
         localStorage.setItem("bgColor", color);
     } else {
+        document.documentElement.style.removeProperty("--bg-color");
         localStorage.removeItem("bgColor");
     }
 }
@@ -217,7 +218,7 @@ function setupUpdateNotification() {
     const updatePopup = document.getElementById("updatePopup");
     const updateBtn = document.getElementById("updateBtn");
     const updateClose = updatePopup ? updatePopup.querySelector(".popup-close") : null;
-    const currentVersion = "3.0.1";
+    const currentVersion = "3.0.2";
     const dismissedKey = `dismissedUpdatePopup-${currentVersion}`;
 
     if (!updatePopup || !updateBtn) return;
