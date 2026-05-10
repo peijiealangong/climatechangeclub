@@ -1,6 +1,6 @@
 /**
  * CLIMATE CHANGE CLUB - MASTER CORE SCRIPT
- * Version: 1.8.1
+ * Version: 2.0.0
  * Beta Version: 3.2
  * Contains: 
  * - Theme & Music Persistence
@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateMemberCount();       
     setupPersistentNewsletter(); 
     initVideoPromo();          
+    initMobileNav();           
     
     // 3. INITIALIZE UPDATE NOTIFICATIONS
     setupUpdateNotification();     
@@ -61,7 +62,7 @@ function handleUpdateSequence(btn, version, redirectUrl) {
 function setupUpdateNotification() {
     const updatePopup = document.getElementById("updatePopup");
     const updateBtn = document.getElementById("updateBtn");
-    const currentVersion = "1.8.1"; 
+    const currentVersion = "2.0.0"; 
 
     if (!updatePopup || !updateBtn) return;
 
@@ -310,6 +311,25 @@ function betaSignOut() {
     localStorage.removeItem('betaLoggedIn');
     sessionStorage.removeItem('betaLoggedIn');
     window.location.replace("index.html");
+}
+
+function initMobileNav() {
+    const navButton = document.querySelector('.nav-toggle');
+    const navList = document.getElementById('primary-navigation');
+    if (!navButton || !navList) return;
+
+    navButton.addEventListener('click', () => {
+        const isVisible = navList.getAttribute('data-visible') === 'true';
+        navList.setAttribute('data-visible', String(!isVisible));
+        navButton.setAttribute('aria-expanded', String(!isVisible));
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!navList.contains(event.target) && !navButton.contains(event.target)) {
+            navList.setAttribute('data-visible', 'false');
+            navButton.setAttribute('aria-expanded', 'false');
+        }
+    });
 }
 
 /* ADD THIS TO YOUR JAVASCRIPT */
