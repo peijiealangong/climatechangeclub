@@ -1297,6 +1297,24 @@ textarea:focus {
     background: #fff;
 }
 
+.popup-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    border: none;
+    background: transparent;
+    color: #475057;
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+}
+
+.popup-close:hover,
+.popup-close:focus-visible {
+    color: var(--primary);
+}
+
 .site-footer,
 footer {
     width: 100%;

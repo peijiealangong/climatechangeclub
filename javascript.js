@@ -208,16 +208,30 @@ function handleUpdateSequence(btn, version, redirectUrl) {
     }, 900);
 }
 
+function dismissUpdatePopup(popup) {
+    if (!popup) return;
+    popup.classList.remove("show");
+}
+
 function setupUpdateNotification() {
     const updatePopup = document.getElementById("updatePopup");
     const updateBtn = document.getElementById("updateBtn");
+    const updateClose = updatePopup ? updatePopup.querySelector(".popup-close") : null;
     const currentVersion = "3.0.1";
+    const dismissedKey = `dismissedUpdatePopup-${currentVersion}`;
 
     if (!updatePopup || !updateBtn) return;
 
-    if (localStorage.getItem("appVersion") !== currentVersion) {
+    if (localStorage.getItem("appVersion") !== currentVersion && localStorage.getItem(dismissedKey) !== "true") {
         const delay = window.matchMedia("(max-width: 700px)").matches ? 12000 : 10000;
         window.setTimeout(() => updatePopup.classList.add("show"), delay);
+    }
+
+    if (updateClose) {
+        updateClose.addEventListener("click", () => {
+            dismissUpdatePopup(updatePopup);
+            localStorage.setItem(dismissedKey, "true");
+        });
     }
 
     updateBtn.addEventListener("click", () => {
@@ -227,15 +241,24 @@ function setupUpdateNotification() {
 
 function setupUpdateNotificationBETA() {
     const updatePopup = document.getElementById("updatePopupBETA");
-    const updateBtn = updatePopup ? updatePopup.querySelector("button") : null;
+    const updateBtn = updatePopup ? updatePopup.querySelector("button.btn-primary") : null;
+    const updateClose = updatePopup ? updatePopup.querySelector(".popup-close") : null;
     const isBetaLoggedIn = localStorage.getItem("betaLoggedIn") || sessionStorage.getItem("betaLoggedIn");
     const currentVersion = "3.2";
+    const dismissedKey = `dismissedUpdatePopup-${currentVersion}`;
 
     if (!isBetaLoggedIn || !updatePopup || !updateBtn) return;
 
-    if (localStorage.getItem("appVersion") !== currentVersion) {
+    if (localStorage.getItem("appVersion") !== currentVersion && localStorage.getItem(dismissedKey) !== "true") {
         updatePopup.classList.add("show");
         updatePopup.style.bottom = "104px";
+    }
+
+    if (updateClose) {
+        updateClose.addEventListener("click", () => {
+            dismissUpdatePopup(updatePopup);
+            localStorage.setItem(dismissedKey, "true");
+        });
     }
 
     updateBtn.addEventListener("click", () => {
