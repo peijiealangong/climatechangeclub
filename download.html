@@ -16,312 +16,62 @@
   <meta name="description" content="Download free, malware-free apps and games from Climate Change Club. Horror Game, Climate Change Club App, and Egg Catcher Blitz." />
   <title>Download | Climate Change Club</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    /* Additional styling for download page */
-    .download-hero {
-      background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
-      color: white;
-      padding: 80px 20px;
-      text-align: center;
-    }
-
-    .download-hero h1 {
-      font-size: 2.8rem;
-      margin-bottom: 20px;
-      font-weight: 700;
-    }
-
-    .download-hero p {
-      font-size: 1.1rem;
-      max-width: 800px;
-      margin: 0 auto 30px;
-      line-height: 1.6;
-      opacity: 0.95;
-    }
-
-    .download-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-      padding: 60px 10%;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .download-card {
-      background: white;
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .download-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    }
-
-    .download-card .emoji {
-      font-size: 3.5rem;
-      margin-bottom: 15px;
-    }
-
-    .download-card h2 {
-      color: var(--primary-green);
-      font-size: 1.6rem;
-      margin-bottom: 10px;
-      font-weight: 700;
-    }
-
-    .badge-new {
-      display: inline-block;
-      background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
-      color: white;
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-weight: 600;
-      margin: 10px 0 20px 0;
-      font-size: 0.85rem;
-      text-align: center;
-    }
-
-    .download-card p {
-      color: #555;
-      line-height: 1.6;
-      margin-bottom: 15px;
-      flex-grow: 1;
-    }
-
-    .download-card .note {
-      font-size: 0.85rem;
-      color: #666;
-      background: #f8faf9;
-      padding: 12px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      border-left: 4px solid var(--primary-green);
-    }
-
-    .button-group {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: auto;
-    }
-
-    .btn-download {
-      padding: 12px 20px;
-      text-align: center;
-      text-decoration: none;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      display: inline-block;
-    }
-
-    .btn-primary-download {
-      background: var(--primary-green);
-      color: white;
-    }
-
-    .btn-primary-download:hover {
-      background: #1a7659;
-      text-decoration: none;
-    }
-
-    .btn-secondary-download {
-      background: var(--secondary-green);
-      color: white;
-    }
-
-    .btn-secondary-download:hover {
-      background: #2d9b6f;
-      text-decoration: none;
-    }
-
-    .btn-tertiary-download {
-      background: transparent;
-      color: var(--action-teal);
-      border: 2px solid var(--action-teal);
-    }
-
-    .btn-tertiary-download:hover {
-      background: var(--action-teal);
-      color: white;
-      text-decoration: none;
-    }
-
-    .instructions-section {
-      padding: 60px 10%;
-      background: #f8faf9;
-    }
-
-    .instructions-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .instruction-column h3 {
-      color: var(--primary-green);
-      font-size: 1.4rem;
-      margin-bottom: 20px;
-      font-weight: 700;
-    }
-
-    .instruction-column p {
-      color: #555;
-      line-height: 1.7;
-      margin-bottom: 15px;
-    }
-
-    .scoring-item {
-      background: white;
-      padding: 15px;
-      border-radius: 8px;
-      margin-bottom: 15px;
-      border-left: 4px solid var(--primary-green);
-    }
-
-    .scoring-item strong {
-      color: var(--primary-green);
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    .quiz-section {
-      padding: 60px 10%;
-      background: white;
-      text-align: center;
-    }
-
-    .quiz-section h2 {
-      color: var(--primary-green);
-      font-size: 2rem;
-      margin-bottom: 30px;
-      font-weight: 700;
-    }
-
-    .credits-section {
-      padding: 60px 10%;
-      background: linear-gradient(135deg, #1a7659 0%, #2d9b6f 100%);
-      color: white;
-      text-align: center;
-    }
-
-    .credits-section h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      font-weight: 700;
-    }
-
-    .credits-section p {
-      font-size: 1rem;
-      line-height: 1.8;
-      max-width: 800px;
-      margin: 0 auto 20px;
-    }
-
-    .credits-button {
-      display: inline-block;
-      background: white;
-      color: #1a7659;
-      padding: 14px 30px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-
-    .credits-button:hover {
-      background: #f0f0f0;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    }
-
-    .comments-section {
-      padding: 60px 10%;
-      background: white;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .comments-section h2 {
-      color: var(--primary-green);
-      font-size: 2rem;
-      margin-bottom: 20px;
-      font-weight: 700;
-      text-align: center;
-    }
-
-    @media (max-width: 768px) {
-      .instructions-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .download-hero h1 {
-        font-size: 2rem;
-      }
-
-      .download-hero p {
-        font-size: 1rem;
-      }
-    }
-  </style>
+<script src="javascript.js" defer></script>
 </head>
-<body>
-<!-- Elfsight Website Translator | Untitled Website Translator -->
-<script src="https://elfsightcdn.com/platform.js" async></script>
-<div class="elfsight-app-15f6acf7-38c9-47bb-9d32-bafd4fa48ab0" data-elfsight-app-lazy></div>
-
-  <!-- Navigation -->
-  <nav>
-    <ul>
-      <li class="dropdown">
-        <a href="index.html">Home</a>
-        <ul class="submenu">
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="projects.html">Our Projects</a></li>
-          <li><a href="meetings.html">Upcoming Events</a></li>
+<body><!-- Navigation -->
+<header class="site-header">
+    <nav class="site-nav" aria-label="Main Navigation">
+        <a class="nav-logo" href="index.html" data-nav-section="home">
+            <span class="brand-mark" aria-hidden="true">CCC</span>
+            <span>Climate Change Club</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Open main menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        <ul id="primary-navigation" class="nav-list" data-visible="false">
+            <li><a href="index.html" data-nav-section="home">Home</a></li>
+            <li class="dropdown">
+                <button class="nav-menu-button" type="button" aria-expanded="false" data-nav-section="club">Club<span class="nav-caret" aria-hidden="true"></span></button>
+                <ul class="submenu" aria-label="Club pages">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="meetings.html">Meetings</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <button class="nav-menu-button" type="button" aria-expanded="false" data-nav-section="resources">Resources<span class="nav-caret" aria-hidden="true"></span></button>
+                <ul class="submenu" aria-label="Resources pages">
+                    <li><a href="notices.html">Notices</a></li>
+                    <li><a href="articles.html">Articles</a></li>
+                    <li><a href="climatechronicle.html">The Climate Chronicle</a></li>
+                    <li><a href="download.html">Download App</a></li>
+                </ul>
+            </li>
+            <li><a href="contact.html" data-nav-section="contact">Contact</a></li>
+            <li class="dropdown">
+                <button class="nav-menu-button" type="button" id="betaNavBtn" aria-expanded="false" data-nav-section="beta">Beta Features<span class="notification-dot" id="updateDot" aria-hidden="true"></span><span class="nav-caret" aria-hidden="true"></span></button>
+                <ul class="submenu" aria-label="Beta pages">
+                    <li><a href="beta-test.html">Test Lab</a></li>
+                    <li><a href="beta-docs.html">Documentation (No Login Required)</a></li>
+                    <li><a href="beta-report.html">Report a Problem</a></li>
+                    <li class="beta-logout-item"><button class="nav-logout" type="button" data-beta-logout>Logout</button></li>
+                </ul>
+            </li>
         </ul>
-      </li>
-      <li class="dropdown">
-        <a href="#">Resources</a>
-        <ul class="submenu">
-          <li><a href="notices.html">Notices</a></li>
-          <li><a href="articles.html">Articles</a></li>
-          <li><a href="climatechronicle.html">The Climate Chronicle</a></li>
-          <li><a href="download.html">Download App</a></li>
-        </ul>
-      </li>
-      <li><a href="contact.html">Contact</a></li>
-      <li class="dropdown">
-        <a href="#" class="dropbtn">Beta Features 🧪 <i class="fas fa-caret-down"></i></a>
-        <div class="dropdown-content">
-          <a href="beta-test.html">Test</a>
-          <a href="beta-docs.html">Documentation (NO LOGIN REQURIED)</a>
-          <a href="beta-report.html">Report/Suggest a problem</a>
-        </div>
-      </li>
-    </ul>
-  </nav>
-
-  <!-- Hero Section -->
-  <section class="download-hero">
-    <h1>🎮 Download Our Apps & Games</h1>
-    <p>Join thousands of users discovering innovative ways to learn about climate change. Our collection of free, malware-free applications and games offers fun and education combined.</p>
-  </section>
-
-  <!-- Download Cards Grid -->
+    </nav>
+    <script src="https://elfsightcdn.com/platform.js" async></script>
+    <div class="nav-widget elfsight-app-15f6acf7-38c9-47bb-9d32-bafd4fa48ab0" data-elfsight-app-lazy></div>
+</header>
+<header class="page-hero page-hero-download">
+    <div class="page-hero-content reveal-on-scroll">
+        <span class="page-kicker">Apps and Games</span>
+        <h1>Download Our Apps</h1>
+        <p>Free, malware-free apps and games from the Climate Change Club.</p>
+    </div>
+</header>
+<!-- Download Cards Grid -->
   <section class="download-grid">
     
     <!-- Card 1: Horror Game -->

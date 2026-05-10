@@ -22,48 +22,59 @@
   <script src="javascript.js" defer></script>
 </head>
 <body>
-
-  <nav>
-    <ul>
-      <li class="dropdown">
-        <a href="index.html">Home</a>
-        <ul class="submenu">
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="projects.html">Our Projects</a></li>
-          <li><a href="meetings.html">Upcoming Events</a></li>
+<header class="site-header">
+    <nav class="site-nav" aria-label="Main Navigation">
+        <a class="nav-logo" href="index.html" data-nav-section="home">
+            <span class="brand-mark" aria-hidden="true">CCC</span>
+            <span>Climate Change Club</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Open main menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        <ul id="primary-navigation" class="nav-list" data-visible="false">
+            <li><a href="index.html" data-nav-section="home">Home</a></li>
+            <li class="dropdown">
+                <button class="nav-menu-button" type="button" aria-expanded="false" data-nav-section="club">Club<span class="nav-caret" aria-hidden="true"></span></button>
+                <ul class="submenu" aria-label="Club pages">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="meetings.html">Meetings</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <button class="nav-menu-button" type="button" aria-expanded="false" data-nav-section="resources">Resources<span class="nav-caret" aria-hidden="true"></span></button>
+                <ul class="submenu" aria-label="Resources pages">
+                    <li><a href="notices.html">Notices</a></li>
+                    <li><a href="articles.html">Articles</a></li>
+                    <li><a href="climatechronicle.html">The Climate Chronicle</a></li>
+                    <li><a href="download.html">Download App</a></li>
+                </ul>
+            </li>
+            <li><a href="contact.html" data-nav-section="contact">Contact</a></li>
+            <li class="dropdown">
+                <button class="nav-menu-button" type="button" id="betaNavBtn" aria-expanded="false" data-nav-section="beta">Beta Features<span class="notification-dot" id="updateDot" aria-hidden="true"></span><span class="nav-caret" aria-hidden="true"></span></button>
+                <ul class="submenu" aria-label="Beta pages">
+                    <li><a href="beta-test.html">Test Lab</a></li>
+                    <li><a href="beta-docs.html">Documentation (No Login Required)</a></li>
+                    <li><a href="beta-report.html">Report a Problem</a></li>
+                    <li class="beta-logout-item"><button class="nav-logout" type="button" data-beta-logout>Logout</button></li>
+                </ul>
+            </li>
         </ul>
-      </li>
-      <li class="dropdown">
-        <a href="#">Resources</a>
-        <ul class="submenu">
-          <li><a href="notices.html">Notices</a></li>
-          <li><a href="articles.html">Articles</a></li>
-          <li><a href="climatechronicle.html">The Climate Chronicle</a></li>
-          <li><a href="download.html">Download App</a></li>
-        </ul>
-      </li>
-      <li><a href="contact.html">Contact</a></li>
-<li class="dropdown">
-    <a href="#" class="dropbtn">Beta Features 🧪 <i class="fas fa-caret-down"></i></a>
-    <div class="dropdown-content">
-        <a href="beta-test.html">Test</a>
-        <a href="beta-docs.html">Documentation (NO LOGIN REQURIED)</a>
-        <a href="beta-report.html">Report/Suggest a problem</a>
+    </nav>
+    <script src="https://elfsightcdn.com/platform.js" async></script>
+    <div class="nav-widget elfsight-app-15f6acf7-38c9-47bb-9d32-bafd4fa48ab0" data-elfsight-app-lazy></div>
+</header>
+<header class="page-hero page-hero-about">
+    <div class="page-hero-content reveal-on-scroll">
+        <span class="page-kicker">Club Mission</span>
+        <h1>About Us</h1>
+        <p>Meet the student-led team turning climate concern into practical action.</p>
     </div>
-</li>
-    </ul>
-<!-- Elfsight Website Translator | Untitled Website Translator -->
-<script src="https://elfsightcdn.com/platform.js" async></script>
-<div class="elfsight-app-15f6acf7-38c9-47bb-9d32-bafd4fa48ab0" data-elfsight-app-lazy></div>
-
-  </nav>
-
-  <header class="about-hero">
-    <h1>About Us</h1>
-    <p>Empowering the next generation to protect our planet.</p>
-  </header>
-
-  <main>
+</header>
+<main>
     <section class="intro-grid">
       <div class="intro-card">
         <h2>Our Goal 🏆</h2>

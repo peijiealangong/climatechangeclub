@@ -1,26 +1,38 @@
-Note: to go back to the website when you are done, just hit the back key.
-Thanks to everyone who helped make this website a huge success! Below are some of the names of the people that helped this website come to play, even though this website isn't finished yet. Congrats to everyone! 🎊🎉
-1. Ida Guingona: One of our most crucial members of the climate change club and our website development team, she suggested many ideas and helped us revise our code without any frustration. Cheers! 🏆
-2. Joshua McDonald: Joshua, our technology critic, advised (critically, but importantly) errors in the code, and many other ideas. We have worked together, and our website would not be how it is right now if it weren't without him. 
-3. Our other advisers, including Miles Conory - Blankinship, a great helper in making our site more accessible and lots others.
+Climate Change Club Website
 
-About the developer
+Version: 3.0.1
+Beta version: 3.2
 
-Peijie Alan Gong, the main website developer, has worked for many months to make this website a success. He continues to develop this website at a young age and mainly works with Ida Guingona to improve the website and celebrate goals. He types his code by himself but gets support from his teammates to keep the ball rolling.
+This static website shares Climate Change Club projects, notices, articles, downloads, beta features, and contact options.
 
-To download a game:
+Navigation
 
-Visit the Download section of the website (or go to climatechangeclub.pages.dev/downloads) and choose to install any of the downloads you'd like. Then, all you have to do is to extract the .exe file onto your computer, and run the game/app. We hope you have fun.
+The user-facing pages now use one shared navigation structure:
 
-Additional information:
+Home
+Club: About, Projects, Meetings
+Resources: Notices, Articles, The Climate Chronicle, Download App
+Contact
+Beta Features: Test Lab, Documentation, Report a Problem
 
-You can learn more about how to play a game on the Downloads section of the website or go to github.com/peijiealangong to learn how to install our apps.
+The navigation includes mobile menu behavior, dropdown controls, active-page highlighting, and a beta logout option when a beta session is active.
 
-Thanks!
+Homepage Games
 
-Thanks for visiting this website and this README file! If you've reached the end, you probably care about climate change and attribution as much as we do too. Have a great day and as always, you can help stop climate change too.
+Climate Defender is the visible homepage game added in v3.0.1. Use arrow keys, WASD, touch buttons, or drag controls to collect clean-energy powerups and avoid pollution hazards. The best score is saved in the browser with localStorage.
 
-- The Climate Change Club
+Carbon Catcher remains available from the homepage hero as a quick modal game.
+
+Downloads
+
+Visit the Download App page to install available apps and games. Some downloads may be hosted on Google Drive. If a browser warns about an installer, only continue if you trust the source and understand the warning.
+
+Documentation
+
+Public release notes are available on beta-docs.html. The v3.0.1 bug-fix release standardized navigation, refreshed heroes, consolidated CSS and JavaScript behavior, and added Climate Defender.
+
+Thanks
+
+Thanks to everyone who helped make this website possible, including Ida Guingona, Joshua McDonald, Miles Conory-Blankinship, and the Climate Change Club team.
 
 climatechangeclub.pages.dev
-Click the back key or go to climatechangeclub.pages.dev to return to the website.

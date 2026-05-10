@@ -1,4 +1,4 @@
-<!-- Version 3.0.0 | Beta Version 3.2 -->
+<!-- Version 3.0.1 | Beta Version 3.2 -->
 
 
 
@@ -29,78 +29,71 @@
     </script>
 </head>
 <body>
-
-    <header class="site-header">
-        <nav class="site-nav" aria-label="Main Navigation">
-            <div class="nav-brand">
-                <a class="logo" href="index.html"><i class="fas fa-globe-americas" aria-hidden="true"></i> Climate Change Club</a>
-                <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Open main menu">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </button>
-            </div>
-            <ul id="primary-navigation" class="nav-list" data-visible="false">
-                <li class="dropdown">
-                    <a href="index.html" class="active">Home</a>
-                    <ul class="submenu">
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="projects.html">Our Projects</a></li>
-                        <li><a href="meetings.html">Upcoming Events</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" aria-haspopup="true">Resources <i class="fas fa-caret-down"></i></a>
-                    <ul class="submenu">
-                        <li><a href="notices.html">Notices</a></li>
-                        <li><a href="articles.html">Articles</a></li>
-                        <li><a href="climatechronicle.html">The Climate Chronicle</a></li>
-                        <li><a href="download.html">Download App</a></li>
-                    </ul>
-                </li>
-                <li><a href="contact.html">Contact</a></li>
-                <li class="dropdown">
-                    <a href="#" aria-haspopup="true" id="betaNavBtn">Beta Features 🧪 <i class="fas fa-caret-down"></i>
-                        <span class="notification-dot" id="updateDot"></span>
-                    </a>
-                    <ul class="submenu">
-                        <li><a href="beta-test.html">Test Lab</a></li>
-                        <li><a href="beta-docs.html">Documentation (NO LOGIN REQUIRED)</a></li>
-                        <li><a href="beta-report.html">Report a Problem</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-        <script src="https://elfsightcdn.com/platform.js" async></script>
-        <div class="elfsight-app-15f6acf7-38c9-47bb-9d32-bafd4fa48ab0" data-elfsight-app-lazy></div>
-    </header>
-
-    <main>
-        <section class="hero" aria-labelledby="hero-title">
-            <div class="hero-background" aria-hidden="true">
-                <span class="hero-glow glow-1"></span>
-                <span class="hero-glow glow-2"></span>
-                <span class="hero-glow glow-3"></span>
-                <span class="hero-orb orb-1"></span>
-                <span class="hero-orb orb-2"></span>
-            </div>
+<header class="site-header">
+    <nav class="site-nav" aria-label="Main Navigation">
+        <a class="nav-logo" href="index.html" data-nav-section="home">
+            <span class="brand-mark" aria-hidden="true">CCC</span>
+            <span>Climate Change Club</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Open main menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        <ul id="primary-navigation" class="nav-list" data-visible="false">
+            <li><a href="index.html" data-nav-section="home">Home</a></li>
+            <li class="dropdown">
+                <button class="nav-menu-button" type="button" aria-expanded="false" data-nav-section="club">Club<span class="nav-caret" aria-hidden="true"></span></button>
+                <ul class="submenu" aria-label="Club pages">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="meetings.html">Meetings</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <button class="nav-menu-button" type="button" aria-expanded="false" data-nav-section="resources">Resources<span class="nav-caret" aria-hidden="true"></span></button>
+                <ul class="submenu" aria-label="Resources pages">
+                    <li><a href="notices.html">Notices</a></li>
+                    <li><a href="articles.html">Articles</a></li>
+                    <li><a href="climatechronicle.html">The Climate Chronicle</a></li>
+                    <li><a href="download.html">Download App</a></li>
+                </ul>
+            </li>
+            <li><a href="contact.html" data-nav-section="contact">Contact</a></li>
+            <li class="dropdown">
+                <button class="nav-menu-button" type="button" id="betaNavBtn" aria-expanded="false" data-nav-section="beta">Beta Features<span class="notification-dot" id="updateDot" aria-hidden="true"></span><span class="nav-caret" aria-hidden="true"></span></button>
+                <ul class="submenu" aria-label="Beta pages">
+                    <li><a href="beta-test.html">Test Lab</a></li>
+                    <li><a href="beta-docs.html">Documentation (No Login Required)</a></li>
+                    <li><a href="beta-report.html">Report a Problem</a></li>
+                    <li class="beta-logout-item"><button class="nav-logout" type="button" data-beta-logout>Logout</button></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <script src="https://elfsightcdn.com/platform.js" async></script>
+    <div class="nav-widget elfsight-app-15f6acf7-38c9-47bb-9d32-bafd4fa48ab0" data-elfsight-app-lazy></div>
+</header>
+<main>
+        <section class="hero home-hero" aria-labelledby="hero-title">
             <div class="hero-content reveal-on-scroll">
                 <div class="hero-logo">
                     <i class="fas fa-globe-americas" aria-hidden="true"></i>
                     <span class="logo-text">Climate Change Club</span>
                 </div>
-                <span class="hero-tag">Student-Led • Action-Oriented • 2026</span>
+                <span class="hero-tag">Student-Led Action-Oriented 2026</span>
                 <h1 id="hero-title">Change the <span class="text-gradient">Future</span><br><span class="hero-highlight">with bold climate action</span></h1>
                 <p>We are a global community of students converting energy into impact through advocacy, learning, and hands-on climate projects.</p>
                 <div class="hero-btns">
                     <a class="btn" href="#mission">Get Involved</a>
                     <a class="btn-ghost" href="about.html">Our Impact</a>
-                    <button class="btn-game" id="openGameBtn" aria-label="Open Carbon Catcher Game">Play Game 🎮</button>
+                    <a class="btn-ghost" href="#climate-defender">Play Climate Defender</a>
+                    <button class="btn-game" id="openGameBtn" aria-label="Open Carbon Catcher Game">Carbon Catcher</button>
                 </div>
                 <div class="hero-pill-grid">
-                    <span class="hero-pill">🌱 28 active campaigns</span>
-                    <span class="hero-pill">📚 18 learning sessions</span>
-                    <span class="hero-pill">🤝 1,250 student members</span>
+                    <span class="hero-pill">28 active campaigns</span>
+                    <span class="hero-pill">18 learning sessions</span>
+                    <span class="hero-pill">1,250 student members</span>
                 </div>
             </div>
         </section>
@@ -123,6 +116,40 @@
                 <h2>Global Events</h2>
                 <p>Join our next march or community workshop this coming weekend.</p>
                 <a href="meetings.html" class="btn-primary">See Calendar</a>
+            </div>
+        </section>
+
+        <section id="climate-defender" class="defender-section reveal-on-scroll" aria-labelledby="defender-title">
+            <div class="defender-layout">
+                <div class="defender-copy">
+                    <span class="section-kicker">New Homepage Game</span>
+                    <h2 id="defender-title">Climate Defender</h2>
+                    <p>Collect clean-energy powerups, dodge pollution hazards, and keep your climate shield alive as the pace rises.</p>
+                    <p>Use arrow keys, WASD, touch controls, or drag across the game board.</p>
+                </div>
+                <div class="defender-shell">
+                    <div class="defender-hud" aria-live="polite">
+                        <div class="defender-stat"><span>Score</span><strong id="defenderScore">0</strong></div>
+                        <div class="defender-stat"><span>Lives</span><strong id="defenderLives">3</strong></div>
+                        <div class="defender-stat"><span>Level</span><strong id="defenderLevel">1</strong></div>
+                        <div class="defender-stat"><span>Best</span><strong id="defenderBest">0</strong></div>
+                    </div>
+                    <div class="defender-canvas-wrap">
+                        <canvas id="defenderCanvas" width="720" height="420" aria-label="Climate Defender game board"></canvas>
+                    </div>
+                    <p id="defenderStatus" class="defender-status">Ready. Collect clean energy and avoid pollution.</p>
+                    <div class="defender-controls" aria-label="Climate Defender controls">
+                        <button id="defenderStart" type="button" class="btn">Start</button>
+                        <button id="defenderPause" type="button" class="btn-ghost">Pause</button>
+                        <button id="defenderReset" type="button" class="btn-ghost">Reset</button>
+                    </div>
+                    <div class="defender-pad" aria-label="Touch movement controls">
+                        <button type="button" class="btn-ghost" data-defender-move="up" aria-label="Move up">Up</button>
+                        <button type="button" class="btn-ghost" data-defender-move="left" aria-label="Move left">Left</button>
+                        <button type="button" class="btn-ghost" data-defender-move="down" aria-label="Move down">Down</button>
+                        <button type="button" class="btn-ghost" data-defender-move="right" aria-label="Move right">Right</button>
+                    </div>
+                </div>
             </div>
         </section>
 <!-- Elfsight Photo Gallery | Earth Day Photo Gallery -->
@@ -248,7 +275,9 @@
 
     <div id="updatePopup" class="update-popup">
         <div class="popup-content">
-            <p><i class="fas fa-sync-alt"></i> <strong>System Update:</strong> Version 3.0.0 Available.</p>
+            <p><i class="fas fa-sync-alt"></i> <strong>System Update:</strong> Version 3.0.1 Available.</p>
+            <button id="updateBtn" class="btn-primary" type="button">Refresh</button>
+        </div>
     </div>
 
     <div id="updatePopupBETA" class="update-popup">
@@ -271,7 +300,7 @@
 <!-- Elfsight Accessibility | Climate Change Club Website Accessibility button -->
 <div class="elfsight-app-55baa1f4-7f05-4b47-be17-ff2f8e6710c7" data-elfsight-app-lazy></div>
     <footer class="site-footer">
-        <p>🌍 <strong>Climate Change Club</strong> | © 2026 Student-Led Initiative | v3.0.0 | BETA v3.2</p>
+        <p><strong>Climate Change Club</strong> | &copy; 2026 Student-Led Initiative | v3.0.1 | BETA v3.2</p>
     </footer>
 
     <script>
