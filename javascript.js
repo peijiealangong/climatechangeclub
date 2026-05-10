@@ -1,6 +1,6 @@
 /**
  * CLIMATE CHANGE CLUB - MASTER CORE SCRIPT
- * Version: 2.0.0
+ * Version: 3.0.0
  * Beta Version: 3.2
  * Contains: 
  * - Theme & Music Persistence
@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setupPersistentNewsletter(); 
     initVideoPromo();          
     initMobileNav();           
+    initScrollReveal();        
     
     // 3. INITIALIZE UPDATE NOTIFICATIONS
     setupUpdateNotification();     
@@ -62,7 +63,7 @@ function handleUpdateSequence(btn, version, redirectUrl) {
 function setupUpdateNotification() {
     const updatePopup = document.getElementById("updatePopup");
     const updateBtn = document.getElementById("updateBtn");
-    const currentVersion = "2.0.0"; 
+    const currentVersion = "3.0.0"; 
 
     if (!updatePopup || !updateBtn) return;
 
@@ -329,6 +330,28 @@ function initMobileNav() {
             navList.setAttribute('data-visible', 'false');
             navButton.setAttribute('aria-expanded', 'false');
         }
+    });
+}
+
+function initScrollReveal() {
+    const revealElements = document.querySelectorAll('.reveal-on-scroll');
+    if (!('IntersectionObserver' in window) || !revealElements.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.18,
+        rootMargin: '0px 0px -120px 0px'
+    });
+
+    revealElements.forEach((element) => {
+        element.classList.add('reveal-start');
+        observer.observe(element);
     });
 }
 
