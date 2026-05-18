@@ -232,6 +232,26 @@ hr {
     position: relative;
 }
 
+.nav-donate-button {
+    min-height: 42px;
+    padding: 0 18px;
+    border-radius: var(--radius);
+    background: linear-gradient(135deg, var(--accent), var(--action-teal));
+    color: #fff;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+}
+
+.nav-donate-button:hover,
+.nav-donate-button:focus-visible {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 28px rgba(32, 143, 131, 0.18);
+}
+
 .nav-list a,
 .nav-menu-button,
 .nav-logout {
@@ -1288,6 +1308,23 @@ textarea:focus {
     display: none;
     place-items: center;
     background: rgba(5, 20, 15, 0.78);
+}
+
+.popup.show {
+    display: grid;
+}
+
+.donate-popup .popup-content {
+    width: min(680px, calc(100% - 40px));
+}
+
+.donate-popup .popup-content h2 {
+    margin-top: 0;
+}
+
+.donate-popup .gfm-embed {
+    width: 100%;
+    min-height: 320px;
 }
 
 .popup-content {

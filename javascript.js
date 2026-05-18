@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initBetaNotification();
     initAmbientMusic();
     initEcoPopup();
+    initDonatePopup();
     updateMemberCount();
     setupPersistentNewsletter();
     initVideoPromo();
@@ -295,6 +296,45 @@ function initEcoPopup() {
         popup.style.display = "flex";
         sessionStorage.setItem("hasSeenEcoPopup", "true");
     }, 5000);
+}
+
+function initDonatePopup() {
+    const popup = document.getElementById("donatePopup");
+    const donateButton = document.getElementById("donateButton");
+    if (!popup) return;
+
+    const closeButton = popup.querySelector(".popup-close");
+    const showPopup = () => {
+        popup.classList.add("show");
+        popup.setAttribute("aria-hidden", "false");
+    };
+    const hidePopup = () => {
+        popup.classList.remove("show");
+        popup.setAttribute("aria-hidden", "true");
+        sessionStorage.setItem("hasDismissedDonatePopup", "true");
+    };
+
+    if (donateButton) {
+        donateButton.addEventListener("click", showPopup);
+    }
+
+    if (closeButton) {
+        closeButton.addEventListener("click", hidePopup);
+    }
+
+    popup.addEventListener("click", (event) => {
+        if (event.target === popup) {
+            hidePopup();
+        }
+    });
+
+    if (!sessionStorage.getItem("hasDismissedDonatePopup")) {
+        setTimeout(() => {
+            if (!popup.classList.contains("show")) {
+                showPopup();
+            }
+        }, 12000);
+    }
 }
 
 async function updateMemberCount() {
