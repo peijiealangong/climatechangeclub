@@ -944,3 +944,4 @@ function initBetaForm() {
         }
     });
 }
+ 
