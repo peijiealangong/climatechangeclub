@@ -1,6 +1,6 @@
 /**
  * CLIMATE CHANGE CLUB - MASTER CORE SCRIPT
- * Version: 3.0.2
+ * Version: 3.1.2
  * Beta Version: 3.2
  */
 
@@ -219,7 +219,7 @@ function setupUpdateNotification() {
     const updatePopup = document.getElementById("updatePopup");
     const updateBtn = document.getElementById("updateBtn");
     const updateClose = updatePopup ? updatePopup.querySelector(".popup-close") : null;
-    const currentVersion = "3.0.2";
+    const currentVersion = "3.1.2";
     const dismissedKey = `dismissedUpdatePopup-${currentVersion}`;
 
     if (!updatePopup || !updateBtn) return;
