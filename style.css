@@ -1,14 +1,17 @@
-/* Climate Change Club v3.2.0
-   Shared navigation, heroes, cards, watch embeds, forms, and games. */
+/* Climate Change Club v4.0.0
+   Shared navigation, Liquid Glass surfaces, heroes, cards, watch embeds, forms, and games. */
 
 :root {
-    --primary: #173f2f;
-    --primary-green: #173f2f;
+    --primary: #123d35;
+    --primary-green: #123d35;
     --secondary-green: #2f6f53;
     --action-teal: #208f83;
     --cta: #208f83;
     --cta-dark: #14675e;
     --accent: #f2c94c;
+    --sky-cyan: #66d9ef;
+    --leaf-bright: #61d394;
+    --coral: #f06d5e;
     --milestone-gold: #f2c94c;
     --alert-red: #d94f45;
     --surface: #f6faf7;
@@ -20,8 +23,10 @@
     --text-secondary: #426355;
     --muted: #647b71;
     --border: rgba(23, 63, 47, 0.14);
-    --glass: rgba(255, 255, 255, 0.88);
-    --glass-border: rgba(255, 255, 255, 0.5);
+    --glass: rgba(255, 255, 255, 0.78);
+    --glass-strong: rgba(255, 255, 255, 0.9);
+    --glass-dark: rgba(10, 31, 23, 0.42);
+    --glass-border: rgba(255, 255, 255, 0.58);
     --shadow: 0 18px 45px rgba(20, 54, 39, 0.12);
     --shadow-soft: 0 10px 28px rgba(20, 54, 39, 0.1);
     --radius: 8px;
@@ -123,10 +128,10 @@ hr {
     position: fixed;
     inset: 0 0 auto 0;
     z-index: 3000;
-    background: rgba(250, 253, 251, 0.94);
-    border-bottom: 1px solid rgba(23, 63, 47, 0.12);
-    box-shadow: 0 10px 28px rgba(18, 48, 35, 0.08);
-    backdrop-filter: blur(18px);
+    background: rgba(249, 255, 252, 0.76);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.62);
+    box-shadow: 0 12px 34px rgba(18, 48, 35, 0.12);
+    backdrop-filter: blur(24px) saturate(160%);
 }
 
 .site-header .site-nav {
@@ -161,7 +166,7 @@ hr {
     display: inline-grid;
     place-items: center;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary), var(--action-teal));
+    background: conic-gradient(from 180deg, var(--leaf-bright), var(--sky-cyan), var(--accent), var(--action-teal), var(--leaf-bright));
     color: #fff;
     font-size: 0.78rem;
     letter-spacing: 0;
@@ -578,6 +583,361 @@ body.beta-authenticated .beta-logout-item {
     font-weight: 700;
 }
 
+.ccc-command-hero {
+    min-height: clamp(620px, calc(100svh - var(--nav-height) - 34px), 790px);
+    padding: clamp(64px, 7vw, 96px) 24px 54px;
+    text-align: left;
+    background-image:
+        linear-gradient(90deg, rgba(5, 22, 18, 0.92), rgba(10, 63, 56, 0.62) 48%, rgba(12, 76, 67, 0.35)),
+        url("images/stop-climate-change-background.webp");
+}
+
+.ccc-command-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image:
+        linear-gradient(115deg, rgba(255, 255, 255, 0.16) 0 1px, transparent 1px 32px),
+        linear-gradient(180deg, rgba(97, 211, 148, 0.18), rgba(102, 217, 239, 0.08) 48%, transparent);
+    opacity: 0.34;
+}
+
+.home-hero-layout {
+    width: min(1180px, 100%);
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+    gap: clamp(28px, 5vw, 62px);
+    align-items: center;
+}
+
+.ccc-command-hero .hero-content {
+    margin: 0;
+    text-align: left;
+}
+
+.ccc-command-hero h1 {
+    margin-inline: 0;
+    max-width: 780px;
+    font-size: clamp(3.2rem, 8vw, 6.8rem);
+}
+
+.ccc-command-hero p {
+    margin-left: 0;
+    max-width: 650px;
+}
+
+.ccc-command-hero .hero-btns {
+    justify-content: flex-start;
+}
+
+.ccc-command-hero .hero-pill-grid {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.action-watch {
+    justify-self: end;
+    width: min(100%, 390px);
+}
+
+.watch-bezel {
+    position: relative;
+    padding: 18px;
+    border-radius: 46px;
+    background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.08)),
+        linear-gradient(145deg, rgba(8, 24, 21, 0.94), rgba(15, 74, 68, 0.94));
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.28),
+        0 32px 80px rgba(5, 18, 15, 0.48);
+}
+
+.watch-face {
+    min-height: 470px;
+    display: grid;
+    align-content: start;
+    gap: 16px;
+    padding: 24px;
+    border-radius: 34px;
+    color: #fff;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.06)),
+        radial-gradient(circle at 50% 0%, rgba(102, 217, 239, 0.22), transparent 42%),
+        #071814;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+}
+
+.watch-status-line,
+.watch-date {
+    display: flex;
+    justify-content: space-between;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.watch-time {
+    color: #fff;
+    font-size: clamp(2.7rem, 6vw, 4.4rem);
+    font-weight: 800;
+    line-height: 0.95;
+}
+
+.ring-cluster {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.activity-ring,
+.stat-ring {
+    --ring-color: var(--action-teal);
+    --value: 0;
+    position: relative;
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+        conic-gradient(var(--ring-color) calc(var(--value) * 1%), rgba(255, 255, 255, 0.16) 0),
+        rgba(255, 255, 255, 0.08);
+}
+
+.activity-ring::before,
+.stat-ring::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border-radius: 50%;
+    background: rgba(7, 24, 20, 0.92);
+}
+
+.activity-ring span,
+.activity-ring strong,
+.stat-ring span {
+    position: relative;
+    z-index: 1;
+}
+
+.activity-ring span {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.66rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.activity-ring strong {
+    color: #fff;
+    font-size: 1rem;
+}
+
+.watch-hint {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+    align-items: center;
+    margin-top: 4px;
+    padding: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(16px);
+}
+
+.watch-hint i {
+    color: var(--accent);
+}
+
+.mission-grid .intro-card {
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.68)),
+        rgba(255, 255, 255, 0.74);
+    backdrop-filter: blur(18px) saturate(145%);
+}
+
+.mission-grid .intro-card:nth-child(1) > i {
+    color: var(--leaf-bright);
+}
+
+.mission-grid .intro-card:nth-child(2) > i {
+    color: var(--sky-cyan);
+}
+
+.mission-grid .intro-card:nth-child(3) > i {
+    color: var(--accent);
+}
+
+.command-stack {
+    width: 100%;
+    max-width: none;
+    padding: 78px 24px;
+    background:
+        linear-gradient(180deg, rgba(249, 255, 252, 0.96), rgba(231, 244, 238, 0.96)),
+        linear-gradient(135deg, rgba(97, 211, 148, 0.14), rgba(102, 217, 239, 0.08), rgba(242, 201, 76, 0.12));
+}
+
+.command-heading {
+    width: min(1120px, 100%);
+    margin: 0 auto 28px;
+}
+
+.command-heading p {
+    max-width: 720px;
+}
+
+.command-stack .section-kicker,
+.action-rings-section .section-kicker,
+.color-panel .section-kicker,
+.climate-buddy-panel .section-kicker,
+.field-notes-panel .section-kicker {
+    color: var(--cta-dark);
+    background: rgba(32, 143, 131, 0.12);
+}
+
+.command-stack-layout {
+    width: min(1120px, 100%);
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: minmax(320px, 1.25fr) minmax(280px, 0.75fr);
+    gap: 20px;
+}
+
+.smart-stack-panel,
+.climate-buddy-panel,
+.field-notes-panel {
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.74);
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(20px) saturate(150%);
+}
+
+.smart-stack-panel {
+    grid-row: span 2;
+    min-height: 470px;
+    padding: 18px;
+}
+
+.stack-toolbar {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.stack-tab {
+    display: grid;
+    justify-items: center;
+    gap: 4px;
+    min-height: 58px;
+    padding: 8px 6px;
+    border: 1px solid rgba(18, 61, 53, 0.12);
+    border-radius: var(--radius);
+    color: var(--primary);
+    background: rgba(255, 255, 255, 0.62);
+    cursor: pointer;
+    font-weight: 800;
+}
+
+.stack-tab i {
+    color: var(--action-teal);
+}
+
+.stack-tab.is-active {
+    color: #fff;
+    background: linear-gradient(135deg, var(--primary), var(--action-teal));
+    box-shadow: 0 14px 28px rgba(32, 143, 131, 0.18);
+}
+
+.stack-tab.is-active i {
+    color: var(--accent);
+}
+
+.stack-card {
+    display: none;
+    min-height: 350px;
+    align-content: center;
+    gap: 12px;
+    padding: clamp(22px, 4vw, 34px);
+    border: 1px solid rgba(18, 61, 53, 0.12);
+    border-radius: var(--radius);
+    background:
+        linear-gradient(135deg, rgba(18, 61, 53, 0.96), rgba(32, 143, 131, 0.88)),
+        url("images/earth-11009_1280.jpg");
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+
+.stack-card.is-active {
+    display: grid;
+}
+
+.stack-card h3 {
+    margin: 0;
+    max-width: 620px;
+    color: #fff;
+    font-size: clamp(1.8rem, 4vw, 3.35rem);
+    line-height: 1.02;
+}
+
+.stack-card p {
+    max-width: 560px;
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.stack-eyebrow {
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.stack-card .btn-secondary {
+    width: fit-content;
+}
+
+.climate-buddy-panel,
+.field-notes-panel {
+    display: grid;
+    gap: 14px;
+    align-content: start;
+    padding: 24px;
+}
+
+.climate-buddy-panel h3,
+.field-notes-panel h3 {
+    margin: 0;
+    color: var(--primary);
+}
+
+.climate-buddy-panel p {
+    min-height: 78px;
+    margin: 0;
+    color: var(--text-secondary);
+}
+
+.field-note-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.field-notes-panel .btn-ghost {
+    color: var(--primary);
+    background: rgba(255, 255, 255, 0.72);
+}
+
+.note-status {
+    min-height: 24px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
 /* Buttons and cards */
 .btn,
 .button,
@@ -857,6 +1217,56 @@ main > .article-card {
     height: 100%;
     border-radius: inherit;
     background: linear-gradient(90deg, var(--action-teal), var(--accent));
+}
+
+.action-rings-section .section-kicker {
+    margin-inline: auto;
+}
+
+.action-rings-section h2 {
+    margin-top: 0;
+    color: var(--primary);
+    font-size: clamp(2rem, 4vw, 3.35rem);
+    line-height: 1.05;
+}
+
+.action-rings-section .stat-grid {
+    align-items: stretch;
+}
+
+.action-rings-section .stat-box {
+    display: grid;
+    justify-items: center;
+    gap: 14px;
+    min-height: 260px;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.68)),
+        rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(18px) saturate(145%);
+}
+
+.stat-ring {
+    width: 104px;
+}
+
+.stat-ring::before {
+    inset: 10px;
+    background: rgba(255, 255, 255, 0.94);
+}
+
+.stat-ring span {
+    color: var(--primary);
+    font-size: 1.05rem;
+    font-weight: 800;
+}
+
+.action-rings-section .stat-box strong {
+    color: var(--primary);
+    font-size: 1.15rem;
+}
+
+.action-rings-section .progress-container {
+    width: 100%;
 }
 
 .newsletter-card {
@@ -1764,8 +2174,37 @@ footer {
     .defender-layout,
     .watch-intro,
     .watch-feature,
-    .watch-stay {
+    .watch-stay,
+    .home-hero-layout,
+    .command-stack-layout {
         grid-template-columns: 1fr;
+    }
+
+    .ccc-command-hero .hero-content {
+        text-align: center;
+    }
+
+    .ccc-command-hero p,
+    .ccc-command-hero h1 {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .ccc-command-hero .hero-btns {
+        justify-content: center;
+    }
+
+    .ccc-command-hero .hero-pill-grid {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .action-watch {
+        justify-self: center;
+    }
+
+    .smart-stack-panel {
+        grid-row: auto;
     }
 
     .hero-pill-grid,
@@ -1807,6 +2246,11 @@ footer {
         padding: 78px 16px 54px;
     }
 
+    .ccc-command-hero {
+        min-height: auto;
+        padding: 58px 14px 42px;
+    }
+
     .hero h1,
     .page-hero h1 {
         font-size: clamp(1.85rem, 9vw, 2.65rem);
@@ -1839,8 +2283,64 @@ footer {
     .history-item,
     .log-item,
     .watch-grid,
-    .watch-link-grid {
+    .watch-link-grid,
+    .stack-toolbar {
         grid-template-columns: 1fr;
+    }
+
+    .watch-bezel {
+        border-radius: 34px;
+        padding: 12px;
+    }
+
+    .watch-face {
+        min-height: 380px;
+        border-radius: 24px;
+        padding: 18px;
+    }
+
+    .ring-cluster {
+        gap: 7px;
+    }
+
+    .activity-ring span {
+        font-size: 0.58rem;
+    }
+
+    .ccc-command-hero .hero-logo {
+        margin-bottom: 12px;
+    }
+
+    .ccc-command-hero .hero-tag {
+        margin-bottom: 12px;
+    }
+
+    .ccc-command-hero .hero-btns {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .ccc-command-hero .hero-pill-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .ccc-command-hero .hero-pill {
+        padding: 10px 6px;
+        font-size: 0.78rem;
+        line-height: 1.25;
+    }
+
+    .ccc-command-hero .action-watch {
+        display: none;
+    }
+
+    .mission-grid {
+        padding-top: 24px;
+    }
+
+    .stack-card {
+        min-height: 300px;
     }
 
     .defender-section,

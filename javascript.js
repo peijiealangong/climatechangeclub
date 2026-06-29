@@ -1,10 +1,10 @@
 /**
  * CLIMATE CHANGE CLUB - MASTER CORE SCRIPT
- * Version: 3.2.0
- * Beta Version: 3.2
+ * Version: 4.0.0
+ * Beta Version: 4.0
  */
 
-const LATEST_BETA_VERSION = "3.2";
+const LATEST_BETA_VERSION = "4.0";
 
 document.addEventListener("DOMContentLoaded", () => {
     initTheme();
@@ -21,6 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
     initScrollReveal();
     setupUpdateNotification();
     setupUpdateNotificationBETA();
+    initSmartStack();
+    initClimateBuddy();
+    initFieldNotes();
     initMiniGame();
     initClimateDefender();
     initBetaForm();
@@ -220,7 +223,7 @@ function setupUpdateNotification() {
     const updatePopup = document.getElementById("updatePopup");
     const updateBtn = document.getElementById("updateBtn");
     const updateClose = updatePopup ? updatePopup.querySelector(".popup-close") : null;
-    const currentVersion = "3.2.0";
+    const currentVersion = "4.0.0";
     const dismissedKey = `dismissedUpdatePopup-${currentVersion}`;
 
     if (!updatePopup || !updateBtn) return;
@@ -247,7 +250,7 @@ function setupUpdateNotificationBETA() {
     const updateBtn = updatePopup ? updatePopup.querySelector("button.btn-primary") : null;
     const updateClose = updatePopup ? updatePopup.querySelector(".popup-close") : null;
     const isBetaLoggedIn = localStorage.getItem("betaLoggedIn") || sessionStorage.getItem("betaLoggedIn");
-    const currentVersion = "3.2";
+    const currentVersion = "4.0";
     const dismissedKey = `dismissedUpdatePopup-${currentVersion}`;
 
     if (!isBetaLoggedIn || !updatePopup || !updateBtn) return;
@@ -379,6 +382,127 @@ function setupPersistentNewsletter() {
         trigger.innerHTML = "Subscribed";
         trigger.classList.add("btn-subscribed");
         setTimeout(() => window.open(url, "_blank"), 900);
+    });
+}
+
+function initSmartStack() {
+    const tabs = Array.from(document.querySelectorAll("[data-stack-target]"));
+    const cards = Array.from(document.querySelectorAll("[data-stack-card]"));
+    const donateShortcuts = document.querySelectorAll("[data-open-donate]");
+    const donateButton = document.getElementById("donateButton");
+
+    if (!tabs.length || !cards.length) {
+        donateShortcuts.forEach((button) => {
+            button.addEventListener("click", () => {
+                if (donateButton) donateButton.click();
+            });
+        });
+        return;
+    }
+
+    let activeIndex = Math.max(0, tabs.findIndex((tab) => tab.classList.contains("is-active")));
+    let stackTimer = 0;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const activate = (target) => {
+        tabs.forEach((tab, index) => {
+            const isActive = tab.getAttribute("data-stack-target") === target;
+            tab.classList.toggle("is-active", isActive);
+            tab.setAttribute("aria-selected", String(isActive));
+            if (isActive) activeIndex = index;
+        });
+
+        cards.forEach((card) => {
+            card.classList.toggle("is-active", card.getAttribute("data-stack-card") === target);
+        });
+    };
+
+    const startAutoRotate = () => {
+        if (reduceMotion) return;
+        window.clearInterval(stackTimer);
+        stackTimer = window.setInterval(() => {
+            activeIndex = (activeIndex + 1) % tabs.length;
+            const nextTarget = tabs[activeIndex].getAttribute("data-stack-target");
+            if (nextTarget) activate(nextTarget);
+        }, 6500);
+    };
+
+    tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+            const target = tab.getAttribute("data-stack-target");
+            if (!target) return;
+            activate(target);
+            startAutoRotate();
+        });
+    });
+
+    cards.forEach((card) => {
+        card.addEventListener("pointerenter", () => window.clearInterval(stackTimer));
+        card.addEventListener("pointerleave", startAutoRotate);
+    });
+
+    donateShortcuts.forEach((button) => {
+        button.addEventListener("click", () => {
+            if (donateButton) donateButton.click();
+        });
+    });
+
+    startAutoRotate();
+}
+
+function initClimateBuddy() {
+    const message = document.getElementById("coachMessage");
+    const button = document.getElementById("coachRefresh");
+    if (!message || !button) return;
+
+    const prompts = [
+        "Check one club update, then choose one action you can complete today.",
+        "Invite one person to the mailing list and ask what climate topic they care about.",
+        "Open the project page and pick one idea that could work at your school or neighborhood.",
+        "Watch one climate video, then write down the strongest fact you want to remember.",
+        "Share the tree planting goal with someone who might support the fundraiser.",
+        "Save a field note before you leave so your next action is waiting when you come back."
+    ];
+
+    let index = new Date().getDate() % prompts.length;
+    message.textContent = prompts[index];
+
+    button.addEventListener("click", () => {
+        index = (index + 1) % prompts.length;
+        message.textContent = prompts[index];
+    });
+}
+
+function initFieldNotes() {
+    const input = document.getElementById("climateNoteInput");
+    const saveButton = document.getElementById("saveClimateNote");
+    const clearButton = document.getElementById("clearClimateNote");
+    const status = document.getElementById("climateNoteStatus");
+    if (!input || !saveButton || !clearButton || !status) return;
+
+    const noteKey = "cccClimateActionNote";
+    const savedNote = localStorage.getItem(noteKey);
+    if (savedNote) {
+        input.value = savedNote;
+        status.textContent = "Saved note loaded.";
+    }
+
+    saveButton.addEventListener("click", () => {
+        const note = input.value.trim();
+        if (!note) {
+            status.textContent = "Write an action first.";
+            input.focus();
+            return;
+        }
+        localStorage.setItem(noteKey, note);
+        status.textContent = "Saved for your next visit.";
+    });
+
+    clearButton.addEventListener("click", () => {
+        input.value = "";
+        localStorage.removeItem(noteKey);
+        status.textContent = "Note cleared.";
+        input.focus();
     });
 }
 

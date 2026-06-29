@@ -1,13 +1,29 @@
 Climate Change Club Website
 
-Version: 3.2.0
-Beta version: 3.2
+Version: 4.0.0
+Beta version: 4.0
 
-This static website shares Climate Change Club projects, notices, articles, videos, downloads, beta features, and contact options.
+This static website shares Climate Change Club projects, notices, articles, videos, downloads, beta features, games, and contact options.
+
+Version 4.0 Renovation
+
+The homepage has been rebuilt as a watchOS 26-inspired climate command center while keeping the existing site features. The redesign uses translucent Liquid Glass-style surfaces, a watch-like action snapshot, action rings, compact controls, and faster paths to projects, videos, donations, newsletters, and games.
+
+New Homepage Features
+
+Smart Stack: Rotating action cards for today's prompt, projects, video watching, and funding support.
+Climate Buddy: A local prompt generator that suggests one practical climate action at a time.
+Field Notes: A browser-saved note box for a visitor's next climate action.
+Action Rings: Tree planting, funding, and member progress are now shown with circular progress rings plus the existing progress bars.
+Command Hero: A new first-screen experience with fast buttons for action, videos, Climate Defender, and Carbon Catcher.
+
+Preserved Features
+
+The renovation keeps the shared navigation, mobile dropdowns, active-page highlighting, donation popup, beta notification dot, update popups, Elfsight widgets, newsletter confetti flow, color theme swatches, Climate Defender, Carbon Catcher, Watch page, and existing content pages.
 
 Navigation
 
-The user-facing pages now use one shared navigation structure:
+The user-facing pages use one shared navigation structure:
 
 Home
 Club: About, Projects, Meetings
@@ -16,21 +32,19 @@ Watch
 Contact
 Beta Features: Test Lab, Documentation, Report a Problem
 
-The navigation includes mobile menu behavior, dropdown controls, active-page highlighting, and a beta logout option when a beta session is active.
-
 Appearance Customization
 
-The site now supports color theme selection using the swatches on pages such as Home, About, and Articles. The selected theme color is stored in localStorage and applied across all pages on load.
+The site supports color theme selection using swatches on pages such as Home, About, and Articles. The selected theme color is stored in localStorage and applied across pages on load.
 
 Homepage Games
 
-Climate Defender is the visible homepage game added in v3.0.1. Use arrow keys, WASD, touch buttons, or drag controls to collect clean-energy powerups and avoid pollution hazards. The best score is saved in the browser with localStorage.
+Climate Defender remains the visible homepage canvas game. Use keyboard, touch buttons, or drag controls to collect clean-energy powerups and avoid pollution hazards. The best score is saved in the browser with localStorage.
 
 Carbon Catcher remains available from the homepage hero as a quick modal game.
 
 Watch Page
 
-The Watch page was added in v3.2.0 as the official YouTube video hub. Add YouTube iframe embed codes inside the commented watch-frame slots in watch.html. Each slot includes responsive styling, supporting text, internal next-step links, and SEO-friendly page metadata so visitors have more reasons to stay on the site.
+The Watch page is the official YouTube video hub. Add YouTube iframe embed codes inside the commented watch-frame slots in watch.html. Each slot includes responsive styling, supporting text, internal next-step links, and SEO-friendly page metadata so visitors have more reasons to stay on the site.
 
 Downloads
 
@@ -38,7 +52,7 @@ Visit the Download App page to install available apps and games. Some downloads 
 
 Documentation
 
-Public release notes are available on beta-docs.html. The v3.2.0 release added the Watch page, updated navigation, refreshed version footers/comments, improved sitemap coverage, and added stronger SEO metadata for the homepage and video hub.
+Public release notes are available on beta-docs.html. The v4.0.0 release documents the command center renovation, Smart Stack, Climate Buddy, Field Notes, Action Rings, updated version notices, and the retained v3.2 Watch page work.
 
 Thanks
 
