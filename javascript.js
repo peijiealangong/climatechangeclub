@@ -5,6 +5,13 @@
  */
 
 const LATEST_BETA_VERSION = "4.0";
+const SCRIPT_SOURCES = {
+    confetti: "https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js",
+    elfsight: "https://elfsightcdn.com/platform.js",
+    gofundme: "https://www.gofundme.com/static/js/embed.js"
+};
+
+const scriptLoaders = new Map();
 
 document.addEventListener("DOMContentLoaded", () => {
     initTheme();
@@ -14,8 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
     initBetaNotification();
     initAmbientMusic();
     initEcoPopup();
+    initLazyEmbeds();
     initDonatePopup();
-    updateMemberCount();
+    scheduleMemberCount();
     setupPersistentNewsletter();
     initVideoPromo();
     initScrollReveal();
@@ -25,9 +33,128 @@ document.addEventListener("DOMContentLoaded", () => {
     initClimateBuddy();
     initFieldNotes();
     initMiniGame();
-    initClimateDefender();
+    initClimateDefenderWhenReady();
     initBetaForm();
 });
+
+function loadScriptOnce(key, src, attributes = {}) {
+    if (scriptLoaders.has(key)) return scriptLoaders.get(key);
+
+    const existingScript = document.querySelector(`script[src="${src}"]`);
+    if (existingScript) {
+        const existingPromise = Promise.resolve(existingScript);
+        scriptLoaders.set(key, existingPromise);
+        return existingPromise;
+    }
+
+    const promise = new Promise((resolve, reject) => {
+        const script = document.createElement("script");
+        script.src = src;
+        Object.entries(attributes).forEach(([name, value]) => {
+            if (value === true) {
+                script.setAttribute(name, "");
+            } else if (value !== false && value != null) {
+                script.setAttribute(name, String(value));
+            }
+        });
+        script.onload = () => resolve(script);
+        script.onerror = () => {
+            scriptLoaders.delete(key);
+            reject(new Error(`Could not load ${src}`));
+        };
+        document.head.appendChild(script);
+    });
+
+    scriptLoaders.set(key, promise);
+    return promise;
+}
+
+function runWhenIdle(callback, timeout = 2200) {
+    if ("requestIdleCallback" in window) {
+        window.requestIdleCallback(callback, { timeout });
+        return;
+    }
+
+    window.setTimeout(callback, Math.min(timeout, 1200));
+}
+
+function observeOnce(elements, callback, options = {}) {
+    const targets = Array.from(elements).filter(Boolean);
+    if (!targets.length) return;
+
+    if (!("IntersectionObserver" in window)) {
+        runWhenIdle(callback, 800);
+        return;
+    }
+
+    let hasRun = false;
+    const observer = new IntersectionObserver((entries) => {
+        if (hasRun || !entries.some((entry) => entry.isIntersecting)) return;
+        hasRun = true;
+        observer.disconnect();
+        callback();
+    }, options);
+
+    targets.forEach((target) => observer.observe(target));
+}
+
+function loadElfsightWidgets() {
+    return loadScriptOnce("elfsight", SCRIPT_SOURCES.elfsight, { async: true }).then((script) => {
+        document.querySelectorAll("[class*='elfsight-app-'][data-widget-pending]").forEach((widget) => {
+            widget.removeAttribute("data-widget-pending");
+        });
+        return script;
+    });
+}
+
+function loadGoFundMeEmbeds() {
+    return loadScriptOnce("gofundme", SCRIPT_SOURCES.gofundme, { defer: true }).then((script) => {
+        document.querySelectorAll(".gfm-embed[data-widget-pending]").forEach((embed) => {
+            embed.removeAttribute("data-widget-pending");
+        });
+        return script;
+    });
+}
+
+function initLazyEmbeds() {
+    const elfsightWidgets = document.querySelectorAll("[class*='elfsight-app-']");
+    const gfmEmbeds = document.querySelectorAll(".gfm-embed");
+
+    if (elfsightWidgets.length) {
+        elfsightWidgets.forEach((widget) => widget.setAttribute("data-widget-pending", "true"));
+
+        const loadOnIntent = () => loadElfsightWidgets().catch(() => {});
+        ["scroll", "pointerdown", "keydown"].forEach((eventName) => {
+            window.addEventListener(eventName, loadOnIntent, { once: true, passive: true });
+        });
+        runWhenIdle(loadOnIntent, window.matchMedia("(max-width: 700px)").matches ? 6000 : 3600);
+    }
+
+    if (gfmEmbeds.length) {
+        gfmEmbeds.forEach((embed) => embed.setAttribute("data-widget-pending", "true"));
+        observeOnce(gfmEmbeds, () => loadGoFundMeEmbeds().catch(() => {}), {
+            rootMargin: "700px 0px",
+            threshold: 0.01
+        });
+    }
+}
+
+function fireConfetti(options) {
+    return loadScriptOnce("confetti", SCRIPT_SOURCES.confetti, { async: true })
+        .then(() => {
+            if (typeof confetti === "function") confetti(options);
+        })
+        .catch(() => {});
+}
+
+window.showCelebration = function showCelebration() {
+    alert("Time to celebrate. You reached the near end of the page, and less than 12% of viewers do that. Thank you for your support.");
+    fireConfetti({
+        particleCount: 200,
+        spread: 100,
+        origin: { y: 0.7 }
+    });
+};
 
 function initTheme() {
     const savedColor = localStorage.getItem("bgColor");
@@ -311,6 +438,7 @@ function initDonatePopup() {
     const showPopup = () => {
         popup.classList.add("show");
         popup.setAttribute("aria-hidden", "false");
+        loadGoFundMeEmbeds().catch(() => {});
     };
     const hidePopup = () => {
         popup.classList.remove("show");
@@ -356,6 +484,25 @@ async function updateMemberCount() {
     }
 }
 
+function scheduleMemberCount() {
+    const countElement = document.getElementById("member-count");
+    if (!countElement) return;
+
+    const newsletter = countElement.closest(".newsletter-section") || countElement;
+    let hasUpdated = false;
+    const updateOnce = () => {
+        if (hasUpdated) return;
+        hasUpdated = true;
+        updateMemberCount();
+    };
+
+    observeOnce([newsletter], updateOnce, {
+        rootMargin: "500px 0px",
+        threshold: 0.01
+    });
+    runWhenIdle(updateOnce, 5000);
+}
+
 function setupPersistentNewsletter() {
     const trigger = document.getElementById("confettiTrigger");
     if (!trigger) return;
@@ -375,9 +522,7 @@ function setupPersistentNewsletter() {
         }
 
         event.preventDefault();
-        if (typeof confetti === "function") {
-            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
-        }
+        fireConfetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
         localStorage.setItem("isSubscribed", "true");
         trigger.innerHTML = "Subscribed";
         trigger.classList.add("btn-subscribed");
@@ -647,6 +792,25 @@ function initMiniGame() {
         clearClouds();
         alert(`Game Over! Final Score: ${score}`);
     }
+}
+
+function initClimateDefenderWhenReady() {
+    const canvas = document.getElementById("defenderCanvas");
+    if (!canvas) return;
+
+    const target = canvas.closest(".defender-section") || canvas;
+    let initialized = false;
+    const initialize = () => {
+        if (initialized) return;
+        initialized = true;
+        initClimateDefender();
+    };
+
+    observeOnce([target], initialize, {
+        rootMargin: "650px 0px",
+        threshold: 0.01
+    });
+    runWhenIdle(initialize, 6500);
 }
 
 function initClimateDefender() {

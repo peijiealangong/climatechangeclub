@@ -50,7 +50,7 @@ body {
     margin: 0;
     min-height: 100vh;
     padding-top: var(--nav-height);
-    font-family: "Poppins", Arial, sans-serif;
+    font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
     color: var(--text-primary);
     line-height: 1.65;
     background-color: var(--bg-color, #f6faf7);
@@ -85,6 +85,7 @@ textarea {
 
 button {
     border: 0;
+    touch-action: manipulation;
 }
 
 button:not(.nav-toggle):not(.nav-menu-button):not(.nav-logout):not(.swatch):not(.close-game):not(.close-video-promo):not(.close-btn):not(.btn):not(.btn-primary):not(.btn-ghost):not(.btn-secondary):not(.btn-game):not(.btn-celebrate):not(.btn-large):not(.btn-download):not(.credits-button) {
@@ -190,7 +191,7 @@ hr {
 }
 
 .nav-toggle .bar {
-    display: none !important;
+    display: block;
     width: 100%;
     height: 2px;
     margin: 5px 0;
@@ -954,6 +955,7 @@ body.beta-authenticated .beta-logout-item {
     align-items: center;
     justify-content: center;
     gap: 10px;
+    min-width: 0;
     min-height: 44px;
     padding: 12px 18px;
     border-radius: var(--radius);
@@ -962,6 +964,8 @@ body.beta-authenticated .beta-logout-item {
     background: var(--action-teal);
     text-decoration: none;
     font-weight: 800;
+    line-height: 1.2;
+    text-align: center;
     cursor: pointer;
     transition:
         transform var(--transition),
@@ -2072,6 +2076,34 @@ footer {
     text-align: center;
 }
 
+.gfm-embed[data-widget-pending],
+[class*="elfsight-app-"][data-widget-pending] {
+    min-height: 170px;
+    border-radius: var(--radius);
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(231, 244, 238, 0.7)),
+        linear-gradient(90deg, rgba(32, 143, 131, 0.08), rgba(242, 201, 76, 0.08));
+}
+
+.nav-widget[data-widget-pending] {
+    min-height: 56px;
+}
+
+@supports (content-visibility: auto) {
+    main > section:not(.hero),
+    main > .gfm-embed,
+    main > [class*="elfsight-app-"],
+    .jump-anchor,
+    .celebrate-container,
+    .timeline-container,
+    .watch-feature,
+    .watch-library,
+    .watch-stay {
+        content-visibility: auto;
+        contain-intrinsic-size: auto 520px;
+    }
+}
+
 .reveal-on-scroll.reveal-start {
     opacity: 0;
     transform: translateY(24px);
@@ -2081,6 +2113,20 @@ footer {
 .reveal-on-scroll.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
 
 @media (max-width: 980px) {
@@ -2105,7 +2151,7 @@ footer {
     }
 
     .nav-toggle::before {
-        display: block;
+        display: none;
     }
 
     .nav-logo {
@@ -2233,10 +2279,11 @@ footer {
 
     .site-header .site-nav {
         padding-inline: 14px;
+        gap: 10px;
     }
 
     .nav-logo span:last-child {
-        max-width: 190px;
+        max-width: min(48vw, 190px);
         overflow: hidden;
         text-overflow: ellipsis;
     }
@@ -2248,7 +2295,7 @@ footer {
 
     .ccc-command-hero {
         min-height: auto;
-        padding: 58px 14px 42px;
+        padding: 46px 14px 40px;
     }
 
     .hero h1,
@@ -2279,13 +2326,50 @@ footer {
     }
 
     .hero-pill-grid,
-    .defender-hud,
     .history-item,
     .log-item,
     .watch-grid,
-    .watch-link-grid,
-    .stack-toolbar {
+    .watch-link-grid {
         grid-template-columns: 1fr;
+    }
+
+    .stack-toolbar,
+    .defender-hud {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .command-stack {
+        padding: 54px 14px;
+    }
+
+    .smart-stack-panel,
+    .climate-buddy-panel,
+    .field-notes-panel,
+    .newsletter-card,
+    .intro-card,
+    .stat-box,
+    .download-card,
+    .article-card,
+    .alert-card,
+    .log-item,
+    .report-container,
+    .beta-form,
+    .history-item,
+    .card {
+        padding: 20px;
+    }
+
+    .smart-stack-panel {
+        min-height: auto;
+    }
+
+    .stack-card {
+        min-height: 280px;
+        padding: 22px;
+    }
+
+    .stack-card h3 {
+        font-size: clamp(1.45rem, 8vw, 2.2rem);
     }
 
     .watch-bezel {
@@ -2307,6 +2391,10 @@ footer {
         font-size: 0.58rem;
     }
 
+    .activity-ring strong {
+        font-size: 0.86rem;
+    }
+
     .ccc-command-hero .hero-logo {
         margin-bottom: 12px;
     }
@@ -2318,6 +2406,12 @@ footer {
     .ccc-command-hero .hero-btns {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 10px;
+    }
+
+    .ccc-command-hero .hero-btns > * {
+        min-height: 54px;
+        padding-inline: 10px;
+        font-size: 0.9rem;
     }
 
     .ccc-command-hero .hero-pill-grid {
@@ -2332,15 +2426,13 @@ footer {
     }
 
     .ccc-command-hero .action-watch {
-        display: none;
+        display: block;
+        width: min(100%, 330px);
+        margin-top: 4px;
     }
 
     .mission-grid {
         padding-top: 24px;
-    }
-
-    .stack-card {
-        min-height: 300px;
     }
 
     .defender-section,
@@ -2348,8 +2440,46 @@ footer {
         padding-inline: 14px;
     }
 
+    .defender-layout {
+        gap: 18px;
+    }
+
+    .defender-shell {
+        padding: 12px;
+    }
+
+    #defenderCanvas {
+        aspect-ratio: 1 / 1;
+    }
+
+    .defender-controls {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .defender-pad {
+        justify-content: center;
+    }
+
     .watch-intro {
         margin-top: -32px;
+    }
+}
+
+@media (max-width: 420px) {
+    .ccc-command-hero .hero-btns,
+    .ccc-command-hero .hero-pill-grid,
+    .stack-toolbar,
+    .defender-controls,
+    .defender-hud {
+        grid-template-columns: 1fr;
+    }
+
+    .watch-face {
+        min-height: 340px;
+    }
+
+    .watch-time {
+        font-size: clamp(2.15rem, 14vw, 3rem);
     }
 }
  
