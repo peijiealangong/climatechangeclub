@@ -1864,6 +1864,7 @@ textarea:focus {
 
 .color-panel {
     width: min(720px, calc(100% - 40px));
+    margin: 0 auto;
 }
 
 .swatch-container {
@@ -1871,6 +1872,42 @@ textarea:focus {
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
+}
+
+.video-section {
+    width: min(1120px, calc(100vw - 40px));
+    margin: 0 auto;
+}
+
+.video-container {
+    max-width: 100%;
+    margin-top: 16px;
+}
+
+.video-container video {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+}
+
+@media (max-width: 640px) {
+    .color-panel,
+    .video-section {
+        width: min(100vw - 28px, 100%);
+    }
+
+    .swatch {
+        width: 34px;
+        height: 34px;
+    }
+
+    .page-hero-content {
+        padding-inline: 18px;
+    }
+
+    .intro-card {
+        min-height: auto;
+    }
 }
 
 .swatch {

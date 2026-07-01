@@ -53,6 +53,7 @@ Visit the Download App page to install available apps and games. Some downloads 
 Documentation
 
 Public release notes are available on beta-docs.html. The v4.0.0 release documents the command center renovation, Smart Stack, Climate Buddy, Field Notes, Action Rings, updated version notices, and the retained v3.2 Watch page work.
+This patch also includes a bug fix for mobile performance and startup reliability, correcting invalid external URLs and lazy-loading heavy embeds for faster page startup.
 
 Thanks
 
