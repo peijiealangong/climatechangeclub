@@ -2,106 +2,13 @@
 
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Join Climate Change Club for a redesigned student climate action hub with project updates, action rings, smart climate prompts, videos, games, and practical ways to help." />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="theme-color" content="#0f3d38" />
-    <link rel="canonical" href="https://climatechangeclub.pages.dev/" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Climate Change Club | Student-Led Climate Action" />
-    <meta property="og:description" content="Explore Climate Change Club projects, videos, articles, meetings, games, action rings, and smart student-led climate action." />
-    <meta property="og:url" content="https://climatechangeclub.pages.dev/" />
-    <meta property="og:image" content="https://climatechangeclub.pages.dev/images/stop-climate-change-background.webp" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Climate Change Club | Student-Led Climate Action" />
-    <meta name="twitter:description" content="Student-led climate projects, videos, articles, smart prompts, action rings, and ways to take action." />
-    <meta name="twitter:image" content="https://climatechangeclub.pages.dev/images/stop-climate-change-background.webp" />
-    <title>Climate Change Club | Student-Led Climate Action</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <script src="javascript.js" defer></script>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-68D6N5XQ6D"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){ dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-68D6N5XQ6D');
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Climate Change Club",
-      "url": "https://climatechangeclub.pages.dev/",
-      "description": "Student-led climate action, climate education, project updates, articles, and videos.",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Climate Change Club",
-        "url": "https://climatechangeclub.pages.dev/"
-      }
-    }
-    </script>
-</head>
+<?php include "includes/header.php"; ?>
 <body>
-<header class="site-header">
-    <nav class="site-nav" aria-label="Main Navigation">
-        <a class="nav-logo" href="index.html" data-nav-section="home">
-            <span class="brand-mark" aria-hidden="true">CCC</span>
-            <span>Climate Change Club</span>
-        </a>
-        <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Open main menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </button>
-        <ul id="primary-navigation" class="nav-list" data-visible="false">
-            <li><a href="index.html" data-nav-section="home">Home</a></li>
-            <li class="dropdown">
-                <button class="nav-menu-button" type="button" aria-expanded="false" data-nav-section="club">Club<span class="nav-caret" aria-hidden="true"></span></button>
-                <ul class="submenu" aria-label="Club pages">
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="meetings.html">Meetings</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <button class="nav-menu-button" type="button" aria-expanded="false" data-nav-section="resources">Resources<span class="nav-caret" aria-hidden="true"></span></button>
-                <ul class="submenu" aria-label="Resources pages">
-                    <li><a href="notices.html">Notices</a></li>
-                    <li><a href="articles.html">Articles</a></li>
-                    <li><a href="climatechronicle.html">The Climate Chronicle</a></li>
-                    <li><a href="download.html">Download App</a></li>
-                </ul>
-            </li>
-            <li><a href="watch.html" data-nav-section="watch">Watch</a></li>
-            <li><button class="nav-donate-button" id="donateButton" type="button">Donate</button></li>
-            <li><a href="contact.html" data-nav-section="contact">Contact</a></li>
-            <li class="dropdown">
-                <button class="nav-menu-button" type="button" id="betaNavBtn" aria-expanded="false" data-nav-section="beta">Beta Features<span class="notification-dot" id="updateDot" aria-hidden="true"></span><span class="nav-caret" aria-hidden="true"></span></button>
-                <ul class="submenu" aria-label="Beta pages">
-                    <li><a href="beta-test.html">Test Lab</a></li>
-                    <li><a href="beta-docs.html">Documentation (No Login Required)</a></li>
-                    <li><a href="beta-report.html">Report a Problem</a></li>
-                    <li class="beta-logout-item"><button class="nav-logout" type="button" data-beta-logout>Logout</button></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
+
     <div class="popup donate-popup" id="donatePopup" aria-hidden="true">
         <div class="popup-content">
             <button class="popup-close" type="button" aria-label="Close donate popup">&times;</button>
-            <h2>Support Trees with Climate Change Club</h2>
+            <h2>Support Trees with <?php echo $siteName; ?></h2>
             <p>Your gift helps us plant trees and fund climate education today.</p>
             <div class="gfm-embed" data-url="https://www.gofundme.com/f/plant-trees-with-the-climate-change-club/widget/small?sharesheet=undefined&attribution_id=sl:ea4c8cf4-cfa2-4f1d-8902-a7b5adf17d00"></div>
             <script defer src="https://www.gofundme.com/static/js/embed.js"></script>
@@ -116,10 +23,10 @@
                 <div class="hero-content reveal-on-scroll">
                     <div class="hero-logo">
                         <i class="fas fa-globe-americas" aria-hidden="true"></i>
-                        <span class="logo-text">Climate Change Club</span>
+                        <span class="logo-text"><?php echo $siteName; ?></span>
                     </div>
                     <span class="hero-tag">Version 4.0 climate command center</span>
-                    <h1 id="hero-title">Climate Change Club</h1>
+                    <h1 id="hero-title"><?php echo $siteName; ?></h1>
                     <p>A redesigned student action hub with fast project paths, smart climate prompts, live progress, videos, games, and practical ways to help.</p>
                     <div class="hero-btns">
                         <a class="btn" href="#mission"><i class="fas fa-bolt" aria-hidden="true"></i> Start Action</a>
@@ -425,7 +332,7 @@
         <span class="close-video-promo" id="closeVideoPromo" role="button">&times;</span>
         <div class="video-promo-content">
             <h3><i class="fas fa-video" aria-hidden="true"></i> New Video Alert</h3>
-            <p>Check out the new Climate Change Club video hub.</p>
+            <p>Check out the new <?php echo $siteName; ?> video hub.</p>
             <a href="watch.html" class="btn-primary">Watch Now</a>
         </div>
     </div>
@@ -434,7 +341,7 @@
 <!-- Elfsight Accessibility | Climate Change Club Website Accessibility button -->
 <div class="elfsight-app-55baa1f4-7f05-4b47-be17-ff2f8e6710c7" data-elfsight-app-lazy></div>
     <footer class="site-footer">
-    <p><strong>Climate Change Club</strong> | &copy; 2026 Student-Led Initiative | v4.0.0 | BETA v4.0</p>
+    <p><strong><?php echo $siteName; ?></strong> | &copy; 2026 Student-Led Initiative | v4.0.0 | BETA v4.0</p>
 </footer>
 
     <script>

@@ -1,77 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="index, follow, max-image-preview:large">
-  <meta name="theme-color" content="#0f3d38">
-  <link rel="canonical" href="https://climatechangeclub.pages.dev/beta-docs.html">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Documentation | Climate Change Club">
-  <meta property="og:description" content="Learn more about Climate Change Club student-led climate action, projects, videos, and resources.">
-  <meta property="og:url" content="https://climatechangeclub.pages.dev/beta-docs.html">
-  <meta property="og:image" content="https://climatechangeclub.pages.dev/images/stop-climate-change-background.webp">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Documentation | Climate Change Club">
-  <meta name="twitter:description" content="Learn more about Climate Change Club student-led climate action, projects, videos, and resources.">
-  <meta name="twitter:image" content="https://climatechangeclub.pages.dev/images/stop-climate-change-background.webp">
+﻿<?php include "includes/header.php"; ?>
 
-
-    <title>Documentation | Climate Change Club</title>
-    <link rel="stylesheet" href="style.css">
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="javascript.js" defer></script>
-</head>
-<body>
-<header class="site-header">
-    <nav class="site-nav" aria-label="Main Navigation">
-        <a class="nav-logo" href="index.html" data-nav-section="home">
-            <span class="brand-mark" aria-hidden="true">CCC</span>
-            <span>Climate Change Club</span>
-        </a>
-        <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Open main menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </button>
-        <ul id="primary-navigation" class="nav-list" data-visible="false">
-            <li><a href="index.html" data-nav-section="home">Home</a></li>
-            <li class="dropdown">
-                <button class="nav-menu-button" type="button" aria-expanded="false" data-nav-section="club">Club<span class="nav-caret" aria-hidden="true"></span></button>
-                <ul class="submenu" aria-label="Club pages">
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="meetings.html">Meetings</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <button class="nav-menu-button" type="button" aria-expanded="false" data-nav-section="resources">Resources<span class="nav-caret" aria-hidden="true"></span></button>
-                <ul class="submenu" aria-label="Resources pages">
-                    <li><a href="notices.html">Notices</a></li>
-                    <li><a href="articles.html">Articles</a></li>
-                    <li><a href="climatechronicle.html">The Climate Chronicle</a></li>
-                    <li><a href="download.html">Download App</a></li>
-                </ul>
-            </li>
-            <li><a href="watch.html" data-nav-section="watch">Watch</a></li>
-            <li><a href="contact.html" data-nav-section="contact">Contact</a></li>
-            <li class="dropdown">
-                <button class="nav-menu-button" type="button" id="betaNavBtn" aria-expanded="false" data-nav-section="beta">Beta Features<span class="notification-dot" id="updateDot" aria-hidden="true"></span><span class="nav-caret" aria-hidden="true"></span></button>
-                <ul class="submenu" aria-label="Beta pages">
-                    <li><a href="beta-test.html">Test Lab</a></li>
-                    <li><a href="beta-docs.html">Documentation (No Login Required)</a></li>
-                    <li><a href="beta-report.html">Report a Problem</a></li>
-                    <li class="beta-logout-item"><button class="nav-logout" type="button" data-beta-logout>Logout</button></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
-<div class="nav-widget elfsight-app-15f6acf7-38c9-47bb-9d32-bafd4fa48ab0" data-elfsight-app-lazy></div>
-</header>
 <header class="page-hero page-hero-beta">
     <div class="page-hero-content reveal-on-scroll">
         <span class="page-kicker">Release Notes</span>
@@ -211,7 +139,7 @@
                     <div class="history-item archived">
                         <div class="version-badge">v1.7</div>
                         <div class="history-content">
-                            <h3>Earth Day Happiness 🥰🌎</h3>
+                            <h3>Earth Day Happiness ðŸ¥°ðŸŒŽ</h3>
                             <p class="release-date"><i class="far fa-calendar-alt"></i> Released: April 2026</p>
                             <ul>
                                 <li><i class="fas fa-check"></i>Earth Day Project Pictures on Home Page</li>
@@ -297,7 +225,7 @@
                     <div class="history-item beta">
                         <div class="version-badge beta-tag">BETA</div>
                         <div class="history-content">
-                            <h3>Community Chat Time 💬</h3>
+                            <h3>Community Chat Time ðŸ’¬</h3>
                             <p class="release-date"><i class="far fa-calendar-alt"></i> Current: v3.2-beta</p>
                             <ul>
                                 <li><i class="fas fa-vial"></i> <b>Community Forum ready for testing!</b></li>
@@ -308,7 +236,7 @@
                     <div class="history-item beta">
                         <div class="version-badge beta-tag">BETA</div>
                         <div class="history-content">
-                            <h3>Ding Dong Notifications 🔔</h3>
+                            <h3>Ding Dong Notifications ðŸ””</h3>
                             <p class="release-date"><i class="far fa-calendar-alt"></i> Current: v3.1-beta</p>
                             <ul>
                                 <li><i class="fas fa-sync fa-spin"></i> <b>Working on new notification logic...</b></li>
@@ -321,7 +249,7 @@
                     <div class="history-item beta">
                         <div class="version-badge beta-tag">BETA</div>
                         <div class="history-content">
-                            <h3>And So it Begins... 🧗‍♂️</h3>
+                            <h3>And So it Begins... ðŸ§—â€â™‚ï¸</h3>
                             <p class="release-date"><i class="far fa-calendar-alt"></i> Current: v3.0-beta</p>
                             <ul>
                                 <li><i class="fas fa-vial"></i> All new v3.0 beta testing ready!</li>
@@ -333,7 +261,7 @@
                     <div class="history-item beta">
                         <div class="version-badge beta-tag">BETA</div>
                         <div class="history-content">
-                            <h3>A Big Leap For a Coder 🐸</h3>
+                            <h3>A Big Leap For a Coder ðŸ¸</h3>
                             <p class="release-date"><i class="far fa-calendar-alt"></i> Current: v2.0-beta</p>
                             <ul>
                                 <li><i class="fas fa-vial"></i> All new v2.0 beta testing ready!</li>
@@ -390,7 +318,7 @@
 <!-- Elfsight Popup | Beta Member Popup -->
 <div class="elfsight-app-c78f980e-6396-4e3f-9ccb-92de878e304a" data-elfsight-app-lazy></div>
     <footer class="container text-center py-4">
-        <p><strong>Climate Change Club</strong> | &copy; 2026 Student-Led Initiative | v4.0.0 | BETA v4.0 | Documentation updated June 29, 2026</p>
+        <p><strong><?php echo $siteName; ?></strong> | &copy; 2026 Student-Led Initiative | v4.0.0 | BETA v4.0 | Documentation updated June 29, 2026</p>
     </footer>
 
 <!-- Elfsight Background Music | Background music -->
@@ -399,3 +327,4 @@
 </body>
 </html>
  
+

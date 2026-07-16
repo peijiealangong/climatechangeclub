@@ -1,3 +1,4 @@
+<?php include "includes/config.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,17 +8,17 @@
   <meta name="theme-color" content="#0f3d38">
   <link rel="canonical" href="https://climatechangeclub.pages.dev/beta-login.html">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Beta Login | Climate Change Club">
-  <meta property="og:description" content="Learn more about Climate Change Club student-led climate action, projects, videos, and resources.">
+  <meta property="og:title" content="Beta Login | <?php echo $siteName; ?>">
+  <meta property="og:description" content="Learn more about <?php echo $siteName; ?> student-led climate action, projects, videos, and resources.">
   <meta property="og:url" content="https://climatechangeclub.pages.dev/beta-login.html">
   <meta property="og:image" content="https://climatechangeclub.pages.dev/images/stop-climate-change-background.webp">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Beta Login | Climate Change Club">
-  <meta name="twitter:description" content="Learn more about Climate Change Club student-led climate action, projects, videos, and resources.">
+  <meta name="twitter:title" content="Beta Login | <?php echo $siteName; ?>">
+  <meta name="twitter:description" content="Learn more about <?php echo $siteName; ?> student-led climate action, projects, videos, and resources.">
   <meta name="twitter:image" content="https://climatechangeclub.pages.dev/images/stop-climate-change-background.webp">
 
 
-    <title>Beta Login | Climate Change Club</title>
+    <title>Beta Login | <?php echo $siteName; ?></title>
     <link rel="stylesheet" href="style.css">
       <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

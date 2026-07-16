@@ -1,0 +1,124 @@
+﻿<?php include "includes/header.php"; ?>
+
+<header class="page-hero page-hero-screaming">
+    <div class="page-hero-content reveal-on-scroll">
+        <span class="page-kicker">Urgent Read</span>
+        <h1>The Planet Is Screaming</h1>
+        <p>A direct call to pay attention, act locally, and treat the climate crisis as present tense.</p>
+    </div>
+</header>
+<section>
+	<p>
+		ðŸŒðŸ”¥ The Planet Is Screamingâ€”Are We Listening?
+Welcome to the Age of Consequences
+Imagine waking up to a world where summer never ends, wildfires paint the skies orange, and coastlines vanish beneath rising tides. This isnâ€™t dystopian fictionâ€”itâ€™s our reality, unfolding faster than scientists predicted. Climate change isnâ€™t just a â€œbig problem.â€ Itâ€™s the defining crisis of our generation.
+
+And yetâ€¦ the clicks are slowing. The views are dropping. The urgency is fading.
+
+So letâ€™s shake things up.
+
+ðŸš¨ The Climate Crisis Is Not a Drill
+2023 was the hottest year ever recorded. 2024 broke that record. 2025 is on track to do it again.
+
+Antarctica lost 2.7 trillion tons of ice in just two decades.
+
+Wildfires in Canada blanketed New York in smoke. Floods in Libya killed thousands. Heatwaves in India shut down entire cities.
+
+This isnâ€™t a distant threat. Itâ€™s here. Itâ€™s now. And itâ€™s personal.
+
+ðŸ§  Why Weâ€™re Wired to Ignore Itâ€”and Why Thatâ€™s Dangerous
+Humans evolved to react to immediate threatsâ€”a tiger in the bushes, a car speeding toward us. But climate change is sneaky. Itâ€™s slow, cumulative, and often invisible. Thatâ€™s why itâ€™s so dangerous. It tricks us into thinking we have time.
+
+Spoiler: We donâ€™t.
+
+ðŸ’¥ The Butterfly Effect Is Real
+Every actionâ€”or inactionâ€”ripples outward:
+
+A single gas-powered car emits over 4.6 metric tons of COâ‚‚ per year.
+
+One acre of deforestation releases up to 260 tons of carbon.
+
+Every degree of warming increases the risk of crop failure, water scarcity, and mass migration.
+
+The planet doesnâ€™t negotiate. Physics doesnâ€™t care about politics. And ecosystems donâ€™t wait for us to catch up.
+
+ðŸŽ® This Is the Final Boss Battle
+If climate change were a video game, weâ€™d be facing the final boss with half our health bar and no save point. But hereâ€™s the twist: we still have power-ups.
+
+Renewable energy is cheaper than ever.
+
+Youth activism is rewriting policy.
+
+Tech innovations are slashing emissions.
+
+Weâ€™re not doomed. But we are out of excuses.
+
+ðŸ”¥ What You Can Doâ€”Right Now
+ðŸš² Bike or walk instead of driving.
+
+ðŸ¥¦ Eat more plants, less meat.
+
+ðŸ“¢ Speak upâ€”online, in class, at home.
+
+ðŸ§  Educate yourself and others.
+
+ðŸ—³ï¸ Vote for leaders who prioritize climate action.
+
+Every choice is a vote for the future. Make yours count.
+
+ðŸ’š Join the Movement
+This club isnâ€™t just a groupâ€”itâ€™s a force. A spark. A rebellion against apathy. Weâ€™re here to make noise, shift minds, and rewrite the story.
+
+So share this article. Post it. Print it. Scream it from the rooftops.
+
+Because the planet is screaming. And itâ€™s time we answered.
+	</p>
+</section>
+<p>
+<div class="color-panel">
+<button onclick="changeColor('blue')">Change Background: Blue</button>
+<button onclick="changeColor('white')">Change Background: White</button>
+<button onclick="changeColor('#a8dadc')">Ocean Blue</button>
+<button onclick="changeColor('#2a9d8f')">Rainforest Green</button>
+<button onclick="changeColor('#f4a261')">Sunset Orange</button>
+<button onclick="changeColor('red')">Red</button>
+<button onclick="changeColor('lightblue')">Light Blue</button>
+<button onclick="changeColor('green')">Green</button>
+<button onclick="changeColor('')">Reset Background</button>
+
+  <button onclick="changeColor('#264653')">ðŸŒŠ Ocean Depth</button>
+  <button onclick="changeColor('#2a9d8f')">ðŸŒ¿ Forest Floor</button>
+  <button style="background-color: #f4d35e; color: #222;" onclick="changeColor('#f4d35e')">â˜€ï¸ Solar Glow</button>
+  <button onclick="changeColor('#e63946')">ðŸ”¥ Wildfire</button>
+  <button onclick="changeColor('#a8dadc')">â„ï¸ Polar Ice</button>
+  <button onclick="changeColor('#e9c46a')">ðŸŒ¾ Desert Sand</button>
+  <button onclick="changeColor('#6c757d')">ðŸŒªï¸ Storm Sky</button>
+  <button onclick="changeColor('#ffcad4')">ðŸŒ¸ Spring Bloom</button>
+  <button onclick="changeColor('#5e548e')">ðŸŒŒ Midnight</button>
+  <button onclick="changeColor('#d8f3dc')">ðŸŒ¬ï¸ Wind Whisper</button>
+</div>
+  </p>
+
+<!-- Elfsight Comments | Untitled Comments -->
+<div class="elfsight-app-bc7be1bb-94bd-4a93-9743-67b7cb0d6ad6" data-elfsight-app-lazy></div>
+<!-- Elfsight Accessibility | Climate Change Club Website Accessibility button -->
+<div class="elfsight-app-55baa1f4-7f05-4b47-be17-ff2f8e6710c7" data-elfsight-app-lazy></div>
+<!-- Footer -->
+<footer>
+    <p><strong><?php echo $siteName; ?></strong> | &copy; 2026 Student-Led Initiative | v4.0.0 | BETA v4.0</p>
+</footer>
+<script src="https://www.google.com/recaptcha/api.js?render=6LexhnssAAAAAJKsI0vXffvPWyNjPh76uV2Cqfip"></script>
+<script>
+   grecaptcha.ready(function() {
+       grecaptcha.execute('6LexhnssAAAAAJKsI0vXffvPWyNjPh76uV2Cqfip', {action: 'submit'}).then(function(token) {
+           // Send token to backend for verification
+       });
+   });
+</script>
+
+<!-- Elfsight Background Music | Background music -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-f7ca7360-edf8-4dfa-831b-eb1678915d1c" data-elfsight-app-lazy></div>
+</body>
+</html>
+

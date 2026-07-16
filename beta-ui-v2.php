@@ -1,3 +1,4 @@
+<?php include "includes/config.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,17 +8,17 @@
   <meta name="theme-color" content="#0f3d38">
   <link rel="canonical" href="https://climatechangeclub.pages.dev/beta-ui-v2.html">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="UI Testing v3.0 | Climate Change Club">
-  <meta property="og:description" content="Learn more about Climate Change Club student-led climate action, projects, videos, and resources.">
+  <meta property="og:title" content="UI Testing v3.0 | <?php echo $siteName; ?>">
+  <meta property="og:description" content="Learn more about <?php echo $siteName; ?> student-led climate action, projects, videos, and resources.">
   <meta property="og:url" content="https://climatechangeclub.pages.dev/beta-ui-v2.html">
   <meta property="og:image" content="https://climatechangeclub.pages.dev/images/stop-climate-change-background.webp">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="UI Testing v3.0 | Climate Change Club">
-  <meta name="twitter:description" content="Learn more about Climate Change Club student-led climate action, projects, videos, and resources.">
+  <meta name="twitter:title" content="UI Testing v3.0 | <?php echo $siteName; ?>">
+  <meta name="twitter:description" content="Learn more about <?php echo $siteName; ?> student-led climate action, projects, videos, and resources.">
   <meta name="twitter:image" content="https://climatechangeclub.pages.dev/images/stop-climate-change-background.webp">
 
 
-<title>UI Testing v3.0 | Climate Change Club</title>
+<title>UI Testing v3.0 | <?php echo $siteName; ?></title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -815,7 +816,7 @@ body.reduced-motion * {
         <div class="hero-main">
             <div class="hero-title">New UI <span>Testing v3.0</span></div>
             <div class="hero-sub">
-                A fully experimental interface for the Climate Change Club, combining Material You patterns,
+                A fully experimental interface for the <?php echo $siteName; ?>, combining Material You patterns,
                 futuristic motion, and dense feature testing in one controlled environment.
             </div>
             <div class="hero-tags">
@@ -1031,7 +1032,7 @@ body.reduced-motion * {
     </div>
 
     <div class="footer reveal">
-        Climate Change Club · UI Testing v3.0 · Material You Experimental Build
+        <?php echo $siteName; ?> · UI Testing v3.0 · Material You Experimental Build
     </div>
 
 </div>

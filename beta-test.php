@@ -1,84 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="index, follow, max-image-preview:large">
-  <meta name="theme-color" content="#0f3d38">
-  <link rel="canonical" href="https://climatechangeclub.pages.dev/beta-test.html">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Beta Test Lab | Climate Change Club">
-  <meta property="og:description" content="Learn more about Climate Change Club student-led climate action, projects, videos, and resources.">
-  <meta property="og:url" content="https://climatechangeclub.pages.dev/beta-test.html">
-  <meta property="og:image" content="https://climatechangeclub.pages.dev/images/stop-climate-change-background.webp">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Beta Test Lab | Climate Change Club">
-  <meta name="twitter:description" content="Learn more about Climate Change Club student-led climate action, projects, videos, and resources.">
-  <meta name="twitter:image" content="https://climatechangeclub.pages.dev/images/stop-climate-change-background.webp">
+﻿<?php include "includes/header.php"; ?>
 
-
-    <title>Beta Test Lab | Climate Change Club</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <script>
-    (function() {
-        const isAuth = localStorage.getItem('betaLoggedIn') || sessionStorage.getItem('betaLoggedIn');
-        if (!isAuth) {
-            // Use replace so they can't click "Back" to get back in
-            window.location.replace('beta-login.html');
-        }
-    })();
-</script>
-    <script src="javascript.js" defer></script>
-</head>
-<body>
-<header class="site-header">
-    <nav class="site-nav" aria-label="Main Navigation">
-        <a class="nav-logo" href="index.html" data-nav-section="home">
-            <span class="brand-mark" aria-hidden="true">CCC</span>
-            <span>Climate Change Club</span>
-        </a>
-        <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Open main menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </button>
-        <ul id="primary-navigation" class="nav-list" data-visible="false">
-            <li><a href="index.html" data-nav-section="home">Home</a></li>
-            <li class="dropdown">
-                <button class="nav-menu-button" type="button" aria-expanded="false" data-nav-section="club">Club<span class="nav-caret" aria-hidden="true"></span></button>
-                <ul class="submenu" aria-label="Club pages">
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="meetings.html">Meetings</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <button class="nav-menu-button" type="button" aria-expanded="false" data-nav-section="resources">Resources<span class="nav-caret" aria-hidden="true"></span></button>
-                <ul class="submenu" aria-label="Resources pages">
-                    <li><a href="notices.html">Notices</a></li>
-                    <li><a href="articles.html">Articles</a></li>
-                    <li><a href="climatechronicle.html">The Climate Chronicle</a></li>
-                    <li><a href="download.html">Download App</a></li>
-                </ul>
-            </li>
-            <li><a href="watch.html" data-nav-section="watch">Watch</a></li>
-            <li><a href="contact.html" data-nav-section="contact">Contact</a></li>
-            <li class="dropdown">
-                <button class="nav-menu-button" type="button" id="betaNavBtn" aria-expanded="false" data-nav-section="beta">Beta Features<span class="notification-dot" id="updateDot" aria-hidden="true"></span><span class="nav-caret" aria-hidden="true"></span></button>
-                <ul class="submenu" aria-label="Beta pages">
-                    <li><a href="beta-test.html">Test Lab</a></li>
-                    <li><a href="beta-docs.html">Documentation (No Login Required)</a></li>
-                    <li><a href="beta-report.html">Report a Problem</a></li>
-                    <li class="beta-logout-item"><button class="nav-logout" type="button" data-beta-logout>Logout</button></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
-<div class="nav-widget elfsight-app-15f6acf7-38c9-47bb-9d32-bafd4fa48ab0" data-elfsight-app-lazy></div>
-</header>
 <style>
         :root { --clr-dark: #333; --clr-light: #fff; }
         .dark-mode { background-color: var(--clr-dark); color: var(--clr-light); }
@@ -108,20 +29,20 @@
 <div class="intro-card">
     <i class="fas fa-flask fa-2x" style="color: var(--action-teal);"></i>
     <h3>New UI Testing v3.0</h3>
-    <p>Preview an experimental, animation‑heavy redesign of the Climate Change Club pages.</p>
+    <p>Preview an experimental, animationâ€‘heavy redesign of the <?php echo $siteName; ?> pages.</p>
     <button class="btn-primary" onclick="window.location.href='beta-ui-v2.html'">
         Open UI Preview 3.0
     </button>
 </div>
 <div class="intro-card">
     <i class="fas fa-flask fa-2x" style="color: var(--action-teal);"></i>
-    <h3>Notification bar time 🔔</h3>
+    <h3>Notification bar time ðŸ””</h3>
     <p>Preview an experimental, notification bar</p>
     <p><strong>The notification bar is in the top right cornor of this screen.</strong></p>
 </div>
 <div class="intro-card">
     <i class="fas fa-flask fa-2x" style="color: var(--action-teal);"></i>
-    <h3>Community chat 💬</h3>
+    <h3>Community chat ðŸ’¬</h3>
     <p>Preview an experimental, community chat</p>
     <p><strong>Click the link to view the community chat</strong></p>
 <a href="https://climatechangeclubgroup.discourse.group/" class="button-link">Visit the Community Chat</a>

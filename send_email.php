@@ -25,7 +25,7 @@ try {
     $mail->Port = 587; // Use 465 for SSL if needed
 
     // Sender Information
-    $mail->setFrom('gongpeijie620@gmail.com', 'Climate Change Club');
+    $mail->setFrom('gongpeijie620@gmail.com', $siteName);
 
     // Capture recipient info safely
     $recipientEmail = $_POST["email"] ?? "test@example.com";
